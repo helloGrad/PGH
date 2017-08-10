@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+
+
+	
+	
+	
+	<select id="getByEmail" parameterType="string" resultType="MemberVo">  
+		<![CDATA[
+		select MB_NO, IDEN, NKNM from mb where IDEN =#{id } 
+		]]>
+	</select>
+	
+	
+	<select id="getByNo1"  parameterType="map" resultType="MemberVo">  <!-- 객체면 변수 이름으로 해야함 uservo 일경우 vo로, 반환할 타입이 마땅히 없는 경우 map -->
+		<![CDATA[
+		select MB_NO,IDEN,MB_DSTNCT,NKNM from mb where IDEN=#{IDEN } and PW=password(#{PW })
+		]]>
+	</select>
+
+
+	<insert id="naverinsert" parameterType="MemberVo" >
+	<![CDATA[
+		insert into mb values ( null,'일반회원', #{MB_NM }, #{NKNM }, #{IDEN }, null, #{SEX }, null,'Y', CAST(DATE_FORMAT(now(),'%Y%m%d') AS CHAR), '99991231','SNS가입', #{SNS_TKN_VALUE },'네이버', #{AGRG }, null, null, null  )
+	]]>
+	</insert>
+	
+	
+		
+	<select id="getByCode" parameterType="long" resultType="MemberVo">  
+		<![CDATA[
+		select MB_NO,CD_ID from mb_info where MB_NO =#{MB_NO } 
+		]]>
+	</select>
+
+	
+
+</mapper>
