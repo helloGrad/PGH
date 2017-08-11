@@ -12,27 +12,41 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
+
+
 $(function(){
+	
+	
+
 
 	
 	var userid= $("#userid").val();
 	
 	var inforlist = $("#inforlist").val();
+
 	
+	$('input:hidden[name="ch0"]').each(function() {
+		
+		var oldvalue = this.value;
+		
+		 $('input:checkbox[name="ch1"]').each(function() {
+			
+			
+		
+			 if(oldvalue == this.value){ //값 비교
+					     this.checked = true; //checked 처리
+			}
+					
+				
 	
-	alert(inforlist);
-	
-	
-	 $('input:checkbox[name="ch1"]').each(function() {
+		   
+		});
+
 		
 		
-		     if(this.value == "비교값"){ //값 비교
-		            this.checked = true; //checked 처리
-		      }
-		 });
+		});
 
-
-
+	
 	
 
 	$("#information_modifiy").submit(function(event) {
@@ -86,7 +100,7 @@ $(function(){
 						}
 					
 						
-						//parent.window.location.href = "${pageContext.request.contextPath}/user/usermadeinfor";						
+						parent.window.location.href = "${pageContext.request.contextPath}/user/usermadeinfor";						
 						
 					
 				},
@@ -116,19 +130,21 @@ $(function(){
 		<c:choose>
 		<c:when test='${fn:length(informationlist)>0 }'>		
 		<h2>내가 선택한 맞춤정보 </h2>
+		
+		<form id=informationlist name=informationlist >
 		<c:forEach items="${informationlist }" var="vo" varStatus="status">	
 		      		
-	
-
-		<a>${vo.CD_DSTNCT }</a>
-		<a>${vo.CD_NM}</a>
+		<input type="hidden" id="CD_ID" name=ch0 value="${vo.CD_ID }" />
+		<input type="text" id="CD_DSTNCT" name=ch2 value="${vo.CD_DSTNCT }" />
+		<input type="text" id="CD_NM" name=ch3 value="${vo.CD_NM}" />
+		
 		<br>
 	
 			
 	
 		</c:forEach>
 		 <input type="hidden" name="inforlist" id ="inforlist" value="${informationlist }" />	
-
+		</form>
 		<br>
 		<h2>맞춤정보수정하기 </h2>
 		<br>
