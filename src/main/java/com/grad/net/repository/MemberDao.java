@@ -10,7 +10,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.grad.net.vo.CodeVo;
 import com.grad.net.vo.MemberVo;
+
 
 
 
@@ -65,7 +67,7 @@ public class MemberDao {
 	
 	
 	
-	public List<MemberVo> get(MemberVo MemberVo){
+	public List<CodeVo> get(MemberVo MemberVo){
 		
 	 
 	
@@ -74,9 +76,47 @@ public class MemberDao {
 		return sqlSession.selectList("Member.getByCode", MB_NO);
 		
 
-		
 	
 	}
+	
+	public void insertinformation(Long MB_NO, String information) {
+		
+		Map<String, Object> map= new HashMap<String, Object>(); 
+		
+		map.put("MB_NO", MB_NO);
+		map.put("information", information);
+		
+		sqlSession.insert("Member.insertinformation",map);
+		
+		
+	}
+	
+	
+	
+	
+	
+	public boolean inforupdate(Long MB_NO,String infor) { //보류 
+		
+		Map<String, Object> map= new HashMap<String, Object>(); 
+		
+		map.put("MB_NO", MB_NO);
+		map.put("information", infor);
+		
+		
+		
+		int count = sqlSession.update("Member.inforupdate",map);
+		
+		return count ==1;
+	}
+	
+	public void infordelete(Long MB_NO){
+		
+		 sqlSession.delete("Member.infordelete",MB_NO);
+		
+	
+		
+	}
+	
 	
 
 }

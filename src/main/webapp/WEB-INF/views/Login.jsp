@@ -46,7 +46,7 @@
 					  <div id="naver_id_login"></div>
 					  <!-- //네이버아이디로로그인 버튼 노출 영역 -->
 					  <script type="text/javascript">
-					  	var naver_id_login = new naver_id_login("4XJQVjfPiPo3e5Xe23hL", "http://127.0.0.1:8080/net/user/index/");
+					  	var naver_id_login = new naver_id_login("4XJQVjfPiPo3e5Xe23hL", "http://127.0.0.1:8080/net/user/snslogin/");
 					  	naver_id_login.setDomain(".127.0.0.1:8080/net/"); //상태 토큰 비교를 위한 domain 설정
 					  	var state = naver_id_login.getUniqState();
 					  	naver_id_login.setButton("green", 3,60);

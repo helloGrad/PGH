@@ -29,12 +29,37 @@
 	
 	
 		
-	<select id="getByCode" parameterType="long" resultType="MemberVo">  
+	<select id="getByCode" parameterType="long" resultType="CodeVo">  
 		<![CDATA[
-		select MB_NO,CD_ID from mb_info where MB_NO =#{MB_NO } 
+		select cd.CD_ID,CD_NM,CD_DSTNCT from mb_info mi,CD where mi.CD_ID = CD.CD_ID and MB_NO =#{MB_NO } 
 		]]>
 	</select>
 
+
+		<insert id="insertinformation" parameterType="map" >
+	<![CDATA[
+		insert into mb_info values (#{MB_NO}, #{information})
+	]]>
+	</insert>
+	
+	
+	<update id="inforupdate" parameterType="map">
+	
+	<![CDATA[
+		
+		update mb_info set MB_NO=#{MB_NO }, CD_ID =#{CD_ID} 
+	]]>
+	
+	
+	</update>
+	
+	<delete id="infordelete" parameterType="long">
+	<![CDATA[
+	
+		delete from mb_info where MB_NO=#{MB_NO }
+		
+	]]>
+	</delete>
 	
 
 </mapper>

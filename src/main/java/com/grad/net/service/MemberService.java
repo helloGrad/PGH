@@ -13,6 +13,7 @@ import com.grad.net.vo.MemberVo;
 
 
 
+
 @Service
 public class MemberService {
 	
@@ -52,7 +53,7 @@ public class MemberService {
 	
 
 	
-	public List<MemberVo> usermadeinfor(MemberVo MemberVo){
+	public List<CodeVo> usermadeinfor(MemberVo MemberVo){
 		
 	
 		
@@ -60,5 +61,31 @@ public class MemberService {
 		return MemberDao.get(MemberVo);
 		
 	}
+	
+	public void Saveinformation(Long MB_NO, List<String> information){
+		
+		
+		for(int i=0; i<information.size(); i++) {
+	    	   
+				MemberDao.insertinformation(MB_NO, information.get(i));
+	    	  
+	   }
+	     
+
+	}
+	
+	public void informationupdate(Long MB_NO,String[] infor) {
+		
+		MemberDao.infordelete(MB_NO);
+		
+		for(int i=0; i<infor.length; i++) {
+	    	   
+			MemberDao.insertinformation(MB_NO, infor[i]);
+    	  
+   }
+		
+		
+	}
+
 	
 }

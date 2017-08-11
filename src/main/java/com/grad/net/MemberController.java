@@ -1,5 +1,6 @@
 package com.grad.net;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -27,6 +28,7 @@ import com.grad.net.vo.MemberVo;
 
 
 
+
 @Controller
 @RequestMapping("/user")
 public class MemberController {
@@ -49,12 +51,12 @@ public class MemberController {
 	
 	
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(Locale locale, Model model) {
+	@RequestMapping(value = "/snslogin", method = RequestMethod.GET)
+	public String snslogin(Locale locale, Model model) {
 		
 	
 		
-		return "index";
+		return "snslogin";
 	}
 	
 	@Auth(role=Auth.Role.USER)
@@ -75,17 +77,17 @@ public class MemberController {
 		//System.out.println(authUser.getIDEN());
 		//System.out.println(authUser.getMB_NO());
 		
-		List<MemberVo> MemberVo = MemberService.usermadeinfor(authUser);
+		List<CodeVo> UserCodeVo = MemberService.usermadeinfor(authUser); //사용자가 등록한 맞춤정보 
 		
-		List<CodeVo> CodeVo = CodeService.get();
+		List<CodeVo> CodeVo = CodeService.get(); //전체 코드 정보 
 		model.addAttribute("Codelist", CodeVo);
+		model.addAttribute("informationlist", UserCodeVo);
 		
-		
-		System.out.println(CodeVo.size());
+	//	System.out.println(CodeVo.size());
 		
 		
 
-		//model.addAttribute("informationlist", MemberVo);
+		
 		
 		
 		
@@ -95,9 +97,37 @@ public class MemberController {
 	
 	@Auth(role=Auth.Role.USER)
 	@RequestMapping(value = "/usermadeinfor", method = RequestMethod.POST)
-	public String modify(@ModelAttribute MemberVo userVo) {
+	public String usermadeinfor(HttpServletRequest request,@AuthUser MemberVo authUser, @RequestParam(value="cnt", required= true, defaultValue="") int cnt){
 
 		
+		System.out.println(authUser.getMB_NO());
+		
+		Long MB_NO= authUser.getMB_NO();
+	
+	    List<String> information = new ArrayList<String>();
+
+
+
+	
+        for(int j = 1; j <= cnt ; j++ ){ //선택한 맞춤정보 가지고 오기 
+
+			for(int i = 0; i < request.getParameterValues("ch" + String.valueOf(j)).length ; i++){
+
+				information.add(request.getParameterValues("ch" + String.valueOf(j))[i]);
+			}
+
+		}	
+        
+       for(int i=0; i<information.size(); i++) {
+    	   
+    	   
+    	   //System.out.println(information.get(i));
+       }
+     
+
+      MemberService.Saveinformation(MB_NO, information);
+		
+        
 
 		return "redirect:/user/usermadeinfor";
 	}
@@ -106,8 +136,8 @@ public class MemberController {
 	
 	
 	
-	@RequestMapping(value = "/index", method = RequestMethod.POST)
-	public String index(@RequestParam(value="birth", required= true, defaultValue="") String BIRDT, 
+	@RequestMapping(value = "/snslogin", method = RequestMethod.POST)
+	public String snslogin(@RequestParam(value="birth", required= true, defaultValue="") String BIRDT, 
 			@RequestParam(value="email", required= true, defaultValue="") String IDEN ,
 			@RequestParam(value="nickname", required= true, defaultValue="") String NKNM,
 			@RequestParam(value="age", required= true, defaultValue="") String AGRG,
@@ -145,6 +175,34 @@ public class MemberController {
 		
 		return "redirect:/user/login";
 	}
+	
+	
+
+	
+	
+	@RequestMapping(value = "/usermadeinfor/modifiy", method = RequestMethod.POST)
+	public String informationModifiy(
+			@RequestParam(value="infor", required= true, defaultValue="") String[] infor, @AuthUser MemberVo authUser){
+		
+	
+		//System.out.println(infor.length);
+	
+		for(int i=0; i<infor.length; i++) {
+			
+			
+			//System.out.println(infor[i]);
+			
+			
+		}
+		
+		MemberService.informationupdate(authUser.getMB_NO(), infor);
+		
+		
+	
+		
+		return "redirect:/user/usermadeinfor";
+	}
+	
 	
 	
 	
