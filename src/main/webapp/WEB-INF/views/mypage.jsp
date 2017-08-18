@@ -16,7 +16,9 @@
 		<br>	
 
 		
-		<a href="${pageContext.servletContext.contextPath }/user/usermadeinfor">맞춤정보</a>
+		<a href="${pageContext.servletContext.contextPath }/user/mbinfo">맞춤정보</a>
+		<br> <br> <br> 
+		<a href="${pageContext.servletContext.contextPath }/admin/list">정보입력</a>
 		
 
 

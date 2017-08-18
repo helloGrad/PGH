@@ -10,19 +10,13 @@ import com.grad.net.vo.CodeVo;
 
 
 @Service
-public class CodeService {
-	
+public class CodeService {	
 	
 	@Autowired
-	private CodeDao CodeDao;
+	private CodeDao CodeDao;	
+	
+	public List<CodeVo> getCodeList(){	
 
-	
-	
-	public List<CodeVo> get(){
-		
-	
-
-		return CodeDao.get();
-		
+		return CodeDao.getCodeList();		
 	}
 }

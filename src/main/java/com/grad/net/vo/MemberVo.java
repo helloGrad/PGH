@@ -1,163 +1,193 @@
 package com.grad.net.vo;
 
 
+
 public class MemberVo {
 	
-	private Long MB_NO;
-	private String MB_DSTNCT;
-	private String MB_NM;
-	private String NKNM;
-	private String IDEN;
-	private String PW;
-	private String SEX;
-	private String BIRDT;
-	private String MYSELF_AUTHZ_YN;
-	private String INSRD_DD;
-	private String WTHDR_DD;
-	private String GENAL_MB_DSTNCT;
-	private String SNS_TKN_VALUE;
-	private String SNS_DSTNCT;
-	private String AGRG;
-	private String TEL_NO;
-	private String HNDPH_NO;
-	private String EMAIL;
+	private Long mbNo;
+	private String mbDstnct;
+	private String mbNm;
+	private String nknm;
+	private String iden;
+	private String pw;
+	private String sex;
+	private String birdt;
+	private String myselfAuthzYn;
+	private String insrdDd;
+	private String wthdrDd;
+	private String genalMbDstnct;
+	private String snsTknValue;
+	private String snsDstnct;
+	private String agrg;
+	private String telNo;
+	private String hndphNo;
+	private String email;
 	
-	private String CD_ID; 
-	
-	
-	
-	public Long getMB_NO() {
-		return MB_NO;
+	private String cdId;
+
+	public Long getMbNo() {
+		return mbNo;
 	}
-	public void setMB_NO(Long mB_NO) {
-		MB_NO = mB_NO;
+
+	public void setMbNo(Long mbNo) {
+		this.mbNo = mbNo;
 	}
-	public String getMB_DSTNCT() {
-		return MB_DSTNCT;
+
+	public String getMbDstnct() {
+		return mbDstnct;
 	}
-	public void setMB_DSTNCT(String mB_DSTNCT) {
-		MB_DSTNCT = mB_DSTNCT;
+
+	public void setMbDstnct(String mbDstnct) {
+		this.mbDstnct = mbDstnct;
 	}
-	public String getMB_NM() {
-		return MB_NM;
+
+	public String getMbNm() {
+		return mbNm;
 	}
-	public void setMB_NM(String mB_NM) {
-		MB_NM = mB_NM;
+
+	public void setMbNm(String mbNm) {
+		this.mbNm = mbNm;
 	}
-	public String getNKNM() {
-		return NKNM;
+
+	public String getNknm() {
+		return nknm;
 	}
-	public void setNKNM(String nKNM) {
-		NKNM = nKNM;
+
+	public void setNknm(String nknm) {
+		this.nknm = nknm;
 	}
-	public String getIDEN() {
-		return IDEN;
+
+	public String getIden() {
+		return iden;
 	}
-	public void setIDEN(String iDEN) {
-		IDEN = iDEN;
+
+	public void setIden(String iden) {
+		this.iden = iden;
 	}
-	public String getPW() {
-		return PW;
+
+	public String getPw() {
+		return pw;
 	}
-	public void setPW(String pW) {
-		PW = pW;
+
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
-	public String getSEX() {
-		return SEX;
+
+	public String getSex() {
+		return sex;
 	}
-	public void setSEX(String sEX) {
-		SEX = sEX;
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
-	public String getBIRDT() {
-		return BIRDT;
+
+	public String getBirdt() {
+		return birdt;
 	}
-	public void setBIRDT(String bIRDT) {
-		BIRDT = bIRDT;
+
+	public void setBirdt(String birdt) {
+		this.birdt = birdt;
 	}
-	public String getMYSELF_AUTHZ_YN() {
-		return MYSELF_AUTHZ_YN;
+
+	public String getMyselfAuthzYn() {
+		return myselfAuthzYn;
 	}
-	public void setMYSELF_AUTHZ_YN(String mYSELF_AUTHZ_YN) {
-		MYSELF_AUTHZ_YN = mYSELF_AUTHZ_YN;
+
+	public void setMyselfAuthzYn(String myselfAuthzYn) {
+		this.myselfAuthzYn = myselfAuthzYn;
 	}
-	public String getINSRD_DD() {
-		return INSRD_DD;
+
+	public String getInsrdDd() {
+		return insrdDd;
 	}
-	public void setINSRD_DD(String iNSRD_DD) {
-		INSRD_DD = iNSRD_DD;
+
+	public void setInsrdDd(String insrdDd) {
+		this.insrdDd = insrdDd;
 	}
-	public String getWTHDR_DD() {
-		return WTHDR_DD;
+
+	public String getWthdrDd() {
+		return wthdrDd;
 	}
-	public void setWTHDR_DD(String wTHDR_DD) {
-		WTHDR_DD = wTHDR_DD;
+
+	public void setWthdrDd(String wthdrDd) {
+		this.wthdrDd = wthdrDd;
 	}
-	public String getGENAL_MB_DSTNCT() {
-		return GENAL_MB_DSTNCT;
+
+	public String getGenalMbDstnct() {
+		return genalMbDstnct;
 	}
-	public void setGENAL_MB_DSTNCT(String gENAL_MB_DSTNCT) {
-		GENAL_MB_DSTNCT = gENAL_MB_DSTNCT;
+
+	public void setGenalMbDstnct(String genalMbDstnct) {
+		this.genalMbDstnct = genalMbDstnct;
 	}
-	public String getSNS_TKN_VALUE() {
-		return SNS_TKN_VALUE;
+
+	public String getSnsTknValue() {
+		return snsTknValue;
 	}
-	public void setSNS_TKN_VALUE(String sNS_TKN_VALUE) {
-		SNS_TKN_VALUE = sNS_TKN_VALUE;
+
+	public void setSnsTknValue(String snsTknValue) {
+		this.snsTknValue = snsTknValue;
 	}
-	public String getSNS_DSTNCT() {
-		return SNS_DSTNCT;
+
+	public String getSnsDstnct() {
+		return snsDstnct;
 	}
-	public void setSNS_DSTNCT(String sNS_DSTNCT) {
-		SNS_DSTNCT = sNS_DSTNCT;
+
+	public void setSnsDstnct(String snsDstnct) {
+		this.snsDstnct = snsDstnct;
 	}
-	public String getAGRG() {
-		return AGRG;
+
+	public String getAgrg() {
+		return agrg;
 	}
-	public void setAGRG(String aGRG) {
-		AGRG = aGRG;
+
+	public void setAgrg(String agrg) {
+		this.agrg = agrg;
 	}
-	public String getTEL_NO() {
-		return TEL_NO;
+
+	public String getTelNo() {
+		return telNo;
 	}
-	public void setTEL_NO(String tEL_NO) {
-		TEL_NO = tEL_NO;
+
+	public void setTelNo(String telNo) {
+		this.telNo = telNo;
 	}
-	public String getHNDPH_NO() {
-		return HNDPH_NO;
+
+	public String getHndphNo() {
+		return hndphNo;
 	}
-	public void setHNDPH_NO(String hNDPH_NO) {
-		HNDPH_NO = hNDPH_NO;
+
+	public void setHndphNo(String hndphNo) {
+		this.hndphNo = hndphNo;
 	}
-	public String getEMAIL() {
-		return EMAIL;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getCD_ID() {
-		return CD_ID;
+
+	public String getCdId() {
+		return cdId;
 	}
-	public void setCD_ID(String cD_ID) {
-		CD_ID = cD_ID;
+
+	public void setCdId(String cdId) {
+		this.cdId = cdId;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return "MemberVo [MB_NO=" + MB_NO + ", MB_DSTNCT=" + MB_DSTNCT + ", MB_NM=" + MB_NM + ", NKNM=" + NKNM
-				+ ", IDEN=" + IDEN + ", PW=" + PW + ", SEX=" + SEX + ", BIRDT=" + BIRDT + ", MYSELF_AUTHZ_YN="
-				+ MYSELF_AUTHZ_YN + ", INSRD_DD=" + INSRD_DD + ", WTHDR_DD=" + WTHDR_DD + ", GENAL_MB_DSTNCT="
-				+ GENAL_MB_DSTNCT + ", SNS_TKN_VALUE=" + SNS_TKN_VALUE + ", SNS_DSTNCT=" + SNS_DSTNCT + ", AGRG=" + AGRG
-				+ ", TEL_NO=" + TEL_NO + ", HNDPH_NO=" + HNDPH_NO + ", EMAIL=" + EMAIL + ", CD_ID=" + CD_ID + "]";
+		return "MemberVo [mbNo=" + mbNo + ", mbDstnct=" + mbDstnct + ", mbNm=" + mbNm + ", nknm=" + nknm + ", iden="
+				+ iden + ", pw=" + pw + ", sex=" + sex + ", birdt=" + birdt + ", myselfAuthzYn=" + myselfAuthzYn
+				+ ", insrdDd=" + insrdDd + ", wthdrDd=" + wthdrDd + ", genalMbDstnct=" + genalMbDstnct
+				+ ", snsTknValue=" + snsTknValue + ", snsDstnct=" + snsDstnct + ", agrg=" + agrg + ", telNo=" + telNo
+				+ ", hndphNo=" + hndphNo + ", email=" + email + ", cdId=" + cdId + "]";
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 	
 
+	
 }

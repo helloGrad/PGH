@@ -11,33 +11,19 @@ import org.springframework.stereotype.Repository;
 import com.grad.net.vo.CodeVo;
 
 
-
-
-
-
 @Repository
-public class CodeDao {
-	
+public class CodeDao {	
 	
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@Autowired
-	private DataSource datasource;
-	
-
-	
-	public List<CodeVo> get(){
+	public List<CodeVo> getCodeList(){
 		
-		 List<CodeVo> CodeVo = sqlSession.selectList("Code.selectcode");
-		 
-
+		List<CodeVo> codeVo = sqlSession.selectList("code.selectCodeList");
+		System.out.println("codeVo : "+codeVo);
 		
-		return CodeVo;
-		
+		return codeVo;		
 
-	}
-	
-	
+	}	
 
 }

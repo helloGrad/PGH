@@ -1,39 +1,36 @@
 package com.grad.net.vo;
 
 public class CodeVo {
+	
 
+	private String cdId;
+	private String cdNm;
+	private String cdDstnct;
 	
-	private String CD_ID;
-	private String CD_NM;
-	private String CD_DSTNCT;
-	
-	public String getCD_ID() {
-		return CD_ID;
+	public String getCdId() {
+		return cdId;
 	}
-	public void setCD_ID(String cD_ID) {
-		CD_ID = cD_ID;
+	public void setCdId(String cdId) {
+		this.cdId = cdId;
 	}
-	public String getCD_NM() {
-		return CD_NM;
+	public String getCdNm() {
+		return cdNm;
 	}
-	public void setCD_NM(String cD_NM) {
-		CD_NM = cD_NM;
+	public void setCdNm(String cdNm) {
+		this.cdNm = cdNm;
 	}
-	public String getCD_DSTNCT() {
-		return CD_DSTNCT;
+	public String getCdDstnct() {
+		return cdDstnct;
 	}
-	public void setCD_DSTNCT(String cD_DSTNCT) {
-		CD_DSTNCT = cD_DSTNCT;
+	public void setCdDstnct(String cdDstnct) {
+		this.cdDstnct = cdDstnct;
 	}
 	@Override
 	public String toString() {
-		return "CodeVo [CD_ID=" + CD_ID + ", CD_NM=" + CD_NM + ", CD_DSTNCT=" + CD_DSTNCT + "]";
+		return "CodeVo [cdId=" + cdId + ", cdNm=" + cdNm + ", cdDstnct=" + cdDstnct + "]";
 	}
 	
 	
 	
-	
-	
-	
-	
+
 }

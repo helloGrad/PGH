@@ -16,7 +16,6 @@
 
 <body>
 
-
 	<script type="text/javascript">
 		var naver_id_login = new naver_id_login("4XJQVjfPiPo3e5Xe23hL",
 				"http://127.0.0.1:8080/net/user/snslogin/");
@@ -37,7 +36,7 @@
 			var vo = {};
 
 			vo.token = naver_id_login.oauthParams.access_token;
-			vo.birth = naver_id_login.getProfileData('birthday');
+			vo.birthday = naver_id_login.getProfileData('birthday');
 			vo.email = naver_id_login.getProfileData('email');
 			vo.nickname = naver_id_login.getProfileData('nickname');
 			vo.age = naver_id_login.getProfileData('age');
@@ -48,7 +47,14 @@
 			$.ajax({
 				url : "/net/user/snslogin",
 				type : "post",
-				data : vo,
+				data : "name="+vo.name
+				 +"&email="+vo.email
+				 +"&gender="+vo.gender
+				 +"&birthday="+vo.birthday
+				 +"&token="+vo.token
+				 +"&nickname="+vo.nickname
+				 +"&age="+vo.age
+				 +"&sns=naver",
 
 				success : function(response) {
 
@@ -67,17 +73,10 @@
 				}
 			});
 
-			//self.close();  
 
 		}
 
-		function javascript() {
-			// self.close();   //자기자신창을 닫습니다.
-		}
 	</script>
-
-
-
 
 </body>
 </html>

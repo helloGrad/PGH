@@ -1,31 +1,51 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-
-
-  	
-<!doctype html>
-<html lang="ko">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>네이버 로그인</title>
-  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<meta charset="UTF-8">
+<title>Title</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/higrad-signup.css"
+	rel="stylesheet">
 </head>
 <body>
-  <!-- 네이버아이디로로그인 버튼 노출 영역 -->
-  <div id="naver_id_login"></div>
-  <!-- //네이버아이디로로그인 버튼 노출 영역 -->
-  <script type="text/javascript">
-  	var naver_id_login = new naver_id_login("4XJQVjfPiPo3e5Xe23hL", "http://127.0.0.1:8080/net/index/");
-  	naver_id_login.setDomain(".127.0.0.1:8080/net/"); //상태 토큰 비교를 위한 domain 설정
-  	var state = naver_id_login.getUniqState();
-  	naver_id_login.setButton("green", 3,40);
-  	naver_id_login.setDomain("YOUR_SERVICE_URL");
-  	naver_id_login.setState(state);
-  	//naver_id_login.setPopup();
-  	naver_id_login.init_naver_id_login();
-  </script>
-  </body>
-</html>  	
-  	
-  	
+	<c:import url="/WEB-INF/views/include/header.jsp" />
+	<div class="container">
+		<Br>
+
+		<h2>하이그래드넷에 오신 것을 환영합니다!</h2>
+		<br> <Br>
+
+		<div class="container col-sm-5 signup" style="margin-right: 5em">
+			<h3>main page 333</h3>
+		</div>
+
+		<div id="status"></div>
+
+
+	</div>
+
+	<Br>
+	<Br>
+	<Br>
+	<Br>
+	<Br>
+	<Br>
+
+
+	<!--//////////////////////// footer ////////////////////////////-->
+	<c:import url="/WEB-INF/views/include/footer.jsp" />
+
+	<!--//////////////////////// footer End ////////////////////////////-->
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+</body>
+</html>

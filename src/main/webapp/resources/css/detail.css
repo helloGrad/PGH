@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+body {
+	padding-top: 70px;
+}
+
+#side {
+	position: fixed;
+	
+}
+/*more 버튼*/
+.more {
+	float: right;
+	width: 4em;
+	font-size: 0.4em;
+	margin-top: 1.5em;
+}
+
+.location {
+	font-size: 0.8em;
+}
+
+#map{
+            height: 400px;
+            width: 100%;
+}

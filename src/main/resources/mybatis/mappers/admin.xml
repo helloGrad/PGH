@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+
+	<select id="insertLab" parameterType="organzVo">
+		<![CDATA[	
+			insert into organz (ORGNZ_NO, ORGNZ_NM, ENG_ORGNZ_NM, ORGNZ_DSTNCT, HMPAGE_URL, TEL_NO, FAX_NO, ADDR, DETAIL_ADDR, PRNTS_ORGNZ_NO, MAP_PROF_NM, LAB_INTRO, RSRCHR_INFO_TEXT, HMNBRD_DSTNCT  ) 
+			values (null, #{orgnzNm}, #{engOrgnzNm}, #{orgnzDstnct},#{hmpageUrl},#{telNo },#{faxNo},#{addr},#{detailAddr},#{prntsOrgnzNo},#{mapProfNm},#{labIntro},#{rsrchrInfoText},#{hmnbrdDstnct})
+		]]>
+	</select>	
+
+</mapper>
+

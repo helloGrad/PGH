@@ -2,20 +2,20 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-	
-		
-		<typeAlias alias="MemberVo" type="com.grad.net.vo.MemberVo"/>
-		<typeAlias alias="CodeVo" type="com.grad.net.vo.CodeVo"/>
+		<typeAlias alias="memberVo" type="com.grad.net.vo.MemberVo"/>
+		<typeAlias alias="codeVo" type="com.grad.net.vo.CodeVo"/>
+		<typeAlias alias="organzVo" type="com.grad.net.vo.OrganzVo"/>
+		<typeAlias alias="resrchAcrsltVo" type="com.grad.net.vo.ResrchAcrsltVo"/>
+		<typeAlias alias="notiVo" type="com.grad.net.vo.NotiVo"/>
+	</typeAliases>
 
 	
-	
-    </typeAliases>	
-    	
-    	<!-- sql문을 저장하는 파일 -->
+	<!-- SQL문을 저장하는 파일 -->
 	<mappers>
-		<mapper resource="mybatis/mappers/Member.xml" />
-		<mapper resource="mybatis/mappers/Code.xml" />
-	
-		
+		<mapper resource="mybatis/mappers/member.xml" />
+		<mapper resource="mybatis/mappers/code.xml" />
+		<mapper resource="mybatis/mappers/organz.xml" />
+			<mapper resource="mybatis/mappers/noti.xml" />
+		<mapper resource="mybatis/mappers/admin.xml" />
 	</mappers>
 </configuration>

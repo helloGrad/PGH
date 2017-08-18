@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,197 +19,145 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grad.net.security.Auth;
 import com.grad.net.security.AuthUser;
-import com.grad.net.service.MemberService;
 import com.grad.net.service.CodeService;
+import com.grad.net.service.MemberService;
 import com.grad.net.vo.CodeVo;
 import com.grad.net.vo.MemberVo;
-
-
-
-
-
 
 @Controller
 @RequestMapping("/user")
 public class MemberController {
-	
-	
+
 	@Autowired
-	private MemberService MemberService;
-	
+	MemberService memberService;
+
 	@Autowired
-	private CodeService CodeService;
-	
+	CodeService codeService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login( Model model) {
-		
-		
-		return "Login";
+	public String login(Model model) {
+
+		//System.out.println("login main");
+		return "login";
 	}
-	
-	
-	
-	
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String register(@ModelAttribute MemberVo memberVo) {
+
+		//System.out.println(memberVo.getEmail() + " " + memberVo.getPw() + " " + memberVo.getNknm());
+		memberService.register(memberVo);
+
+		return "redirect:/user/login";
+	}
+
+	/////////////////////////////////////// snslogin//////////////////////////////////////////
+
 	@RequestMapping(value = "/snslogin", method = RequestMethod.GET)
-	public String snslogin(Locale locale, Model model) {
-		
-	
-		
+	public String index(Locale locale, Model model) {
+		System.out.println("snslogin naver get");
 		return "snslogin";
 	}
+
+	@RequestMapping(value = "/snslogin", method = RequestMethod.POST)
+	public String snslogin(@RequestParam(value = "name", required = true, defaultValue = "") String mbNm,
+			@RequestParam(value = "email", required = true, defaultValue = "") String iden,
+			@RequestParam(value = "gender", required = true, defaultValue = "") String sex,
+			@RequestParam(value = "birthday", required = true, defaultValue = "") String birdt,
+			@RequestParam(value = "token", required = true, defaultValue = "") String snsTknValue,
+			@RequestParam(value = "age", required = true, defaultValue = "") String agrg,
+			@RequestParam(value = "nickname", required = true, defaultValue = "") String nknm,
+			@RequestParam(value = "sns", required = true, defaultValue = "") String snsnm, HttpServletRequest request,
+			HttpServletResponse response) {
+
+		MemberVo memberVo = new MemberVo();
+
+		memberVo.setMbNm(mbNm);
+		memberVo.setIden(iden);
+		memberVo.setSex(sex);
+		memberVo.setBirdt(birdt);
+		memberVo.setSnsTknValue(snsTknValue);
+		;
+		if (snsnm.equals("fb") || snsnm.equals("google")) {
+			memberVo.setNknm(mbNm);
+			;
+		} else if (snsnm.equals("naver")) {
+			memberVo.setNknm(nknm);
+			;
+		}
+		memberVo.setAgrg(agrg);
+		;
+
+	//	System.out.println("+++" + memberVo);
+
+		boolean exist = memberService.checkMember(memberVo);
+
+		System.out.println("존재하는 회원입니까? " + exist);
+
+		if (exist != true) {
+			//System.out.println(snsnm);
+			memberService.snslogin(memberVo, snsnm);
+		}
+
+		HttpSession session = request.getSession(true);
+		session.setAttribute("authUser", memberVo);
+		return "redirect:/user/login";
+	}
+
+	/////////////////////////////// mypage 세션 확인 ///////////////////////////////////
+
 	
-	@Auth(role=Auth.Role.USER)
+	
+	@Auth(role = Auth.Role.USER)
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String mypage(Locale locale, Model model) {
-		
-	
 		
 		
 		return "mypage";
 	}
-	
-	@Auth(role=Auth.Role.USER)
-	@RequestMapping(value = "/usermadeinfor", method = RequestMethod.GET)
-	public String usermadeinfor(Locale locale, Model model, @AuthUser MemberVo authUser) {
-		
-	
-		//System.out.println(authUser.getIDEN());
-		//System.out.println(authUser.getMB_NO());
-		
-		List<CodeVo> UserCodeVo = MemberService.usermadeinfor(authUser); //사용자가 등록한 맞춤정보 
-		
-		List<CodeVo> CodeVo = CodeService.get(); //전체 코드 정보 
-		model.addAttribute("Codelist", CodeVo);
-		model.addAttribute("informationlist", UserCodeVo);
-		
-	//	System.out.println(CodeVo.size());
-		
-		
 
-		
-		
-		
-		
-		return "usermadeinfor";
+	////////////////////////////// 맞춤정보/////////////////////////////////
+
+	@Auth(role = Auth.Role.USER)
+	@RequestMapping(value = "/mbinfo", method = RequestMethod.GET)
+	public String mbinfo(Locale locale, Model model, @AuthUser MemberVo authUser) {
+
+		System.out.println("get : " + authUser.getIden());
+		System.out.println("get : " + authUser.getMbNo());
+
+		List<CodeVo> userCodeVo = memberService.getMbinfoList(authUser);
+		List<CodeVo> codeVo = codeService.getCodeList();
+		model.addAttribute("Codelist", codeVo);
+		model.addAttribute("informationlist", userCodeVo);
+
+		return "mbinfo";
 	}
-	
-	
-	@Auth(role=Auth.Role.USER)
-	@RequestMapping(value = "/usermadeinfor", method = RequestMethod.POST)
-	public String usermadeinfor(HttpServletRequest request,@AuthUser MemberVo authUser, @RequestParam(value="cnt", required= true, defaultValue="") int cnt){
 
-		
-		System.out.println(authUser.getMB_NO());
-		
-		Long MB_NO= authUser.getMB_NO();
-	
-	    List<String> information = new ArrayList<String>();
+	@Auth(role = Auth.Role.USER)
+	@RequestMapping(value = "/mbinfo", method = RequestMethod.POST)
+	public String mbinfo(HttpServletRequest request, @AuthUser MemberVo authUser,
+			@RequestParam(value = "cnt", required = true, defaultValue = "0") int cnt) {
 
+		Long mbNo = authUser.getMbNo();
+		List<String> information = new ArrayList<String>();
 
+		// System.out.println("사용자 번호 ; "+authUser.getMbNo());
+		// System.out.println("===cnt : "+cnt);
 
-	
-        for(int j = 1; j <= cnt ; j++ ){ //선택한 맞춤정보 가지고 오기 
-
-			for(int i = 0; i < request.getParameterValues("ch" + String.valueOf(j)).length ; i++){
-
+		for (int j = 1; j <= cnt; j++) {
+			for (int i = 0; i < request.getParameterValues("ch" + String.valueOf(j)).length; i++) {
 				information.add(request.getParameterValues("ch" + String.valueOf(j))[i]);
 			}
-
-		}	
-        
-       for(int i=0; i<information.size(); i++) {
-    	   
-    	   
-    	   //System.out.println(information.get(i));
-       }
-     
-
-      MemberService.Saveinformation(MB_NO, information);
-		
-        
-
-		return "redirect:/user/usermadeinfor";
-	}
-	
-	
-	
-	
-	
-	@RequestMapping(value = "/snslogin", method = RequestMethod.POST)
-	public String snslogin(@RequestParam(value="birth", required= true, defaultValue="") String BIRDT, 
-			@RequestParam(value="email", required= true, defaultValue="") String IDEN ,
-			@RequestParam(value="nickname", required= true, defaultValue="") String NKNM,
-			@RequestParam(value="age", required= true, defaultValue="") String AGRG,
-			@RequestParam(value="name", required= true, defaultValue="") String MB_NM,
-			@RequestParam(value="gender", required= true, defaultValue="") String SEX,
-			@RequestParam(value="token", required= true, defaultValue="") String SNS_TKN_VALUE,
-			HttpServletRequest request, HttpServletResponse response){
-		
-		
-		MemberVo MemberVo = new MemberVo();
-		
-		MemberVo.setSNS_TKN_VALUE(SNS_TKN_VALUE);
-		MemberVo.setBIRDT(BIRDT); //안넣음
-		MemberVo.setIDEN(IDEN);
-		MemberVo.setNKNM(NKNM);
-		MemberVo.setAGRG(AGRG);
-		MemberVo.setMB_NM(MB_NM);
-		MemberVo.setSEX(SEX);
-		
-		
-		
-		
-		//가입된 사람인지 확인 필요 
-		
-		boolean exist=MemberService.existEmail(MemberVo.getIDEN());
-		
-		if(exist != true) {
-			
-			MemberService.register(MemberVo);	
 		}
-		
-		HttpSession session = request.getSession(true);
-		
-		session.setAttribute("authUser", MemberVo);
-		
-		return "redirect:/user/login";
-	}
-	
-	
 
-	
-	
-	@RequestMapping(value = "/usermadeinfor/modifiy", method = RequestMethod.POST)
-	public String informationModifiy(
-			@RequestParam(value="infor", required= true, defaultValue="") String[] infor, @AuthUser MemberVo authUser){
-		
-	
-		//System.out.println(infor.length);
-	
-		for(int i=0; i<infor.length; i++) {
-			
-			
-			//System.out.println(infor[i]);
-			
-			
-		}
-		
-		MemberService.informationupdate(authUser.getMB_NO(), infor);
-		
-		
-	
-		
-		return "redirect:/user/usermadeinfor";
+		memberService.registerMbinfo(mbNo, information);
+		return "redirect:/user/mbinfo";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@RequestMapping(value = "/mbinfo/modify", method = RequestMethod.POST)
+	public String mbinfoModifiy(@AuthUser MemberVo authUser,
+			@RequestParam(value = "info", required = true, defaultValue = "") String[] info) {
+
+		memberService.updateMbinfo(authUser.getMbNo(), info);
+		return "redirect:/user/mbinfo";
+	}
 }

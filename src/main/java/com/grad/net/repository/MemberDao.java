@@ -1,10 +1,9 @@
 package com.grad.net.repository;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,110 +12,58 @@ import org.springframework.stereotype.Repository;
 import com.grad.net.vo.CodeVo;
 import com.grad.net.vo.MemberVo;
 
-
-
-
-
-
-
-
 @Repository
 public class MemberDao {
-	
-	
+
 	@Autowired
 	private SqlSession sqlSession;
-	
-	@Autowired
-	private DataSource datasource;
-	
-	
 
-	public MemberVo get(String id){
-		
-		
-		
-		return sqlSession.selectOne("Member.getByEmail", id);
-		
-	
+	//¿œπ› »∏ø¯∞°¿‘
+	public void insert(MemberVo memberVo) {
+		sqlSession.insert("member.insert", memberVo);
 	}
 	
-	public MemberVo get(String IDEN,String PW ) throws Exception { //Î°úÍ∑∏Ïù∏
-		
-		Map<String, Object> map= new HashMap<String, Object>(); //voÍ∞Ä ÏóÜÏùÑÍ≤ΩÏö∞ mapÏùÑ ÏÇ¨Ïö©
-		
-		map.put("IDEN", IDEN);
-		map.put("PW", PW);
-		
-		
-		MemberVo MemberVo = sqlSession.selectOne("Member.getByNo1", map);
-				
-		
-		return MemberVo;
-		
+	//sns»∏ø¯∞°¿‘
+	public void snsinsert(Map<String, Object> map) {		
+		sqlSession.insert("member.snsinsert",map);		
 	}
-	
-	
-	public boolean insert(MemberVo MemberVo) {
-		
-		
-		int count = sqlSession.insert("Member.naverinsert",MemberVo);
-		
-		return count ==1;
-	}
-	
-	
-	
-	public List<CodeVo> get(MemberVo MemberVo){
-		
-	 
-	
-		Long MB_NO= MemberVo.getMB_NO();
-		
-		return sqlSession.selectList("Member.getByCode", MB_NO);
-		
 
-	
+
+	public MemberVo getByToken(MemberVo memberVo) {
+		return sqlSession.selectOne("member.getByToken", memberVo);
 	}
+
+	public MemberVo getByIden(String EMAIL) {
+		return sqlSession.selectOne("member.getByIden", EMAIL);
+	}
+
+	//////////////////////////////// getUser(∑Œ±◊¿Œ «“ ∂ß)////////////////////////
+	public MemberVo getUser(Map<String, Object> map) throws Exception {
+		return sqlSession.selectOne("member.getByLoginInfo", map);
+	}
+
+	//∏¬√„¡§∫∏
+	public List<CodeVo> getMbinfoList(MemberVo memberVo) {
 	
-	public void insertinformation(Long MB_NO, String information) {
-		
+		Long mbNo = memberVo.getMbNo();
+		return sqlSession.selectList("member.getByCode", mbNo);
+	}
+
+	public void insertMbinfo(Long mbNo, String information) {				
 		Map<String, Object> map= new HashMap<String, Object>(); 
 		
-		map.put("MB_NO", MB_NO);
+		map.put("mbNo", mbNo);
 		map.put("information", information);
 		
-		sqlSession.insert("Member.insertinformation",map);
-		
-		
+		sqlSession.insert("member.insertMbinfo",map);		
 	}
 	
-	
-	
-	
-	
-	public boolean inforupdate(Long MB_NO,String infor) { //Î≥¥Î•ò 
-		
-		Map<String, Object> map= new HashMap<String, Object>(); 
-		
-		map.put("MB_NO", MB_NO);
-		map.put("information", infor);
-		
-		
-		
-		int count = sqlSession.update("Member.inforupdate",map);
-		
-		return count ==1;
+	public void infordelete(Long mbNo){		
+		sqlSession.delete("member.deleteMbinfo",mbNo);		
 	}
 	
-	public void infordelete(Long MB_NO){
-		
-		 sqlSession.delete("Member.infordelete",MB_NO);
-		
-	
-		
-	}
-	
-	
+
+
+
 
 }
