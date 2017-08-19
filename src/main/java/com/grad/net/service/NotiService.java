@@ -18,6 +18,10 @@ public class NotiService {
 		return notiDao.getNotiList();
 	}
 	
+	
+	/*
+	 * 박가혜
+	 */
 	public NotiVo getNoti(int no) {
 		return notiDao.getByNo(no);
 		

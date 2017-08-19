@@ -19,15 +19,14 @@
 <body>
 
 	<c:import url="/WEB-INF/views/include/header.jsp" />
-
-	<div class="container">
+	
+		<div class="container">
 		<!-- ///// filter (대분류) //////-->
 		<div class="row">
 			<div class="col-lg-4 centering">
-				<button class="tablinks" onclick="openCity(event, 'all')"
-					id="defaultOpen">전체</button>
-				<button class="tablinks" onclick="openCity(event, 'grad')">대학원</button>
-				<button class="tablinks" onclick="openCity(event, 'lab')">연구실</button>
+				<button class="tablinks" onclick="openTab(event, 'all','noti')" id="defaultOpen">전체</button>
+				<button class="tablinks" onclick="openTab(event, 'grad','noti')">대학원</button>
+				<button class="tablinks" onclick="openTab(event, 'lab','noti')">연구실</button>
 			</div>
 		</div>
 
@@ -65,84 +64,44 @@
 			</div>
 
 			<div id="all" class="col-lg-8">
-				<div class="col-md-12">
-					<h3>
-						<a href="">데이터 베이스 연구실</a>
-					</h3>
-					<p>
-						by <a href="#">연구실</a>
-					</p>
-					<hr>
-				</div>
-				<div class="col-md-12">
-					<h3>
-						<a href="">프로그래밍 연구실</a>
-					</h3>
-					<p>
-						by <a href="#">연구실</a>
-					</p>
-					<hr>
-				</div>
-				<div class="col-md-12">
-					<h3>
-						<a href="">창원대학교 일반대학원</a>
-					</h3>
-					<p>
-						by <a href="#"></a>
-					</p>
-					<hr>
-				</div>
-				<div class="col-md-12">
-					<h3>
-						<a href="">서울대학교 일반대학원</a>
-					</h3>
-					<p>
-						by <a href="#">연구실</a>
-					</p>
-					<hr>
-				</div>
+				<c:forEach items="${notiList }" var="list" varStatus="status">
+					<div class="col-md-12">
+						<h3>
+							<a
+								href="${pageContext.servletContext.contextPath }/noti/detail?no=${list.slctnNotiNo}&tabnm=${list.slctnNotiDstnct}">${list.slctnTitle }</a>
+						</h3>
+						<hr>
+					</div>
+				</c:forEach>
+
 			</div>
 
 			<div id="grad" class="col-lg-8">
-				<div class="col-md-12">
-					<h3>
-						<a href="">창원대학교 일반대학원</a>
-					</h3>
-					<p>
-						by <a href="#"></a>
-					</p>
-					<hr>
-				</div>
-				<div class="col-md-12">
-					<h3>
-						<a href="">서울대학교 일반대학원</a>
-					</h3>
-					<p>
-						by <a href="#">연구실</a>
-					</p>
-					<hr>
-				</div>
+				<c:forEach items="${notiList }" var="list" varStatus="status">
+					<c:if test="${list.slctnNotiDstnct == '대학원' }">
+						<div class="col-md-12">
+							<h3>
+								<a
+									href="${pageContext.servletContext.contextPath }/noti/detail?no=${list.slctnNotiNo}&tabnm=${list.slctnNotiDstnct}">${list.slctnTitle }</a>
+							</h3>
+							<hr>
+						</div>
+					</c:if>
+				</c:forEach>
 			</div>
 
 			<div id="lab" class="col-lg-8">
-				<div class="col-md-12">
-					<h3>
-						<a href="">데이터 베이스 연구실</a>
-					</h3>
-					<p>
-						by <a href="#">연구실</a>
-					</p>
-					<hr>
-				</div>
-				<div class="col-md-12">
-					<h3>
-						<a href="">프로그래밍 연구실</a>
-					</h3>
-					<p>
-						by <a href="#">연구실</a>
-					</p>
-					<hr>
-				</div>
+				<c:forEach items="${notiList }" var="list" varStatus="status">
+					<c:if test="${list.slctnNotiDstnct == '연구실' }">
+						<div class="col-md-12">
+							<h3>
+								<a href="${pageContext.servletContext.contextPath }/noti/detail?no=${list.slctnNotiNo}&tabnm=${list.slctnNotiDstnct}">${list.slctnTitle }</a>
+							</h3>
+							<hr>
+						</div>
+					</c:if>
+				</c:forEach>
+
 			</div>
 		</div>
 	</div>

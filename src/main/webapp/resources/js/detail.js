@@ -8,7 +8,7 @@ $(function() {
 	$("#patentBtn").click(fetchList);
 	$("#seminarBtn").click(fetchList);
 	$("#academyBtn").click(fetchList);
-	
+	console.log(checkDiv[0]);
 	
 });
 
@@ -19,6 +19,7 @@ var checkDiv = {
 		"세미나":false,
 		"학회":false
 }
+
 
 
 //연구실 실적 별로 렌더링할 데이터 가져오는 ajax
@@ -51,11 +52,18 @@ var fetchList = function() {
 				//console.log(response.data[i]);
 				$('#'+acrTypeEng).append(response.data[i].resrchYycl)
 				$('#'+acrTypeEng).append("<br><br>");
-				$('#'+acrTypeEng).append(response.data[i].resrchText.replace("\n","<br><br>"));
-				$('#'+acrTypeEng).append("<br><br>");				
+				console.log(response.data[i].resrchYycl);
+				console.log(response.data[i].resrchYycl);
+//				console.log((response.data[i].resrchText.match(/\n/g) || []).length); 
+//				console.log((response.data[i].resrchText.match(new RegExp(response.data[i].resrchYycl, "g")) || []).length);
+//				console.log(("str1,str2,str3,str4".match(new RegExp("str", "g")) || []).length)
+				$('#'+acrTypeEng).append(response.data[i].resrchText.replace(/\n/g, "<br>"));
+				$('#'+acrTypeEng).append("<br><br><br>");				
 				
 			}
 			$('#'+acrTypeEng).css("display","block");
+			
+			
 			$('#'+acrTypeEng+"Btn").val('-');
 			checkDiv[acrType] = true;
 			
@@ -98,5 +106,3 @@ var displayFunction = function(){
 	
 
 }
-
-

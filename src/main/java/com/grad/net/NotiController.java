@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grad.net.service.NotiService;
+import com.grad.net.vo.NotiVo;
 
 @Controller
 @RequestMapping("/noti")
@@ -20,18 +21,31 @@ public class NotiController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String notiList(Model model) {
 
-		model.addAttribute("notiList", notiService.getNotiList());		
+		model.addAttribute("notiList", notiService.getNotiList());			
 		return "/noti/list";
 	}
 	
+	/*
+	 * ë°•ê°€í˜œ //ì—°êµ¬ì‹¤ ëª¨ì§‘ê³µê³  
+	 */
 	@RequestMapping("/detail")
 	public String notiDetail(@RequestParam("no") int no,
 			@RequestParam("tabnm") String tabnm, Model model) {
 		
-		//tabnm=¿¬±¸½Ç/´ëÇÐ¿ø
+		System.out.println(no);
+		System.out.println(tabnm);
+		
+		NotiVo notiVo = notiService.getNoti(no);
+		
+		System.out.println(notiVo);
+		
 		model.addAttribute("vo", notiService.getNoti(no));
+		
 		
 		return "/noti/detail";
 	}
+	
+
+
 
 }

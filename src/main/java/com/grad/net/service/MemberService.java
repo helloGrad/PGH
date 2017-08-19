@@ -36,7 +36,7 @@ public class MemberService {
 		memberDao.snsinsert(map);
 	}
 
-	// ÀÏ¹Ý·Î±×ÀÎ
+	// ï¿½Ï¹Ý·Î±ï¿½ï¿½ï¿½
 	public MemberVo getUser(String iden, String pw) throws Exception {
 
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -83,19 +83,25 @@ public class MemberService {
 		return membervo != null;
 	}
 
-	// ¸ÂÃãÁ¤º¸
+	/*
+	 * ë°•ê°€í˜œ
+	 */
 	public List<CodeVo> getMbinfoList(MemberVo memberVo) {
 
 		return memberDao.getMbinfoList(memberVo);
 	}
-
+	/*
+	 * ë°•ê°€í˜œ
+	 */
 	public void registerMbinfo(Long mbNo, List<String> information) {
 
 		for (int i = 0; i < information.size(); i++) {
 			memberDao.insertMbinfo(mbNo, information.get(i));
 		}
 	}
-
+	/*
+	 * ë°•ê°€í˜œ
+	 */
 	public void updateMbinfo(Long mbNo, String[] info) {
 
 		memberDao.infordelete(mbNo);

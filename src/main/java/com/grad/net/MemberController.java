@@ -116,6 +116,10 @@ public class MemberController {
 	}
 
 	////////////////////////////// 맞춤정보/////////////////////////////////
+	
+	/*
+	 * 박가혜
+	 */
 
 	@Auth(role = Auth.Role.USER)
 	@RequestMapping(value = "/mbinfo", method = RequestMethod.GET)

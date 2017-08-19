@@ -7,32 +7,71 @@ public class NotiVo {
 	private Long orgnzNo;
 	private String slctnNotiDstnct;
 	private String notiRegstDt;
+	
 	private String slctnBeginDt;
 	private String slctnEndDt;
 	private String slctnTitle;
 	private String slctnText;
 	private String slctnNops;
+	
 	private String slsnMth;
 	private String sbmtDocText;
+	private String suprtQualf;
 	private String chrgrDstnct;
 	private String tuitionSuprtYn;
+	
 	private String lvncSuprtYn;
 	private String bk21EorgnzSuprtYn;
 	private String incetSuprtYn;
 	private String lrstyJoingfeeSuprtYn;
 	private String dormSuprtYn;
+	
 	private String internYn;
 	private String lrstyJoingYn;
 	private String resrchTaskJoingYn;
 	private String stdtrOpptySuprtYn;
 	private String eduPgmJoingSuprtYn;
+	
 	private String suprtFvrText;
 	private String chrgrNm;
 	private String chrgrTelNo;
 	private String chrgrEmail;
 	private String mbNo;
-	private String slctnNotiUrl;
 	
+	private String slctnNotiUrl;
+	private String rcpMth;	
+	private String slsnBeginDd;
+	private String slsnEndDd;	
+	private String slsnPlac;
+	private String sccnAncmDd;
+	
+	private String sccnAncmMth;
+	private String regstBeginDd;
+	private String regstEndDd;
+	private String regstMth;
+	
+	private String onlineSuprtYn;
+	private String prmryResrchField;
+	
+	
+	private String addr;
+	
+	
+	
+	
+	
+	public String getPrmryResrchField() {
+		return prmryResrchField;
+	}
+	public void setPrmryResrchField(String prmryResrchField) {
+		this.prmryResrchField = prmryResrchField;
+	}
+	public String getOnlineSuprtYn() {
+		return onlineSuprtYn;
+	}
+	public void setOnlineSuprtYn(String onlineSuprtYn) {
+		this.onlineSuprtYn = onlineSuprtYn;
+	}
 	public Long getSlctnNotiNo() {
 		return slctnNotiNo;
 	}
@@ -104,6 +143,12 @@ public class NotiVo {
 	}
 	public void setSbmtDocText(String sbmtDocText) {
 		this.sbmtDocText = sbmtDocText;
+	}
+	public String getSuprtQualf() {
+		return suprtQualf;
+	}
+	public void setSuprtQualf(String suprtQualf) {
+		this.suprtQualf = suprtQualf;
 	}
 	public String getChrgrDstnct() {
 		return chrgrDstnct;
@@ -212,21 +257,92 @@ public class NotiVo {
 	}
 	public void setSlctnNotiUrl(String slctnNotiUrl) {
 		this.slctnNotiUrl = slctnNotiUrl;
+	}	
+	public String getRcpMth() {
+		return rcpMth;
 	}
+	public void setRcpMth(String rcpMth) {
+		this.rcpMth = rcpMth;
+	}
+	
+	public String getSlsnBeginDd() {
+		return slsnBeginDd;
+	}
+	public void setSlsnBeginDd(String slsnBeginDd) {
+		this.slsnBeginDd = slsnBeginDd;
+	}
+	public String getSlsnEndDd() {
+		return slsnEndDd;
+	}
+	public void setSlsnEndDd(String slsnEndDd) {
+		this.slsnEndDd = slsnEndDd;
+	}
+	public String getSlsnPlac() {
+		return slsnPlac;
+	}
+	public void setSlsnPlac(String slsnPlac) {
+		this.slsnPlac = slsnPlac;
+	}
+	public String getSccnAncmDd() {
+		return sccnAncmDd;
+	}
+	public void setSccnAncmDd(String sccnAncmDd) {
+		this.sccnAncmDd = sccnAncmDd;
+	}
+	public String getSccnAncmMth() {
+		return sccnAncmMth;
+	}
+	public void setSccnAncmMth(String sccnAncmMth) {
+		this.sccnAncmMth = sccnAncmMth;
+	}
+	public String getRegstBeginDd() {
+		return regstBeginDd;
+	}
+	public void setRegstBeginDd(String regstBeginDd) {
+		this.regstBeginDd = regstBeginDd;
+	}
+	public String getRegstEndDd() {
+		return regstEndDd;
+	}
+	public void setRegstEndDd(String regstEndDd) {
+		this.regstEndDd = regstEndDd;
+	}
+	public String getRegstMth() {
+		return regstMth;
+	}
+	public void setRegstMth(String regstMth) {
+		this.regstMth = regstMth;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "NotiVo [slctnNotiNo=" + slctnNotiNo + ", adminNo=" + adminNo + ", orgnzNo=" + orgnzNo
 				+ ", slctnNotiDstnct=" + slctnNotiDstnct + ", notiRegstDt=" + notiRegstDt + ", slctnBeginDt="
 				+ slctnBeginDt + ", slctnEndDt=" + slctnEndDt + ", slctnTitle=" + slctnTitle + ", slctnText="
 				+ slctnText + ", slctnNops=" + slctnNops + ", slsnMth=" + slsnMth + ", sbmtDocText=" + sbmtDocText
-				+ ", chrgrDstnct=" + chrgrDstnct + ", tuitionSuprtYn=" + tuitionSuprtYn + ", lvncSuprtYn=" + lvncSuprtYn
-				+ ", bk21EorgnzSuprtYn=" + bk21EorgnzSuprtYn + ", incetSuprtYn=" + incetSuprtYn
-				+ ", lrstyJoingfeeSuprtYn=" + lrstyJoingfeeSuprtYn + ", dormSuprtYn=" + dormSuprtYn + ", internYn="
-				+ internYn + ", lrstyJoingYn=" + lrstyJoingYn + ", resrchTaskJoingYn=" + resrchTaskJoingYn
-				+ ", stdtrOpptySuprtYn=" + stdtrOpptySuprtYn + ", eduPgmJoingSuprtYn=" + eduPgmJoingSuprtYn
-				+ ", suprtFvrText=" + suprtFvrText + ", chrgrNm=" + chrgrNm + ", chrgrTelNo=" + chrgrTelNo
-				+ ", chrgrEmail=" + chrgrEmail + ", mbNo=" + mbNo + ", slctnNotiUrl=" + slctnNotiUrl + "]";
+				+ ", suprtQualf=" + suprtQualf + ", chrgrDstnct=" + chrgrDstnct + ", tuitionSuprtYn=" + tuitionSuprtYn
+				+ ", lvncSuprtYn=" + lvncSuprtYn + ", bk21EorgnzSuprtYn=" + bk21EorgnzSuprtYn + ", incetSuprtYn="
+				+ incetSuprtYn + ", lrstyJoingfeeSuprtYn=" + lrstyJoingfeeSuprtYn + ", dormSuprtYn=" + dormSuprtYn
+				+ ", internYn=" + internYn + ", lrstyJoingYn=" + lrstyJoingYn + ", resrchTaskJoingYn="
+				+ resrchTaskJoingYn + ", stdtrOpptySuprtYn=" + stdtrOpptySuprtYn + ", eduPgmJoingSuprtYn="
+				+ eduPgmJoingSuprtYn + ", suprtFvrText=" + suprtFvrText + ", chrgrNm=" + chrgrNm + ", chrgrTelNo="
+				+ chrgrTelNo + ", chrgrEmail=" + chrgrEmail + ", mbNo=" + mbNo + ", slctnNotiUrl=" + slctnNotiUrl
+				+ ", rcpMth=" + rcpMth + ", slsnBeginDd=" + slsnBeginDd + ", slsnEndDd=" + slsnEndDd + ", slsnPlac="
+				+ slsnPlac + ", sccnAncmDd=" + sccnAncmDd + ", sccnAncmMth=" + sccnAncmMth + ", regstBeginDd="
+				+ regstBeginDd + ", regstEndDd=" + regstEndDd + ", regstMth=" + regstMth + ", onlineSuprtYn="
+				+ onlineSuprtYn + ", prmryResrchField=" + prmryResrchField + ", addr=" + addr + "]";
 	}
+	
+	
+	
+	
 	
 	
 	

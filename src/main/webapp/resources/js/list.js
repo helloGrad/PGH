@@ -1,6 +1,13 @@
-function openCity(evt, cityName) {
+function openTab(evt, cityName, temp) {
 	var i, tabcontent, tablinks;
-	tabcontent = document.getElementsByClassName("col-lg-8");
+	
+	if(temp==='organz' || temp==='noti'){
+		tabcontent = document.getElementsByClassName("col-lg-8");
+	}
+	else if(temp==='admin'){
+		tabcontent = document.getElementsByClassName("col-lg-12");
+	}
+
 	for (i = 0; i < tabcontent.length; i++) {
 		tabcontent[i].style.display = "none";
 	}

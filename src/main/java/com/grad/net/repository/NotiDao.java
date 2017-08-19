@@ -20,9 +20,14 @@ public class NotiDao {
 	public List<NotiVo> getNotiList() {
 		return sqlSession.selectList("noti.selectNotiList");
 	}
-
+	
+	
+	/*
+	 * 박가혜
+	 */
 	public NotiVo getByNo(int no) {
 		NotiVo vo = sqlSession.selectOne("noti.getByNo", no);
+		
 		return vo;
 	}
 

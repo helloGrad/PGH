@@ -41,7 +41,10 @@ public class AdminController {
 		
 		return "admin/list";		
 	}
-
+	
+	/*
+	 * 박가혜
+	 */
 	@RequestMapping("/organz")
 	public String registerOrganz(
 			@RequestParam String tabnm,Model model,OrganzVo organzVo, ResrchAcrsltVo resrchAcrsltVo) {
@@ -53,15 +56,19 @@ public class AdminController {
 		return "admin/list";		
 	}
 	
-	
+	/*
+	 * 박가혜
+	 */
 	@RequestMapping(value="/organz", method=RequestMethod.POST)
-	public String upload(
+	public String registerOrganz(
 			@ModelAttribute OrganzVo organzVo, @ModelAttribute ResrchAcrsltVo resrchAcrsltVo,
 			@RequestParam String tabnm
 			){
 		
-		System.out.println(tabnm);
-		System.out.println(organzVo);
+		//System.out.println(tabnm);
+		//System.out.println(organzVo);
+		
+		
 		System.out.println(resrchAcrsltVo);
 		
 		if(resrchAcrsltVo.getResrchText() == null) { //연구실입력인 경우 
@@ -83,13 +90,16 @@ public class AdminController {
 	}
 	
 	
+	/*
+	 * 정예린
+	 */	
 	@RequestMapping("/noti")
-	public String registerNoti(@ModelAttribute NotiVo notiVo) {
+	public String registerNoti(@ModelAttribute NotiVo notiVo,						
+			@RequestParam String tabnm) {
 		
+		System.out.println(tabnm+" " +notiVo);
+		adminService.registerNoti(notiVo, tabnm);
 		return "admin/list";		
 	}
-	
-	
-
 	
 }
