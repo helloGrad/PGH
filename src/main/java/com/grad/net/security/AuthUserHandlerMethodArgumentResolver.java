@@ -12,6 +12,10 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import com.grad.net.vo.MemberVo;
 
+
+/**
+ * 박가혜
+ */
 public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
 
 	@Override

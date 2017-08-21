@@ -37,4 +37,9 @@ public class OrganzDao {
 		return sqlSession.selectList("organz.getResrchAcrsltFetchList", map);
 	}
 	
+	public int countResrchAcrslt(Map<String, Object> map) {
+		int num = sqlSession.selectOne("organz.countResrchAcrslt", map);
+		return num;
+	}
+	
 }

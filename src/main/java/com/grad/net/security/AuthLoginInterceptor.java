@@ -16,6 +16,9 @@ import com.grad.net.service.MemberService;
 import com.grad.net.vo.MemberVo;
 
 
+/**
+ * ë°•ê°€í˜œ
+ */
 public class AuthLoginInterceptor extends HandlerInterceptorAdapter {	
 
 	@Autowired
@@ -34,9 +37,9 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		
 		if( memberVo == null){
 			
-//			String accept = request.getHeader("accept");			//¼º°ø½Ã Å¬¶óÀÌ¾ðÆ®¿¡ ÀÀ´äÇÑ ¹®±¸¸¦ Á¤ÇØ¼­ ³Ñ°ÜÁÜ
+//			String accept = request.getHeader("accept");			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½
 //			if(accept.matches(".*application/json.*")){
-//				//Àè½¼ ¶óÀÌºê·¯¸®¸¦ »ç¿ëÇÏ¿© ¸Þ¼¼ÁöÄÁ¹öÅÍ·Î jsonÇüÅÂ·Î ÀÀ´ä
+//				//ï¿½è½¼ ï¿½ï¿½ï¿½Ìºê·¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ jsonï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½
 //				//response.getOutputStream().write("{'result':'fail', 'message':'fail', 'data':{no:0}}");
 //			} else {
 //				response.sendRedirect(request.getContextPath()+"/login?result=fail");

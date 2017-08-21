@@ -3,6 +3,7 @@
 
 <mapper namespace="code">
 
+	<!-- 박가혜  -->
 	<select id="selectCodeList" resultType="codeVo">
 		<![CDATA[
 		select CD_ID as "cdId", CD_NM as "cdNm", CD_DSTNCT as "cdDstnct" 

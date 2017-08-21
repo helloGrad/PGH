@@ -10,15 +10,11 @@ public class OrganzVo {
 	private String faxNo;
 	private String addr;
 	private String detailAddr;
-	
 	private int prntsOrgnzNo;
 	private String mapProfNm;
 	private String labIntro;
 	private String rsrchrInfoText;
 	private String hmnbrdDstnct;
-	
-	
-	
 	
 	public int getOrgnzNo() {
 		return orgnzNo;
@@ -112,8 +108,6 @@ public class OrganzVo {
 				+ ", labIntro=" + labIntro + ", rsrchrInfoText=" + rsrchrInfoText + ", hmnbrdDstnct=" + hmnbrdDstnct
 				+ "]";
 	}
-	
-	
-	
-	
+		
+
 }

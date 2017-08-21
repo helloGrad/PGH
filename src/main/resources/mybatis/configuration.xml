@@ -16,6 +16,5 @@
 		<mapper resource="mybatis/mappers/code.xml" />
 		<mapper resource="mybatis/mappers/organz.xml" />
 			<mapper resource="mybatis/mappers/noti.xml" />
-		<mapper resource="mybatis/mappers/admin.xml" />
 	</mappers>
 </configuration>

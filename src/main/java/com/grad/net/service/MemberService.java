@@ -11,6 +11,10 @@ import com.grad.net.repository.MemberDao;
 import com.grad.net.vo.CodeVo;
 import com.grad.net.vo.MemberVo;
 
+
+
+	
+
 @Service
 public class MemberService {
 
@@ -22,6 +26,10 @@ public class MemberService {
 
 	}
 
+	/*
+	 * 정예린, 박가혜
+	 */
+	
 	// sns login(fb, nave, google)
 	public void snslogin(MemberVo memberVo, String snsnm) {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -36,7 +44,6 @@ public class MemberService {
 		memberDao.snsinsert(map);
 	}
 
-	// �Ϲݷα���
 	public MemberVo getUser(String iden, String pw) throws Exception {
 
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -83,25 +90,18 @@ public class MemberService {
 		return membervo != null;
 	}
 
-	/*
-	 * 박가혜
-	 */
 	public List<CodeVo> getMbinfoList(MemberVo memberVo) {
 
 		return memberDao.getMbinfoList(memberVo);
 	}
-	/*
-	 * 박가혜
-	 */
+
 	public void registerMbinfo(Long mbNo, List<String> information) {
 
 		for (int i = 0; i < information.size(); i++) {
 			memberDao.insertMbinfo(mbNo, information.get(i));
 		}
 	}
-	/*
-	 * 박가혜
-	 */
+
 	public void updateMbinfo(Long mbNo, String[] info) {
 
 		memberDao.infordelete(mbNo);

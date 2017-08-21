@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grad.net.service.OrganzService;
 
+/*
+ * 허규준
+ */	
 @Controller
 @RequestMapping("/organz")
 public class OrganzController {

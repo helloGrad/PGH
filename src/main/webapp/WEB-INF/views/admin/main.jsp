@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="/mysite03/assets/css/admin/main.css" rel="stylesheet"
 	type="text/css">

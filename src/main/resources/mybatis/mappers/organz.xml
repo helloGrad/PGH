@@ -3,28 +3,30 @@
 
 <mapper namespace="organz">
 
+	<!-- 허주한  -->
 	<select id="selectOrganzList" resultType="organzVo">
 		<![CDATA[
 		select orgnz_no orgnzNo, orgnz_nm orgnzNm, ENG_ORGNZ_NM engOrgnzNm, ORGNZ_DSTNCT orgnzDstnct, 
-		HMPAGE_URL hmpageUrl, TEL_NO telNo, FAX_NO faxNo, ADDR addr, PRNTS_ORGNZ_NO prntsOrgnzNo, 
-		MAP_PROF_NM mpaProfNm, LAB_INTRO labIntro, RSRCHR_INFO_TEXT rsrchrInfoText
+		HMPAGE_URL hmpageUrl, TEL_NO telNo, FAX_NO faxNo, ADDR addr, DETAIL_ADDR detailAddr, PRNTS_ORGNZ_NO prntsOrgnzNo, 
+		MAP_PROF_NM mapProfNm, LAB_INTRO labIntro, RSRCHR_INFO_TEXT rsrchrInfoText
 		from organz
-		where ORGNZ_DSTNCT='연구실'
 		]]>
 	</select>
 
+	<!-- 허주한  -->
 	<select id="getByNo" resultType="organzVo">
 		<![CDATA[
-		select orgnz_no orgnzNo, orgnz_nm orgnzNm, ENG_ORGNZ_NM engOrgnzNm, ORGNZ_DSTNCT orgnzDstnct, HMPAGE_URL hmpageUrl, TEL_NO telNo, FAX_NO faxNo, ADDR addr, PRNTS_ORGNZ_NO prntsOrgnzNo, MAP_PROF_NM mpaProfNm, LAB_INTRO labIntro, RSRCHR_INFO_TEXT rsrchrInfoText
+		select orgnz_no orgnzNo, orgnz_nm orgnzNm, ENG_ORGNZ_NM engOrgnzNm, ORGNZ_DSTNCT orgnzDstnct, HMPAGE_URL hmpageUrl, TEL_NO telNo, FAX_NO faxNo, ADDR addr, DETAIL_ADDR detailAddr, PRNTS_ORGNZ_NO prntsOrgnzNo, MAP_PROF_NM mapProfNm, LAB_INTRO labIntro, RSRCHR_INFO_TEXT rsrchrInfoText
 		from organz
 		where ORGNZ_DSTNCT='연구실'
 		and orgnz_no = #{no};
 		]]>
 	</select>
-
+	
+	<!-- 허주한  -->
 	<select id="getResrchAcrsltList" resultType="resrchAcrsltVo">
 		<![CDATA[
-		select r.RESRCH_ACRSLT_NO resrchAcrsltNo, r.ORGNZ_NO orgnzNo, o.ORGNZ_NM orgnzNm, r.ACRSLT_DSTNCT acrsltDstnct, r.REGST_DT regstDt, r.RESRCH_YYCL resrchYycl, r.RESRCH_TEXT resrchText
+		select r.RESRCH_ACRSLT_NO resrchAcrsltNo, r.ORGNZ_NO orgnzNo, o.ORGNZ_NM orgnzNm, r.ACRSLT_DSTNCT acrsltDstnct, r.REGST_DT regDt, r.RESRCH_YYCL resrchYycl, r.RESRCH_TEXT resrchText
 		from resrch_acrslt r, organz o
 		where r.ORGNZ_NO= #{ no }
 		and r.ORGNZ_NO = o.ORGNZ_NO
@@ -34,11 +36,12 @@
 												group by 1);
 		]]>
 	</select>
-
+	
+	<!-- 허주한  -->
 	<select id="getResrchAcrsltFetchList" resultType="resrchAcrsltVo"
 		parameterType="map">
 		<![CDATA[
-		select r.RESRCH_ACRSLT_NO resrchAcrsltNo, r.ORGNZ_NO orgnzNo, o.ORGNZ_NM orgnzNm, r.ACRSLT_DSTNCT acrsltDstnct, r.REGST_DT regstDt, r.RESRCH_YYCL resrchYycl, r.RESRCH_TEXT resrchText
+		select r.RESRCH_ACRSLT_NO resrchAcrsltNo, r.ORGNZ_NO orgnzNo, o.ORGNZ_NM orgnzNm, r.ACRSLT_DSTNCT acrsltDstnctt, r.REGST_DT regDt, r.RESRCH_YYCL resrchYycl, r.RESRCH_TEXT resrchText
 		from resrch_acrslt r, organz o
 		where r.ORGNZ_NO= #{orgNo }
 		and r.ACRSLT_DSTNCT like #{type } 
@@ -49,24 +52,35 @@
 												group by 1);
 		]]>
 	</select>
-
-
-
-		<select id="insertLab" parameterType="organzVo">
-		<![CDATA[	
-			insert into organz (ORGNZ_NO, ORGNZ_NM, ENG_ORGNZ_NM, ORGNZ_DSTNCT, HMPAGE_URL, TEL_NO, FAX_NO, ADDR, DETAIL_ADDR, PRNTS_ORGNZ_NO, MAP_PROF_NM, LAB_INTRO, RSRCHR_INFO_TEXT, HMNBRD_DSTNCT  ) 
-			values (null, #{orgnzNm}, #{engOrgnzNm}, #{orgnzDstnct},#{hmpageUrl},#{telNo },#{faxNo},#{addr},#{detailAddr},#{prntsOrgnzNo},#{mapProfNm},#{labIntro},#{rsrchrInfoText},#{hmnbrdDstnct})
+	
+	<!-- 허주한  -->
+	<insert id="insertOrganz" parameterType="organzVo">
+		<![CDATA[
+		insert into organz 
+		values(null, #{orgnzNm}, #{engOrgnzNm}, #{orgnzDstnct}, #{hmpageUrl}, #{telNo}, #{faxNo}, #{addr}, #{detailAddr}, 
 		]]>
-	</select>	
-	
-	
-		<select id="insertResrch" parameterType="resrchAcrsltVo">
-		<![CDATA[	
-			insert into resrch_acrslt (RESRCH_ACRSLT_NO, ORGNZ_NO, ACRSLT_DSTNCT, REGST_DT, RESRCH_YYCL, RESRCH_TEXT  ) 
-			values (null, #{orgnzNo}, #{acrsltDstnct}, now() ,#{resrchYycl},#{resrchText})
+		 
+		<if test="prntsOrgnzNo == -1 ">
+		<![CDATA[ 
+		 null, null, null, null, #{hmnbrdDstnct});
 		]]>
-	</select>	
+		</if>
+		<if test="prntsOrgnzNo != -1">
+		<![CDATA[ 
+		 #{prntsOrgnzNo}, null, null, null, #{hmnbrdDstnct});
+		]]>
+		</if>
+	</insert>
 	
-
+	<!-- 허주한  -->
+	<select id="countResrchAcrslt" parameterType="map" resultType="int">
+		<![CDATA[
+		select count(*)
+		from resrch_acrslt
+		where ORGNZ_NO = #{orgNo}
+		and ACRSLT_DSTNCT like #{type};
+		]]>
+	</select>
+	
 
 </mapper>

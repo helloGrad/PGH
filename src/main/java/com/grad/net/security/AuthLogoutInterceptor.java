@@ -10,7 +10,9 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import com.grad.net.service.MemberService;
 
 
-;
+/**
+ * 박가혜
+ */
 
 public class AuthLogoutInterceptor extends HandlerInterceptorAdapter {
 	

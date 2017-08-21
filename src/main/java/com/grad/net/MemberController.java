@@ -24,6 +24,9 @@ import com.grad.net.service.MemberService;
 import com.grad.net.vo.CodeVo;
 import com.grad.net.vo.MemberVo;
 
+/*
+ * 정예린,박가혜
+ */	
 @Controller
 @RequestMapping("/user")
 public class MemberController {
@@ -37,14 +40,14 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
 
-		//System.out.println("login main");
+		System.out.println("login main");
 		return "login";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String register(@ModelAttribute MemberVo memberVo) {
 
-		//System.out.println(memberVo.getEmail() + " " + memberVo.getPw() + " " + memberVo.getNknm());
+		System.out.println(memberVo.getEmail() + " " + memberVo.getPw() + " " + memberVo.getNknm());
 		memberService.register(memberVo);
 
 		return "redirect:/user/login";
@@ -52,6 +55,9 @@ public class MemberController {
 
 	/////////////////////////////////////// snslogin//////////////////////////////////////////
 
+	/*
+	 * 정예린,박가혜
+	 */	
 	@RequestMapping(value = "/snslogin", method = RequestMethod.GET)
 	public String index(Locale locale, Model model) {
 		System.out.println("snslogin naver get");
@@ -87,14 +93,14 @@ public class MemberController {
 		memberVo.setAgrg(agrg);
 		;
 
-	//	System.out.println("+++" + memberVo);
+		System.out.println("+++" + memberVo);
 
 		boolean exist = memberService.checkMember(memberVo);
 
 		System.out.println("존재하는 회원입니까? " + exist);
 
 		if (exist != true) {
-			//System.out.println(snsnm);
+			System.out.println(snsnm);
 			memberService.snslogin(memberVo, snsnm);
 		}
 
@@ -105,22 +111,18 @@ public class MemberController {
 
 	/////////////////////////////// mypage 세션 확인 ///////////////////////////////////
 
-	
-	
 	@Auth(role = Auth.Role.USER)
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String mypage(Locale locale, Model model) {
-		
-		
+	public String mypage(Locale locale, Model model,@AuthUser MemberVo authUser) {
+		System.out.println(authUser.getMbDstnct());
 		return "mypage";
 	}
 
 	////////////////////////////// 맞춤정보/////////////////////////////////
-	
+
 	/*
 	 * 박가혜
-	 */
-
+	 */	
 	@Auth(role = Auth.Role.USER)
 	@RequestMapping(value = "/mbinfo", method = RequestMethod.GET)
 	public String mbinfo(Locale locale, Model model, @AuthUser MemberVo authUser) {

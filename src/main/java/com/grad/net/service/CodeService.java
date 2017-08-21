@@ -15,6 +15,9 @@ public class CodeService {
 	@Autowired
 	private CodeDao CodeDao;	
 	
+	/*
+	 * 박가혜
+	 */	
 	public List<CodeVo> getCodeList(){	
 
 		return CodeDao.getCodeList();		

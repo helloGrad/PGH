@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,8 +14,6 @@ import com.grad.net.service.AdminService;
 import com.grad.net.vo.NotiVo;
 import com.grad.net.vo.OrganzVo;
 import com.grad.net.vo.ResrchAcrsltVo;
-
-
 
 
 
@@ -41,7 +38,7 @@ public class AdminController {
 		
 		return "admin/list";		
 	}
-	
+
 	/*
 	 * 박가혜
 	 */
@@ -56,39 +53,6 @@ public class AdminController {
 		return "admin/list";		
 	}
 	
-	/*
-	 * 박가혜
-	 */
-	@RequestMapping(value="/organz", method=RequestMethod.POST)
-	public String registerOrganz(
-			@ModelAttribute OrganzVo organzVo, @ModelAttribute ResrchAcrsltVo resrchAcrsltVo,
-			@RequestParam String tabnm
-			){
-		
-		//System.out.println(tabnm);
-		//System.out.println(organzVo);
-		
-		
-		System.out.println(resrchAcrsltVo);
-		
-		if(resrchAcrsltVo.getResrchText() == null) { //연구실입력인 경우 
-			
-			adminService.insertLab(organzVo);
-			
-		}
-		
-		if(organzVo.getOrgnzNm() == null) { // 연구실적입력인 경우 
-			
-			adminService.insertResrch(resrchAcrsltVo);
-			
-			
-		}
-		
-		
-		
-		return "redirect:/admin/list";
-	}
-	
 	
 	/*
 	 * 정예린
@@ -97,9 +61,13 @@ public class AdminController {
 	public String registerNoti(@ModelAttribute NotiVo notiVo,						
 			@RequestParam String tabnm) {
 		
-		System.out.println(tabnm+" " +notiVo);
+		//System.out.println(notiVo);
+		//System.out.println(tabnm+" " +notiVo);
 		adminService.registerNoti(notiVo, tabnm);
 		return "admin/list";		
 	}
+	
+	
+
 	
 }

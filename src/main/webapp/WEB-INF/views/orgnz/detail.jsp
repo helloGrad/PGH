@@ -81,22 +81,20 @@ pageContext.setAttribute("newLine", "\n");
 				<hr>
 
 
-			
-				
 				<!-- //////////////////////// 연구실 소개  ////////////////////////-->
-           		 <p class="lead">
-               <i class="glyphicon glyphicon-comment"></i> 연구실 소개
-            		</p>
-           		 <p>${fn:replace(vo.labIntro, newLine,"<br>") }</p>
-            
+				<p class="lead">
+					<i class="glyphicon glyphicon-comment"></i> 연구실 소개
+				</p>
+				<p>${fn:replace(vo.labIntro, newLine,"<br>") }</p>
+				
 
 
-            		<hr>
+				<hr>
 				
 				<!--/////////////////////// 논문실적 /////////////////// -->
 				<p class="lead">
 					<i class="glyphicon glyphicon-book"></i> 논문
-					<input  id="paperBtn" name = "paper" type="button" value="+"/>
+					<input  id="paperBtn" name = "paper" type="button" value="+" style="display: none"/>
 				</p>
 				
 				
@@ -120,9 +118,9 @@ pageContext.setAttribute("newLine", "\n");
 				<!--/////////////////////// 프로젝트 실적 /////////////////// -->
 				<p class="lead">
 					<i class="glyphicon glyphicon-book"></i> 프로젝트
-					<input  id="projBtn" name = "project" type="button" value="+"/>
+					<input  id="projectBtn" name = "project" type="button" value="+" style="display: none" />
 				</p>
-				<div id="projShowDiv">
+				<div id="projectShowDiv">
 				
 				<c:forEach items="${list }" var="list" varStatus="status">
 					<c:if test="${list.acrsltDstnct == '프로젝트' }">
@@ -142,7 +140,7 @@ pageContext.setAttribute("newLine", "\n");
 				<!--/////////////////////// 특허 실적 /////////////////// -->
 				<p class="lead">
 					<i class="glyphicon glyphicon-book"></i> 특허
-					<input  id="patentBtn" name = "patent" type="button" value="+"/>
+					<input  id="patentBtn" name = "patent" type="button" value="+" style="display: none"/>
 				</p>
 				<div id="patentShowDiv">
 				
@@ -164,7 +162,7 @@ pageContext.setAttribute("newLine", "\n");
 				<!--/////////////////////// 특허 실적 /////////////////// -->
 				<p class="lead">
 					<i class="glyphicon glyphicon-book"></i> 세미나
-					<input  id="seminarBtn" name = "seminar" type="button" value="+"/>
+					<input  id="seminarBtn" name = "seminar" type="button" value="+" style="display: none"/>
 				</p>
 				<div id="semiShowDiv">
 				
@@ -186,7 +184,7 @@ pageContext.setAttribute("newLine", "\n");
 				<!--/////////////////////// 학회 실적 /////////////////// -->
 				<p class="lead">
 					<i class="glyphicon glyphicon-book"></i> 학회
-					<input  id="academyBtn" name = "academy" type="button" value="+"/>
+					<input  id="academyBtn" name = "academy" type="button" value="+" style="display: none"/>
 				</p>
 				<div id="academyShowDiv">
 				
@@ -219,19 +217,17 @@ pageContext.setAttribute("newLine", "\n");
 				<!--///////////////////////// 지도 /////////////////////////-->
 				<p class="lead">
 					<i class="glyphicon glyphicon-map-marker"></i> 장소 <span
-						class="location"> • 창원대학교 55호관 506호</span> <input id="address"
-						type="hidden" value="경남 창원 창원대학교 55호관">
+						class="location"> • ${vo.addr } ${vo.detailAddr }</span> <input id="address"
+						type="hidden" value="${vo.addr }">
 				</p>
 
 				<div id="map"></div>
 				<script>
                     function initMap() {
-
                         var geocoder = new google.maps.Geocoder();
                         var address = document.getElementById('address').value;
                         setCenter(geocoder, address);
                     }
-
                     function setCenter(geocoder, address) {
                         geocoder.geocode({
                             'address': address

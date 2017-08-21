@@ -50,28 +50,12 @@ public class NotiVo {
 	private String regstEndDd;
 	private String regstMth;
 	
-	private String onlineSuprtYn;
-	private String prmryResrchField;
+	private String prmryResrchField;	
 	
+	private String onlineSuprtYn;
 	
 	private String addr;
 	
-	
-	
-	
-	
-	public String getPrmryResrchField() {
-		return prmryResrchField;
-	}
-	public void setPrmryResrchField(String prmryResrchField) {
-		this.prmryResrchField = prmryResrchField;
-	}
-	public String getOnlineSuprtYn() {
-		return onlineSuprtYn;
-	}
-	public void setOnlineSuprtYn(String onlineSuprtYn) {
-		this.onlineSuprtYn = onlineSuprtYn;
-	}
 	public Long getSlctnNotiNo() {
 		return slctnNotiNo;
 	}
@@ -320,7 +304,18 @@ public class NotiVo {
 		this.addr = addr;
 	}
 	
-	
+	public String getOnlineSuprtYn() {
+		return onlineSuprtYn;
+	}
+	public void setOnlineSuprtYn(String onlineSuprtYn) {
+		this.onlineSuprtYn = onlineSuprtYn;
+	}
+	public String getPrmryResrchField() {
+		return prmryResrchField;
+	}
+	public void setPrmryResrchField(String prmryResrchField) {
+		this.prmryResrchField = prmryResrchField;
+	}
 	@Override
 	public String toString() {
 		return "NotiVo [slctnNotiNo=" + slctnNotiNo + ", adminNo=" + adminNo + ", orgnzNo=" + orgnzNo
@@ -336,15 +331,32 @@ public class NotiVo {
 				+ chrgrTelNo + ", chrgrEmail=" + chrgrEmail + ", mbNo=" + mbNo + ", slctnNotiUrl=" + slctnNotiUrl
 				+ ", rcpMth=" + rcpMth + ", slsnBeginDd=" + slsnBeginDd + ", slsnEndDd=" + slsnEndDd + ", slsnPlac="
 				+ slsnPlac + ", sccnAncmDd=" + sccnAncmDd + ", sccnAncmMth=" + sccnAncmMth + ", regstBeginDd="
-				+ regstBeginDd + ", regstEndDd=" + regstEndDd + ", regstMth=" + regstMth + ", onlineSuprtYn="
-				+ onlineSuprtYn + ", prmryResrchField=" + prmryResrchField + ", addr=" + addr + "]";
+				+ regstBeginDd + ", regstEndDd=" + regstEndDd + ", regstMth=" + regstMth + ", prmryResrchField="
+				+ prmryResrchField + ", onlineSuprtYn=" + onlineSuprtYn + ", addr=" + addr + ", getSlctnNotiNo()="
+				+ getSlctnNotiNo() + ", getAdminNo()=" + getAdminNo() + ", getOrgnzNo()=" + getOrgnzNo()
+				+ ", getSlctnNotiDstnct()=" + getSlctnNotiDstnct() + ", getNotiRegstDt()=" + getNotiRegstDt()
+				+ ", getSlctnBeginDt()=" + getSlctnBeginDt() + ", getSlctnEndDt()=" + getSlctnEndDt()
+				+ ", getSlctnTitle()=" + getSlctnTitle() + ", getSlctnText()=" + getSlctnText() + ", getSlctnNops()="
+				+ getSlctnNops() + ", getSlsnMth()=" + getSlsnMth() + ", getSbmtDocText()=" + getSbmtDocText()
+				+ ", getSuprtQualf()=" + getSuprtQualf() + ", getChrgrDstnct()=" + getChrgrDstnct()
+				+ ", getTuitionSuprtYn()=" + getTuitionSuprtYn() + ", getLvncSuprtYn()=" + getLvncSuprtYn()
+				+ ", getBk21EorgnzSuprtYn()=" + getBk21EorgnzSuprtYn() + ", getIncetSuprtYn()=" + getIncetSuprtYn()
+				+ ", getLrstyJoingfeeSuprtYn()=" + getLrstyJoingfeeSuprtYn() + ", getDormSuprtYn()=" + getDormSuprtYn()
+				+ ", getInternYn()=" + getInternYn() + ", getLrstyJoingYn()=" + getLrstyJoingYn()
+				+ ", getResrchTaskJoingYn()=" + getResrchTaskJoingYn() + ", getStdtrOpptySuprtYn()="
+				+ getStdtrOpptySuprtYn() + ", getEduPgmJoingSuprtYn()=" + getEduPgmJoingSuprtYn()
+				+ ", getSuprtFvrText()=" + getSuprtFvrText() + ", getChrgrNm()=" + getChrgrNm() + ", getChrgrTelNo()="
+				+ getChrgrTelNo() + ", getChrgrEmail()=" + getChrgrEmail() + ", getMbNo()=" + getMbNo()
+				+ ", getSlctnNotiUrl()=" + getSlctnNotiUrl() + ", getRcpMth()=" + getRcpMth() + ", getSlsnBeginDd()="
+				+ getSlsnBeginDd() + ", getSlsnEndDd()=" + getSlsnEndDd() + ", getSlsnPlac()=" + getSlsnPlac()
+				+ ", getSccnAncmDd()=" + getSccnAncmDd() + ", getSccnAncmMth()=" + getSccnAncmMth()
+				+ ", getRegstBeginDd()=" + getRegstBeginDd() + ", getRegstEndDd()=" + getRegstEndDd()
+				+ ", getRegstMth()=" + getRegstMth() + ", getAddr()=" + getAddr() + ", getOnlineSuprtYn()="
+				+ getOnlineSuprtYn() + ", getPrmryResrchField()=" + getPrmryResrchField() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 	
-	
-	
-	
-	
-	
+
 	
 
 }

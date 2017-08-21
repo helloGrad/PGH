@@ -30,18 +30,7 @@ public class HomeController {
 		return "home";
 	}
 	
-//	@RequestMapping(value = "/orgnz", method = RequestMethod.GET)
-//	public String orgnz(Locale locale, Model model, MemberVo memberVo) {		
-//		model.addAttribute("MemberVo", memberVo);
-//		return "orgnz/list";
-//	}
-//	
-//	@RequestMapping(value = "/orgnz/view", method = RequestMethod.GET)
-//	public String orgnzview(Locale locale, Model model, MemberVo memberVo) {
-//		model.addAttribute("MemberVo", memberVo);
-//		return "orgnz/view";
-//	}
-	
+
 	
 	
 	

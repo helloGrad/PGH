@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.grad.net.dto.JSONResult;
 import com.grad.net.service.MemberService;
 
+/*
+ * 정예린
+ */	
+
 @Controller("memberApiController")
 @RequestMapping("/api")
 public class MemberController {
@@ -16,6 +20,7 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 
+	
 	@ResponseBody
 	@RequestMapping("/checkemail")
 	public JSONResult checkEmail(@RequestParam(value = "email", required = true, defaultValue = "") String IDEN) {

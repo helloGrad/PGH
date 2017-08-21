@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<html>
+<head>
 <meta name="google-signin-client_id"
 	content="31840955156-0oh8u23d3t24v4rguka78knp12vo9jm4.apps.googleusercontent.com">
 <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -16,6 +18,9 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/higrad-signup.css"
 	rel="stylesheet">
+
+<title>하이그래드넷</title>
+</head>
 
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">

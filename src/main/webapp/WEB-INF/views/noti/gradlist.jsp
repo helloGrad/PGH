@@ -1,3 +1,4 @@
+<!-- 허규준 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -21,9 +22,8 @@
 	<c:import url="/WEB-INF/views/include/header.jsp" />
 
 	<div class="container">
-		<!-- ///// filter (대분류) //////-->
-		<div class="row">
-		<h3>메인페이지</h3>
+	<div class="row">
+		<h3>대학원 공고 페이지</h3>
 			<div class="col-lg-4 centering">
 				
 				<a id="gradBtn" class="btn btn-info" href="${pageContext.servletContext.contextPath }/noti/grad" >대학원 더보기</a>
@@ -64,7 +64,7 @@
 				</div>
 			</div>
 
-			<div id="alllist" class="col-lg-8">
+			<div id="gradList" class="col-lg-8">
 				<c:forEach items="${notiList }" var="list" varStatus="status">
 					<div class="col-md-12">
 						<h3>
@@ -78,8 +78,6 @@
 			</div>
 
 
-			<div id="lab" class="col-lg-8">
-			</div>
 		</div>
 	</div>
 

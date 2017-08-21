@@ -1,16 +1,35 @@
 /**
- * 
+ * 허규준
  */
 $(function() {
-	var checkFetch
 	$("#paperBtn").click(fetchList);
-	$("#projBtn").click(fetchList);
+	$("#projectBtn").click(fetchList);
 	$("#patentBtn").click(fetchList);
 	$("#seminarBtn").click(fetchList);
 	$("#academyBtn").click(fetchList);
-	console.log(checkDiv[0]);
+	
+	for(var i=0;i<5;i++){
+		countList(checkType(acrArr[i]),acrArr[i]);
+	}
 	
 });
+
+
+var checkType = function(type){
+	if(type == "paper"){
+		return "논문";
+	} else if(type == "patent"){
+		return "특허";
+	} else if(type =="project"){
+		return "프로젝트";
+	} else if(type == "seminar"){
+		return "세미나";
+	} else if(type == "academy"){
+		return "학회";
+	}
+	
+}
+var acrArr = ["paper", "project", "patent", "seminar", "academy"];
 
 var checkDiv = {
 		"논문":false,
@@ -18,6 +37,31 @@ var checkDiv = {
 		"특허":false,
 		"세미나":false,
 		"학회":false
+}
+
+var countList = function(acrType, engAcrType){
+	
+	var orgNo = $("#orgNo").val();
+	
+	$.ajax({
+		url : "/net/organz/api/count?orgNo="+orgNo+"&type="+acrType,
+		type : "get",
+		dataType : "json",
+		data : "",
+		success : function(response) {
+			console.log(response.data)
+			if(response.data > 1){
+				console.log("없음")
+				console.log('#'+engAcrType+'Btn');
+				$('#'+engAcrType+'Btn').show();
+			}
+			
+			
+		},
+		error : function(jqXHR, status, e) {
+			console.error(status + " : " + e);
+		}
+	});
 }
 
 
@@ -52,12 +96,10 @@ var fetchList = function() {
 				//console.log(response.data[i]);
 				$('#'+acrTypeEng).append(response.data[i].resrchYycl)
 				$('#'+acrTypeEng).append("<br><br>");
-				console.log(response.data[i].resrchYycl);
-				console.log(response.data[i].resrchYycl);
 //				console.log((response.data[i].resrchText.match(/\n/g) || []).length); 
 //				console.log((response.data[i].resrchText.match(new RegExp(response.data[i].resrchYycl, "g")) || []).length);
 //				console.log(("str1,str2,str3,str4".match(new RegExp("str", "g")) || []).length)
-				$('#'+acrTypeEng).append(response.data[i].resrchText.replace(/\n/g, "<br>"));
+				$('#'+acrTypeEng).append(response.data[i].resrchText.replace(/\n/g, "<br> "));
 				$('#'+acrTypeEng).append("<br><br><br>");				
 				
 			}
@@ -74,20 +116,7 @@ var fetchList = function() {
 	});
 }
 
-var checkType = function(type){
-	if(type == "paper"){
-		return "논문";
-	} else if(type == "patent"){
-		return "특허";
-	} else if(type =="project"){
-		return "프로젝트";
-	} else if(type == "seminar"){
-		return "세미나";
-	} else if(type == "academy"){
-		return "학회";
-	}
-	
-}
+
 
 var displayFunction = function(){
 	
@@ -106,3 +135,4 @@ var displayFunction = function(){
 	
 
 }
+

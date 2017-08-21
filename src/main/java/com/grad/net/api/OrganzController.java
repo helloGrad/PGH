@@ -12,6 +12,9 @@ import com.grad.net.dto.JSONResult;
 import com.grad.net.service.OrganzService;
 import com.grad.net.vo.ResrchAcrsltVo;
 
+/*
+ * 허규준
+ */	
 
 @Controller("orgnzAPIController")
 @RequestMapping("/organz/api")
@@ -24,12 +27,20 @@ public class OrganzController {
 	@ResponseBody
 	public JSONResult fetchList(@RequestParam("orgNo") int orgNo, @RequestParam("type") String type) {
 		
-		//System.out.println(orgNo + " " + type);
 		List<ResrchAcrsltVo> list = organzService.getResrchAcrsltFetchList(orgNo, type);
-		
-		//System.out.println(list.toString());
 		return JSONResult.success(list);
 		
 	}
+	
+	@RequestMapping("/count")
+	@ResponseBody
+	public JSONResult countResrchAcrslt(@RequestParam("orgNo") int orgNo, @RequestParam("type") String type) {
+		
+		int num = organzService.countResrchAcrslt(orgNo, type);
+		return JSONResult.success(num);
+		
+	}
+	
+	
 
 }

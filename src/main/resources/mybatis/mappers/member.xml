@@ -3,6 +3,8 @@
 
 <mapper namespace="member">
 
+	<!-- 정예린 박가혜 -->
+
 	<insert id="insert" parameterType="memberVo">
 		<![CDATA[	
 			insert into MB (MB_NO, MB_DSTNCT, GENAL_MB_DSTNCT, NKNM, IDEN, PW, MYSELF_AUTHZ_YN, INSRD_DD, WTHDR_DD )

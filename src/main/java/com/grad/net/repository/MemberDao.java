@@ -18,12 +18,12 @@ public class MemberDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	//일반 회원가입
+
 	public void insert(MemberVo memberVo) {
 		sqlSession.insert("member.insert", memberVo);
 	}
 	
-	//sns회원가입
+	
 	public void snsinsert(Map<String, Object> map) {		
 		sqlSession.insert("member.snsinsert",map);		
 	}
@@ -37,12 +37,12 @@ public class MemberDao {
 		return sqlSession.selectOne("member.getByIden", EMAIL);
 	}
 
-	//////////////////////////////// getUser(로그인 할 때)////////////////////////
+	
 	public MemberVo getUser(Map<String, Object> map) throws Exception {
 		return sqlSession.selectOne("member.getByLoginInfo", map);
 	}
 
-	//맞춤정보
+	
 	public List<CodeVo> getMbinfoList(MemberVo memberVo) {
 	
 		Long mbNo = memberVo.getMbNo();
