@@ -33,7 +33,7 @@ public class CounselingController {
 	
 	
 	/**
-	 * 박가혜
+	 * 박가혜 2017-08-23
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/write", method = RequestMethod.POST) // 질문글 쓰기(원글쓰기)

@@ -29,6 +29,9 @@ public class CounselingController {
 	CounselingService counselingService;
 	
 	
+	/**
+	 * 박가혜 2017-08-23
+	 */
 	
 	@RequestMapping("/list")
 	public String counselingList(Model model, @AuthUser MemberVo authUser) {

@@ -45,6 +45,9 @@
 
 
 <script>
+
+//박가혜 2017-08-23
+
     function resize(obj) {
       obj.style.height = "1px";
       obj.style.height = (20+obj.scrollHeight)+"px";
@@ -96,7 +99,7 @@
 </style>
 
 <script type="text/javascript">
-	
+//박가혜 2017-08-23
 $(function() {
 	
 	var authUser= $("#authUser").val();
@@ -142,7 +145,7 @@ $(function() {
 	})
 	
 
-	
+	//박가혜 2017-08-23
 	function counselinginsert() {
 	
 	

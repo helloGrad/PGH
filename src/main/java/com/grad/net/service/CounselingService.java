@@ -20,20 +20,26 @@ public class CounselingService {
 	CounselingDao counselingDao;
 	
 	
-	
+	/**
+	 * 박가혜 2017-08-23
+	 */
 	public void write(CounselingVo counselingVo) {
 		
 		counselingDao.insert(counselingVo);
 
 	}
 
-	
+	/**
+	 * 박가혜 2017-08-23
+	 */
 	public List<CounselingVo> counselingList() {
 		
 		return counselingDao.getcounselingList();
 	}
 
-	
+	/**
+	 * 박가혜 2017-08-23
+	 */
 	public List<CounselingVo> getReplyList() {
 		
 		return counselingDao.getReplyList();
