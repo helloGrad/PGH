@@ -37,7 +37,7 @@
 				<li><a href="${pageContext.servletContext.contextPath }/noti/list">모집공고</a></li>
 				<li><a href="${pageContext.servletContext.contextPath }/organz/list">기관정보</a></li>
 				<li><a href="conference.html">학회</a></li>
-				<li><a href="counseling.html">상담실</a></li>
+				<li><a href="${pageContext.servletContext.contextPath }/counseling/list">상담실</a></li>
 				<li><a href="community.html">커뮤니티</a></li>
 				<c:choose>
 					<c:when test='${authUser.mbDstnct == "관리자" }'>

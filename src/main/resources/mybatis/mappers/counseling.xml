@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="counseling">
+
+	<!-- 박가혜 -->
+
+	<insert id="insert" parameterType="counselingVo">
+		<![CDATA[	
+			insert into WETBT (WRTBT_NO, WRTBT_TEXT, WRTBT_TYPE_DSTNCT, AVLBL_BEGIN_DT, AVLBL_END_DT, MB_NO, BBS_NO, WRTBT_DSTNCT,
+			RCMD_CO,NCMD_CO,FIND_CO,
+			 GROUP_NO,ORDER_NO,DEPTH,WRTBT_TITLE, WRITR_INFO_OPNG_YN, CONSL_BBS_DSTNCT,ORGNZ_NO)
+			values (null, #{wrtbtText },'원글',now(),"9999-12-31 23:59:59",#{mbNo }, #{bbsNo },'상담게시판', 0,0,0,( select ifnull( max( GROUP_NO ), 0 ) + 1 from WETBT a ),
+			 1,0,  #{wrtbtTitle }, #{writrInfoOpngYn }, #{conslBbsDstnct }, #{orgnzNo } )
+		]]>
+	</insert>
+
+	
+	
+	<!--박가혜 -->
+		<select id="getcounselingList" resultType="counselingVo" >
+		
+			
+			<![CDATA[
+			select WRTBT_NO wrtbtNo, WRTBT_TEXT wrtbtText, WRTBT_TYPE_DSTNCT wrtbtTypeDstnct, AVLBL_BEGIN_DT avlblBeginDt, AVLBL_END_DT avlblEndDt, MB_NO mbNo,
+			 BBS_NO bbsNo, WRTBT_DSTNCT wrtbtDstnct, RCMD_CO rcmdCo,NCMD_CO ncmdCo,FIND_CO findCo,
+			 GROUP_NO groupNo,ORDER_NO orderNo,DEPTH depth,WRTBT_TITLE wrtbtTitle, 
+			 CONSL_BBS_DSTNCT conslBbsDstnct,ORGNZ_NO orgnzNo, (select count(*) from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO) count 
+ 			from wetbt w
+ 			where WRTBT_TYPE_DSTNCT='원글'
+ 			group by AVLBL_BEGIN_DT desc;
+			
+			]]>
+		</select>
+	
+	
+	<!--박가혜 -->
+		<select id="getReplyList" resultType="counselingVo" >
+		
+			
+			<![CDATA[
+			select WRTBT_NO wrtbtNo, BBS_NO bbsNo, WRTBT_DSTNCT wrtbtDstnct,
+             (select MB_NO from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO group by RCMD_CO desc limit 1) mbNo,
+             (select m.nknm from wetbt e, mb m where w. WRTBT_NO= e.PRNTS_WRTBT_NO and m.mb_no=e.MB_NO  group by RCMD_CO desc limit 1) nknm,
+             (select AVLBL_BEGIN_DT from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO    group by RCMD_CO desc limit 1) avlblBeginDt,
+             (select WRTBT_TEXT  from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO    group by RCMD_CO desc limit 1) wrtbtText,
+             (select RCMD_CO  from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO   group by RCMD_CO desc limit 1) rcmdCo          
+			 from wetbt w
+			 where WRTBT_TYPE_DSTNCT='원글'
+			 group by AVLBL_BEGIN_DT desc;
+			
+			]]>
+		</select>
+	
+
+</mapper>

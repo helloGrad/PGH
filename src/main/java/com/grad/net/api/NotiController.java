@@ -27,36 +27,26 @@ public class NotiController {
 	NotiService notiService; 
 	
 
-
+	/**
+	 * 박가혜
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/lab", method = RequestMethod.POST)
-	public JSONResult notiLabList(Model model,@RequestParam(value="comlist", required=true, defaultValue = "") List<Integer> comlist) {
-		
+	public JSONResult notiLabList(Model model,
+			@RequestParam(value = "comlist", required = true, defaultValue = "") List<Integer> comlist) {
 
-	
-		System.out.print(comlist.size());
-		 List<NotiVo> result = new ArrayList<NotiVo>();
-		
-		for(int i=0; i<comlist.size(); i++) {
-			
-			NotiVo data= notiService.getNoti("연구실",comlist.get(i));
-			
-			//System.out.println(i+" "+data);
+		List<NotiVo> result = new ArrayList<NotiVo>();
+
+		for (int i = 0; i < comlist.size(); i++) {
+
+			NotiVo data = notiService.getNoti("연구실", comlist.get(i));
+
 			result.add(i, data);
-			
+
 		}
-		
-		
-			
-		//System.out.print(result.size());
-			
-		
-		
-		
+
 		return JSONResult.success(result);
 	}
-	
-	
 	
 
 

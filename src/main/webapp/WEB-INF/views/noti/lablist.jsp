@@ -14,6 +14,10 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script type="text/javascript">
+
+/**
+ * 박가혜
+ */
 	var chkCnt = 0;//체크 카운트 0으로 초기화
 	var chkMaxCnt = 3; //체크될 최대 갯수 설정
 	
