@@ -37,16 +37,33 @@ public class CounselingController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/write", method = RequestMethod.POST) // 질문글 쓰기(원글쓰기)
-	public JSONResult notiLabList(Model model, @RequestBody CounselingVo counselingVo, @AuthUser MemberVo authUser) {
+	public JSONResult CounselingList(Model model, @RequestBody CounselingVo counselingVo, @AuthUser MemberVo authUser) {
 
+	
 		counselingVo.setMbNo(authUser.getMbNo());
-
 		counselingService.write(counselingVo);
 
 		return JSONResult.success(counselingVo);
 	}
 	
 	
+	
+	/**
+	 * 박가혜 2017-08-24
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/replywrite", method = RequestMethod.POST) // 질문글 쓰기(답글쓰기)
+	public JSONResult CounselingReplyList(Model model, @RequestBody CounselingVo counselingVo, @AuthUser MemberVo authUser) {
+
+		
+	
+		counselingVo.setMbNo(authUser.getMbNo());
+		System.out.println(counselingVo);
+		counselingService.replyWrite(counselingVo);
+		
+
+		return JSONResult.success(counselingVo);
+	}
 	
 	
 

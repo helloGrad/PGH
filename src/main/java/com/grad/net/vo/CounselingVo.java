@@ -31,11 +31,27 @@ public class CounselingVo {
 	private Long orgnzNo;
 	
 	private Long count; //답변수
-	private String nknm;
+	private String nknm; //닉네임
+	private String birdt; //생년월일
+	private String agrg; //연령대
 	
 	
 	
 	
+	
+	
+	public String getBirdt() {
+		return birdt;
+	}
+	public void setBirdt(String birdt) {
+		this.birdt = birdt;
+	}
+	public String getAgrg() {
+		return agrg;
+	}
+	public void setAgrg(String agrg) {
+		this.agrg = agrg;
+	}
 	public String getNknm() {
 		return nknm;
 	}
@@ -189,8 +205,12 @@ public class CounselingVo {
 				+ wrtbtTitle + ", voteRegstDt=" + voteRegstDt + ", prntsCwrNo=" + prntsCwrNo + ", prntsWrtbtNo="
 				+ prntsWrtbtNo + ", cwrDstnct=" + cwrDstnct + ", writrInfoOpngYn=" + writrInfoOpngYn
 				+ ", conslBbsDstnct=" + conslBbsDstnct + ", orgnzNo=" + orgnzNo + ", count=" + count + ", nknm=" + nknm
-				+ "]";
+				+ ", birdt=" + birdt + ", agrg=" + agrg + "]";
 	}
+	
+	
+	
+	
 
 	
 	

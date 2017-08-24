@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.grad.net.security.Auth;
 import com.grad.net.security.AuthUser;
 import com.grad.net.service.CounselingService;
 import com.grad.net.vo.CounselingVo;
@@ -46,6 +47,35 @@ public class CounselingController {
 		
 
 		return "/counseling/list";
+	}
+	
+	/**
+	 * 박가혜 2017-08-24
+	 */
+	
+	
+	@RequestMapping("/detail")
+	@Auth(role = Auth.Role.USER)
+	public String counselingDetail( Model model, @RequestParam("no") Long no,@AuthUser MemberVo authUser, @RequestParam("type") String type) {
+		
+		
+		
+		CounselingVo counselingPrnts = counselingService.counselingPrnts(no);
+		List<CounselingVo> counselingReplyList = counselingService.counselingReplyDetail(no);
+		
+		//조횟수 
+		//counselingService.findCoUpdate();
+
+		model.addAttribute("authUser", authUser);
+		model.addAttribute("counselingPrnts", counselingPrnts);
+		model.addAttribute("counselingReplyList", counselingReplyList);
+		model.addAttribute("type", type);
+		
+
+		
+
+		
+		return "/counseling/detail";
 	}
 	
 	

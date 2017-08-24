@@ -41,7 +41,7 @@ public class MemberService {
 		map.put("memberVo", memberVo);
 		map.put("snsnm", snsnm);
 
-		memberDao.snsinsert(map);
+		memberDao.snsinsert(map); //회원가입 
 	}
 
 	public MemberVo getUser(String iden, String pw) throws Exception {
@@ -108,5 +108,14 @@ public class MemberService {
 		for (int i = 0; i < info.length; i++) {
 			memberDao.insertMbinfo(mbNo, info[i]);
 		}
+	}
+	
+	
+	
+	public MemberVo getUser(String iden){
+
+
+		return memberDao.getUser(iden);
+
 	}
 }

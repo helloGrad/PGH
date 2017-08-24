@@ -93,19 +93,22 @@ public class MemberController {
 		memberVo.setAgrg(agrg);
 		;
 
-		System.out.println("+++" + memberVo);
+		//System.out.println("+++" + memberVo);
 
-		boolean exist = memberService.checkMember(memberVo);
+		boolean exist = memberService.existEamil(memberVo.getIden());
 
 		System.out.println("존재하는 회원입니까? " + exist);
 
 		if (exist != true) {
 			System.out.println(snsnm);
-			memberService.snslogin(memberVo, snsnm);
+			memberService.snslogin(memberVo, snsnm); //회원가입 
 		}
 
 		HttpSession session = request.getSession(true);
-		session.setAttribute("authUser", memberVo);
+		
+		MemberVo getmember=  memberService.getUser(iden);
+		session.setAttribute("authUser", getmember);
+		
 		return "redirect:/user/login";
 	}
 

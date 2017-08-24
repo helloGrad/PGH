@@ -9,7 +9,7 @@ import com.grad.net.repository.CounselingDao;
 import com.grad.net.vo.CounselingVo;
 import com.grad.net.vo.MemberVo;
 import com.grad.net.vo.NotiVo;
-import com.grad.net.vo.OrganzVo;
+
 
 
 
@@ -43,6 +43,30 @@ public class CounselingService {
 	public List<CounselingVo> getReplyList() {
 		
 		return counselingDao.getReplyList();
+	}
+	/**
+	 * 박가혜 2017-08-24
+	 */
+	public  CounselingVo counselingPrnts(Long no) {
+		
+		return counselingDao.getcounselingPrnts(no);
+	}
+	
+	/**
+	 * 박가혜 2017-08-24
+	 */
+	public List<CounselingVo> counselingReplyDetail(Long no) {
+		
+		return counselingDao.getReplyDetail(no);
+	}
+	
+	/**
+	 * 박가혜 2017-08-24
+	 */
+	public void replyWrite(CounselingVo counselingVo) {
+		
+		counselingDao.insertReply(counselingVo);
+
 	}
 	
 	

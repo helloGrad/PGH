@@ -3,9 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
+
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
  
     <title>상담실</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
@@ -35,6 +38,10 @@
         .option {
             float : right;
         }
+        
+ 		a:visited { color: gray; text-decoration: none;}
+
+
     </style>
     
 </head>
@@ -145,6 +152,8 @@ $(function() {
 	})
 	
 
+	
+
 	//박가혜 2017-08-23
 	function counselinginsert() {
 	
@@ -157,7 +166,8 @@ $(function() {
 		
 		var wrtbtTitle= $("#wrtbtTitle").val();
 		var wrtbtText= $("#wrtbtText").val();
-		var writrInfoOpngYn= $("#writrInfoOpngYn").val();
+		var writrInfoOpngYn= $("input[type=radio][name=writrInfoOpngYn]:checked").val();
+		
 		var conslBbsDstnct= $("#conslBbsDstnct").val();
 		var bbsNo= $("#bbsNo").val();
 	
@@ -345,13 +355,15 @@ $(function() {
 						            <div class="w3-container interest">#화학, #생물학, #화학공학
 						            </div>
 						            <div class="w3-container">
-						                <h4><b>${counselingList.wrtbtTitle }</b></h4>
+						                <h4><b><a  href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=prnts">${counselingList.wrtbtTitle }</a></b></h4>
+						                
+						                
 						            </div>
 						
 						            <div class="w3-container">
 						
 						                <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-						              	  답변하기
+						                <a  href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=reply">답변하기</a>
 						                </div>
 						                <div class="dropup option">
 						                    <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
@@ -375,13 +387,15 @@ $(function() {
 					   <div class="w3-container interest">#유학 #외국 #컴퓨터
 			            </div>
 			            <div class="w3-container">
-			                <h4><b>${counselingList.wrtbtTitle }</b></h4>
+			                <h4><b><a href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=prnts">${counselingList.wrtbtTitle }</a></b></h4>
 			
 			            </div>
 			            <div class="w3-container">
 			                <h6>${replyList[status.index].nknm }
 			                    <span class="w3-opacity">${replyList[status.index].avlblBeginDt }에 답변</span></h6>
-			                <p>${replyList[status.index].wrtbtText }</p>
+			                <p> <a  href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=prnts">${replyList[status.index].wrtbtText }</a></p>
+			                
+			               
 			            </div>
 			
 			            <div class="w3-container">

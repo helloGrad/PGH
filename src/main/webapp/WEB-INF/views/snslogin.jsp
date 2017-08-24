@@ -64,7 +64,7 @@
 						return;
 					}
 
-					parent.window.location.href = "/net/orgnz";
+					parent.window.location.href = "/net/";
 
 				},
 				error : function(jqXHR, status, e) {

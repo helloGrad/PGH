@@ -12,6 +12,7 @@ import com.grad.net.vo.NotiVo;
 
 
 
+
 @Repository
 public class CounselingDao {
 	
@@ -38,7 +39,27 @@ public class CounselingDao {
 	public List<CounselingVo> getReplyList() {
 		return sqlSession.selectList("counseling.getReplyList");
 	}
+	/**
+	 * 박가혜 2017-08-24
+	 */
+	public CounselingVo getcounselingPrnts(Long no) {
+		CounselingVo vo = sqlSession.selectOne("counseling.getcounselingPrnts", no);
+		return vo;
+	}
 	
+	/**
+	 * 박가혜 2017-08-24
+	 */
+	public List<CounselingVo> getReplyDetail(Long no) {
+		return sqlSession.selectList("counseling.getReplyDetail", no);
+	}
 
+	
+	/**
+	 * 박가혜 2017-08-24
+	 */
+	public void insertReply(CounselingVo counselingVo) {
+		sqlSession.insert("counseling.insertReply",counselingVo);
+	}
 
 }

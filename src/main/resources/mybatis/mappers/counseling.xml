@@ -52,5 +52,56 @@
 			]]>
 		</select>
 	
+		<!-- 박가혜   -->
+	<select id="getcounselingPrnts" parameterType="long" resultType="counselingVo">
+		<![CDATA[
+		select w.WRTBT_NO wrtbtNo,w.WRTBT_TEXT wrtbtText, w.WRTBT_TYPE_DSTNCT wrtbtTypeDstnct, date_format(w.AVLBL_BEGIN_DT,"%Y-%m-%d %H:%i::%s") avlblBeginDt, w.AVLBL_END_DT avlblEndDt, w.MB_NO mbNo,
+			 w.BBS_NO bbsNo, w.WRTBT_DSTNCT wrtbtDstnct, w.RCMD_CO rcmdCo,w.NCMD_CO ncmdCo,w.FIND_CO findCo,
+			 w.GROUP_NO groupNo,w.ORDER_NO orderNo,w.DEPTH depth,w.WRTBT_TITLE wrtbtTitle, w.WRITR_INFO_OPNG_YN writrInfoOpngYn,
+			 w.CONSL_BBS_DSTNCT conslBbsDstnct,w.ORGNZ_NO orgnzNo, TRUNCATE(date_format(now(),"%Y-%m-%d %H:%i::%s")-date_format(m.BIRDT,"%Y-%m-%d %H:%i::%s"), -1) birdt, substr(m.AGRG,1,2) agrg, m.NKNM nknm
+		from wetbt w, mb m
+		where w.MB_NO = m.MB_NO
+		and w.WRTBT_NO=#{no};
+		]]>
+	</select>
+	
+	
+		<!--박가혜 -->
+		<select id="getReplyDetail" parameterType="long" resultType="counselingVo" >
+		
+			
+			<![CDATA[
+			select w.WRTBT_NO wrtbtNo,w.WRTBT_TEXT wrtbtText, w.WRTBT_TYPE_DSTNCT wrtbtTypeDstnct, date_format(w.AVLBL_BEGIN_DT,"%Y-%m-%d %H:%i::%s") avlblBeginDt, w.AVLBL_END_DT avlblEndDt, w.MB_NO mbNo,
+			 w.BBS_NO bbsNo, w.WRTBT_DSTNCT wrtbtDstnct, w.RCMD_CO rcmdCo,w.NCMD_CO ncmdCo,w.FIND_CO findCo,
+			 w.GROUP_NO groupNo,w.ORDER_NO orderNo,w.DEPTH depth,w.WRTBT_TITLE wrtbtTitle,
+			 w.PRNTS_WRTBT_NO prntsWrtbtNo, w.CWR_DSTNCT cwrDstnct, 
+			 w.WRITR_INFO_OPNG_YN writrInfoOpngYn,
+			 w.CONSL_BBS_DSTNCT conslBbsDstnct,w.ORGNZ_NO orgnzNo, 
+			 TRUNCATE(date_format(now(),"%Y-%m-%d %H:%i::%s")-date_format(m.BIRDT,"%Y-%m-%d %H:%i::%s"), -1) birdt, substr(m.AGRG,1,2) agrg, m.NKNM nknm
+			from wetbt w, mb m
+			where w.MB_NO = m.MB_NO
+			and w.PRNTS_WRTBT_NO=#{no}
+			order by w.RCMD_CO desc;
+			
+			]]>
+		</select>
+		
+		
+			<!-- 박가혜 -->
+
+	<insert id="insertReply" parameterType="counselingVo">
+		<![CDATA[	
+			insert into WETBT (WRTBT_NO, WRTBT_TEXT, WRTBT_TYPE_DSTNCT, AVLBL_BEGIN_DT, AVLBL_END_DT, MB_NO, BBS_NO, WRTBT_DSTNCT,
+			RCMD_CO,NCMD_CO,FIND_CO,GROUP_NO,ORDER_NO,DEPTH,
+		    PRNTS_WRTBT_NO, CWR_DSTNCT, WRITR_INFO_OPNG_YN, CONSL_BBS_DSTNCT,ORGNZ_NO)
+			values (null, #{wrtbtText },'답글',now(),"9999-12-31 23:59:59",#{mbNo }, #{bbsNo },'상담게시판', 0,0,0,
+			(select GROUP_NO from WETBT a where wrtbt_no=#{prntsWrtbtNo }),
+			(select max(ORDER_NO) from WETBT a where wrtbt_no=#{prntsWrtbtNo }),
+			 1,#{prntsWrtbtNo }, '답변글', #{writrInfoOpngYn },
+			 (select CONSL_BBS_DSTNCT from WETBT a where WRTBT_NO=#{prntsWrtbtNo }), #{orgnzNo } )
+		]]>
+	</insert>
+	
+
 
 </mapper>

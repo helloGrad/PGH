@@ -102,5 +102,18 @@
 		delete from mb_info where MB_NO=#{mbNo }		
 	]]>
 	</delete>
+	
+	<!-- 박가혜 -->
+	
+	<select id="getBySns" parameterType="String" resultType="memberVo"> 
+		<![CDATA[
+		select MB_NO mbNo, MB_DSTNCT mbDstnct, MB_NM mbNm, NKNM nknm, IDEN iden, PW pw, SEX sex, BIRDT birdt, MYSELF_AUTHZ_YN myselfAuthzYn, 
+		INSRD_DD insrdDd, WTHDR_DD wthdrDd, GENAL_MB_DSTNCT genalMbDstnct, SNS_TKN_VALUE snsTknValue, SNS_DSTNCT snsDstnct, AGRG agrg
+		from mb 
+		where IDEN=#{iden } 
+		]]>
+	</select>
+	
+	
 
 </mapper>
