@@ -30,16 +30,26 @@ public class CounselingVo {
 	private String conslBbsDstnct;
 	private Long orgnzNo;
 	
-	private Long count; //답변수
-	private String nknm; //닉네임
-	private String birdt; //생년월일
-	private String agrg; //연령대
+	private Long count;
+	private String nknm; 
+	private String birdt; 
+	private String agrg; 
+	
+	private String infroDstnct;
 	
 	
+	//답변수
+	//닉네임
+	//생년월일
+	//연령대
+	//공감비공감 
 	
-	
-	
-	
+	public String getInfroDstnct() {
+		return infroDstnct;
+	}
+	public void setInfroDstnct(String infroDstnct) {
+		this.infroDstnct = infroDstnct;
+	}
 	public String getBirdt() {
 		return birdt;
 	}
@@ -205,8 +215,9 @@ public class CounselingVo {
 				+ wrtbtTitle + ", voteRegstDt=" + voteRegstDt + ", prntsCwrNo=" + prntsCwrNo + ", prntsWrtbtNo="
 				+ prntsWrtbtNo + ", cwrDstnct=" + cwrDstnct + ", writrInfoOpngYn=" + writrInfoOpngYn
 				+ ", conslBbsDstnct=" + conslBbsDstnct + ", orgnzNo=" + orgnzNo + ", count=" + count + ", nknm=" + nknm
-				+ ", birdt=" + birdt + ", agrg=" + agrg + "]";
+				+ ", birdt=" + birdt + ", agrg=" + agrg + ", infroDstnct=" + infroDstnct + "]";
 	}
+
 	
 	
 	

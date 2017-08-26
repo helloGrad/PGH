@@ -1,6 +1,8 @@
 package com.grad.net.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,7 @@ import com.grad.net.repository.CounselingDao;
 import com.grad.net.vo.CounselingVo;
 import com.grad.net.vo.MemberVo;
 import com.grad.net.vo.NotiVo;
+
 
 
 
@@ -67,6 +70,31 @@ public class CounselingService {
 		
 		counselingDao.insertReply(counselingVo);
 
+	}
+	
+	
+	/**
+	 * 박가혜 2017-08-25
+	 */
+	public void findCoUpdate(Long no) {
+		
+		counselingDao.updateFindCo(no);
+
+	}
+	
+	
+	/**
+	 * 박가혜 2017-08-25
+	 */
+	public List<CounselingVo> existLike(Long mbNo,Long no){
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>() ;
+		map.put("mbNo", mbNo);
+		map.put("no", no);
+		
+		return counselingDao.getLike(map);
+		
 	}
 	
 	

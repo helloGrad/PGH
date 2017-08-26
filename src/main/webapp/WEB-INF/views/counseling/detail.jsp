@@ -6,6 +6,9 @@
 <%
 pageContext.setAttribute("newLine", "\n");
 %>
+
+
+                   
 <!DOCTYPE html> 
 <html>
 <head>
@@ -50,6 +53,13 @@ pageContext.setAttribute("newLine", "\n");
             line-height: 170%;
         }
 
+		.disabled {
+   		pointer-events: none;
+   		cursor: default;
+		}
+
+	
+
     </style>
     
 </head>
@@ -74,14 +84,31 @@ pageContext.setAttribute("newLine", "\n");
 
 <script type="text/javascript">
 //박가혜 2017-08-24
+
+	var list = [];
+
 	$(function() {
 		
 		var authUser= $("#authUser").val();
 		var replysize = $("#replysize").val();
 
 		var type = "${type}";
+		
+		var existLikelist = []; 
+		
+		<c:forEach items="${existLike}" var="item">
+		existLikelist.push("${item}");
+		</c:forEach>
+		
+		
+		var counselingPrnts = JSON.parse('${jsoncounselingPrnts}');
+		var existLike = JSON.parse('${jsonexistLike}');
+		var counselingReply = JSON.parse('${jsoncounselingReply}');
+		
+	
 
-		if (replysize == 0) {
+
+		if (replysize == 0) { //첫답변 구분
 
 			if (type === 'prnts') {
 
@@ -92,6 +119,61 @@ pageContext.setAttribute("newLine", "\n");
 
 			div_hide();
 		}
+		
+		
+		
+		
+		
+		
+
+
+		for( var i=0; i<existLike.length; i++){
+			
+			
+			if(existLike[i].wrtbtNo == counselingPrnts[0].wrtbtNo){
+			
+				
+				//$("a").attr("like", "like"+existLike[i].wrtbtNo).removeAttr('href');
+
+				var link ="like"+existLike[i].wrtbtNo;
+				
+				console.log(link);
+				list.push(link);
+				
+				
+				//$('.'+link).attr('disabled',false);
+				
+				$('.'+link).css({ 'pointer-events': 'none'});
+			
+				
+			}
+			
+			
+		}
+		
+		for( var i=0; i<existLike.length; i++){
+			
+			for( var j=0; i<counselingReply.length; i++){
+				if(existLike[i].wrtbtNo == counselingReply[j].wrtbtNo){
+			
+				
+					//$("a").attr("like", "like"+existLike[i].wrtbtNo).removeAttr('href');
+	
+					var link ="like"+existLike[i].wrtbtNo;
+					
+					console.log(link);
+					list.push(link);
+					
+					$('.'+link).css({ 'pointer-events': 'none'});
+				
+				}
+			}
+			
+			
+		}
+		
+		
+		
 
 		$(document).ready(function() {
 
@@ -202,6 +284,68 @@ pageContext.setAttribute("newLine", "\n");
 		});
 
 	}
+	
+	
+	//박가혜 2017-08-25
+	function likeupdate(num, value) {
+
+	
+
+		var authUser= $("#authUser").val();
+		if(authUser === null || authUser===''){
+			
+    		location.href='${pageContext.request.contextPath }/user/login';
+			return;
+			
+		}
+	
+		console.log(num+" "+value+""+authUser);
+	
+		
+		var likevalue = {
+				wrtbtNo : num,
+				mbNo : authUser,
+				infroDstnct : value
+			};
+		
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath }/counseling/api/likeadd",
+			type : "post",
+			dataType : "json", // 받아야되는 데이터 타입 
+			data : JSON.stringify(likevalue),
+			//{comlist : comlist},
+			contentType : 'application/json; charset=utf-8', //json 타입으로 데이터를 보낼때 사용함 
+
+			success : function(response) {
+
+				if (response.result === "fail") {
+
+					console.error(response.message);
+					return;
+				}
+
+				console.log("성공입니다");
+				location.reload();
+				//console.log(response.data);
+				//response.data.contextpath = "${pageContext.request.contextPath}/noti/api/lab";
+
+			},
+			error : function(jqXHR, status, e) {
+				console.log("에러입니다");
+				console.error(status + " : " + e);
+				console.log(jqXHR);
+			}
+		});
+		
+		
+
+	
+	
+
+	
+
+	}
 </script>
 
 
@@ -264,7 +408,7 @@ pageContext.setAttribute("newLine", "\n");
 
                 <div class="w3-container">
                     <p>
-                    ${fn:replace(vounselingPrnts.wrtbtText, newLine,"<br>") }
+                    ${fn:replace(counselingPrnts.wrtbtText, newLine,"<br>") }
                     </p>
                 </div>
 
@@ -275,9 +419,17 @@ pageContext.setAttribute("newLine", "\n");
                     <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large disabled">
                         조회수 <span class="w3-badge w3-white">${counselingPrnts.findCo }</span>
                     </div>
-                    <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                       공감 <span class="w3-badge w3-white">${counselingPrnts.rcmdCo }</span>
-                    </div>
+                    
+                   
+					 
+					 	 
+                   		 <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
+                      	<a class="like${counselingPrnts.wrtbtNo }" onclick="likeupdate(${counselingPrnts.wrtbtNo },'like')"> 공감 <span class="w3-badge w3-white">${counselingPrnts.rcmdCo }</span></a>
+                   		 </div>
+                  
+                 
+                    
+                    
                     <div class="dropup option">
                         <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
                             <i class="glyphicon glyphicon-option-horizontal"></i>
@@ -362,12 +514,17 @@ pageContext.setAttribute("newLine", "\n");
                 </div>
 
                 <div class="w3-container">
+                
+                 <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
+                  <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'like')">  Up <span class="w3-badge w3-white">${counselingReplyList.rcmdCo }</span></a>
+                  </div>
+                   
+                       
                     <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                        Up <span class="w3-badge w3-white">${counselingReplyList.rcmdCo}</span>
+                     <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'dislike')">  Down <span class="w3-badge w3-white">${counselingReplyList.ncmdCo }</span></a>
                     </div>
-                    <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                        Down <span class="badge">${counselingReplyList.ncmdCo}</span>
-                    </div>
+
+
 
                     <div class="dropup option">
                         <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
@@ -416,10 +573,12 @@ pageContext.setAttribute("newLine", "\n");
 
                 <div class="w3-container">
                     <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                        Up <span class="w3-badge w3-white">${counselingReplyList.rcmdCo}</span>
-                    </div>
+                  <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'like')">  Up <span class="w3-badge w3-white">${counselingReplyList.rcmdCo }</span></a>
+                  </div>
+                   
+                       
                     <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                        Down <span class="badge">${counselingReplyList.ncmdCo}</span>
+                     <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'dislike')">  Down <span class="w3-badge w3-white">${counselingReplyList.ncmdCo }</span></a>
                     </div>
                     <div class="dropup option">
                         <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">

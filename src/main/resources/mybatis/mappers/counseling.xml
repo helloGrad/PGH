@@ -96,12 +96,30 @@
 		    PRNTS_WRTBT_NO, CWR_DSTNCT, WRITR_INFO_OPNG_YN, CONSL_BBS_DSTNCT,ORGNZ_NO)
 			values (null, #{wrtbtText },'답글',now(),"9999-12-31 23:59:59",#{mbNo }, #{bbsNo },'상담게시판', 0,0,0,
 			(select GROUP_NO from WETBT a where wrtbt_no=#{prntsWrtbtNo }),
-			(select max(ORDER_NO) from WETBT a where wrtbt_no=#{prntsWrtbtNo }),
+			(select max(ORDER_NO)+1 from WETBT a where wrtbt_no=#{prntsWrtbtNo }),
 			 1,#{prntsWrtbtNo }, '답변글', #{writrInfoOpngYn },
 			 (select CONSL_BBS_DSTNCT from WETBT a where WRTBT_NO=#{prntsWrtbtNo }), #{orgnzNo } )
 		]]>
 	</insert>
 	
+	<!-- 박가혜 -->
 
+		<update id="updateFindCo" parameterType="long">
+			<![CDATA[
+				update WETBT set FIND_CO=FIND_CO+1 where WRTBT_NO=#{no }
+			]]>
+			
+		</update>
+
+	<!-- 박가혜 -->
+	<select id="getLike" parameterType="map" resultType="counselingVo">
+		<![CDATA[
+		select m.WRTBT_NO wrtbtNo,m.MB_NO mbNo,m.INFO_DSTNCT infroDstnct
+		from mb_by_wrtbt_info m, wetbt w
+		where m.WRTBT_NO = w.WRTBT_NO 
+		and ((m.WRTBT_NO=#{no} and m.MB_NO=#{mbNo}) or (w.PRNTS_WRTBT_NO=#{no} and m.MB_NO=#{mbNo})) ;
+		]]>
+	</select>
+	
 
 </mapper>

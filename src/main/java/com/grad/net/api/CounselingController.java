@@ -65,6 +65,21 @@ public class CounselingController {
 		return JSONResult.success(counselingVo);
 	}
 	
+	/**
+	 * 박가혜 2017-08-26
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/likeadd", method = RequestMethod.POST) // 좋아요 +
+	public JSONResult CounselingLikeAdd(Model model, @RequestBody CounselingVo counselingVo) {
+
+		
 	
+
+		System.out.println(counselingVo);
+
+		
+
+		return JSONResult.success(counselingVo);
+	}
 
 }

@@ -2,6 +2,8 @@ package com.grad.net;
 
 
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ import com.grad.net.security.AuthUser;
 import com.grad.net.service.CounselingService;
 import com.grad.net.vo.CounselingVo;
 import com.grad.net.vo.MemberVo;
+
+import net.sf.json.JSONArray;
 
 
 
@@ -59,20 +63,64 @@ public class CounselingController {
 	public String counselingDetail( Model model, @RequestParam("no") Long no,@AuthUser MemberVo authUser, @RequestParam("type") String type) {
 		
 		
+		//System.out.println(authUser.getMbNo()+" "+no);
+		CounselingVo counselingPrnts = counselingService.counselingPrnts(no); //원글
+		List<CounselingVo> counselingReplyList = counselingService.counselingReplyDetail(no); //답글
+		List<CounselingVo> existLike =counselingService.existLike(authUser.getMbNo(),no);
 		
-		CounselingVo counselingPrnts = counselingService.counselingPrnts(no);
-		List<CounselingVo> counselingReplyList = counselingService.counselingReplyDetail(no);
+	
+		
+
 		
 		//조횟수 
-		//counselingService.findCoUpdate();
+		//counselingService.findCoUpdate(no);
+		
+		
 
 		model.addAttribute("authUser", authUser);
 		model.addAttribute("counselingPrnts", counselingPrnts);
 		model.addAttribute("counselingReplyList", counselingReplyList);
-		model.addAttribute("type", type);
+		model.addAttribute("type", type); //제목클릭 , 답변하기 클릭을 구분하기 위해서 
+		model.addAttribute("existLike", existLike); //좋아요 싫어요
 		
+		
+		JSONArray jsonArray = new JSONArray();
+		JSONArray jsonArray2 = new JSONArray();
+		JSONArray jsonArray3 = new JSONArray();
+		
+		
+		
+		CounselingVo counselingPrnts2 = new CounselingVo();
+		counselingPrnts2.setWrtbtNo(counselingPrnts.getWrtbtNo());
+			
+		List<CounselingVo> counselingReplyList2 = new ArrayList<CounselingVo>();
+		
+		//counselingReplyList2.Collections.addAll( counselingReplyList ); 
+
+//		Collections.copy(counselingReplyList2, counselingReplyList);
 
 		
+		for(int i=0; i<counselingReplyList.size(); i++) {
+			
+			counselingReplyList2.add(new CounselingVo());
+			counselingReplyList2.get(i).setWrtbtNo(counselingReplyList.get(i).getWrtbtNo());
+			//System.out.println(counselingReplyList2.get(i).getWrtbtNo());
+			
+	
+		}
+
+		//System.out.println(counselingReplyList2);
+		
+	
+		model.addAttribute("jsoncounselingPrnts", jsonArray.fromObject(counselingPrnts2));
+		model.addAttribute("jsonexistLike", jsonArray2.fromObject(existLike)); 
+		
+		model.addAttribute("jsoncounselingReply", jsonArray3.fromObject(counselingReplyList2)); 
+	
+		
+		
+		
+	
 
 		
 		return "/counseling/detail";
