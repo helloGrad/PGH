@@ -41,7 +41,7 @@ public class CounselingController {
 	@RequestMapping("/list")
 	public String counselingList(Model model, @AuthUser MemberVo authUser) {
 
-		List<CounselingVo> counselingList= counselingService.counselingList();
+		List<CounselingVo> counselingList= counselingService.getCounselingList();
 		List<CounselingVo> ReplyList= counselingService.getReplyList();
 	
 		model.addAttribute("authUser", authUser);
@@ -64,8 +64,8 @@ public class CounselingController {
 		
 		
 		//System.out.println(authUser.getMbNo()+" "+no);
-		CounselingVo counselingPrnts = counselingService.counselingPrnts(no); //원글
-		List<CounselingVo> counselingReplyList = counselingService.counselingReplyDetail(no); //답글
+		CounselingVo counselingPrnts = counselingService.getCounselingPrnts(no); //원글
+		List<CounselingVo> counselingReplyList = counselingService.getCounselingReplyDetail(no); //답글
 		List<CounselingVo> existLike =counselingService.existLike(authUser.getMbNo(),no);
 		
 	
@@ -73,7 +73,7 @@ public class CounselingController {
 
 		
 		//조횟수 
-		//counselingService.findCoUpdate(no);
+		//counselingService.ChangefindCo(no);
 		
 		
 
@@ -94,10 +94,7 @@ public class CounselingController {
 		counselingPrnts2.setWrtbtNo(counselingPrnts.getWrtbtNo());
 			
 		List<CounselingVo> counselingReplyList2 = new ArrayList<CounselingVo>();
-		
-		//counselingReplyList2.Collections.addAll( counselingReplyList ); 
 
-//		Collections.copy(counselingReplyList2, counselingReplyList);
 
 		
 		for(int i=0; i<counselingReplyList.size(); i++) {
@@ -109,7 +106,7 @@ public class CounselingController {
 	
 		}
 
-		//System.out.println(counselingReplyList2);
+		//System.out.println(existLike);
 		
 	
 		model.addAttribute("jsoncounselingPrnts", jsonArray.fromObject(counselingPrnts2));
@@ -118,9 +115,7 @@ public class CounselingController {
 		model.addAttribute("jsoncounselingReply", jsonArray3.fromObject(counselingReplyList2)); 
 	
 		
-		
-		
-	
+
 
 		
 		return "/counseling/detail";

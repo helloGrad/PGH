@@ -28,7 +28,7 @@
 			 CONSL_BBS_DSTNCT conslBbsDstnct,ORGNZ_NO orgnzNo, (select count(*) from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO) count 
  			from wetbt w
  			where WRTBT_TYPE_DSTNCT='원글'
- 			group by AVLBL_BEGIN_DT desc;
+ 			order by w.RCMD_CO desc;
 			
 			]]>
 		</select>
@@ -47,7 +47,7 @@
              (select RCMD_CO  from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO   group by RCMD_CO desc limit 1) rcmdCo          
 			 from wetbt w
 			 where WRTBT_TYPE_DSTNCT='원글'
-			 group by AVLBL_BEGIN_DT desc;
+			 order by RCMD_CO desc;
 			
 			]]>
 		</select>
@@ -121,5 +121,71 @@
 		]]>
 	</select>
 	
+		<!-- 박가혜 -->
+	<select id="selectLikeOne" parameterType="map" resultType="counselingVo">
+		<![CDATA[
+		select m.WRTBT_NO wrtbtNo,m.MB_NO mbNo,m.INFO_DSTNCT infroDstnct,w.RCMD_CO rcmdCo,w.NCMD_CO ncmdCo
+		from mb_by_wrtbt_info m,wetbt w
+		where m.WRTBT_NO = w.WRTBT_NO and m.WRTBT_NO=#{no} and m.MB_NO=#{mbNo};
+		]]>
+	</select>
+	
+	
+	<!-- 박가혜 -->
+	<delete id="deleteLike" parameterType="map">
+	<![CDATA[
+	
+		delete from mb_by_wrtbt_info where WRTBT_NO=#{wrtbtNo } and MB_NO=#{mbNo };
+		
+	]]>
+	
+	</delete>
+	
+	<!-- 박가혜 -->
+
+	<update id="updateDownLike" parameterType="map">
+			<![CDATA[
+				update wetbt set RCMD_CO=RCMD_CO-1 where WRTBT_NO=#{wrtbtNo }
+			]]>
+			
+	</update>
+	
+	<!-- 박가혜 -->
+
+	<update id="updateDownDislike" parameterType="map">
+			<![CDATA[
+				update wetbt set NCMD_CO=NCMD_CO-1 where WRTBT_NO=#{wrtbtNo }
+			]]>
+			
+	</update>
+	
+	
+	
+	<!-- 박가혜 -->
+
+	<insert id="insertLike" parameterType="map">
+		<![CDATA[	
+			insert into mb_by_wrtbt_info (WRTBT_NO, MB_NO, INFO_DSTNCT) values (#{wrtbtNo },#{mbNo },#{infroDstnct });
+		]]>
+	</insert>
+	
+	
+		<!-- 박가혜 -->
+
+	<update id="updateUpLike" parameterType="map">
+			<![CDATA[
+				update wetbt set RCMD_CO=RCMD_CO+1 where WRTBT_NO=#{wrtbtNo }
+			]]>
+			
+	</update>
+	
+	<!-- 박가혜 -->
+
+	<update id="updateUpDislike" parameterType="map">
+			<![CDATA[
+				update wetbt set NCMD_CO=NCMD_CO+1 where WRTBT_NO=#{wrtbtNo }
+			]]>
+			
+	</update>
 
 </mapper>

@@ -32,7 +32,7 @@ public class CounselingDao {
 	/**
 	 * 박가혜 2017-08-23
 	 */
-	public List<CounselingVo> getcounselingList() {
+	public List<CounselingVo> getCounselingList() {
 		return sqlSession.selectList("counseling.getcounselingList");
 	}
 	/**
@@ -44,7 +44,7 @@ public class CounselingDao {
 	/**
 	 * 박가혜 2017-08-24
 	 */
-	public CounselingVo getcounselingPrnts(Long no) {
+	public CounselingVo getCounselingPrnts(Long no) {
 		CounselingVo vo = sqlSession.selectOne("counseling.getcounselingPrnts", no);
 		return vo;
 	}
@@ -79,5 +79,63 @@ public class CounselingDao {
 		
 		return sqlSession.selectList("counseling.getLike", map);
 	}
+	
+	/**
+	 * 박가혜 2017-08-28
+	 */
+	public CounselingVo selectLikeOne(Map<String, Object> map) {
+		CounselingVo vo = sqlSession.selectOne("counseling.selectLikeOne", map);
+		return vo;
+	}
+	
+	
+	
+	/**
+	 * 박가혜 2017-08-28
+	 */
+	public void deleteLike(Map<String, Object> map) {
+		
+		sqlSession.delete("counseling.deleteLike",map);
 
+	}
+	
+	/**
+	 * 박가혜 2017-08-28
+	 */
+	public void insertLike(Map<String, Object> map) {
+		
+		sqlSession.insert("counseling.insertLike",map);
+
+	}
+	
+	/**
+	 * 박가혜 2017-08-25
+	 */
+	public void updateDownLike(Long wrtbtNo) {
+		sqlSession.update("counseling.updateDownLike",wrtbtNo);
+	}
+
+	
+	/**
+	 * 박가혜 2017-08-25
+	 */
+	public void updateDownDislike(Long wrtbtNo) {
+		sqlSession.update("counseling.updateDownDislike",wrtbtNo);
+	}
+
+	/**
+	 * 박가혜 2017-08-25
+	 */
+	public void updateUpLike(Long wrtbtNo) {
+		sqlSession.update("counseling.updateUpLike",wrtbtNo);
+		
+	}
+
+	
+	/**
+	 * 박가혜 2017-08-25
+	 */
+	public void updateUpDislike(Long wrtbtNo) {
+		sqlSession.update("counseling.updateUpDislike",wrtbtNo);
+	}
 }

@@ -96,15 +96,15 @@ pageContext.setAttribute("newLine", "\n");
 		
 		var existLikelist = []; 
 		
-		<c:forEach items="${existLike}" var="item">
-		existLikelist.push("${item}");
-		</c:forEach>
+		//<c:forEach items="${existLike}" var="item">
+		//existLikelist.push("${item}");
+		//</c:forEach>
 		
 		
 		var counselingPrnts = JSON.parse('${jsoncounselingPrnts}');
 		var existLike = JSON.parse('${jsonexistLike}');
 		var counselingReply = JSON.parse('${jsoncounselingReply}');
-		
+
 	
 
 
@@ -121,11 +121,6 @@ pageContext.setAttribute("newLine", "\n");
 		}
 		
 		
-		
-		
-		
-		
-
 
 		for( var i=0; i<existLike.length; i++){
 			
@@ -143,7 +138,7 @@ pageContext.setAttribute("newLine", "\n");
 				
 				//$('.'+link).attr('disabled',false);
 				
-				$('.'+link).css({ 'pointer-events': 'none'});
+				$('.'+link).css({ 'background-color': 'yellow'});
 			
 				
 			}
@@ -151,20 +146,28 @@ pageContext.setAttribute("newLine", "\n");
 			
 		}
 		
-		for( var i=0; i<existLike.length; i++){
+		
+		console.log(existLike);
+		console.log(counselingReply);
+	
 			
-			for( var j=0; i<counselingReply.length; i++){
-				if(existLike[i].wrtbtNo == counselingReply[j].wrtbtNo){
+			for( var i=0; i<counselingReply.length; i++){
+				
+				for( var j=0; j<existLike.length; j++){
+				
+				if(existLike[j].wrtbtNo == counselingReply[i].wrtbtNo){
 			
 				
 					//$("a").attr("like", "like"+existLike[i].wrtbtNo).removeAttr('href');
 	
-					var link ="like"+existLike[i].wrtbtNo;
+					var link ="like"+existLike[j].wrtbtNo;
 					
 					console.log(link);
 					list.push(link);
 					
-					$('.'+link).css({ 'pointer-events': 'none'});
+					$('.'+link).css({ 'background-color': 'yellow'});
+					
+					console.log("css 출력");
 				
 				}
 			}
@@ -299,7 +302,7 @@ pageContext.setAttribute("newLine", "\n");
 			
 		}
 	
-		console.log(num+" "+value+""+authUser);
+		console.log(num+" "+value+" 사용자id :"+authUser);
 	
 		
 		var likevalue = {
@@ -314,7 +317,6 @@ pageContext.setAttribute("newLine", "\n");
 			type : "post",
 			dataType : "json", // 받아야되는 데이터 타입 
 			data : JSON.stringify(likevalue),
-			//{comlist : comlist},
 			contentType : 'application/json; charset=utf-8', //json 타입으로 데이터를 보낼때 사용함 
 
 			success : function(response) {
@@ -326,8 +328,20 @@ pageContext.setAttribute("newLine", "\n");
 				}
 
 				console.log("성공입니다");
-				location.reload();
-				//console.log(response.data);
+				//location.reload();
+				console.log(response.data);
+				
+				if(value == 'like'){
+
+					console.log(response.data.rcmdCo);
+					$('.like'+num).html("공감" + response.data.rcmdCo); //
+					
+				}else{
+					
+					console.log(response.data.ncmdCo);
+					$('.like'+num).html(response.data.ncmdCo);
+					
+				}
 				//response.data.contextpath = "${pageContext.request.contextPath}/noti/api/lab";
 
 			},
@@ -424,7 +438,7 @@ pageContext.setAttribute("newLine", "\n");
 					 
 					 	 
                    		 <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                      	<a class="like${counselingPrnts.wrtbtNo }" onclick="likeupdate(${counselingPrnts.wrtbtNo },'like')"> 공감 <span class="w3-badge w3-white">${counselingPrnts.rcmdCo }</span></a>
+                      	<a class="like${counselingPrnts.wrtbtNo }" onclick="likeupdate(${counselingPrnts.wrtbtNo },'like')" value="like"> 공감 <span class="w3-badge w3-white">${counselingPrnts.rcmdCo }</span></a>
                    		 </div>
                   
                  
@@ -516,12 +530,12 @@ pageContext.setAttribute("newLine", "\n");
                 <div class="w3-container">
                 
                  <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                  <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'like')">  Up <span class="w3-badge w3-white">${counselingReplyList.rcmdCo }</span></a>
+                  <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'like')" value="like" >  Up <span class="w3-badge w3-white">${counselingReplyList.rcmdCo }</span></a>
                   </div>
                    
                        
                     <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                     <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'dislike')">  Down <span class="w3-badge w3-white">${counselingReplyList.ncmdCo }</span></a>
+                     <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'dislike')" value="dislike">  Down <span class="w3-badge w3-white">${counselingReplyList.ncmdCo }</span></a>
                     </div>
 
 
@@ -570,15 +584,17 @@ pageContext.setAttribute("newLine", "\n");
                 <div class="w3-container">
                     <p>${counselingReplyList.wrtbtText} </p>
                 </div>
+                
+                
 
                 <div class="w3-container">
                     <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                  <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'like')">  Up <span class="w3-badge w3-white">${counselingReplyList.rcmdCo }</span></a>
+                  <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'like')" value="like">  Up <span class="w3-badge w3-white">${counselingReplyList.rcmdCo }</span></a>
                   </div>
                    
                        
                     <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                     <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'dislike')">  Down <span class="w3-badge w3-white">${counselingReplyList.ncmdCo }</span></a>
+                     <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'dislike')" value="dislike">  Down <span class="w3-badge w3-white">${counselingReplyList.ncmdCo }</span></a>
                     </div>
                     <div class="dropup option">
                         <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
