@@ -67,6 +67,11 @@ public class MemberDao {
 		return sqlSession.selectOne("member.getBySns", iden);
 	}
 
+	
+	public void updateInfoYn(Long mbNo){
+		
+		sqlSession.update("member.updateInfoYn", mbNo);
+	}
 
 
 }

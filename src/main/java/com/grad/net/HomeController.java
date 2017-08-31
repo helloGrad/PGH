@@ -27,6 +27,10 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public String home1(Locale locale, Model model, @RequestBody MemberVo memberVo) {
 		System.out.println(memberVo.getEmail());		
+		
+		
+		
+		
 		return "home";
 	}
 	

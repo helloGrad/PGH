@@ -58,7 +58,8 @@ pageContext.setAttribute("newLine", "\n");
    		cursor: default;
 		}
 
-	
+		.winter { border:7px solid #dddddd; 
+					background-color: yellow;}
 
     </style>
     
@@ -86,6 +87,9 @@ pageContext.setAttribute("newLine", "\n");
 //박가혜 2017-08-24
 
 	var list = [];
+	var counselingPrnts = JSON.parse('${jsoncounselingPrnts}');
+	var existLike = JSON.parse('${jsonexistLike}');
+	var counselingReply = JSON.parse('${jsoncounselingReply}');
 
 	$(function() {
 		
@@ -101,9 +105,7 @@ pageContext.setAttribute("newLine", "\n");
 		//</c:forEach>
 		
 		
-		var counselingPrnts = JSON.parse('${jsoncounselingPrnts}');
-		var existLike = JSON.parse('${jsonexistLike}');
-		var counselingReply = JSON.parse('${jsoncounselingReply}');
+	
 
 	
 
@@ -130,7 +132,7 @@ pageContext.setAttribute("newLine", "\n");
 				
 				//$("a").attr("like", "like"+existLike[i].wrtbtNo).removeAttr('href');
 
-				var link ="like"+existLike[i].wrtbtNo;
+				var link ="like"+existLike[i].wrtbtNo+"like";
 				
 				console.log(link);
 				list.push(link);
@@ -138,7 +140,7 @@ pageContext.setAttribute("newLine", "\n");
 				
 				//$('.'+link).attr('disabled',false);
 				
-				$('.'+link).css({ 'background-color': 'yellow'});
+				$('.'+link).addClass("winter");
 			
 				
 			}
@@ -160,14 +162,18 @@ pageContext.setAttribute("newLine", "\n");
 				
 					//$("a").attr("like", "like"+existLike[i].wrtbtNo).removeAttr('href');
 	
-					var link ="like"+existLike[j].wrtbtNo;
-					
+					var link ="like"+existLike[j].wrtbtNo+"like";
+
+					var dislink ="like"+existLike[j].wrtbtNo+"dislike";
 					console.log(link);
 					list.push(link);
 					
-					$('.'+link).css({ 'background-color': 'yellow'});
+					console.log(dislink);
+					list.push(dislink);
 					
-					console.log("css 출력");
+					$('.'+link).addClass("winter");
+					$('.'+dislink).addClass("winter");
+					
 				
 				}
 			}
@@ -333,13 +339,90 @@ pageContext.setAttribute("newLine", "\n");
 				
 				if(value == 'like'){
 
-					console.log(response.data.rcmdCo);
-					$('.like'+num).html("공감" + response.data.rcmdCo); //
+					console.log("공감버튼");
+					
+					 
+					 var check=0;
+					 var result;
+					 
+					 for( var i=0; i<counselingReply.length; i++){
+						 
+						 if(num== counselingReply[i].wrtbtNo){ //답변일경우
+							 
+							 check=1;
+							 
+						 }
+						 
+					 }
+					 
+					 if(check ==1){ //답변인 경우 up
+						 
+							for( var i=0; i<existLike.length; i++){
+								if(num== counselingReply[i].wrtbtNo){
+									
+									result = existLike[i].infoDstnct;
+								}
+								
+								
+							}
+							
+							//if(result == 'like'){
+						 
+						 
+						 	$(".like"+num+"like").html("<a class='like"+response.data.wrtbtNo+"like' onclick='likeupdate("+response.data.wrtbtNo+",'like')' value='like'> Up <span class='w3-badge w3-white'>"+response.data.rcmdCo+"</span></a>");
+							 if($(".like"+num+"dislike").hasClass("winter") === true) {
+								 $(".like"+num+"dislike").removeClass("winter");
+								 $(".like"+num+"like").removeClass("winter");
+								}else{
+									
+									 $(".like"+num+"dislike").addClass("winter");
+									 $(".like"+num+"like").addClass("winter");
+								}		
+						
+							//}
+						 
+					 }else{ //답변이 아닌경우
+					 	$(".like"+num+"like").html("<a class='like"+response.data.wrtbtNo+"like' onclick='likeupdate("+response.data.wrtbtNo+",'like')' value='like'> 공감 <span class='w3-badge w3-white'>"+response.data.rcmdCo+"</span></a>");
+	
+					 	 if($(".like"+num+"like").hasClass("winter") === true) {
+							 $(".like"+num+"like").removeClass("winter");
+							}else{
+								
+								 $(".like"+num+"like").addClass("winter");
+							}
+
+						}
+
+						
+                     
 					
 				}else{
+					console.log("비공감버튼");
 					
-					console.log(response.data.ncmdCo);
-					$('.like'+num).html(response.data.ncmdCo);
+					for( var i=0; i<existLike.length; i++){
+						if(num== counselingReply[i].wrtbtNo){
+							
+							result = existLike[i].infoDstnct;
+						}
+						
+						
+					}
+					
+					//if(result == 'dislike'){
+						
+						 $(".like"+num+"dislike").html("<a class='like"+response.data.wrtbtNo+"dislike' onclick='likeupdate("+response.data.wrtbtNo+",'dislike')' value='dislike'> Down <span class='w3-badge w3-white'>"+response.data.ncmdCo+"</span></a>");
+
+						 if($(".like"+num+"dislike").hasClass("winter") === true) {
+							 $(".like"+num+"dislike").removeClass("winter");
+							 $(".like"+num+"like").removeClass("winter");
+							}else{
+								
+								 $(".like"+num+"dislike").addClass("winter");
+								 $(".like"+num+"like").addClass("winter");
+							}	
+				//	}
+					
+						
 					
 				}
 				//response.data.contextpath = "${pageContext.request.contextPath}/noti/api/lab";
@@ -438,7 +521,7 @@ pageContext.setAttribute("newLine", "\n");
 					 
 					 	 
                    		 <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                      	<a class="like${counselingPrnts.wrtbtNo }" onclick="likeupdate(${counselingPrnts.wrtbtNo },'like')" value="like"> 공감 <span class="w3-badge w3-white">${counselingPrnts.rcmdCo }</span></a>
+                      	<a class="like${counselingPrnts.wrtbtNo }like" onclick="likeupdate(${counselingPrnts.wrtbtNo },'like')" value="like"> 공감 <span class="w3-badge w3-white">${counselingPrnts.rcmdCo }</span></a>
                    		 </div>
                   
                  
@@ -530,12 +613,12 @@ pageContext.setAttribute("newLine", "\n");
                 <div class="w3-container">
                 
                  <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                  <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'like')" value="like" >  Up <span class="w3-badge w3-white">${counselingReplyList.rcmdCo }</span></a>
+                  <a class="like${counselingReplyList.wrtbtNo }like" onclick="likeupdate(${counselingReplyList.wrtbtNo },'like')" value="like" >  Up <span class="w3-badge w3-white">${counselingReplyList.rcmdCo }</span></a>
                   </div>
                    
                        
                     <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                     <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'dislike')" value="dislike">  Down <span class="w3-badge w3-white">${counselingReplyList.ncmdCo }</span></a>
+                     <a class="like${counselingReplyList.wrtbtNo }dislike" onclick="likeupdate(${counselingReplyList.wrtbtNo },'dislike')" value="dislike">  Down <span class="w3-badge w3-white">${counselingReplyList.ncmdCo }</span></a>
                     </div>
 
 
@@ -589,12 +672,12 @@ pageContext.setAttribute("newLine", "\n");
 
                 <div class="w3-container">
                     <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                  <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'like')" value="like">  Up <span class="w3-badge w3-white">${counselingReplyList.rcmdCo }</span></a>
+                  <a class="like${counselingReplyList.wrtbtNo }like" onclick="likeupdate(${counselingReplyList.wrtbtNo },'like')" value="like">  Up <span class="w3-badge w3-white">${counselingReplyList.rcmdCo }</span></a>
                   </div>
                    
                        
                     <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-                     <a class="like${counselingReplyList.wrtbtNo }" onclick="likeupdate(${counselingReplyList.wrtbtNo },'dislike')" value="dislike">  Down <span class="w3-badge w3-white">${counselingReplyList.ncmdCo }</span></a>
+                     <a class="like${counselingReplyList.wrtbtNo }dislike" onclick="likeupdate(${counselingReplyList.wrtbtNo },'dislike')" value="dislike">  Down <span class="w3-badge w3-white">${counselingReplyList.ncmdCo }</span></a>
                     </div>
                     <div class="dropup option">
                         <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">

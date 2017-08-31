@@ -53,7 +53,29 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession(true);
 		
 		session.setAttribute("authUser", memberVo);
-		response.sendRedirect(request.getContextPath()+"/");
+		
+	
+		
+		/**
+		 * 박가혜 2017-08-31 맞춤정보 제안 페이지
+		 */
+	
+		
+
+		if(memberVo.getInfoYn().equals("N")) { //건너뛰기 안헀으면 
+			
+			response.sendRedirect(request.getContextPath()+"/user/mbinfo");
+			
+			
+		}else {
+			
+			
+			response.sendRedirect(request.getContextPath()+"/");
+			
+		}
+		
+		
+
 		
 		return false;
 	}	

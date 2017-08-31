@@ -45,8 +45,8 @@
 			//alert(JSON.stringify(vo));
 
 			$.ajax({
-				url : "/net/user/snslogin",
-				type : "post",
+				url : "/net/api/snslogin",
+				//type : "post",
 				data : "name="+vo.name
 				 +"&email="+vo.email
 				 +"&gender="+vo.gender
@@ -64,7 +64,25 @@
 						return;
 					}
 
-					parent.window.location.href = "/net/";
+
+					
+					/**
+					 * 박가혜 2017-08-31 맞춤정보 제안 페이지
+					 */
+					
+						if(response.data.infoYn == "N" ) { //건너뛰기 안헀으면 
+							
+						
+						
+							parent.window.location.href = "/net/user/mbinfo";
+							
+						}else {
+							parent.window.location.href = "/net/";
+						
+							
+						}
+					
+					
 
 				},
 				error : function(jqXHR, status, e) {

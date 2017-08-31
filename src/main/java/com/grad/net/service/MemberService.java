@@ -118,4 +118,11 @@ public class MemberService {
 		return memberDao.getUser(iden);
 
 	}
+	
+	public void changeInfoYn(Long mbNo){
+
+
+		 memberDao.updateInfoYn(mbNo);
+
+	}
 }

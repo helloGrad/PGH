@@ -41,6 +41,15 @@ public class MemberController {
 	public String login(Model model) {
 
 		System.out.println("login main");
+		
+		
+		//System.out.println("일반로그인과  sns로그인");
+		
+	
+		
+		
+		
+		
 		return "login";
 	}
 
@@ -48,6 +57,8 @@ public class MemberController {
 	public String register(@ModelAttribute MemberVo memberVo) {
 
 		System.out.println(memberVo.getEmail() + " " + memberVo.getPw() + " " + memberVo.getNknm());
+		
+		
 		memberService.register(memberVo);
 
 		return "redirect:/user/login";
@@ -118,6 +129,8 @@ public class MemberController {
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String mypage(Locale locale, Model model,@AuthUser MemberVo authUser) {
 		System.out.println(authUser.getMbDstnct());
+		
+		
 		return "mypage";
 	}
 
@@ -128,15 +141,19 @@ public class MemberController {
 	 */	
 	@Auth(role = Auth.Role.USER)
 	@RequestMapping(value = "/mbinfo", method = RequestMethod.GET)
-	public String mbinfo(Locale locale, Model model, @AuthUser MemberVo authUser) {
+	public String mbinfo(Locale locale, Model model, @AuthUser MemberVo authUser,
+			@RequestParam(value = "check", required = true, defaultValue = "0") int check) {
 
-		System.out.println("get : " + authUser.getIden());
-		System.out.println("get : " + authUser.getMbNo());
+		
+		//맞춤정보 페이지 똑같으면 들어오는 곳이 마이페이지인지 구분이 필요함...
+		System.out.println(check);
+		
 
-		List<CodeVo> userCodeVo = memberService.getMbinfoList(authUser);
-		List<CodeVo> codeVo = codeService.getCodeList();
-		model.addAttribute("Codelist", codeVo);
-		model.addAttribute("informationlist", userCodeVo);
+		//List<CodeVo> userCodeVo = memberService.getMbinfoList(authUser);
+		//List<CodeVo> codeVo = codeService.getCodeList();
+		//model.addAttribute("Codelist", codeVo);
+		//model.addAttribute("informationlist", userCodeVo);
+			model.addAttribute("check", check);
 
 		return "mbinfo";
 	}
@@ -144,29 +161,50 @@ public class MemberController {
 	@Auth(role = Auth.Role.USER)
 	@RequestMapping(value = "/mbinfo", method = RequestMethod.POST)
 	public String mbinfo(HttpServletRequest request, @AuthUser MemberVo authUser,
-			@RequestParam(value = "cnt", required = true, defaultValue = "0") int cnt) {
+			@RequestParam(value = "cnt", required = true, defaultValue = "0") int cnt,
+			@RequestParam(value = "check", required = true, defaultValue = "0") String check) {
 
 		Long mbNo = authUser.getMbNo();
 		List<String> information = new ArrayList<String>();
+		
+		
+		if(check.equals("Y")){ //다시는 안보겠습니다.
+			
+			
+			memberService.changeInfoYn(mbNo);
 
-		// System.out.println("사용자 번호 ; "+authUser.getMbNo());
-		// System.out.println("===cnt : "+cnt);
+			
+			//원하는 페이지도 가지고 와서 보여주기
+			
+			return "redirect:/";
+			
+			
+		}else {
+			
+			
+			// System.out.println("사용자 번호 ; "+authUser.getMbNo());
+			// System.out.println("===cnt : "+cnt);
 
-		for (int j = 1; j <= cnt; j++) {
-			for (int i = 0; i < request.getParameterValues("ch" + String.valueOf(j)).length; i++) {
-				information.add(request.getParameterValues("ch" + String.valueOf(j))[i]);
+			for (int j = 1; j <= cnt; j++) {
+				for (int i = 0; i < request.getParameterValues("ch" + String.valueOf(j)).length; i++) {
+					information.add(request.getParameterValues("ch" + String.valueOf(j))[i]);
+				}
 			}
+//			memberService.registerMbinfo(mbNo, information);
+			return "redirect:/user/mbinfo";
 		}
-
-		memberService.registerMbinfo(mbNo, information);
-		return "redirect:/user/mbinfo";
+			
 	}
+
+	
+
+	
 
 	@RequestMapping(value = "/mbinfo/modify", method = RequestMethod.POST)
 	public String mbinfoModifiy(@AuthUser MemberVo authUser,
 			@RequestParam(value = "info", required = true, defaultValue = "") String[] info) {
 
-		memberService.updateMbinfo(authUser.getMbNo(), info);
+		//memberService.updateMbinfo(authUser.getMbNo(), info);
 		return "redirect:/user/mbinfo";
 	}
 }
