@@ -1,34 +1,14 @@
 
-////구글 로그인 함수
-///*
-//function onSignIn(googleUser) {
-//	var profile = googleUser.getBasicProfile();
-//	var id = googleUser.getAuthResponse().id_token;
-//
-//	$.ajax({
-//		url : "/net/user/snslogin",
-//		type : "post",
-//		data : "name=" + profile.getName() + "&email=" + profile.getEmail()
-//				+ "&token=" + id + "&sns=google",
-//		success : function(response) {
-//			parent.window.location.href = "/net/orgnz";
-//		},
-//		error : function(jqXHR, status, e) {
-//			console.error(status + " : " + e);
-//		}
-//	});
-//
-//}
-//*/
-
-
 
 // 네이버 아이디 로그인 설정
 var naver_id_login = new naver_id_login("4XJQVjfPiPo3e5Xe23hL",
 		"http://127.0.0.1:8080/net/user/snslogin/");
 naver_id_login.setDomain(".127.0.0.1:8080/net/");
 var state = naver_id_login.getUniqState();
-naver_id_login.setButton("green", 3, 60);
+
+
+naver_id_login.setButton("green", 3, 48);
+
 naver_id_login.setDomain("YOUR_SERVICE_URL");
 naver_id_login.setState(state);
 naver_id_login.init_naver_id_login();

@@ -49,8 +49,7 @@
 
 				<!-- 페이스북 로그인 버튼  -->
 				<button type="button" class="button facebook" id="loginBtn">페이스북 로그인/회원가입</button>
-				<!-- 네이버 로그인 버튼 -->
-				<div id="naver_id_login"></div>
+				
 				<!-- 구글 로그인 버튼
 				<div class="g-signin2" data-onsuccess="onSignIn"></div>  -->
 			</div>

@@ -46,7 +46,7 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 //			}
 			
 			System.out.println(request.getContextPath());
-			response.sendRedirect(request.getContextPath()+"/user/login?result=fail");
+			response.sendRedirect(request.getContextPath()+"?result=fail");
 			return false;
 		}		
 		

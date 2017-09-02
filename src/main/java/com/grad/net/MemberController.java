@@ -40,7 +40,7 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
 
-		System.out.println("login main");
+		//System.out.println("login main");
 		
 		
 		//System.out.println("일반로그인과  sns로그인");
