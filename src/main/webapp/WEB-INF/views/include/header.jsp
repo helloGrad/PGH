@@ -27,6 +27,16 @@
 	rel="stylesheet">	
 <link href="${pageContext.request.contextPath}/resources/css/signup.css"
    rel="stylesheet">	
+   <link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap-social.css"
+	rel="stylesheet">	
+	   <link
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
+	rel="stylesheet">
+		   <link
+	href="${pageContext.request.contextPath}/resources/css/fontello-embedded.css"
+	rel="stylesheet">
+
 	
 <style>
 /*회원가입 버튼 페이지*/
@@ -41,24 +51,37 @@ button {
     width: 100%;
 }
 
+.btn-social>:first-child {
+width: 50px;
 
-.fbbtn {
-    padding: 14px 20px;
-    background-color: #4B66A0;
+
 }
 
-.naverbtn {
-    padding: 14px 20px;
-    background-color: #1EC545;
+.btn-social {
+
+text-align: center;
 }
+
+.socialbtn {
+     padding: 14px 20px;
+     margin: 10px 8px 4px 8px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+
+}
+
 
 .formbtn {
     padding: 14px 20px;
+     margin: 4px 8px 20px 8px;
     background-color: #FF0000;
+     font-size: 15px;
 }
 
 
-.naverbtn, .formbtn, .fbbtn {
+.socialbtn, .formbtn {
    width : 90%;
    position : relative;
    
@@ -72,6 +95,9 @@ button {
 
 .loginhr {
    width : 90%;
+   border-width: 5px; 
+   margin-top: 10px; 
+   margin-bottom: 10px; 
 }
 
 #loginchar{
@@ -110,7 +136,6 @@ input[type=text], input[type=password], input[type=email] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    text-align1: center;
      height: 48px;
 }
 
@@ -128,20 +153,74 @@ input[type=text], input[type=password], input[type=email] {
     float: left;
     padding-top: 0;
     padding-bottom: 0;
-    padding: 12px 20px;
-    margin: 8px 0;
+    padding: 5px 5px;
+    margin: 8px 8px 10px 15px;
 }
 
 .sighup {
     float: right;
     padding-top: 0;
     padding-bottom: 0;
-    padding: 12px 20px;
-    margin: 8px 0;
+    padding: 5px 5px;
+    margin: 8px 15px 10px 8px;
+}
+
+#naverLogo{
+background-size: cover;
+}
+
+
+.naverlogin{
+
+ background-color: #1EC800;
+}
+
+
+
+.naverlogin:hover{color:#fff;background-color:#1ED000;border-color:rgba(0,0,0,0.2)}
+
+.formbtn:hover{color:#fff;background-color:#FFC000;border-color:rgba(0,0,0,0.2)}
+
+
+ 			@media screen and (max-width: 400px) {
+                
+                .modal-content{
+                 width: 100%; height1: 100%; margin: 0; padding: 0;
+               
+
+                }
+            }
+            @media screen and (min-width: 401px) and (max-width: 600px) {
+               
+                .modal-content{
+                width: 100%; height1: 100%; margin: 0; padding: 0;
+               
+
+                }
+            }
+            @media screen and (min-width: 801px) {
+                
+            }
+
+ .modal_body {width:100%;height:100%;overflow-x:hidden;
+                            overflow-y:auto;position:relative;}
+
+.panel-header {
+    background-color: rgb(237, 239, 237);
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.close{
+ padding-top: 12px;
+padding : 20px 20px 10px 10px;
+
 }
 
 </style>
 <script>
+
+
 
 //2017-09-01 박가혜 
 	$(function() {
@@ -315,25 +394,37 @@ function login() {
 		</div>
 	</div>
 	
-	
 			
 			<div id="login" class="modal">
 		   <div class="modal-content">
+		   
+		  
+		   		 <span class="close">×</span>
+		
+		   		 
 		      <div class="signupbnt">
-		         <button type="button" class="fbbtn" id="loginBtn">페이스북으로 로그인</button>
-		         <div id="naver_id_login" class=""></div>
-       			<button type="button" class="naverbtn">네이버로 로그인</button> 
+		      	
+		       
+		          <a id="loginBtn" class="btn btn-social btn-facebook socialbtn">
+   				 <span class="fa fa-facebook"></span> 페이스북 아이디로 로그인
+ 				 </a>	
+		        
+		        	
+		         <a id="" class="naverlogin btn btn-social btn-facebook socialbtn">
+		          <span id="naverLogo" class="fa icon-naver_icon"></span> Naver 아이디로 로그인
+   				 
+ 				 </a>
+		     
        			 
 		         <hr class="loginhr">
-		         <div id="loginchar">또는</div>
-		         <hr class="loginhr">
+		    
 		         
-		         	<div class="form-group">
+		         	<div class="form-group1">
 					<input type="email"
 							class="form-control" id="email" name="iden"
 							placeholder="Enter email">
 					</div>
-					<div class="form-group">
+					<div class="form-group1">
 					 <input type="password"
 							class="form-control" id="pwd" name="pw"
 							placeholder="Enter password">
@@ -342,16 +433,22 @@ function login() {
 					
 					<div class="form-group">
 						<label class="remember-me"><input type="checkbox"> 로그인 상태 유지 </label>
-						<a href="javascript:void(0);" onclick="modalOpen2();" class="sighup" data-modal-href="/signup_modal?" data-modal-type="signup"> 회원 가입</a>
+						
+						<p class="sighup">
+						<a href="javascript:void(0);" onclick="modalOpen2();">비밀번호 찾기</a>  /  <a href="javascript:void(0);" onclick="modalOpen2();">회원가입</a>
+						</p>
+					    
 					</div>
 		         
 
 					
-		         <button type="submit" class="formbtn" onclick="modalOpen2();">로그인</button>
+		         <button type="submit" class="btn formbtn" onclick="modalOpen2();">로그인</button>
+		      	
 		      </div>
 		   </div>
 		</div>
 		
+	
 		
 		<div id="signup2" class="modal">
 		   <div class="modal-content">
@@ -390,6 +487,7 @@ function login() {
 				 
 				 
 				 	<button type="button" class="fbbtn" id="loginBtn">페이스북으로 로그인</button>
+				 	
        			   <button id="naver_id_login"  type="button" class="naverbtn">네이버로 로그인</button>
 				 	
 				 	<hr class="loginhr">
