@@ -24,8 +24,6 @@
  
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
 <link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">	
-<link href="${pageContext.request.contextPath}/resources/css/signup.css"
-   rel="stylesheet">
    
 
    <link
@@ -37,6 +35,8 @@
 
 
 	<link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet">
+	
+	
 
 <script>
 
@@ -105,24 +105,18 @@
 	})
 	
 	
-	  $("#naverLoginBtn2").hover(function(){
-		  
-	      $(".naverLogo").css("background-image",'url("/net/resources/images/logo-hover.png")');
-	      $(".naverLogo").css("background-size",'cover');
-	   }, function(){
-	      $(".naverLogo").css("background-image",'url("/net/resources/images/logo.png")');
-	      $(".naverLogo").css("background-size",'cover');
-	   })
 	
 	var modalOpen = function() {
 
-		   var modal = document.getElementById('signup1');
-
-		   modal.style.display = "block";
+		 var modal1 = document.getElementById('signup2');	
+		   var modal2 = document.getElementById('login');
+		   
+		   modal2.style.display = "block";
+		   modal1.style.display = "none";
 		   
 		   window.onclick = function(event) {
-		       if (event.target == modal) {
-		           modal.style.display = "none";
+		       if (event.target == modal2) {
+		           modal2.style.display = "none";
 		       }
 		   }
 		}
@@ -183,9 +177,6 @@
 				</c:choose>
 				<c:choose>
 					<c:when test="${empty authUser }">
-						<li><a
-							href="${pageContext.servletContext.contextPath }/user/login">로그인</a>
-						<li>
 						
 						<li>
 						<a id="myBtn" href="javascript:void(0);">로그인</a>
@@ -233,7 +224,7 @@
 		         
 		         	<div class="form-group1">
 					<input type="text"
-							class="form-control" id="email" name="iden"
+							class="form-control logininputbox" id="email" name="iden"
 							placeholder="Enter email">
 					</div>
 					
@@ -241,7 +232,7 @@
 					
 					<div class="form-group1">
 					 <input type="password"
-							class="form-control" id="pwd" name="pw"
+							class="form-control logininputbox" id="pwd" name="pw"
 							placeholder="Enter password">
 					</div>
 					
@@ -250,8 +241,6 @@
 					
 					 <div id="loginMsg" class="text-danger"></div>
 					 
-					<p class="text_notice">아이디 또는 비밀번호를 다시 확인하세요.</p>
-					
 					<div class="form-group">
 						<label class="remember-me"><input type="checkbox"> 로그인 상태 유지 </label>
 						
@@ -264,7 +253,9 @@
 
 					
 		         <button type="submit" class="btn formbtn" onclick="login();" >로그인</button>
-		      	
+		      	<div class="login">
+				
+			    </div>	
 		      	 
 			
 		      </div>
@@ -275,32 +266,96 @@
 		
 		
 		
-		<div id="signup2" class="modal">
-		   <div class="modal-content">
-		   
-		   		<div>
-		   			<button id="naverLoginBtn2" class="btn btn-social socialbtn naverlogin"  style='color:white;'>
-		          		<span class="fa naverLogo"></span> Naver 아이디로 로그인
- 				 	</button>
-		   		</div>
-		         
- 			
-		       
- 				 
- 			
-		      <form action="" id="sighupform">
-		      
-		      
-		         <label class="signupchar"><b>Email</b></label><br> <input
-		            type="text" placeholder="Enter Username" name="iden"> <br>
+	<div id="signup2" class="modal">
+		<div class="modal-content">
+			<span class="close">×</span>
+			
+			 <div class="signupbnt">
+		      	
+			<button id="facebookLogin"
+				class="btn btn-social btn-facebook socialbtn">
+				<span id="facebooklogo" class="fa fa-facebook"></span> 페이스북으로 계속하기
+			</button>
+			
+
 		
-		         <label class="signupchar"><b>Password</b></label><br> <input
-		            type="text" placeholder="Enter Password" name="password">
-		
-		         <button type="button" class="formbtn">회원가입</button>
-		      </form>
-		   </div>
+		   	<button id="naverLoginBtn2" class="btn btn-social socialbtn naverlogin"  style='color:white;'>
+		    <span id='naverLogo' class="fa "></span> 네이버로 계속하기
+ 			</button>
+		   	
+			</div>
+			
+			
+			
+			<div class="separator">
+				<hr class="signuphr">
+				<h6 class="texthr">또는</h6>
+				<hr class="signuphr">
+			</div>
+
+			<form action="#" id="join-form">
+				<div class="input">
+
+					<div class="signupinput">
+						<input type="text" class="inputbox" id="nickname"
+							placeholder="닉네임(2~8자리)" name="nknm">
+						<div class="checkinput" id="nicknamecheck">경고</div>
+					</div>
+
+					<div class="signupinput">
+						<input type="text" class="inputbox" id="remail" placeholder="이메일"
+							name="iden">
+						<div class="checkinput" id="emailcheck">경고</div>
+					</div>
+
+					<div class="signupinput">
+						<input type="text" class="inputbox" placeholder="비밀번호" id="rpwd"
+							name="password">
+						<div class="checkinput">경고</div>
+					</div>
+					<div class="signupinput" id="lastinput">
+						<input type="text" class="inputbox" placeholder="비밀번호 확인"
+							name="password">
+						<div class="checkinput">경고</div>
+					</div>
+
+					<hr class="loginhr">
+
+
+					<div class="gender">
+						<label class="genderlabel on" id="male"> <input
+							type="radio" name="gender" value="male" checked
+							onclick="changeColor(this);"> 남자
+						</label> <label class="genderlabel" id="female"> <input
+							type="radio" name="gender" value="female"
+							onclick="changeColor(this);">여자
+						</label>
+					</div>
+
+
+					<div class="birth">
+						<input type="number" name="birth" placeholder="년(4자리)"
+							maxlength="4" id="birthyn" max="9999" maxlength="4"
+							oninput="maxLengthCheck(this)">
+					</div>
+					<div class="birth">
+						<select id="birthm">
+							<option selected disabled>월</option>
+						</select>
+					</div>
+					<div class="birth">
+						<select id="birthd">
+							<option selected disabled>일</option>
+						</select>
+					</div>
+					<button type="submit" class="btn formbtn">회원가입</button>
+				</div>
+			</form>
+			<div class="login">
+				이미 가입한 회원이라면 <a href="#" onclick="modalOpen();">로그인 하러 가기</a>
+			</div>
 		</div>
+	</div>
 					
 		
 

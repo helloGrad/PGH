@@ -141,19 +141,18 @@ public class MemberController {
 	 */	
 	@Auth(role = Auth.Role.USER)
 	@RequestMapping(value = "/mbinfo", method = RequestMethod.GET)
-	public String mbinfo(Locale locale, Model model, @AuthUser MemberVo authUser,
-			@RequestParam(value = "check", required = true, defaultValue = "0") int check) {
+	public String mbinfo(Locale locale, Model model, @AuthUser MemberVo authUser
+			) {
 
 		
-		//맞춤정보 페이지 똑같으면 들어오는 곳이 마이페이지인지 구분이 필요함...
-		System.out.println(check);
+	
 		
 
 		//List<CodeVo> userCodeVo = memberService.getMbinfoList(authUser);
 		//List<CodeVo> codeVo = codeService.getCodeList();
 		//model.addAttribute("Codelist", codeVo);
 		//model.addAttribute("informationlist", userCodeVo);
-			model.addAttribute("check", check);
+		
 
 		return "mbinfo";
 	}
@@ -161,25 +160,12 @@ public class MemberController {
 	@Auth(role = Auth.Role.USER)
 	@RequestMapping(value = "/mbinfo", method = RequestMethod.POST)
 	public String mbinfo(HttpServletRequest request, @AuthUser MemberVo authUser,
-			@RequestParam(value = "cnt", required = true, defaultValue = "0") int cnt,
-			@RequestParam(value = "check", required = true, defaultValue = "0") String check) {
+			@RequestParam(value = "cnt", required = true, defaultValue = "0") int cnt) {
 
 		Long mbNo = authUser.getMbNo();
 		List<String> information = new ArrayList<String>();
 		
 		
-		if(check.equals("Y")){ //다시는 안보겠습니다.
-			
-			
-			memberService.changeInfoYn(mbNo);
-
-			
-			//원하는 페이지도 가지고 와서 보여주기
-			
-			return "redirect:/";
-			
-			
-		}else {
 			
 			
 			// System.out.println("사용자 번호 ; "+authUser.getMbNo());
@@ -192,7 +178,7 @@ public class MemberController {
 			}
 //			memberService.registerMbinfo(mbNo, information);
 			return "redirect:/user/mbinfo";
-		}
+		
 			
 	}
 

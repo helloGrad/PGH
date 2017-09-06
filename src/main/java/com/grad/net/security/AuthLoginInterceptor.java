@@ -37,13 +37,6 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		
 		if( memberVo == null){
 			
-//			String accept = request.getHeader("accept");			//������ Ŭ���̾�Ʈ�� ������ ������ ���ؼ� �Ѱ���
-//			if(accept.matches(".*application/json.*")){
-//				//�轼 ���̺귯���� ����Ͽ� �޼��������ͷ� json���·� ����
-//				//response.getOutputStream().write("{'result':'fail', 'message':'fail', 'data':{no:0}}");
-//			} else {
-//				response.sendRedirect(request.getContextPath()+"/login?result=fail");
-//			}
 			
 			System.out.println(request.getContextPath());
 			response.sendRedirect(request.getContextPath()+"?result=fail");

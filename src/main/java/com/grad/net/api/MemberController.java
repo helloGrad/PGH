@@ -136,7 +136,10 @@ public class MemberController {
 //		response.sendRedirect(request.getContextPath()+"/");
 		System.out.println("세션등록");
 		
-		return JSONResult.success(true);
+
+	
+		
+		return JSONResult.success(memberVo);
 
 	}
 	

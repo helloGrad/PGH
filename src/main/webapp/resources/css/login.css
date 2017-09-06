@@ -1,14 +1,54 @@
 
+/*----------------------------------------------------------------------------통합*/
 
-.loginbutton {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+.close {
+	padding-top: 5%;
+	padding : 20px 20px 0 10px;
+
 }
+
+
+.formbtn {
+	padding: 3%;
+	background-color: #FF4040;
+	font-size: 1.15em;
+	width: 90%;
+	padding: 3%;
+	margin: 5% 5% 0 5%;
+	color: white;
+}
+
+
+
+.signupbnt {
+   display: block;
+   text-align: center;
+}
+
+
+.modal {
+	display: none; 
+	position: fixed; 
+	z-index: 1; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%; 
+	overflow: auto; 
+	background-color: rgb(0, 0, 0); 
+	background-color: rgba(0, 0, 0, 0.4); 
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 5% auto 15% auto;
+	border: 1px solid #888;
+	width: 50%;
+	width: 400px;
+}
+
+
+/*--------------------------------------------------------------로그인*/
 
 .btn-social>:first-child {
 width: 50px;
@@ -32,13 +72,6 @@ text-align: center;
 }
 
 
-.formbtn {
-    padding: 14px 20px;
-     margin: 4px 8px 50px 8px;
-    background-color: #FF0000;
-     font-size: 15px;
-     color: #fff;
-}
 
 
 .socialbtn, .formbtn {
@@ -47,43 +80,10 @@ text-align: center;
    
 }
 
-.signupbnt {
-   display: block;
-   text-align: center;
-}
 
 
 
-#loginchar{
-   text-align: center;
-}
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; 
-    border: 1px solid #888;
-    width: 50%; 
-    width : 400px;
-}
-
-/* 회원가입 폼 */
-
-input[type=text], input[type=password], input[type=email] {
+.logininputbox {
     width: 90%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -94,14 +94,6 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 
-
-#sighupform {
-   text-align: center;
-}
-
-.signupchar {
-   text-align: left;
-}
 
 .remember-me {
     float: left;
@@ -118,7 +110,7 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 
-.naverLogo{
+#naverLogo{
 	
 background-image: url("/net/resources/images/logo.png");
 background-size: cover;
@@ -126,7 +118,8 @@ background-size: cover;
 }
 
 .naverlogin{
- background-color!: #1EC800;
+ background-color: #1EC800;
+ color:white;
 }
 
 
@@ -163,20 +156,9 @@ background-size: cover;
                 
             }
 
- .modal_body {width:100%;height:100%;overflow-x:hidden;
-                            overflow-y:auto;position:relative;}
 
-.panel-header {
-    background-color: rgb(237, 239, 237);
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
 
-.close{
- padding-top: 12px;
-padding : 20px 20px 0 10px;
 
-}
 
 .login-devider {
     position: relative;
@@ -209,15 +191,6 @@ padding : 20px 20px 0 10px;
     background: #FFF;
 }
 
-.text_notice {
-
-	text-align: left;
-    font-size: 12px;
-    line-height: 16px;
-    overflow: hidden;
-    margin: 5px 5px 0 20px;
-    color: #f00;
-}
 
 
 .text-danger {
@@ -225,5 +198,137 @@ padding : 20px 20px 0 10px;
    text-align: left;
    margin: 5px 5px 0 20px;
 }
+
+
+/*-----------------------------------------------------------------------회원가입*/
+
+
+#facebooklogo {
+	width: 14%;
+	line-height: 180%;
+}
+
+.btn.btn-block.btn-social.btn-facebook {
+	text-align: center;
+	margin: 1.5% 5% 1.5% 5%;
+	font-weight: bold;
+	font-size: 1.15em;
+}
+
+
+
+.input {
+	text-align: center;
+}
+
+.signupinput {
+	width: 90%;
+	height: 100%;
+	margin-bottom: 0;
+	padding: 1% 1% 1% 1%;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-bottom: none;
+	box-sizing: border-box;
+}
+
+/* 마지막 input은 border-bottom 이 생기도록*/
+#lastinput {
+	border-bottom: 1px solid #ccc;
+}
+
+
+
+/* 입력input과 경고문구가 뜨는 input창 */
+
+.inputbox, .checkinput {
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+/* 경고 문구창 뜨기 전에 글자 색*/
+.checkinput {
+	color: #FFFFFF;
+}
+
+/* 경고 문구창이 뜰 때 글자 css*/
+.oninput {
+	color: #ff0000;
+	text-align: left;
+}
+
+/* ---또는---*/
+.signuphr {
+	text-align: center;
+	display: inline-block;
+	margin: 0;
+	padding: 0% 2% 1% 0%;
+	width: 42%;
+	border-top: solid 1px #CCC;
+}
+
+.texthr {
+	display: inline-block;
+	margin: 0;
+}
+
+.separator {
+	text-align: center;
+	margin: 5%;
+}
+
+.hrchar {
+	width: 8%;
+	display: inline-block;
+}
+
+
+/*성별 선택 라디오 버튼*/
+
+input[type='radio'] {
+	display: none;
+}
+
+.genderlabel {
+	width: 44%;
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 2%;
+	margin: 0 0 2% 0;
+	font-weight: normal;
+}
+
+.on {
+	/*border : solid 1px ;*/
+	border: solid 1px #ff0000;
+}
+
+
+/* 생일 css */
+
+.birth {
+	width: 29%;
+	border: 1px solid #ccc;
+	padding: 1%;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	display: inline-block;
+}
+
+#birthyn, #birthm, #birthd {
+	width: 100%;
+	border: none;
+}
+
+/* 로그인 하러 가기 */
+
+.login {
+	padding: 20px;
+}
+
+
+
+
 
 

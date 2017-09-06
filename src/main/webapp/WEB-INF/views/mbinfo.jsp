@@ -127,7 +127,7 @@
 
 		<c:otherwise>
 			<form class="usermadeinfor_form" id="usermadeinfor_form" name="usermadeinfor_form" method="post" 
-			action="${pageContext.servletContext.contextPath }/user/mbinfo?check=N">
+			action="${pageContext.servletContext.contextPath }/user/mbinfo">
 				
 
 				<c:forEach items="${Codelist }" var="vo" varStatus="status">
@@ -143,19 +143,7 @@
 				
 				
 			</form>
-			<c:choose>		
-			<c:when test='${check == "0" }'>
-			<form class="usermadeinfor_form" id="usermadeinfor_form" name="usermadeinfor_form" method="post" 
-			action="${pageContext.servletContext.contextPath }/user/mbinfo?check=Y">
-				
-
-			
-				<button type="submit" id="mbinfo">건너뛰기(다시는보지않겠습니다)</button>
-				
-				
-			</form>
-			</c:when>
-			</c:choose>
+		
 		</c:otherwise>
 	</c:choose>
 	<c:import url="/WEB-INF/views/include/footer.jsp" />

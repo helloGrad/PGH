@@ -225,7 +225,7 @@ var naver_id_login = function (client_id,redirect_uri)
 		{
 			naver_id_login_contents=
 				"<a href='"+naver_id_login_url+"' "+naver_id_popup_option+" id='naver_id_login_anchor'>" +
-					"<button id='naverLoginBtn' class='naverlogin btn btn-social btn-facebook socialbtn'>" +
+					"<button id='naverLoginBtn' class='naverlogin btn btn-social socialbtn'>" +
 						"<span id='naverLogo' class='fa icon-naver_icon'></span>Naver 아이디로 로그인" +
 					"</button>" +
 				"</a> ";

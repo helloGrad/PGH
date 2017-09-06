@@ -20,6 +20,19 @@ $(function(){
 		$("#passwdMsg").empty();
 	})
 	
+	$(document).on('mouseover', '.naverlogin', function (event) { 
+		
+		$(this).find("#naverLogo").css("background-image",'url("/net/resources/images/logo-hover.png")');
+		$(this).find("#naverLogo").css("background-size",'cover');
+		$(this).find(".btn-social").css('background-color','#1BAA25');
+	});
+	
+	$(document).on('mouseout', '.naverlogin', function (event) { 
+		
+		$(this).find("#naverLogo").css("background-image",'url("/net/resources/images/logo.png")');
+		$(this).find("#naverLogo").css("background-size",'cover');
+		$(this).find(".btn-social").css('background-color','#1EC800');
+	});
 	
 })
 
@@ -59,14 +72,30 @@ var login = function() {
 				console.log(typeof(response.data), response.data)
 				
 				if(response.data===true){
-					$("#loginMsg").text('로그인 성공');
+			
+					
 					$.ajax({
 						url : "/net/api/setsession",
 						type : "post",
 						data : "iden=" + email + "&pw=" + pwd,
 						
 						success : function(response) {
-							parent.window.location.href = "/net/";
+							
+							
+														
+							//if(response.data.infoYn == 'N'){
+								
+								
+							
+								//parent.window.location.href = "/net/user/mbinfo";
+								
+						//	}else{
+								
+								parent.window.location.href = "/net/";
+								
+							//}
+							
+
 							console.log("세션성공")
 						},
 						error : function(jqXHR, status, e) {
