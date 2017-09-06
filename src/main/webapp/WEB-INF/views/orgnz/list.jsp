@@ -11,6 +11,8 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+
 
 
 <title>Insert title here</title>
@@ -62,6 +64,8 @@
 						class="glyphicon glyphicon-remove remove-btn"></i></a>
 				</div>
 			</div>
+			
+
 
 			<div id="all" class="col-lg-8">
 				<c:forEach items="${organzList }" var="list" varStatus="status">

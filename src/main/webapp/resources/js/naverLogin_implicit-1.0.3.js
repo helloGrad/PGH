@@ -224,7 +224,11 @@ var naver_id_login = function (client_id,redirect_uri)
 		else 
 		{
 			naver_id_login_contents=
-				"<a href='"+naver_id_login_url+"' "+naver_id_popup_option+" id='naver_id_login_anchor'><img border='0' title='네이버 아이디로 로그인' width='358.19px' height='"+this.button_height+"px'></a> ";
+				"<a href='"+naver_id_login_url+"' "+naver_id_popup_option+" id='naver_id_login_anchor'>" +
+					"<button id='naverLoginBtn' class='naverlogin btn btn-social btn-facebook socialbtn'>" +
+						"<span id='naverLogo' class='fa icon-naver_icon'></span>Naver 아이디로 로그인" +
+					"</button>" +
+				"</a> ";
 		}
 		naver_id_login.innerHTML=naver_id_login_contents;
 		if (this.is_callback)

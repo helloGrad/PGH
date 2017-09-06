@@ -53,6 +53,8 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 .icon-naver_icon:before { content: '\e800'; margin:10px 10px 10px 10px; } /* '' */
+
+
 .icon-heart:before { content: '\e801'; } /* '' */
 .icon-heart-empty:before { content: '\e802'; } /* '' */
 .icon-toggle-off:before { content: '\f204'; } /* '' */
