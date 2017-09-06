@@ -55,16 +55,47 @@
 
 //박가혜 2017-08-23
 
+	  function titleResize(obj) {
+	
+    
+
+		  obj.style.height="1px";
+   
+      	
+    	  obj.style.height = (20+obj.scrollHeight)+"px";	
+      	
+
+    	  
+    	    
+      
+     
+    }
+
     function resize(obj) {
-      obj.style.height = "1px";
-      obj.style.height = (20+obj.scrollHeight)+"px";
+	
+    
+
+      console.log(obj.scrollHeight);
+      
+      if(obj.scrollHeight<=200){
+      	
+      	
+      }else{
+      	
+    	  obj.style.height = (1+obj.scrollHeight)+"px";	
+      	
+      }
+    	  
+    	    
+      
+     
     }
 </script>
 
 <style>
 
 /* The Modal (background) */
-.modal {
+.modal1 {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -79,7 +110,7 @@
 }
 
 /* Modal Content */
-.modal-content {
+.modal-content1 {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
@@ -88,12 +119,14 @@
 }
 
 /* The Close Button */
-.close {
+.close1 {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
+
+
 
 .close:hover,
 .close:focus {
@@ -102,12 +135,103 @@
     cursor: pointer;
 }
 
+.postMetaHeader {
+    padding-top: 35px;
+}
+
+
+.avatar-image {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 100%;
+}
+
+.avatar-image--smaller {
+    width: 40px;
+    height: 40px;
+    margin : 20px 10px 30px 20px;
+}
+
+img {
+    border: 0;
+}
+
+
+.u-flex1 {
+   
+    flex: 1 1 auto;
+}
+
+
+.writeimage{
+ float: left;
+}
+
+.writeName{
+ margin: 20px 0 0 10px;
+  
+}
+
+.close:before { content: 'x'; margin:0 20px 0 0; }
+
+
+
+textarea.wrtbtTitle::-webkit-input-placeholder {
+   font-size: 40px;
+  font-weight: bold;
+}
+     
+textarea.wrtbtTitle {
+   font-size: 40px;
+  font-weight: bold;
+  outline:none;
+
+}
+
+textarea.wrtbtText::-webkit-input-placeholder {
+   font-size: 21px;
+  font-weight: bold;
+}
+     
+textarea.wrtbtText {
+   font-size: 21px;
+  
+  outline:none;
+
+}
+  
+
+textarea.wrtbtText:focus { 
+	border: 0 none #FFF;
+    overflow: hidden;
+    outline: none;
+}
+
+
+.jender {
+    position: relative;
+    z-index: 10;
+    display: block;
+    float: left;
+    width: 49.8%;
+    height: 31px;
+    border-right: solid 1px #dcdcdc;
+}
 
 </style>
 
 <script type="text/javascript">
 //박가혜 2017-08-23
+
+
+	 
+	 
 $(function() {
+	
+	
+	
+	
+	
 	
 	var authUser= $("#authUser").val();
 	
@@ -123,35 +247,21 @@ $(function() {
 	    		$("#login").css({
 					"display" : "block"
 				});
-
-	    		//location.href='${pageContext.request.contextPath }/user/login';
 				
 				
 			}else{
 				
-				 $("#writeModal").css({
-				        "display": "block"
-				 });
+				 $("#writeModal").modal();
+				 document.getElementById('wrtbtText').focus(); 
 				
 			}
 
 	    
 	    });
 	 
-	    $(".close").click(function() {
-	      $("#writeModal").css({
-	        "display": "none"
-	      });
-	    });
-	 
-	    $("html").click(function(event) {
-	      if (event.target.id === "writeModal") {
-	        $("#writeModal").css({
-	          "display": "none"
-	        });
-	      }
-	    });
-	 
+	    
+
+	   
 	 
 	})
 	
@@ -306,22 +416,51 @@ $(function() {
             
             
            
-           <!-- The Modal -->
-		<div id="writeModal" class="modal">
-				
-			<!-- Modal content -->
-			<div id="modal-content" class="modal-content">
-				 <span class="close">×</span>
-				 
-				 
-				 
-				 <form class="counseling-form" id="counseling-form" name="counseling-form" onsubmit="counselinginsert();">
+     
+		
+		  <!-- Modal -->
+  <div class="modal fade" id="writeModal" role="dialog" tabindex=-1>
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header u-flex1">
+        
+        
+        <img src="https://cdn-images-1.medium.com/fit/c/40/40/0*oapGePcc_FQR1KmN." class="avatar-image avatar-image--smaller writeimage">
+   
+   		<div class="writeName">
+        <a class="">${authUser.nknm }</a>
+      	<div class="">20세 
+      	<button type="button" class="close" data-dismiss="modal"></button>
+      	</div>
+      	
+        </div>
+              
+        </div>
+        <form class="counseling-form" id="counseling-form" name="counseling-form" onsubmit="counselinginsert();">
+        
+        <div class="modal-body">
+        
+
+        
 				 
 					<input type="hidden" id="authUser" name="authUser" value="${authUser.mbNo }">
-					진로게시판 입력<input type="hidden" id="bbsNo" name="bbsNo" value="1">
-					제목 : <input type="text" class="form-control" id="wrtbtTitle" name="wrtbtTitle">
-					내용 : <textarea class="form-control" onkeydown="resize(this)" onkeyup="resize(this)" id="wrtbtText" name="wrtbtText"></textarea>
+					<input type="hidden" id="bbsNo" name="bbsNo" value="1"> <!-- 진로게시판을 의미 -->
 					
+					 <div class="">
+        
+      
+        			<textarea class="wrtbtTitle" onkeydown="titleResize(this)" onkeyup="titleResize(this)" id="wrtbtTitle" name="wrtbtTitle" placeholder="Title..." style=" width:100%; height:70px; border:none; border-color: white;" autofocus></textarea>
+		 			<br>
+		 			<textarea class="wrtbtText" onkeydown="resize(this)" onkeyup="resize(this)" id="wrtbtText" name="wrtbtText" placeholder="Tell your story..." style=" width:100%; height:200px; border:none; border-color: white;"></textarea>
+		      	
+   					</div>
+					
+					
+				<span class="jender"><input type="radio" id="man" name="sex" value="0" onclick="checkSex()"><label id="manLb" for="man">Y </label>
+								</span>
+				<span class="jender"><input type="radio" id="woman" name="sex" value="1" onclick="checkSex()"><label id="womanLb" for="woman">N</label></span>	
+				
+				
 					작성자정보공개여부 : <input type="radio" id="writrInfoOpngYn" name="writrInfoOpngYn" value="Y" checked="checked" />Y 
 									<input type="radio" id="writrInfoOpngYn" name="writrInfoOpngYn" value="N" />N <br>
 					상담구분 : <select
@@ -332,13 +471,24 @@ $(function() {
 						</select> 
 					
 
-					<button type="submit" class="form-control">입력</button>
-				</form>
-				 
-				 
-			 </div>
+					
 				
-		</div>
+        
+        </div>
+        <div class="modal-footer">
+         <button type="submit" class="form-control">입력</button>
+        </div>
+         </form>
+      </div>
+    </div>
+  </div>
+
+		
+		
+		
+		
+		
+		
             
             
        </div>

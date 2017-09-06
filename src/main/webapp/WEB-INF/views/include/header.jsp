@@ -199,8 +199,8 @@
 	</div>
 	
 			 
-			<div id="login" class="modal" >
-		   <div class="modal-content">
+			<div id="login" class="login-modal" >
+		   <div class="login-modal-content">
 		   
 		  
 		   		 <span class="close">×</span>
@@ -267,8 +267,8 @@
 		
 		
 		
-	<div id="signup2" class="modal">
-		<div class="modal-content">
+	<div id="signup2" class="login-modal">
+		<div class="login-modal-content">
 			<span class="close">×</span>
 			
 			 <div class="signupbnt">
