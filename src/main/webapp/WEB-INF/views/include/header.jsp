@@ -47,7 +47,7 @@
 
 		$(document).ready(function() {
 
-			$("#myBtn").click(function() {
+			$("#myBtnlogin").click(function() {
 
 				$("#login").css({
 					"display" : "block"
@@ -81,6 +81,7 @@
 
 			 var modal1 = document.getElementById('login');
 			  var modal2 = document.getElementById('signup2');
+			  var modal1 = document.getElementById('writeModal');
 		    if (e.keyCode == 27) { 
 		    	
 		    	 modal2.style.display = "none";
@@ -179,7 +180,7 @@
 					<c:when test="${empty authUser }">
 						
 						<li>
-						<a id="myBtn" href="javascript:void(0);">로그인</a>
+						<a id="myBtnlogin" href="javascript:void(0);">로그인</a>
 			
 						<li>
 					</c:when>

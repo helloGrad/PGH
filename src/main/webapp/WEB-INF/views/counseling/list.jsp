@@ -112,19 +112,24 @@ $(function() {
 	var authUser= $("#authUser").val();
 	
 	
-	  $(document).ready(function() {
 	 
 	    $("#myBtn").click(function() {
+	    	
+	    
 	    	
 	    	if(authUser === null || authUser===''){
 				
 	    		
-	    		location.href='${pageContext.request.contextPath }/user/login';
+	    		$("#login").css({
+					"display" : "block"
+				});
+
+	    		//location.href='${pageContext.request.contextPath }/user/login';
 				
 				
 			}else{
 				
-				 $("#myModal").css({
+				 $("#writeModal").css({
 				        "display": "block"
 				 });
 				
@@ -134,20 +139,19 @@ $(function() {
 	    });
 	 
 	    $(".close").click(function() {
-	      $("#myModal").css({
+	      $("#writeModal").css({
 	        "display": "none"
 	      });
 	    });
 	 
 	    $("html").click(function(event) {
-	      if (event.target.id === "myModal") {
-	        $("#myModal").css({
+	      if (event.target.id === "writeModal") {
+	        $("#writeModal").css({
 	          "display": "none"
 	        });
 	      }
 	    });
 	 
-	  });
 	 
 	})
 	
@@ -182,7 +186,7 @@ $(function() {
 		
 		
 		//모달 종료 
-		 $("#myModal").css({
+		 $("#writeModal").css({
 		        "display": "none"
 		      });
 		
@@ -286,7 +290,9 @@ $(function() {
 		 <!-- Trigger/Open The Modal -->
 		
 		<div class="w3-container">
+		
             <div id="myBtn" class="btn btn-danger web-volunteer">질문하기</div>
+            
             <div class="dropdown option">
                 <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
                     <i class="glyphicon glyphicon-option-horizontal"></i>
@@ -301,7 +307,7 @@ $(function() {
             
            
            <!-- The Modal -->
-		<div id="myModal" class="modal">
+		<div id="writeModal" class="modal">
 				
 			<!-- Modal content -->
 			<div id="modal-content" class="modal-content">

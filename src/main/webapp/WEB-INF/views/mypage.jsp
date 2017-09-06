@@ -15,7 +15,7 @@
 		<br>	
 
 		
-		<a href="${pageContext.servletContext.contextPath }/user/mbinfo?check=1">맞춤정보</a>
+		<a href="${pageContext.servletContext.contextPath }/user/mbinfo">맞춤정보</a>
 		
 			
 		<br> <br> <br> 
