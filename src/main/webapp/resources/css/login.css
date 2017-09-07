@@ -127,28 +127,28 @@ background-size: cover;
 
 .formbtn:hover{color:#fff;background-color:#FFC000;border-color:rgba(0,0,0,0.2)}
 
-
- 			@media screen and (max-width: 400px) {
+	
+			 @media screen and (max-width: 400px) {
                 
-                .modal-content{
+                .login-modal-content{
                
                  width: 100%;  margin: 0; padding: 0;
             
 
                 }
-                .modal{
+                .login-modal{
                    padding-top: 0px;
                 }
-            }
+       		  }
             @media screen and (min-width: 401px) and (max-width: 600px) {
                
-                .modal-content{
+                .login-modal-content{
               
-                width: 100%;    margin: 0; padding: 0;
+                width: 100%;   margin: 0; padding: 0;
                
 
                 }
-                 .modal{
+                 .login-modal{
                    padding-top: 0px;
                 }
             }

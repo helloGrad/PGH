@@ -35,7 +35,7 @@ public class CounselingController {
 	public JSONResult CounselingList(Model model, @RequestBody CounselingVo counselingVo, @AuthUser MemberVo authUser) {
 
 		counselingVo.setMbNo(authUser.getMbNo());
-		counselingService.setWrite(counselingVo);
+		//counselingService.setWrite(counselingVo);
 
 		return JSONResult.success(counselingVo);
 	}

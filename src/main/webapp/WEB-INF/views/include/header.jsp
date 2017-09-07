@@ -36,7 +36,12 @@
 
 	<link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet">
 	
-	
+<style>
+
+
+
+
+</style>	
 
 <script>
 

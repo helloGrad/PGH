@@ -11,15 +11,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
     <title>상담실</title>
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    
+    
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
     <link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
-    <style>
-        body {
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fontello-embedded.css">
+    
+    
+
+<style>
+
+  body {
             padding-top: 70px;
         }
         .remove-btn {
@@ -42,91 +55,8 @@
  		a:visited { color: gray; text-decoration: none;}
 
 
-    </style>
-    
-</head>
 
-
-
-<style> textarea {width:300px; overflow:visible} </style>
-
-
-<script>
-
-//박가혜 2017-08-23
-
-	  function titleResize(obj) {
-	
-    
-
-		  obj.style.height="1px";
-   
-      	
-    	  obj.style.height = (20+obj.scrollHeight)+"px";	
-      	
-
-    	  
-    	    
-      
-     
-    }
-
-    function resize(obj) {
-	
-    
-
-      console.log(obj.scrollHeight);
-      
-      if(obj.scrollHeight<=200){
-      	
-      	
-      }else{
-      	
-    	  obj.style.height = (1+obj.scrollHeight)+"px";	
-      	
-      }
-    	  
-    	    
-      
-     
-    }
-</script>
-
-<style>
-
-/* The Modal (background) */
-.modal1 {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content1 {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-/* The Close Button */
-.close1 {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-
+textarea {width:300px; overflow:visible} 
 
 .close:hover,
 .close:focus {
@@ -149,7 +79,7 @@
 .avatar-image--smaller {
     width: 40px;
     height: 40px;
-    margin : 20px 10px 30px 20px;
+    margin : 20px 10px 0 20px;
 }
 
 img {
@@ -172,7 +102,7 @@ img {
   
 }
 
-.close:before { content: 'x'; margin:0 20px 0 0; }
+.col-close:before { content: 'x'; margin:0 20px 0 0; }
 
 
 
@@ -208,150 +138,265 @@ textarea.wrtbtText:focus {
 }
 
 
-.jender {
-    position: relative;
-    z-index: 10;
-    display: block;
-    float: left;
-    width: 49.8%;
-    height: 31px;
-    border-right: solid 1px #dcdcdc;
+
+
+ .writedropdown {
+   float : right;
+   margin: 15px 3px 0 0;
+        }
+        
+        
+	@media screen and (max-width: 400px) {
+           
+			
+					
+				.modal-dialog.modal-fullsize {
+				  width: 100%;
+				  height: 100%;
+				  margin: 0;
+				  padding: 0;
+				  padding-right: 0;
+				}
+				.modal-content.modal-fullsize {
+				  height: auto%;
+				  min-height: 100%;
+				  border-radius: 0; 
+				   padding-right: 0;
+				}
+				.modal {
+				  height: auto;
+				  min-height: 100%;
+			
+				 
+				}
+
+            }
+            @media screen and (min-width: 401px) and (max-width: 600px) {
+               
+         
+					
+						
+				.modal-dialog.modal-fullsize {
+				  width: 100%;
+				  height: 100%;
+				  margin: 0;
+				  padding: 0;
+				  padding-right: 0;
+				}
+				.modal-content.modal-fullsize {
+				   height: auto;
+				  min-height: 100%;
+				  border-radius: 0; 
+				   padding-right: 0;
+				}
+				.modal {
+				  height: auto;
+				  min-height: 100%;
+				 
+				}
+
+            }
+            @media screen and (min-width: 801px) {
+                
+            }
+
+ 
+.modal {
+	display: none; 
+	position: fixed; 
+	z-index: 1; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%; 
+	overflow: auto; 
+	background-color: rgb(0, 0, 0); 
+	background-color: rgba(0, 0, 0, 0.4); 
 }
+
+
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+
+
 
 </style>
 
-<script type="text/javascript">
+
+<script>
+
 //박가혜 2017-08-23
 
+	
+	function titleResize(obj) {
 
-	 
-	 
-$(function() {
-	
-	
-	
-	
-	
-	
-	var authUser= $("#authUser").val();
-	
-	
-	 
-	    $("#myBtn").click(function() {
-	    	
-	    
-	    	
-	    	if(authUser === null || authUser===''){
-				
-	    		
-	    		$("#login").css({
-					"display" : "block"
-				});
-				
-				
-			}else{
-				
-				 $("#writeModal").modal();
-				 document.getElementById('wrtbtText').focus(); 
-				
-			}
+		obj.style.height = "1px";
 
-	    
-	    });
-	 
-	    
+		obj.style.height = (20 + obj.scrollHeight) + "px";
 
-	   
-	 
-	})
-	
-
-	
-
-	//박가혜 2017-08-23
-	function counselinginsert() {
-	
-	
-	
-		
-		event.preventDefault();
-		
-	
-		
-		var wrtbtTitle= $("#wrtbtTitle").val();
-		var wrtbtText= $("#wrtbtText").val();
-		var writrInfoOpngYn= $("input[type=radio][name=writrInfoOpngYn]:checked").val();
-		
-		var conslBbsDstnct= $("#conslBbsDstnct").val();
-		var bbsNo= $("#bbsNo").val();
-	
-
-		var counselinglist = {
-				wrtbtTitle: wrtbtTitle,
-				wrtbtText: wrtbtText,
-				writrInfoOpngYn: writrInfoOpngYn,
-				conslBbsDstnct: conslBbsDstnct,
-				bbsNo: bbsNo
-				};
-		
-		
-		//모달 종료 
-		 $("#writeModal").css({
-		        "display": "none"
-		      });
-		
-		 location.reload(); 
-	
-		// ajax 통신 
-		
-		jQuery.ajaxSettings.traditional = true;
-		
-		//console.log(JSON.stringify(counselinglist));
-		
-		$.ajax( {
-			url : "${pageContext.request.contextPath }/counseling/api/write",
-			type: "post",
-			dataType: "json", // 받아야되는 데이터 타입 
-			data: JSON.stringify(counselinglist),
-			//{comlist : comlist},
-			contentType: 'application/json; charset=utf-8', //json 타입으로 데이터를 보낼때 사용함 
-			
-			
-			
-			success: function(response){
-
-				
-					if(response.result === "fail"){
-						
-						
-						console.error(response.message);
-						return;
-					}
-					
-					console.log("성공입니다");
-					//console.log(response.data);
-					//response.data.contextpath = "${pageContext.request.contextPath}/noti/api/lab";
-			
-				
-			},
-			error: function( jqXHR, status, e ){
-				console.log("에러입니다");
-				console.error( status + " : " + e );
-				console.log(jqXHR);
-			}
-			} );
-		
-		
-		
 	}
-	
-	
 
+	function resize(obj) {
+
+		// console.log(obj.scrollHeight);
+
+		if (obj.scrollHeight <= 200) {
+
+		} else {
+
+			obj.style.height = (1 + obj.scrollHeight) + "px";
+
+		}
+
+	}
 </script>
 
 
 
-<body>
+<script type="text/javascript">
+	//박가혜 2017-08-23
+
+	var writrInfoOpngYn;
+
+	$(function() {
+
+		var authUser = $("#authUser").val();
+
+		$("#myBtn").click(function() {
+
+			if (authUser === null || authUser === '') {
+
+				$("#login").css({
+					"display" : "block"
+				});
+
+			} else {
+				
+				
+				//$("#writeModal").modal();
+				$("#writeModal").css({
+					"display" : "block"
+				});
+				
+				document.getElementById('wrtbtText').focus();
+
+			}
+
+		});
+
+		$(".detail").click(function() {
+
+			if (authUser === null || authUser === '') {
+				$(".detail").removeAttr("href");
+				// href 막기
+				$("#login").css({
+					"display" : "block"
+				});
+
+			}
+
+		});
+		
+		$(".close").click(function() {
+			$("#writeModal").css({
+				"display" : "none"
+			});
+		});
+
+		$("html").click(function(event) {
+			if (event.target.id === "writeModal") {
+				$("#writeModal").css({
+					"display" : "none"
+				});
+			}
+		});
+		
+
+		$('#writrInfoOpngYn li > a').on('click', function() { //비공개여부 값 저장 하기
+
+			writrInfoOpngYn = $(this).attr('value');
+
+		});
+		
+		
+		$(document).keydown(function(e) { 
+			
+
+			  var modal1 = document.getElementById('writeModal');
+		    if (e.keyCode == 27) { 
+		    	
+				   modal1.style.display = "none";
+		    } 
+		});
+
+	})
+
+	//박가혜 2017-08-23
+	function counselinginsert() {
+
+		event.preventDefault();
+
+		var wrtbtTitle = $("#wrtbtTitle").val();
+		var wrtbtText = $("#wrtbtText").val();
+
+		var conslBbsDstnct = $("#conslBbsDstnct").val();
+		var bbsNo = $("#bbsNo").val();
+
+		console.log(writrInfoOpngYn);
+
+		var counselinglist = {
+			wrtbtTitle : wrtbtTitle,
+			wrtbtText : wrtbtText,
+			writrInfoOpngYn : writrInfoOpngYn,
+			conslBbsDstnct : conslBbsDstnct,
+			bbsNo : bbsNo
+		};
+
+		//모달 종료 
+		$("#writeModal").css({
+			"display" : "none"
+		});
+
+		location.reload();
+
+		// ajax 통신 
+
+		jQuery.ajaxSettings.traditional = true;
+
+		//console.log(JSON.stringify(counselinglist));
+
+		$.ajax({
+			url : "${pageContext.request.contextPath }/counseling/api/write",
+			type : "post",
+			dataType : "json", // 받아야되는 데이터 타입 
+			data : JSON.stringify(counselinglist),
+			//{comlist : comlist},
+			contentType : 'application/json; charset=utf-8', //json 타입으로 데이터를 보낼때 사용함 
+
+			success : function(response) {
+
+				if (response.result === "fail") {
+
+					console.error(response.message);
+					return;
+				}
+
+				console.log("성공입니다");
+				//console.log(response.data);
+				//response.data.contextpath = "${pageContext.request.contextPath}/noti/api/lab";
+
+			},
+			error : function(jqXHR, status, e) {
+				console.log("에러입니다");
+				console.error(status + " : " + e);
+				console.log(jqXHR);
+			}
+		});
+
+	}
+</script><body>
 <!-- /////////////////////////////// Header ///////////////////////-->
 
 
@@ -419,71 +464,74 @@ $(function() {
      
 		
 		  <!-- Modal -->
-  <div class="modal fade" id="writeModal" role="dialog" tabindex=-1>
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header u-flex1">
-        
-        
-        <img src="https://cdn-images-1.medium.com/fit/c/40/40/0*oapGePcc_FQR1KmN." class="avatar-image avatar-image--smaller writeimage">
-   
-   		<div class="writeName">
-        <a class="">${authUser.nknm }</a>
-      	<div class="">20세 
-      	<button type="button" class="close" data-dismiss="modal"></button>
-      	</div>
-      	
-        </div>
-              
-        </div>
-        <form class="counseling-form" id="counseling-form" name="counseling-form" onsubmit="counselinginsert();">
-        
-        <div class="modal-body">
-        
 
-        
-				 
-					<input type="hidden" id="authUser" name="authUser" value="${authUser.mbNo }">
-					<input type="hidden" id="bbsNo" name="bbsNo" value="1"> <!-- 진로게시판을 의미 -->
-					
-					 <div class="">
-        
-      
-        			<textarea class="wrtbtTitle" onkeydown="titleResize(this)" onkeyup="titleResize(this)" id="wrtbtTitle" name="wrtbtTitle" placeholder="Title..." style=" width:100%; height:70px; border:none; border-color: white;" autofocus></textarea>
-		 			<br>
-		 			<textarea class="wrtbtText" onkeydown="resize(this)" onkeyup="resize(this)" id="wrtbtText" name="wrtbtText" placeholder="Tell your story..." style=" width:100%; height:200px; border:none; border-color: white;"></textarea>
-		      	
-   					</div>
-					
-					
-				<span class="jender"><input type="radio" id="man" name="sex" value="0" onclick="checkSex()"><label id="manLb" for="man">Y </label>
-								</span>
-				<span class="jender"><input type="radio" id="woman" name="sex" value="1" onclick="checkSex()"><label id="womanLb" for="woman">N</label></span>	
-				
-				
-					작성자정보공개여부 : <input type="radio" id="writrInfoOpngYn" name="writrInfoOpngYn" value="Y" checked="checked" />Y 
-									<input type="radio" id="writrInfoOpngYn" name="writrInfoOpngYn" value="N" />N <br>
-					상담구분 : <select
-						name="conslBbsDstnct" id="conslBbsDstnct">
-						<option value=""> 상담구분</option>
-						<option value="일반상담">일반상담</option>
-						<option value="연구실상담">연구실상담</option>
-						</select> 
-					
 
-					
-				
-        
-        </div>
-        <div class="modal-footer">
-         <button type="submit" class="form-control">입력</button>
-        </div>
-         </form>
-      </div>
-    </div>
-  </div>
-
-		
+		<div id="writeModal" class="modal" tabindex=-1 >
+			<div class="modal-dialog modal-lg modal-fullsize">
+			<div class="modal-content content-fullsize">
+				<div class="modal-header u-flex1">
+	        
+	        	
+	        	<img src="https://cdn-images-1.medium.com/fit/c/40/40/0*oapGePcc_FQR1KmN." class="avatar-image avatar-image--smaller writeimage">
+	   			<button type="button" class="close col-close"></button>
+	   			
+	   	
+	   			<div class="writeName">
+	        		<a class="">${authUser.nknm }</a>
+	      			
+	      			 <div class="dropdown writedropdown">
+	               			<button  class="w3-button w3-padding w3-round-large dropdown-toggle" type="button" data-toggle="dropdown" style="float:right;">
+	                   		 <i class="glyphicon glyphicon-option-horizontal"></i>
+	               			 </button>
+	               			 <ul id="writrInfoOpngYn" class="dropdown-menu dropdown-menu-right"> <!-- 디폴트는 Y -->
+	                  	     <li><a href="#" value="N">비공개로 작성하기</a></li>
+	                		</ul>
+	               
+	                
+	             	</div> 		
+	      			<div class="">20세 
+	      				
+	      			</div>
+	      	
+	        	</div>
+	       
+	          
+	             
+	
+	              
+	        </div>
+	        <form class="counseling-form" id="counseling-form" name="counseling-form" onsubmit="counselinginsert();">
+	        
+	        <div class="modal-body">
+	        
+	
+	        
+					 
+						<input type="hidden" id="authUser" name="authUser" value="${authUser.mbNo }">
+						<input type="hidden" id="bbsNo" name="bbsNo" value="1"> <!-- 진로게시판을 의미 -->
+						
+						 <div class="">
+	        
+	      
+	        			<textarea class="wrtbtTitle" onkeydown="titleResize(this)" onkeyup="titleResize(this)" id="wrtbtTitle" name="wrtbtTitle" placeholder="Title..." style=" width:100%; height:70px; border:none; border-color: white;" autofocus></textarea>
+			 			<br>
+			 			<textarea class="wrtbtText" onkeydown="resize(this)" onkeyup="resize(this)" id="wrtbtText" name="wrtbtText" placeholder="Tell your story..." style=" width:100%; height:200px; border:none; border-color: white;"></textarea>
+			      	
+	   					</div>
+						
+	        
+	        </div>
+	        <div class="modal-footer">
+	         <button type="submit" class="form-control">입력</button>
+	        </div>
+	         </form>
+						  
+						  
+						  
+						  
+		</div>
+		</div>
+	</div>		
 		
 		
 		
@@ -491,7 +539,7 @@ $(function() {
 		
             
             
-       </div>
+ </div>
 		
 				
 		
@@ -511,7 +559,7 @@ $(function() {
 						            <div class="w3-container interest">#화학, #생물학, #화학공학
 						            </div>
 						            <div class="w3-container">
-						                <h4><b><a  href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=prnts">${counselingList.wrtbtTitle }</a></b></h4>
+						                <h4><b><a  class="detail" href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=prnts">${counselingList.wrtbtTitle }</a></b></h4>
 						                
 						                
 						            </div>
@@ -519,7 +567,7 @@ $(function() {
 						            <div class="w3-container">
 						
 						                <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-						                <a  href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=reply">답변하기</a>
+						                <a class="detail" href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=reply">답변하기</a>
 						                </div>
 						                <div class="dropup option">
 						                    <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
@@ -543,13 +591,13 @@ $(function() {
 					   <div class="w3-container interest">#유학 #외국 #컴퓨터
 			            </div>
 			            <div class="w3-container">
-			                <h4><b><a href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=prnts">${counselingList.wrtbtTitle }</a></b></h4>
+			                <h4><b><a class="detail" href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=prnts">${counselingList.wrtbtTitle }</a></b></h4>
 			
 			            </div>
 			            <div class="w3-container">
 			                <h6>${replyList[status.index].nknm }
 			                    <span class="w3-opacity">${replyList[status.index].avlblBeginDt }에 답변</span></h6>
-			                <p> <a  href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=prnts">${replyList[status.index].wrtbtText }</a></p>
+			                <p> <a class="detail" href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=prnts">${replyList[status.index].wrtbtText }</a></p>
 			                
 			               
 			            </div>
@@ -565,7 +613,7 @@ $(function() {
 			                    Down <span class="badge">${counselingList.ncmdCo }</span>
 			                </div>
 			                <div class="dropup option">
-			                    <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
+			                    <button class="w3-button w3-padding w3-padding w3-round-large dropdown-toggle" type="button" data-toggle="dropdown">
 			                    <i class="glyphicon glyphicon-option-horizontal"></i>
 			                    </button>
 			                    <ul class="dropdown-menu">
@@ -574,6 +622,7 @@ $(function() {
 			                        <li><a href="#">신고하기</a></li>
 			                    </ul>
 			                </div>
+			                
 			            </div>
 			            <Br>
 			        </div>

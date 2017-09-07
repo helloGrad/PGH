@@ -57,9 +57,9 @@ public class CounselingController {
 	 * 박가혜 2017-08-24
 	 */
 	
+	//@Auth(role = Auth.Role.USER)
 	
 	@RequestMapping("/detail")
-	@Auth(role = Auth.Role.USER)
 	public String counselingDetail( Model model, @RequestParam("no") Long no,@AuthUser MemberVo authUser, @RequestParam("type") String type) {
 		
 		
