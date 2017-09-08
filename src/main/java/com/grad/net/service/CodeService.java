@@ -22,4 +22,29 @@ public class CodeService {
 
 		return CodeDao.getCodeList();		
 	}
+	
+	
+	
+	public List<CodeVo> getMajorList(String type){
+		
+		String type2 = null;
+		
+		if(type.equals("공학")) {
+			
+			type2="D%";
+			
+		
+			
+		}
+		if(type.equals("의학")) {
+			
+			type2="E%";
+			
+		
+			
+		}
+		
+		
+		return CodeDao.selectMajorList(type2);	
+	}
 }

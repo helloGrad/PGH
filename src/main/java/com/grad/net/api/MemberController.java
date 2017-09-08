@@ -1,5 +1,7 @@
 package com.grad.net.api;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.grad.net.dto.JSONResult;
+import com.grad.net.service.CodeService;
 import com.grad.net.service.MemberService;
+import com.grad.net.service.OrganzService;
+import com.grad.net.vo.CodeVo;
 import com.grad.net.vo.MemberVo;
+import com.grad.net.vo.OrganzVo;
 
 /*
  * 정예린
@@ -25,6 +31,10 @@ public class MemberController {
 	
 	@Autowired
 	MemberService memberService;
+	
+	
+	@Autowired
+	CodeService codeService;
 
 	
 	@ResponseBody
@@ -143,6 +153,25 @@ public class MemberController {
 
 	}
 	
+	/**
+	 * 박가혜 2017-09-08 메인페이지 기관리스트 보여주기 
+	 */
+
+	@ResponseBody
+	@RequestMapping("/majorlist")
+	public JSONResult majorlist(@RequestParam("type") String type) {
+
+		System.out.println(type);
+		List<CodeVo> organzList = codeService.getMajorList(type);
+		System.out.println(organzList);
+		
+		
+		
+		
+		
+		
+		return JSONResult.success(organzList);
+	}
 	
 
 }

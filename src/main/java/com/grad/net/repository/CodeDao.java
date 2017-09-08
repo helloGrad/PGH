@@ -20,10 +20,20 @@ public class CodeDao {
 	public List<CodeVo> getCodeList(){
 		
 		List<CodeVo> codeVo = sqlSession.selectList("code.selectCodeList");
-		System.out.println("codeVo : "+codeVo);
+		
+		return codeVo;		
+
+	}
+	
+	
+	public List<CodeVo> selectMajorList(String type){
+		
+		List<CodeVo> codeVo = sqlSession.selectList("code.selectMajorList", type);
+		
 		
 		return codeVo;		
 
 	}	
+
 
 }

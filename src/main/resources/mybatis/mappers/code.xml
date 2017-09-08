@@ -10,5 +10,17 @@
 		from CD
 		]]>
 	</select>	
+	
+		<!-- 박가혜  -->
+	<select id="selectMajorList" resultType="codeVo" parameterType="string">
+		<![CDATA[
+		select c.cd_id cdId, c.cd_nm cdNm, c.CD_DSTNCT cdDstnct, concat(substr(c.PRNTS_CD_ID,1,3),'0000') prntsCdId,(select c2.CD_NM from cd c2 where c2.CD_ID=concat(substr(c.PRNTS_CD_ID,1,3),'0000')) prntsCdNm
+		from cd c
+		where c.CD_ID like #{type }
+		and c.CD_DSTNCT in( '학과', '연구분야');
+		]]>
+	</select>
+
+
 
 </mapper>

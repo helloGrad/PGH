@@ -21,7 +21,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home( Model model, MemberVo memberVo) {	
 		model.addAttribute("MemberVo", memberVo);		
-		return "home";
+		return "home2";
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
@@ -31,7 +31,7 @@ public class HomeController {
 		
 		
 		
-		return "home";
+		return "home2";
 	}
 	
 
