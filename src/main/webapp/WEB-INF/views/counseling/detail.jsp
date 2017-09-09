@@ -334,7 +334,8 @@ pageContext.setAttribute("newLine", "\n");
 				}
 
 				console.log("성공입니다");
-				//location.reload();
+				location.reload();
+				
 				console.log(response.data);
 				
 				if(value == 'like'){
@@ -424,7 +425,7 @@ pageContext.setAttribute("newLine", "\n");
 					
 						
 					
-				}
+				}//
 				//response.data.contextpath = "${pageContext.request.contextPath}/noti/api/lab";
 
 			},

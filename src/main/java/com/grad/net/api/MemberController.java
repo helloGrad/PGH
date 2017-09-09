@@ -154,7 +154,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * 박가혜 2017-09-08 메인페이지 기관리스트 보여주기 
+	 * 박가혜 2017-09-08 메인페이지 연구분야리스트 보여주기 
 	 */
 
 	@ResponseBody

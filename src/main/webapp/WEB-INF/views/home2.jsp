@@ -27,8 +27,8 @@
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">	
-
-
+<link href="${pageContext.request.contextPath}/resources/css/fontello-embedded.css" rel="stylesheet">	
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
 
 
@@ -69,12 +69,41 @@ margin: 0 11px;
 }
 
 
-
-
 ul{ list-style:none; }
 
 
 
+
+.title-text{
+
+    padding: 0;
+	text-align: center;
+}
+
+.link-gray {
+    color:DarkGray;
+}
+
+.link-title {
+	margin: 30px 0 0 0;
+    color: DimGrey;
+    
+}
+
+ .margin-center {
+        margin: 3px 3px 3px 3px;
+      
+        text-align: center;
+    }
+    
+h4,h6 {display:inline;}
+
+
+
+.list-color{
+
+    background-color: #f7f7f7;
+}
 
 
 
@@ -214,7 +243,7 @@ function majorlist(name){
 
 <body>
 	<c:import url="/WEB-INF/views/include/header.jsp" />
-	>
+	
 
    <div class="jumbotron text-center" style="background-color: white;">
    
@@ -245,9 +274,9 @@ function majorlist(name){
               <span class="category_name" onclick="openCity('A')">전체</span>
               <span class="category_name" onclick="openCity('B')">모집공고</span>
               
-               <span class="category_name" onclick="openCity('C')">대학원/학과/연구실</span>
-              
-              <span class="category_name" onclick="openCity('D')">상담실</span>
+              <span class="category_name" onclick="openCity('C')">학과/연구분야</span>
+              <span class="category_name" onclick="openCity('D')">연구실</span>
+              <span class="category_name" onclick="openCity('E')">상담실</span>
    </div>
    
    
@@ -340,31 +369,168 @@ function majorlist(name){
 
 </div>
 
+
+
+<div id="D" class="w3-container city" style="display:none">
+
+
+		<div class="col-sm-12"  >
+         <h3 class="title-text">연구실 리스트</h3>
+         <p></p>
+        
+		        <div class="w3-center w3-margin-bottom">	
+		         <button class="btn btn-default margin-center" id="js-searchToggle">enter zip or city, state</button>
+		         <button class="btn btn-default margin-center" id="js">filter by services</button>
+		     	</div>
+         </div>
+        
+        
+        
+	 <div class="row">
+	    <div class="col-sm-4">
+	    <div class="w3-card-2 w3-padding" style="height: 270px">
+	    	<div class="w3-margin-top">
+	    		 <h4 class="link-title">데이터베이스연구실</h4>
+	             <h6 class="title-small">(창원대학교)</h6>
+	    	
+	    	</div>
+	     
+	      <hr>
+	      <p>부산대학교 금정구 장전동 산30번지 부산대학교 복합성형연구실</p>
+	      <p class="icon-volume-control-phone">055-213-3813</p>
+	      <div>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">데이터마이닝</button>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">데이터처리</button>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">빅데이터</button>
+	      </div> 
+	    </div>
+	    </div>
+	    
+	    
+	  <div class="col-sm-4">
+	    <div class="w3-card-2 w3-padding" style="height: 270px">
+	    	<div class="w3-margin-top">
+	    		 <h4 class="link-title">교통및물류시스템연구실</h4>
+	      		  <h6 class="title-small">(고려대학교)</h6>
+	    	
+	    	</div>
+	      
+	      <hr>
+	      <p>서울특별시 성북구 안암로 145 고려대학교 자연계캠퍼스 공학관</p>
+	      <p class="icon-volume-control-phone"><p></p>
+	       <div>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">교통계획및체제</button>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">교통시설/안전</button>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">대중교통</button>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">교통장비</button>
+	        </div> 
+	    </div>
+	    </div>
+	    
+	    
+	    
+	   	  <div class="col-sm-4">
+	    <div class="w3-card-2 w3-padding" style="height: 270px">
+	    		<div class="w3-margin-top">
+	    		<h4 class="link-title">나노정밀계측연구실</h4>
+	            <h6 class="title-small">(경북대학교)</h6>
+	    	
+	    	</div>
+	      
+	      <hr>
+	      <p>서울시 마포구 백범로 35</p>
+	      <p class="icon-volume-control-phone">02-705-7973</p>
+	        <div class="">
+	       <button class="btn btn-default margin-center" id="js-searchToggle">나노구조</button>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">나노구조제어고분자재료</button>
+	     </div> 
+	       
+	    </div>
+	    </div>
+	    
+  </div>
+  
+  
+  <br>
+  <div class="row">
+	    <div class="col-sm-4">
+	    <div class="w3-card-2 w3-padding" style="height: 270px">
+	    	<div class="w3-margin-top">
+	    		 <h4 class="link-title">데이터베이스연구실<small class="link-gray">창원대학교</small>/<small class="link-gray">경남</small></h4>
+	             
+	    	
+	    	</div>
+	     
+	      <hr>
+	      <p>금정구 장전동 산30번지 부산대학교 복합성형연구실</p>
+	      <p class="icon-volume-control-phone">055-213-3813</p>
+	      <div>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">데이터마이닝</button>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">데이터처리</button>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">빅데이터</button>
+	      </div> 
+	    </div>
+	    </div>
+	    
+	    
+	  <div class="col-sm-4">
+	    <div class="w3-card-2 w3-padding" style="height: 270px">
+	    	<div class="w3-margin-top">
+	    		 <h4 class="link-title">교통및물류시스템연구실<small class="link-gray">고려대학교</small></h4>
+	    	
+	    	</div>
+	      
+	      <hr>
+	      <p>서울특별시 성북구 안암로 145 고려대학교 자연계캠퍼스 공학관</p>
+	      <p class="icon-volume-control-phone"><p></p>
+	       <div>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">교통계획및체제</button>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">교통시설/안전</button>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">대중교통</button>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">교통장비</button>
+	        </div> 
+	    </div>
+	    </div>
+	    
+	    
+	    
+	   	  <div class="col-sm-4">
+	    <div class="w3-card-2 w3-padding" style="height: 270px">
+	    		<div class="w3-margin-top">
+	    		<h4 class="link-title">나노정밀계측연구실<small class="link-gray">경북대학교</small>/<small class="link-gray">대구</small></h4>
+	           
+	    	
+	    	</div>
+	      
+	      <hr>
+	      <p>북구 대학로 80, 경북대학교</p>
+	      <p class="icon-volume-control-phone">02-705-7973</p>
+	        <div class="">
+	       <button class="btn btn-default margin-center" id="js-searchToggle">나노구조</button>
+	       <button class="btn btn-default margin-center" id="js-searchToggle">나노구조제어고분자재료</button>
+	     </div> 
+	       
+	    </div>
+	    </div>
+	    
+  </div>
+  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+  
+
+  
+  
+</div>
+
+<div id="E" class="w3-container city" style="display:none">
+  <h2>Paris</h2>
+  <p>Paris is the capital of France.</p> 
+</div>
+
  
  
 </div>   
     
-
-	 
-  		 
- 
-
-     
-   
-     
- 
 
 	
 	
