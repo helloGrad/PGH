@@ -21,7 +21,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home( Model model, MemberVo memberVo) {	
 		model.addAttribute("MemberVo", memberVo);		
-		return "home2";
+		return "study/home";
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
@@ -31,11 +31,36 @@ public class HomeController {
 		
 		
 		
-		return "home2";
+		return "study/home";
 	}
 	
 
+	@RequestMapping(value = "/study/notice", method = RequestMethod.GET)
+	public String studyNotice( Model model, MemberVo memberVo) {	
+		model.addAttribute("MemberVo", memberVo);		
+		return "study/notice";
+	}
+
 	
+	@RequestMapping(value = "/study/discussion", method = RequestMethod.GET)
+	public String studyDiscussion( Model model, MemberVo memberVo) {	
+		model.addAttribute("MemberVo", memberVo);		
+		return "study/discussion";
+	}
+	
+	
+	@RequestMapping(value = "/study/research", method = RequestMethod.GET)
+	public String studyResearch( Model model, MemberVo memberVo) {	
+		model.addAttribute("MemberVo", memberVo);		
+		return "study/research";
+	}
+	
+
+	@RequestMapping(value = "/study/lab", method = RequestMethod.GET)
+	public String studyLab( Model model, MemberVo memberVo) {	
+		model.addAttribute("MemberVo", memberVo);		
+		return "study/lab";
+	}
 	
 	
 }
