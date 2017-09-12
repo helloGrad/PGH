@@ -32,8 +32,11 @@ public class CounselingDao {
 	/**
 	 * 박가혜 2017-08-23
 	 */
-	public List<CounselingVo> getCounselingList() {
-		return sqlSession.selectList("counseling.getcounselingList");
+	public List<CounselingVo> getCounselingList(Map<String, Object> map) {
+		
+		return sqlSession.selectList("counseling.getcounselingList", map);
+		
+		
 	}
 	/**
 	 * 박가혜 2017-08-23

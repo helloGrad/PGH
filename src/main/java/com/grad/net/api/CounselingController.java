@@ -16,6 +16,7 @@ import com.grad.net.dto.JSONResult;
 import com.grad.net.security.AuthUser;
 import com.grad.net.service.CounselingService;
 import com.grad.net.service.MemberService;
+import com.grad.net.vo.CodeVo;
 import com.grad.net.vo.CounselingVo;
 import com.grad.net.vo.MemberVo;
 import com.grad.net.vo.NotiVo;
@@ -35,7 +36,7 @@ public class CounselingController {
 	public JSONResult CounselingList(Model model, @RequestBody CounselingVo counselingVo, @AuthUser MemberVo authUser) {
 
 		counselingVo.setMbNo(authUser.getMbNo());
-		//counselingService.setWrite(counselingVo);
+		counselingService.setWrite(counselingVo);
 
 		return JSONResult.success(counselingVo);
 	}
@@ -85,6 +86,23 @@ public class CounselingController {
 		
 
 		return JSONResult.success(result);
+	}
+	
+	
+	/**
+	 * 박가혜 2017-09-12 학문별 토론 리스트 보여주기  
+	 */
+
+	@ResponseBody
+	@RequestMapping("/list")
+	public JSONResult list(@RequestParam("type") String type,@RequestParam("order") String order) {
+
+		//System.out.println(order);
+		
+		List<CounselingVo> counselingList= counselingService.getCounselingList(type,order); //답변과 원글 모두 넘김....
+	
+
+		return JSONResult.success(counselingList);
 	}
 
 }

@@ -37,13 +37,47 @@ public class CounselingVo {
 	
 	private String infroDstnct;
 	
+	//리스트 답변 
+	private Long reMbNo;
+	private String reNknm; 
+	private String reAvlblBeginDt;
+	private String reWrtbtText;
+	private Long reRcmdCo;
 	
-	//답변수
-	//닉네임
-	//생년월일
-	//연령대
-	//공감비공감 
 	
+	
+	
+	
+	public Long getReMbNo() {
+		return reMbNo;
+	}
+	public void setReMbNo(Long reMbNo) {
+		this.reMbNo = reMbNo;
+	}
+	public String getReNknm() {
+		return reNknm;
+	}
+	public void setReNknm(String reNknm) {
+		this.reNknm = reNknm;
+	}
+	public String getReAvlblBeginDt() {
+		return reAvlblBeginDt;
+	}
+	public void setReAvlblBeginDt(String reAvlblBeginDt) {
+		this.reAvlblBeginDt = reAvlblBeginDt;
+	}
+	public String getReWrtbtText() {
+		return reWrtbtText;
+	}
+	public void setReWrtbtText(String reWrtbtText) {
+		this.reWrtbtText = reWrtbtText;
+	}
+	public Long getReRcmdCo() {
+		return reRcmdCo;
+	}
+	public void setReRcmdCo(Long reRcmdCo) {
+		this.reRcmdCo = reRcmdCo;
+	}
 	public String getInfroDstnct() {
 		return infroDstnct;
 	}
@@ -215,9 +249,14 @@ public class CounselingVo {
 				+ wrtbtTitle + ", voteRegstDt=" + voteRegstDt + ", prntsCwrNo=" + prntsCwrNo + ", prntsWrtbtNo="
 				+ prntsWrtbtNo + ", cwrDstnct=" + cwrDstnct + ", writrInfoOpngYn=" + writrInfoOpngYn
 				+ ", conslBbsDstnct=" + conslBbsDstnct + ", orgnzNo=" + orgnzNo + ", count=" + count + ", nknm=" + nknm
-				+ ", birdt=" + birdt + ", agrg=" + agrg + ", infroDstnct=" + infroDstnct + "]";
+				+ ", birdt=" + birdt + ", agrg=" + agrg + ", infroDstnct=" + infroDstnct + ", reMbNo=" + reMbNo
+				+ ", reNknm=" + reNknm + ", reAvlblBeginDt=" + reAvlblBeginDt + ", reWrtbtText=" + reWrtbtText
+				+ ", reRcmdCo=" + reRcmdCo + "]";
 	}
 
+
+	
+	
 	
 	
 	

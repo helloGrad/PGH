@@ -164,14 +164,8 @@ public class MemberController {
 		System.out.println(type);
 		List<CodeVo> organzList = codeService.getMajorList(type);
 		System.out.println(organzList);
-		
-		
-		
-		
-		
-		
+
 		return JSONResult.success(organzList);
 	}
-	
 
 }

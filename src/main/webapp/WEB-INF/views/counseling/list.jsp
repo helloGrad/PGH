@@ -15,212 +15,25 @@
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/counseling.js"></script>
+	
+	
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>   
+	    
+	    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    
-    
-    
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
     <link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fontello-embedded.css">
-    
+    <link href="${pageContext.request.contextPath}/resources/css/counseling.css" rel="stylesheet">
     
 
 <style>
 
-  body {
-            padding-top: 70px;
-        }
-        .remove-btn {
-            float : right;
-        }
-
-        .web-volunteer {
-            font-size: 1.5em;
-        }
-        .info {
-            border-top: 1px solid lightgray;
-        }
-        .interest {
-            color : gray;
-        }
-        .option {
-            float : right;
-        }
-        
- 		a:visited { color: gray; text-decoration: none;}
-
-
-
-textarea {width:300px; overflow:visible} 
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.postMetaHeader {
-    padding-top: 35px;
-}
-
-
-.avatar-image {
-    display: inline-block;
-    vertical-align: middle;
-    border-radius: 100%;
-}
-
-.avatar-image--smaller {
-    width: 40px;
-    height: 40px;
-    margin : 20px 10px 0 20px;
-}
-
-img {
-    border: 0;
-}
-
-
-.u-flex1 {
-   
-    flex: 1 1 auto;
-}
-
-
-.writeimage{
- float: left;
-}
-
-.writeName{
- margin: 20px 0 0 10px;
-  
-}
-
-.col-close:before { content: 'x'; margin:0 20px 0 0; }
-
-
-
-textarea.wrtbtTitle::-webkit-input-placeholder {
-   font-size: 40px;
-  font-weight: bold;
-}
-     
-textarea.wrtbtTitle {
-   font-size: 40px;
-  font-weight: bold;
-  outline:none;
-
-}
-
-textarea.wrtbtText::-webkit-input-placeholder {
-   font-size: 21px;
-  font-weight: bold;
-}
-     
-textarea.wrtbtText {
-   font-size: 21px;
-  
-  outline:none;
-
-}
-  
-
-textarea.wrtbtText:focus { 
-	border: 0 none #FFF;
-    overflow: hidden;
-    outline: none;
-}
-
-
-
-
- .writedropdown {
-   float : right;
-   margin: 15px 3px 0 0;
-        }
-        
-        
-	@media screen and (max-width: 400px) {
-           
-			
-					
-				.modal-dialog.modal-fullsize {
-				  width: 100%;
-				  height: 100%;
-				  margin: 0;
-				  padding: 0;
-				  padding-right: 0;
-				}
-				.modal-content.modal-fullsize {
-				  height: auto%;
-				  min-height: 100%;
-				  border-radius: 0; 
-				   padding-right: 0;
-				}
-				.modal {
-				  height: auto;
-				  min-height: 100%;
-			
-				 
-				}
-
-            }
-            @media screen and (min-width: 401px) and (max-width: 600px) {
-               
-         
-					
-						
-				.modal-dialog.modal-fullsize {
-				  width: 100%;
-				  height: 100%;
-				  margin: 0;
-				  padding: 0;
-				  padding-right: 0;
-				}
-				.modal-content.modal-fullsize {
-				   height: auto;
-				  min-height: 100%;
-				  border-radius: 0; 
-				   padding-right: 0;
-				}
-				.modal {
-				  height: auto;
-				  min-height: 100%;
-				 
-				}
-
-            }
-            @media screen and (min-width: 801px) {
-                
-            }
-
  
-.modal {
-	display: none; 
-	position: fixed; 
-	z-index: 1; 
-	left: 0;
-	top: 0;
-	width: 100%; 
-	height: 100%; 
-	overflow: auto; 
-	background-color: rgb(0, 0, 0); 
-	background-color: rgba(0, 0, 0, 0.4); 
-}
-
-
-.modal-body {
-    max-height: calc(100vh - 210px);
-    overflow-y: auto;
-}
-
-
 
 </style>
 
@@ -230,173 +43,15 @@ textarea.wrtbtText:focus {
 //박가혜 2017-08-23
 
 	
-	function titleResize(obj) {
-
-		obj.style.height = "1px";
-
-		obj.style.height = (20 + obj.scrollHeight) + "px";
-
-	}
-
-	function resize(obj) {
-
-		// console.log(obj.scrollHeight);
-
-		if (obj.scrollHeight <= 200) {
-
-		} else {
-
-			obj.style.height = (1 + obj.scrollHeight) + "px";
-
-		}
-
-	}
 </script>
 
 
 
 <script type="text/javascript">
-	//박가혜 2017-08-23
 
-	var writrInfoOpngYn;
 
-	$(function() {
-
-		var authUser = $("#authUser").val();
-
-		$("#myBtn").click(function() {
-
-			if (authUser === null || authUser === '') {
-
-				$("#login").css({
-					"display" : "block"
-				});
-
-			} else {
-				
-				
-				//$("#writeModal").modal();
-				$("#writeModal").css({
-					"display" : "block"
-				});
-				
-				document.getElementById('wrtbtText').focus();
-
-			}
-
-		});
-
-		$(".detail").click(function() {
-
-			if (authUser === null || authUser === '') {
-				$(".detail").removeAttr("href");
-				// href 막기
-				$("#login").css({
-					"display" : "block"
-				});
-
-			}
-
-		});
-		
-		$(".close").click(function() {
-			$("#writeModal").css({
-				"display" : "none"
-			});
-		});
-
-		$("html").click(function(event) {
-			if (event.target.id === "writeModal") {
-				$("#writeModal").css({
-					"display" : "none"
-				});
-			}
-		});
-		
-
-		$('#writrInfoOpngYn li > a').on('click', function() { //비공개여부 값 저장 하기
-
-			writrInfoOpngYn = $(this).attr('value');
-
-		});
-		
-		
-		$(document).keydown(function(e) { 
-			
-
-			  var modal1 = document.getElementById('writeModal');
-		    if (e.keyCode == 27) { 
-		    	
-				   modal1.style.display = "none";
-		    } 
-		});
-
-	})
-
-	//박가혜 2017-08-23
-	function counselinginsert() {
-
-		event.preventDefault();
-
-		var wrtbtTitle = $("#wrtbtTitle").val();
-		var wrtbtText = $("#wrtbtText").val();
-
-		var conslBbsDstnct = $("#conslBbsDstnct").val();
-		var bbsNo = $("#bbsNo").val();
-
-		console.log(writrInfoOpngYn);
-
-		var counselinglist = {
-			wrtbtTitle : wrtbtTitle,
-			wrtbtText : wrtbtText,
-			writrInfoOpngYn : writrInfoOpngYn,
-			conslBbsDstnct : conslBbsDstnct,
-			bbsNo : bbsNo
-		};
-
-		//모달 종료 
-		$("#writeModal").css({
-			"display" : "none"
-		});
-
-		location.reload();
-
-		// ajax 통신 
-
-		jQuery.ajaxSettings.traditional = true;
-
-		//console.log(JSON.stringify(counselinglist));
-
-		$.ajax({
-			url : "${pageContext.request.contextPath }/counseling/api/write",
-			type : "post",
-			dataType : "json", // 받아야되는 데이터 타입 
-			data : JSON.stringify(counselinglist),
-			//{comlist : comlist},
-			contentType : 'application/json; charset=utf-8', //json 타입으로 데이터를 보낼때 사용함 
-
-			success : function(response) {
-
-				if (response.result === "fail") {
-
-					console.error(response.message);
-					return;
-				}
-
-				console.log("성공입니다");
-				//console.log(response.data);
-				//response.data.contextpath = "${pageContext.request.contextPath}/noti/api/lab";
-
-			},
-			error : function(jqXHR, status, e) {
-				console.log("에러입니다");
-				console.error(status + " : " + e);
-				console.log(jqXHR);
-			}
-		});
-
-	}
-</script><body>
+</script>
+<body>
 <!-- /////////////////////////////// Header ///////////////////////-->
 
 

@@ -10,27 +10,73 @@
 			insert into WETBT (WRTBT_NO, WRTBT_TEXT, WRTBT_TYPE_DSTNCT, AVLBL_BEGIN_DT, AVLBL_END_DT, MB_NO, BBS_NO, WRTBT_DSTNCT,
 			RCMD_CO,NCMD_CO,FIND_CO,
 			 GROUP_NO,ORDER_NO,DEPTH,WRTBT_TITLE, WRITR_INFO_OPNG_YN, CONSL_BBS_DSTNCT,ORGNZ_NO)
-			values (null, #{wrtbtText },'원글',now(),"9999-12-31 23:59:59",#{mbNo }, #{bbsNo },'상담게시판', 0,0,0,( select ifnull( max( GROUP_NO ), 0 ) + 1 from WETBT a ),
+			values (null, #{wrtbtText },'원글',now(),"9999-12-31 23:59:59",#{mbNo }, #{bbsNo },#{wrtbtDstnct }, 0,0,0,( select ifnull( max( GROUP_NO ), 0 ) + 1 from WETBT a ),
 			 1,0,  #{wrtbtTitle }, #{writrInfoOpngYn }, #{conslBbsDstnct }, #{orgnzNo } )
 		]]>
 	</insert>
 
 	
 	
-	<!--박가혜 -->
-		<select id="getcounselingList" resultType="counselingVo" >
+	<!--박가혜   _parameter 파라미터파입한개일때 -->
+		<select id="getcounselingList" resultType="counselingVo" parameterType="map" >
 		
 			
 			<![CDATA[
-			select WRTBT_NO wrtbtNo, WRTBT_TEXT wrtbtText, WRTBT_TYPE_DSTNCT wrtbtTypeDstnct, AVLBL_BEGIN_DT avlblBeginDt, AVLBL_END_DT avlblEndDt, MB_NO mbNo,
-			 BBS_NO bbsNo, WRTBT_DSTNCT wrtbtDstnct, RCMD_CO rcmdCo,NCMD_CO ncmdCo,FIND_CO findCo,
-			 GROUP_NO groupNo,ORDER_NO orderNo,DEPTH depth,WRTBT_TITLE wrtbtTitle, 
-			 CONSL_BBS_DSTNCT conslBbsDstnct,ORGNZ_NO orgnzNo, (select count(*) from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO) count 
- 			from wetbt w
- 			where WRTBT_TYPE_DSTNCT='원글'
- 			order by w.RCMD_CO desc;
+		
+ 			select w.WRTBT_NO wrtbtNo, w.WRTBT_TEXT wrtbtText, w.WRTBT_TYPE_DSTNCT wrtbtTypeDstnct, w.AVLBL_BEGIN_DT avlblBeginDt, w.AVLBL_END_DT avlblEndDt, w.MB_NO mbNo,
+			 w.BBS_NO bbsNo, w.WRTBT_DSTNCT wrtbtDstnct, w.RCMD_CO rcmdCo,w.NCMD_CO ncmdCo,w.FIND_CO findCo,
+			 w.GROUP_NO groupNo,w.ORDER_NO orderNo,w.DEPTH depth,w.WRTBT_TITLE wrtbtTitle, 
+			 w.CONSL_BBS_DSTNCT conslBbsDstnct,w.ORGNZ_NO orgnzNo, (select count(*) from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO) count,
+			 (select MB_NO from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO group by RCMD_CO desc limit 1) reMbNo,
+             (select m.nknm from wetbt e, mb m where w. WRTBT_NO= e.PRNTS_WRTBT_NO and m.mb_no=e.MB_NO  group by RCMD_CO desc limit 1) reNkNm,
+             (select AVLBL_BEGIN_DT from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO    group by RCMD_CO desc limit 1) reAvlblBeginDt,
+             (select WRTBT_TEXT  from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO    group by RCMD_CO desc limit 1) reWrtbtText,
+             (select RCMD_CO  from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO   group by RCMD_CO desc limit 1) reRcMdCo 
+ 			from wetbt w, BBS b
+ 			where w.WRTBT_TYPE_DSTNCT='원글'
+            
 			
 			]]>
+			<choose>
+			<when test="type =='공학'">
+				<![CDATA[
+					AND W.bbs_No = b.bbs_No and b.bbs_nm='공학게시판'
+ 					
+				]]>
+			</when>
+			<when test="type =='전체'">
+				<![CDATA[
+					AND W.bbs_No = b.bbs_No 
+ 					
+				]]>
+			</when>
+			<when test="type =='google'">
+				<![CDATA[
+					  )
+				]]>
+			</when>
+		</choose>
+		
+		
+			<choose>
+			<when test="order =='공감순'">
+				<![CDATA[
+					
+ 					order by w.RCMD_CO desc;
+				]]>
+			</when>
+			<when test="order =='조회순'">
+				<![CDATA[
+					
+ 					order by w.FIND_CO desc;  
+				]]>
+			</when>
+			<when test="order =='최신순'">
+				<![CDATA[
+					order by w.AVLBL_BEGIN_DT desc;  
+				]]>
+			</when>
+		</choose>
 		</select>
 	
 	

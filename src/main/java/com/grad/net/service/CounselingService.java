@@ -24,9 +24,31 @@ public class CounselingService {
 	
 	
 	/**
-	 * 박가혜 2017-08-23
+	 * 박가혜 2017-08-23, 9-12
 	 */
 	public void setWrite(CounselingVo counselingVo) {
+	
+		
+		if(counselingVo.getBbsNo() == 1) { //전체상담게시판
+		
+			counselingVo.setWrtbtDstnct("상담게시판");
+			counselingVo.setConslBbsDstnct("일반상담");
+			
+		}
+		else if(counselingVo.getBbsNo() == 5 ) { //공학/상담
+			
+			counselingVo.setWrtbtDstnct("상담게시판");
+			counselingVo.setConslBbsDstnct("일반상담");
+			
+		}
+		else if(counselingVo.getBbsNo() == 6 ) { //공학/일반
+			
+			counselingVo.setWrtbtDstnct("일반게시판");
+		
+			
+		}
+		
+		
 		
 		counselingDao.insert(counselingVo);
 
@@ -35,9 +57,14 @@ public class CounselingService {
 	/**
 	 * 박가혜 2017-08-23
 	 */
-	public List<CounselingVo> getCounselingList() {
+	public List<CounselingVo> getCounselingList(String type,String order) {
 		
-		return counselingDao.getCounselingList();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("type", type);
+		map.put("order", order);
+		
+		
+		return counselingDao.getCounselingList(map);
 	}
 
 	/**

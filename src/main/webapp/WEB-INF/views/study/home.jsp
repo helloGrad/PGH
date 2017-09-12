@@ -217,8 +217,8 @@
                         <li class="col-xs-3 col-lg-3 table-bordered">
                             <ul>
                                 <br>
-                                <li class="quick-menu"><a href="#"><img src="images/higrad-img/safari.jpg"></a>
-                                    <div class=""><b>질문하기</b></div>
+                                <li class="quick-menu"><a href="${pageContext.servletContext.contextPath }/counseling/list"><img src="images/higrad-img/safari.jpg"></a>
+                                    <div class="" onclick="location.href='${pageContext.servletContext.contextPath }/counseling/list'"><b>질문하기</b></div>
                                 </li>
                             </ul>
                         </li>
