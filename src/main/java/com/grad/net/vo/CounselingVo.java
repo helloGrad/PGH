@@ -44,6 +44,10 @@ public class CounselingVo {
 	private String reWrtbtText;
 	private Long reRcmdCo;
 	
+	/*
+	 * 정예린 2017-09-13
+	 */
+	private int rownum;
 	
 	
 	
@@ -240,6 +244,14 @@ public class CounselingVo {
 	public void setOrgnzNo(Long orgnzNo) {
 		this.orgnzNo = orgnzNo;
 	}
+	
+	
+	public int getRownum() {
+		return rownum;
+	}
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
 	@Override
 	public String toString() {
 		return "CounselingVo [wrtbtNo=" + wrtbtNo + ", wrtbtText=" + wrtbtText + ", wrtbtTypeDstnct=" + wrtbtTypeDstnct
@@ -251,26 +263,9 @@ public class CounselingVo {
 				+ ", conslBbsDstnct=" + conslBbsDstnct + ", orgnzNo=" + orgnzNo + ", count=" + count + ", nknm=" + nknm
 				+ ", birdt=" + birdt + ", agrg=" + agrg + ", infroDstnct=" + infroDstnct + ", reMbNo=" + reMbNo
 				+ ", reNknm=" + reNknm + ", reAvlblBeginDt=" + reAvlblBeginDt + ", reWrtbtText=" + reWrtbtText
-				+ ", reRcmdCo=" + reRcmdCo + "]";
+				+ ", reRcmdCo=" + reRcmdCo + ", rownum=" + rownum + "]";
 	}
 
-
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

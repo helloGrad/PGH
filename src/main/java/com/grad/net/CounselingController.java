@@ -41,11 +41,11 @@ public class CounselingController {
 	@RequestMapping("/list")
 	public String counselingList(Model model, @AuthUser MemberVo authUser) {
 
-		List<CounselingVo> counselingList= counselingService.getCounselingList("전체","공감순");
+		//List<CounselingVo> counselingList= counselingService.getCounselingList("전체","공감순");
 		List<CounselingVo> ReplyList= counselingService.getReplyList();
 	
 		model.addAttribute("authUser", authUser);
-		model.addAttribute("counselingList", counselingList);
+		//model.addAttribute("counselingList", counselingList);
 		model.addAttribute("replyList", ReplyList);
 		
 		

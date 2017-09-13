@@ -95,13 +95,13 @@ public class CounselingController {
 
 	@ResponseBody
 	@RequestMapping("/list")
-	public JSONResult list(@RequestParam("type") String type,@RequestParam("order") String order) {
+	public JSONResult list(@RequestParam("type") String type,@RequestParam("order") String order, @RequestParam(value="sno", required=true, defaultValue="0") Long startNo) {
 
-		//System.out.println(order);
-		
-		List<CounselingVo> counselingList= counselingService.getCounselingList(type,order); //답변과 원글 모두 넘김....
 	
-
+		//System.out.print(type+"  "+order+"  "+startNo);
+		List<CounselingVo> counselingList= counselingService.getCounselingList(type,order,startNo); //답변과 원글 모두 넘김....
+	
+	
 		return JSONResult.success(counselingList);
 	}
 

@@ -3,118 +3,89 @@
 	var writrInfoOpngYn;
 	var bbsNo;
 
+	/*
+	 * 정예린 2017-09-13
+	 */
 
+	var isEnd = false;
 
-	//박가혜 2017-08-23 글작성하기 
-	function counselingList(type,order) {
+	var dislistItemTemplate = new EJS({	url : "/net/resources/js/ejs-template/discussion-list-item.ejs"});
+	var dislistTemplate = new EJS({	url : "/net/resources/js/ejs-template/discussion-list.ejs"});
 
-		$("#list").empty();
-		event.preventDefault();
+	var disbFetching = false;
+	
+	/*
+	 * 박가혜 2017-08-23 상담실리스트
+	 * 정예린 자동 스크롤링 2017-09-13
+	 * 
+	 */	
+	
+	
+	var disfetchList = function(type,order,reset) {
+		if (isEnd === true) {
+			return;
+		}
+		
+		if(reset == 0){
+			//var startNo = $("#list .w3-card-4:last-child").find('input').val() || 0;
+			// false이면(startNo값이
+			// null이면)
+			// 0을
+			// 실행
+			// console.log('last', $("#counseling-list
+			// .w3-card-2:last-child").find('input').val())
+			
+			
+			
+		}else{
+			//$("#list").empty();
+			// startNo=0;	
+			
+		}
 
-
-		jQuery.ajaxSettings.traditional = true;
-
+		var startNo = $("#list .w3-card-4:last-child").find('input').val() || 0;
+		
+		 console.log("-------->" + startNo);
 
 		$.ajax({
-			url : "/net/counseling/api/list",
-			//type : "post",
-			//dataType : "json", // 받아야되는 데이터 타입 
-			data : 
-			//JSON.stringify(replylist),
-			{type : type,
-			 order: order},
-			//contentType : 'application/json; charset=utf-8', //json 타입으로 데이터를 보낼때 사용함 
-
+			url : "/net/counseling/api/list?sno="+startNo+"&type="+type+"&order="+order,
+			type : "get",
+			dataType : "json",
+			data : "",
 			success : function(response) {
+				// console.log(response);
+
+				console.log("rownum : "+response.data[0].rownum);
 
 				if (response.result === "fail") {
-
-					console.error(response.message);
+					console.warn(response.message);
 					return;
 				}
+				// detect end
 
-				console.log("성공입니다");
-				
-				console.log(response.data);
-				
-				for(var i=0; i<response.data.length; i++){
-					
-					if(response.data[i].count == 0){ //답변 없는거
-						
-						 $("#list").append( 
-								 "<div class='w3-card-4 w3-margin'>"+
-								 "<div class='w3-container interest'>#화학, #생물학, #화학공학</div>"+
-								 "<div class='w3-container'>"+
-								 "<h4 id='wrtbtTitle"+i+"'><b>"+
-								 "<a class='detail' href='/net/counseling/detail?no="+response.data[i].wrtbtNo+"&type=prnts'>"+response.data[i].wrtbtTitle+"</a>"+
-								 "</b></h4>"+
-								 "</div>"+
-								 "<div class='w3-container'>"+
-								 " <div id='' class='w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large'>" +
-								 "<a class='detail' href='/net/counseling/detail?no="+response.data[i].wrtbtNo+"&type=reply'>답변하기</a></div>"+
-								 " <div class='dropup option'>"+
-								 " <button class='w3-button w3-padding w3-padding w3-round-large' type='button' data-toggle='dropdown'>"+
-								 " <i class='glyphicon glyphicon-option-horizontal'></i> </button>"+
-								 "  <ul class='dropdown-menu'>"+
-								 " <li><a href='#'>익명으로 답변하기</a></li> <li><a href='#'>스크랩하기</a></li><li><a href='#'>신고하기</a></li>"+
-								 " </ul></div></div><br></div>"
-								 );
-						 
-						
-					}
-					else{ //답변있는거 
-						
-						 $("#list").append( 
-								 "<div class='w3-card-4 w3-margin'>"+
-								 "<div class='w3-container'>"+
-								 "<h4 id='wrtbtTitle"+i+"'><b>"+
-								
-								 "<a class='detail' href='/net/counseling/detail?no="+response.data[i].wrtbtNo+"&type=prnts'>"+response.data[i].wrtbtTitle+"</a>"+
-								 "</b></h4>"+
-								 "</div>"+
-								 "<div class='w3-container interest'>#화학, #생물학, #화학공학</div>"+
-								 "<div class='w3-container'>"+
-								 "<h6>"+response.data[i].reNknm+"<span class='w3-opacity'>•"+response.data[i].reAvlblBeginDt+"에 답변</span></h6>"+
-								 "<a class='detail' href='/net/counseling/detail?no="+response.data[i].wrtbtNo+"&type=prnts'><p>"+response.data[i].reWrtbtText+"</p></a></div>"+
-								 "<div class='w3-container'>"+
-								 "<div class='w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large'>"+
-								 "answers<span class='w3-badge w3-white'>"+response.data[i].count+"</span></div>"+
-								 "<div class='w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large'>"+
-								 "Up <span class='w3-badge w3-white'>"+response.data[i].reRcmdCo+"</span></div>"+
-								 "<div class='w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large'>"+
-								 "Down <span class='badge'>"+response.data[i].ncmdCo+"</span></div>"+
-								
-								 " <div class='dropup option'>"+
-								 " <button class='w3-button w3-padding w3-padding w3-round-large' type='button' data-toggle='dropdown'>"+
-								 " <i class='glyphicon glyphicon-option-horizontal'></i> </button>"+
-								 "  <ul class='dropdown-menu'>"+
-								 " <li><a href='#'>익명으로 답변하기</a></li> <li><a href='#'>스크랩하기</a></li><li><a href='#'>신고하기</a></li>"+
-								 " </ul></div></div><br></div>"
-								 );
-					     
-						
-						
-					}
-					
-					
-					
+				if (response.data.length < 10) {
+					console.log(response.data.length);
+					isEnd = true;
 				}
-				
-			
+				// rendering
+				$.each(response.data, function(index, vo) {
+					disrender(vo);
+				});
 
-				
-				
-				//response.data.contextpath = "${pageContext.request.contextPath}/noti/api/lab";
-
+				var html = dislistTemplate.render(response);
+				// $("#counseling-list").append(html);
+				// $("#counseling-list").hello();
+				disbFetching = false;
 			},
 			error : function(jqXHR, status, e) {
-				console.log("에러입니다");
 				console.error(status + " : " + e);
-				console.log(jqXHR);
+				disbFetching = false;
 			}
 		});
 
 	}	
+
+
 	
 
 
@@ -148,7 +119,7 @@
 
 		
 		
-	   $(".genderlabel").removeClass("on");
+	   $(".objectbutton").removeClass("on");
 	   $("#" + obj.value).addClass("on");
 	   
 	 
@@ -244,6 +215,23 @@
 				   modal1.style.display = "none";
 		    } 
 		});
+		
+		/*
+		 * 정예린 자동 스크롤링 2017-09-13
+		 */
+		$(window).scroll(function() {
+			var $window = $(this);
+			var scrollTop = $window.scrollTop();
+			var windowHeight = $window.height();
+			var documentHeight = $(document).height();
+
+			if (scrollTop + windowHeight + 10 > documentHeight) {
+				if (!disbFetching) {
+					disbFetching = true;
+					disfetchList('공학','공감순');
+				}
+			}
+		});
 
 	})
 	
@@ -322,5 +310,21 @@
 		});
 
 	}
+	
+
+	var disrender = function(vo, mode) {
+
+		var html = dislistItemTemplate.render(vo);
+
+		if (mode === true) {
+			$("#list").prepend(html);
+		} else {
+			$("#list").append(html);
+		}
+
+	}
+	
+	
+	
 	
 

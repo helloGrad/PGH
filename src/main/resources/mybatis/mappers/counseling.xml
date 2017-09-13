@@ -16,14 +16,20 @@
 	</insert>
 
 	
-	
-	<!--박가혜   _parameter 파라미터파입한개일때 -->
+	<!--박가혜  , 정예린 _parameter 파라미터파입한개일때 2017-09-13 -->
 		<select id="getcounselingList" resultType="counselingVo" parameterType="map" >
 		
 			
 			<![CDATA[
 		
- 			select w.WRTBT_NO wrtbtNo, w.WRTBT_TEXT wrtbtText, w.WRTBT_TYPE_DSTNCT wrtbtTypeDstnct, w.AVLBL_BEGIN_DT avlblBeginDt, w.AVLBL_END_DT avlblEndDt, w.MB_NO mbNo,
+ 			select r.rownum as rownum,r.wrtbtNo wrtbtNo,r.wrtbtText wrtbtText,r.wrtbtTypeDstnct wrtbtTypeDstnct,r.avlblBeginDt avlblBeginDt,r.avlblEndDt avlblEndDt,r.mbNo mbNo,r.bbsNo bbsNo,r.wrtbtDstnct wrtbtDstnct,
+				r.rcmdCo rcmdCo,r.ncmdCo ncmdCo,r.findCo findCo,r.groupNo groupNo,r.orderNo orderNo,r.depth depth,r.wrtbtTitle wrtbtTitle,r.conslBbsDstnct conslBbsDstnct,r.orgnzNo orgnzNo,r.count count,
+				r.reMbNo reMbNo, r.reNkNm reNkNm, r.reAvlblBeginDt reAvlblBeginDt, r.reWrtbtText reWrtbtText, r.reRcMdCo reRcMdCo
+			from (SELECT r.rownum as rownum,r.wrtbtNo wrtbtNo,r.wrtbtText wrtbtText,r.wrtbtTypeDstnct wrtbtTypeDstnct,r.avlblBeginDt avlblBeginDt,r.avlblEndDt avlblEndDt,r.mbNo mbNo,r.bbsNo bbsNo,r.wrtbtDstnct wrtbtDstnct,
+				r.rcmdCo rcmdCo,r.ncmdCo ncmdCo,r.findCo findCo,r.groupNo groupNo,r.orderNo orderNo,r.depth depth,r.wrtbtTitle wrtbtTitle,r.conslBbsDstnct conslBbsDstnct,r.orgnzNo orgnzNo, r.count count,
+				r.reMbNo reMbNo, r.reNkNm reNkNm, r.reAvlblBeginDt reAvlblBeginDt, r.reWrtbtText reWrtbtText, r.reRcMdCo reRcMdCo
+				FROM (SELECT @RNUM:=@RNUM+1 'ROWNUM' , a.* FROM (SELECT @RNUM:=0) R, 
+			(select w.WRTBT_NO wrtbtNo, w.WRTBT_TEXT wrtbtText, w.WRTBT_TYPE_DSTNCT wrtbtTypeDstnct, w.AVLBL_BEGIN_DT avlblBeginDt, w.AVLBL_END_DT avlblEndDt, w.MB_NO mbNo,
 			 w.BBS_NO bbsNo, w.WRTBT_DSTNCT wrtbtDstnct, w.RCMD_CO rcmdCo,w.NCMD_CO ncmdCo,w.FIND_CO findCo,
 			 w.GROUP_NO groupNo,w.ORDER_NO orderNo,w.DEPTH depth,w.WRTBT_TITLE wrtbtTitle, 
 			 w.CONSL_BBS_DSTNCT conslBbsDstnct,w.ORGNZ_NO orgnzNo, (select count(*) from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO) count,
@@ -34,25 +40,21 @@
              (select RCMD_CO  from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO   group by RCMD_CO desc limit 1) reRcMdCo 
  			from wetbt w, BBS b
  			where w.WRTBT_TYPE_DSTNCT='원글'
-            
+            and W.bbs_No = b.bbs_No
+           
 			
 			]]>
 			<choose>
 			<when test="type =='공학'">
 				<![CDATA[
-					AND W.bbs_No = b.bbs_No and b.bbs_nm='공학게시판'
+					and b.bbs_nm='공학게시판'
  					
 				]]>
 			</when>
 			<when test="type =='전체'">
 				<![CDATA[
-					AND W.bbs_No = b.bbs_No and w.WRTBT_DSTNCT='상담게시판'
+					and w.WRTBT_DSTNCT='상담게시판'
  					
-				]]>
-			</when>
-			<when test="type =='google'">
-				<![CDATA[
-					  )
 				]]>
 			</when>
 		</choose>
@@ -62,21 +64,26 @@
 			<when test="order =='공감순'">
 				<![CDATA[
 					
- 					order by w.RCMD_CO desc;
+ 					order by w.RCMD_CO desc
 				]]>
 			</when>
 			<when test="order =='조회순'">
 				<![CDATA[
 					
- 					order by w.FIND_CO desc;  
+ 					order by w.FIND_CO desc
 				]]>
 			</when>
 			<when test="order =='최신순'">
 				<![CDATA[
-					order by w.AVLBL_BEGIN_DT desc;  
+					order by w.AVLBL_BEGIN_DT desc
 				]]>
 			</when>
 		</choose>
+			<![CDATA[
+			 ) a) r) r where rownum between #{startNo}+1 and #{startNo}+10;
+			
+			
+			]]>
 		</select>
 	
 	

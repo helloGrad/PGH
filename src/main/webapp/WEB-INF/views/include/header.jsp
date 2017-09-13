@@ -157,13 +157,34 @@
 
 <nav class="navbar navbar-default navbar-fixed-top al">
     <div class="container">
+    
+   	 <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="${pageContext.servletContext.contextPath }/loginmain">하이그래드넷</a>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class=" navbar-brand  navbar-left nav-btn" href="#">
+                        <span class=""><i class="glyphicon glyphicon-pencil"></i>글쓰기</span></a>
+                </li>
+                <li>
+                    <a class=" navbar-brand  navbar-left" href="#">
+                        <span class=""><i class="glyphicon glyphicon-check"></i>답변하기</span></a>
+                </li>
+            </ul>
+        </div>
+        
+       <!-- 
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="${pageContext.servletContext.contextPath }/">하이그래드넷</a>
+            <a class="navbar-brand" href="${pageContext.servletContext.contextPath }/loginmain">하이그래드넷</a>
             <ul class="nav navbar-nav">
                 <li class="dropdown dropdown-large">
                     <a class=" navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">커뮤니티 <span
@@ -185,7 +206,7 @@
                                 <li class="quick-menu"><a href="#"><i class="glyphicon glyphicon-search"></i>
                                     <div class="lead" onclick="location.href='${pageContext.servletContext.contextPath }/organz/list'"><b>대학원</b></div>
                                 </a></li>
-                                <!--<li class=" "><a href="#"><img src="images/higrad-img/traffic.jpg"><div class="">대학원</div></a></li>-->
+                                
                             </ul>
                         </li>
                         <li class="col-xs-3 col-lg-3 table-bordered">
@@ -210,7 +231,7 @@
                                 <li class="quick-menu"><a href="#"><i class="glyphicon glyphicon-cog"></i>
                                     <div class="lead"><b>설정</b></div>
                                 </a></li>
-                                <!--<li class=""><a href="#"><img src="images/higrad-img/settings.jpg"></a><div class="">설정</div></li>-->
+                               
                             </ul>
                         </li>
 
@@ -218,6 +239,10 @@
                 </li>
             </ul>
         </div>
+        
+        --> 
+        
+        
         
             <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">

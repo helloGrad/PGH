@@ -57,12 +57,12 @@ public class CounselingService {
 	/**
 	 * 박가혜 2017-08-23
 	 */
-	public List<CounselingVo> getCounselingList(String type,String order) {
+	public List<CounselingVo> getCounselingList(String type,String order,Long startNo) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("type", type);
 		map.put("order", order);
-		
+		map.put("startNo",startNo);
 		
 		return counselingDao.getCounselingList(map);
 	}
