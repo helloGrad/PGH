@@ -144,7 +144,28 @@
 	               
 	                
 	             	</div> 		
-	      			<div class="">20세 
+	      			<div class="">
+	      			
+	      			
+	      				      <c:choose>
+ 
+							 <c:when test="${authUser.birdt == null and authUser.agrg == null}">
+						              없음
+						    </c:when>
+		 					
+						    <c:when test="${authUser.birdt == null}">
+						       ${authUser.agrg }대
+						    </c:when>
+						 
+						    <c:when test="${authUser.agrg == null }">
+						        ${authUser.birdt }대
+						    </c:when>
+						 
+						    <c:otherwise>
+						        아무것도 아닌 사람 입니다.
+						    </c:otherwise>
+		 
+							</c:choose>
 	      				
 	      			</div>
 	      	

@@ -190,7 +190,7 @@ var naver_id_login = function (client_id,redirect_uri)
 		var naver_id_login = document.getElementById('naver_id_login');
 		if (naver_id_login==undefined)
 		{
-			alert("id 媛� naver_id_login �� div tag 媛� 議댁옱�댁빞 �⑸땲��.");
+			alert("naver id undefined");
 			return false;
 		}
 		if (this.button_color=="green")

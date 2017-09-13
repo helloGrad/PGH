@@ -9,29 +9,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-signin-client_id"
 	content="31840955156-0oh8u23d3t24v4rguka78knp12vo9jm4.apps.googleusercontent.com">
-
-
-
-
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/naverLogin_implicit-1.0.3ㄴㅇㄴㅇㄴㅇㄴㅇㄴㅇ.js"
+	charset="utf-8"></script>
+	
 	
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-
-
-
+ 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min1.css">
-<link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">	
+   
 
+   <link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap-social.css"
+	rel="stylesheet">	
+	   <link
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
+	rel="stylesheet">
+
+
+	<link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet">
 	
 <style>
 
@@ -154,80 +157,6 @@
 <title>하이그래드넷</title>
 </head>
 
-<nav class="navbar navbar-default navbar-fixed-top al">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="${pageContext.servletContext.contextPath }/">하이그래드넷</a>
-            <ul class="nav navbar-nav">
-                <li class="dropdown dropdown-large">
-                    <a class=" navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">커뮤니티 <span
-                            class="caret"></span></a>
-
-                    <ul class="dropdown-menu dropdown-menu-large row">
-                        <div class="">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#">모든 커뮤니티</a></li>
-                                <li><a href="#">즐겨찾기</a></li>
-                            </ul>
-                        </div>
-
-                        <br>
-
-                        <li class="col-xs-3 col-lg-3 table-bordered">
-                            <ul>
-                                <br>
-                                <li class="quick-menu"><a href="#"><i class="glyphicon glyphicon-search"></i>
-                                    <div class="lead" onclick="location.href='${pageContext.servletContext.contextPath }/organz/list'"><b>대학원</b></div>
-                                </a></li>
-                                <!--<li class=" "><a href="#"><img src="images/higrad-img/traffic.jpg"><div class="">대학원</div></a></li>-->
-                            </ul>
-                        </li>
-                        <li class="col-xs-3 col-lg-3 table-bordered">
-                            <ul>
-                                <br>
-                                <li class="quick-menu"><a href="${pageContext.servletContext.contextPath }/counseling/list"><img src="images/higrad-img/safari.jpg"></a>
-                                    <div class="" onclick="location.href='${pageContext.servletContext.contextPath }/counseling/list'"><b>질문하기</b></div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="col-xs-3 col-lg-3 table-bordered">
-                            <ul>
-                                <br>
-                                <li class="quick-menu"><a href="#"><img src="images/higrad-img/chemistry.jpg"></a>
-                                    <div class=""  onclick="location.href='${pageContext.servletContext.contextPath }/noti/list'"><b>연구실</b></div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="col-xs-3 col-lg-3 table-bordered">
-                            <ul>
-                                <br>
-                                <li class="quick-menu"><a href="#"><i class="glyphicon glyphicon-cog"></i>
-                                    <div class="lead"><b>설정</b></div>
-                                </a></li>
-                                <!--<li class=""><a href="#"><img src="images/higrad-img/settings.jpg"></a><div class="">설정</div></li>-->
-                            </ul>
-                        </li>
-
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href=""> <i class="glyphicon glyphicon glyphicon-search" style="font-size: 1.5em;"></i></a></li>
-                <li><a href=""> <i class="glyphicon glyphicon-bell" style="font-size: 1.5em;"></i></a></li>
-                <li><a href=""> <i class="glyphicon glyphicon-user" style="font-size: 1.5em;"></i></a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -290,7 +219,7 @@
  				 </a>	
  				 	
 		        
-		         <div id="naver_id_login">
+		         <div id="naver_id_loginsssssss">
 		        
  				 </div>
  			

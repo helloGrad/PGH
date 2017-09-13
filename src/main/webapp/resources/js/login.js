@@ -13,6 +13,9 @@ naver_id_login.setDomain("YOUR_SERVICE_URL");
 naver_id_login.setState(state);
 naver_id_login.init_naver_id_login();
 
+
+
+/*
 // 페이스북 api 설정
 window.fbAsyncInit = function() {
 	FB.init({
@@ -100,7 +103,7 @@ document.getElementById('loginBtn').addEventListener('click', function() {
 		return_scopes : true
 	});
 
-}, false);
+}, false);*/
 
 // 회원가입 폼 유효성 검사
 

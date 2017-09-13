@@ -46,7 +46,7 @@
 			</when>
 			<when test="type =='전체'">
 				<![CDATA[
-					AND W.bbs_No = b.bbs_No 
+					AND W.bbs_No = b.bbs_No and w.WRTBT_DSTNCT='상담게시판'
  					
 				]]>
 			</when>
