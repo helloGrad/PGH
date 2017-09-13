@@ -9,19 +9,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>하이그래드넷</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<!--//////////////////////// footer End ////////////////////////////-->
+
 <link href="css/higrad-signup.css" rel="stylesheet">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/main.css">
-<link href="${pageContext.request.contextPath}/resources/css/login.css"
-	rel="stylesheet">
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/naverLogin_implicit-1.0.3.js"
-	charset="utf-8"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
+<link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet">
+
+
+
 
 <script type="text/javascript">
 	$(window).scroll(function() {
@@ -37,7 +41,7 @@
 	<nav class="navbar navbar-default navbar-fixed-top al">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="main.html">하이그래드넷</a>
+				<a class="navbar-brand" href="${pageContext.servletContext.contextPath }/">하이그래드넷</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
@@ -88,17 +92,17 @@
 			<h2 class="sub-comment">Find your grad schools or interests</h2>
 			<div class="divider"></div>
 			<!--// main major 1-->
-			<a href="">
+			<a href="${pageContext.servletContext.contextPath }/loginmain#Humanities">
 				<div
 					class="majors thumbnail col-xs-5 col-lg-4 humanties overlay-major black">
 					<h3 class="major-title">인문학</h3>
 				</div>
-			</a> <a href="">
+			</a> <a href="${pageContext.servletContext.contextPath }/loginmain#SocialScience">
 				<div
 					class="majors thumbnail col-xs-5 col-lg-4 socialscience overlay-major black">
 					<h3 class="major-title">사회과학</h3>
 				</div>
-			</a> <a href="">
+			</a> <a href="${pageContext.servletContext.contextPath }/loginmain#NaturalScience">
 				<div
 					class="majors thumbnail col-xs-5 col-lg-4 naturalscience overlay-major black">
 					<h3 class="major-title">자연과학</h3>
@@ -106,17 +110,17 @@
 			</a>
 
 			<!--// main major 2-->
-			<a href="">
+			<a href="${pageContext.servletContext.contextPath }/loginmain#Engineering">
 				<div
 					class="majors thumbnail col-xs-5 col-lg-4 engineering overlay-major black">
 					<h3 class="major-title">공학</h3>
 				</div>
-			</a> <a href="">
+			</a> <a href="${pageContext.servletContext.contextPath }/loginmain#MedicineandPharmacy">
 				<div
 					class="majors thumbnail col-xs-5 col-lg-4 medicine overlay-major black">
 					<h3 class="major-title">의약학</h3>
 				</div>
-			</a> <a href="">
+			</a> <a href="${pageContext.servletContext.contextPath }/loginmain#MarineAgriculture">
 				<div
 					class="majors thumbnail col-xs-5 col-lg-4 ocean overlay-major black">
 					<h3 class="major-title">농수해양학</h3>
@@ -124,12 +128,12 @@
 			</a>
 
 			<!--// main major 3-->
-			<a href="">
+			<a href="${pageContext.servletContext.contextPath }/loginmain#Kinesiology">
 				<div
 					class="majors thumbnail col-xs-5 col-lg-4 art overlay-major black">
 					<h3 class="major-title">예술체육학</h3>
 				</div>
-			</a> <a href="">
+			</a> <a href="${pageContext.servletContext.contextPath }/loginmain#ScienceandTechnology">
 				<div
 					class="majors thumbnail col-xs-5 col-lg-4 interdisciplinary overlay-major black">
 					<h3 class="major-title">복합학</h3>
@@ -175,6 +179,8 @@
 	</div>
 
 	<c:import url="/WEB-INF/views/include/footer.jsp" />
+	
+	<!--//////////////////////// footer End ////////////////////////////-->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/login.js"></script>
 	<script type="text/javascript"

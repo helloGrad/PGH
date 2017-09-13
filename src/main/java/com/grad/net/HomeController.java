@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.grad.net.security.Auth;
 import com.grad.net.security.AuthUser;
 import com.grad.net.service.CounselingService;
 import com.grad.net.vo.CounselingVo;
@@ -27,29 +28,33 @@ public class HomeController {
 	CounselingService counselingService;
 	
 	/*
-	 * 정예린 1027-09-13 메인 합치기
+	 * 정예린 1027-09-13 메인 합치기 
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home1( Model model, MemberVo memberVo) {	
+	public String home( Model model, MemberVo memberVo) {	
 		model.addAttribute("MemberVo", memberVo);		
-		return "main1";
+		return "main";
 	}
 
 	/*
 	 * 정예린 1027-09-13 메인 합치기
 	 */
+	
 	//@Auth(role = Auth.Role.USER)
 	@RequestMapping(value = "/loginmain", method = RequestMethod.GET)
 	public String home2( Model model, MemberVo memberVo) {	
 		model.addAttribute("MemberVo", memberVo);		
-		return "home3";
+		return "loginmain";
 	}
 
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////
 
+	/*
+	 * 박가혜 2017-09-13 
+	 */
 	@RequestMapping(value = "/study/main", method = RequestMethod.GET)
-	public String home( Model model, MemberVo memberVo) {	
+	public String studyHome( Model model, MemberVo memberVo) {	
 		model.addAttribute("MemberVo", memberVo);		
 		return "study/home";
 	}

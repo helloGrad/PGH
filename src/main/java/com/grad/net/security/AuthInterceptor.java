@@ -42,13 +42,13 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 		if (session == null) {
 
-			response.sendRedirect(request.getContextPath() + "/user/login");
+			response.sendRedirect(request.getContextPath() + "/");
 			return false;
 		}
 
 		if (session.getAttribute("authUser") == null) {
 
-			response.sendRedirect(request.getContextPath() + "/user/login");
+			response.sendRedirect(request.getContextPath() + "/");
 			return false;
 
 		}

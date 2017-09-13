@@ -14,24 +14,24 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-
-	
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/higrad-signup.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">	
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+<link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/fontello-embedded.css" rel="stylesheet">	
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-light-green.css">
+<!--//////////////////////// footer End ////////////////////////////-->
+
+<link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet">
+
+
+
+
 
     <style>
         body {
@@ -212,8 +212,8 @@
                 contents title
             -->
             <h3>
-                <a href="major-content.html">
-                    인문학
+                <a href="major-content.html" name="Humanities">
+                	    인문학
                     <button type="button" class="more">More ></button>
                 </a>
             </h3>
@@ -261,8 +261,8 @@
                 contents title
             -->
             <h3>
-                <a href="major-content.html">
-                    사회과학
+                <a href="major-content.html"  name="SocialScience">
+                      	  사회과학
                     <button type="button" class="more">More ></button>
                 </a>
             </h3>
@@ -310,7 +310,7 @@
                 contents title
             -->
             <h3>
-                <a href="${pageContext.servletContext.contextPath }/study/main">
+                <a href="${pageContext.servletContext.contextPath }/study/main"  name="NaturalScience">
                     자연과학
                     <button type="button" class="more">More ></button>
                 </a>
@@ -359,7 +359,7 @@
                 contents title
             -->
             <h3>
-                <a href="${pageContext.servletContext.contextPath }/study/main">
+                <a href="${pageContext.servletContext.contextPath }/study/main" name="Engineering">
                  	   공학
                     <button type="button" class="more">More ></button>
                 </a>
@@ -408,7 +408,7 @@
                 contents title
             -->
             <h3>
-                <a href="major-content.html">
+                <a href="major-content.html" name="MedicineandPharmacy">
                     의약학
                     <button type="button" class="more">More ></button>
                 </a>
@@ -457,7 +457,7 @@
                 contents title
             -->
             <h3>
-                <a href="major-content.html">
+                <a href="major-content.html" name="MarineAgriculture">
                      농수해양학
                     <button type="button" class="more">More ></button>
                 </a>
@@ -506,7 +506,7 @@
                 contents title
             -->
             <h3>
-                <a href="major-content.html">
+                <a href="major-content.html" name="Kinesiology">
                     예술체육학
                     <button type="button" class="more">More ></button>
                 </a>
@@ -555,7 +555,7 @@
                 contents title
             -->
             <h3>
-                <a href="major-content.html">
+                <a href="major-content.html"  name="ScienceandTechnology">
                     복학학
                     <button type="button" class="more">More ></button>
                 </a>
