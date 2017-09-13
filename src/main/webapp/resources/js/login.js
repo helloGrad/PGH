@@ -15,7 +15,7 @@ naver_id_login.init_naver_id_login();
 
 
 
-/*
+
 // 페이스북 api 설정
 window.fbAsyncInit = function() {
 	FB.init({
@@ -68,7 +68,7 @@ function getUserData(access_token) {
 			// type : "post",
 			// data : data+"&sns=fb",
 			success : function(response) {
-				parent.window.location.href = "/net/orgnz";
+				parent.window.location.href = "/net/loginmain";
 				console.log("success");
 				if (response.result === "fail") {
 					console.error("dddd" + response.message);
@@ -103,7 +103,7 @@ document.getElementById('loginBtn').addEventListener('click', function() {
 		return_scopes : true
 	});
 
-}, false);*/
+}, false);
 
 // 회원가입 폼 유효성 검사
 
@@ -192,3 +192,17 @@ $("#check-button").click(function() {
 	});
 
 });
+
+
+$('#facebookLogin').click(function() {
+	$('#loginBtn').click();
+})
+
+$('#main-naverlogin').click(function() {
+	console.log("dddddd");
+	$('#naverLoginBtn').click();
+})
+
+$('#main-facebooklogin').click(function() {
+	$('#loginBtn').click();
+})

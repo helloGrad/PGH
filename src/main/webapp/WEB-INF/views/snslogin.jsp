@@ -77,7 +77,7 @@
 							//parent.window.location.href = "/net/user/mbinfo";
 							
 						//}else {
-							parent.window.location.href = "/net/";
+							parent.window.location.href = "/net/loginmain";
 						
 							
 						//}

@@ -25,14 +25,36 @@ public class HomeController {
 	
 	@Autowired
 	CounselingService counselingService;
-
+	
+	/*
+	 * 정예린 1027-09-13 메인 합치기
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home1( Model model, MemberVo memberVo) {	
+		model.addAttribute("MemberVo", memberVo);		
+		return "main1";
+	}
+
+	/*
+	 * 정예린 1027-09-13 메인 합치기
+	 */
+	//@Auth(role = Auth.Role.USER)
+	@RequestMapping(value = "/loginmain", method = RequestMethod.GET)
+	public String home2( Model model, MemberVo memberVo) {	
+		model.addAttribute("MemberVo", memberVo);		
+		return "home3";
+	}
+
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////
+
+	@RequestMapping(value = "/study/main", method = RequestMethod.GET)
 	public String home( Model model, MemberVo memberVo) {	
 		model.addAttribute("MemberVo", memberVo);		
 		return "study/home";
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = "/study/main", method = RequestMethod.POST)
 	public String home1(Locale locale, Model model, @RequestBody MemberVo memberVo) {
 		System.out.println(memberVo.getEmail());		
 		

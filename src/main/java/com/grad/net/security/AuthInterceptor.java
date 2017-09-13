@@ -58,7 +58,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 		if (role == Auth.Role.ADMIN && vo.getMbDstnct().equals("관리자") == false) {
 
-			response.sendRedirect(request.getContextPath() + "/");
+			response.sendRedirect(request.getContextPath() + "/loginmain");
 			return false;
 		}
 
