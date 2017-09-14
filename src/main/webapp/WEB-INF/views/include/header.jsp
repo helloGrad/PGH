@@ -171,7 +171,7 @@
                         <span class=""><i class="glyphicon glyphicon-pencil"></i>글쓰기</span></a>
                 </li>
                 <li>
-                    <a class=" navbar-brand  navbar-left" href="#">
+                    <a class=" navbar-brand  navbar-left" href="${pageContext.servletContext.contextPath }/counseling/list">
                         <span class=""><i class="glyphicon glyphicon-check"></i>답변하기</span></a>
                 </li>
             </ul>

@@ -19,7 +19,7 @@
 
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/ejs/ejs.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/counseling.js"></script>
+
 	
 
 
@@ -39,14 +39,24 @@
     <script>
     
 	$(function() {
+		disfetchList("공학", "공감순");
 		
-		
-		disfetchList("공학", "공감순",0);
-		
-
-		
+		/*
+		 * 정예린 자동 스크롤링 2017-09-13
+		 */
+		$(window).scroll(function() {
+			var $window = $(this);
+			var scrollTop = $window.scrollTop();
+			var windowHeight = $window.height();
+			var documentHeight = $(document).height();
+			if (scrollTop + windowHeight + 10 > documentHeight) {
+				if (!disbFetching) {
+					disbFetching = true;
+					disfetchList('공학','공감순');
+				}
+			}
+		});
 	});
-        
     </script>
 </head>
 
@@ -77,9 +87,9 @@
                             <i class="glyphicon glyphicon-option-horizontal"></i>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);" onclick="	disfetchList('공학','조회순',1);">조회순</a></li>
-                            <li><a href="javascript:void(0);" onclick="disfetchList('공학','공감순',1);">공감순</a></li>
-                            <li><a href="javascript:void(0);" onclick="disfetchList('공학','최신순',1);">최신순</a></li>
+                            <li><a href="javascript:void(0);" onclick="reset('공학','조회순');">조회순</a></li>
+                            <li><a href="javascript:void(0);" onclick="reset('공학','공감순');">공감순</a></li>
+                            <li><a href="javascript:void(0);" onclick="reset('공학','최신순');">최신순</a></li>
                         </ul>
                     </div>
                 </div>
@@ -184,7 +194,7 @@
 						
 						
 						 <div class="">
-	        
+	         
 	      
 	        			<textarea class="wrtbtTitle" onkeydown="titleResize(this)" onkeyup="titleResize(this)" id="wrtbtTitle" name="wrtbtTitle" placeholder="Title..." style=" width:100%; height:70px; border:none; border-color: white;" autofocus></textarea>
 			 			<br>
@@ -195,6 +205,17 @@
 	        
 	        </div>
 	        <div class="modal-footer">
+	        	<!--  <button type="button" onclick="addFile()">파일 추가</button>-->
+					<table id="filetable" cellpadding="5" cellspacing="0">
+						<tr name="tr_attach_file">
+							<th>첨부파일</th>
+							<td><input id="file" type="file" name="attachFile" multiple /></td>
+						</tr>
+
+						<!-- 추가 버튼을 누르면 위 숨겨진 테이블의 tr 을 가져다가 추가할 겁니닷 -->
+					</table>
+					<div id='apndngfiles'></div>
+					
 	         <button type="submit" class="form-control">입력</button>
 	        </div>
 	       
@@ -212,7 +233,7 @@
 
     </div>
 </div>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/counseling.js"></script>
 </body>
   
 </html>

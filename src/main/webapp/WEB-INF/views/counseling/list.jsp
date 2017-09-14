@@ -15,10 +15,10 @@
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/counseling.js"></script>
-	
-	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>   
+	
+	
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/ejs/ejs.js"></script>
 	    
 	    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -39,11 +39,26 @@
 
 
 <script>
-
-//박가혜 2017-08-23
-
-	
+	$(function() {
+		disfetchList("전체", "공감순");
+		/*
+		 * 정예린 자동 스크롤링 2017-09-13
+		 */
+		$(window).scroll(function() {
+			var $window = $(this);
+			var scrollTop = $window.scrollTop();
+			var windowHeight = $window.height();
+			var documentHeight = $(document).height();
+			if (scrollTop + windowHeight + 10 > documentHeight) {
+				if (!disbFetching) {
+					disbFetching = true;
+					disfetchList('전제', '공감순');
+				}
+			}
+		});
+	});
 </script>
+
 
 
 
@@ -108,9 +123,9 @@
                     <i class="glyphicon glyphicon-option-horizontal"></i>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="#">조회순</a></li>
-                    <li><a href="#">공감순</a></li>
-                    <li><a href="#">최신순</a></li>
+                     <li><a href="javascript:void(0);" onclick="reset('전체','조회순');">조회순</a></li>
+                     <li><a href="javascript:void(0);" onclick="reset('전체','공감순');">공감순</a></li>
+                     <li><a href="javascript:void(0);" onclick="reset('전체','최신순');">최신순</a></li>
                 </ul>
             </div>
             
@@ -223,90 +238,7 @@
 
         <!--////// 질문과 답변 시작 ///////////-->
 
-        	<c:set var="listcount" value="${fn:length(counselingList)}"/>
-        	
-        	<c:forEach items="${counselingList }" var="counselingList" varStatus="status">
-			
-			
-					<c:if test="${counselingList.count == 0 }"	>
-						
-						     <div class="w3-card-2 w3-margin">
-						     
-						            <div class="w3-container interest">#화학, #생물학, #화학공학
-						            </div>
-						            <div class="w3-container">
-						                <h4><b><a  class="detail" href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=prnts">${counselingList.wrtbtTitle }</a></b></h4>
-						                
-						                
-						            </div>
-						
-						            <div class="w3-container">
-						
-						                <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-						                <a class="detail" href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=reply">답변하기</a>
-						                </div>
-						                <div class="dropup option">
-						                    <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
-						                        <i class="glyphicon glyphicon-option-horizontal"></i>
-						                    </button>
-						                    <ul class="dropdown-menu">
-						                        <li><a href="#">익명으로 답변하기</a></li>
-						                        <li><a href="#">스크랩하기</a></li>
-						                        <li><a href="#">신고하기</a></li>
-						                    </ul>
-						                </div>
-						            </div>
-						            <br>
-						        </div>
-
-					</c:if>
-					<c:if test="${counselingList.count != 0 }"	>
-					
-					   <div class="w3-card-2 w3-margin">
-					
-					   <div class="w3-container interest">#유학 #외국 #컴퓨터
-			            </div>
-			            <div class="w3-container">
-			                <h4><b><a class="detail" href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=prnts">${counselingList.wrtbtTitle }</a></b></h4>
-			
-			            </div>
-			            <div class="w3-container">
-			                <h6>${replyList[status.index].nknm }
-			                    <span class="w3-opacity">${replyList[status.index].avlblBeginDt }에 답변</span></h6>
-			                <p> <a class="detail" href="${pageContext.servletContext.contextPath }/counseling/detail?no=${counselingList.wrtbtNo}&type=prnts">${replyList[status.index].wrtbtText }</a></p>
-			                
-			               
-			            </div>
-			
-			            <div class="w3-container">
-			                <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-			                answers<span class="w3-badge w3-white">${counselingList.count }</span>
-			                </div>
-			                <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-			                    Up <span class="w3-badge w3-white">${counselingList.rcmdCo }</span>
-			                </div>
-			                <div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-			                    Down <span class="badge">${counselingList.ncmdCo }</span>
-			                </div>
-			                <div class="dropup option">
-			                    <button class="w3-button w3-padding w3-padding w3-round-large dropdown-toggle" type="button" data-toggle="dropdown">
-			                    <i class="glyphicon glyphicon-option-horizontal"></i>
-			                    </button>
-			                    <ul class="dropdown-menu">
-			                        <li><a href="#">익명으로 답변하기</a></li>
-			                        <li><a href="#">스크랩하기</a></li>
-			                        <li><a href="#">신고하기</a></li>
-			                    </ul>
-			                </div>
-			                
-			            </div>
-			            <Br>
-			        </div>
-					
-				
-				</c:if>
-				
-			</c:forEach>
+        	<div id="list"></div>
         
          
         
@@ -374,5 +306,9 @@
 
 </footer>
 
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/counseling.js"></script>
+
 </body>
+
+
 </html>

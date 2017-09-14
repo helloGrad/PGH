@@ -11,6 +11,8 @@
 
 	var dislistItemTemplate = new EJS({	url : "/net/resources/js/ejs-template/discussion-list-item.ejs"});
 	var dislistTemplate = new EJS({	url : "/net/resources/js/ejs-template/discussion-list.ejs"});
+	var counlistItemTemplate = new EJS({	url : "/net/resources/js/ejs-template/counseling-list-item.ejs"});
+	var counlistTemplate = new EJS({	url : "/net/resources/js/ejs-template/counseling-list.ejs"});
 
 	var disbFetching = false;
 	
@@ -20,32 +22,35 @@
 	 * 
 	 */	
 	
+	function reset(type,order){
+		
+		$("#list").empty();
 	
-	var disfetchList = function(type,order,reset) {
+		
+		
+		 isEnd=false;
+		 //startNo=0;	
+		 disfetchList(type,order);
+		console.log(type, order, isEnd);
+		 
+	}
+	
+	
+	var disfetchList = function(type,order) {
 		if (isEnd === true) {
 			return;
 		}
 		
-		if(reset == 0){
-			//var startNo = $("#list .w3-card-4:last-child").find('input').val() || 0;
-			// false이면(startNo값이
-			// null이면)
-			// 0을
-			// 실행
-			// console.log('last', $("#counseling-list
-			// .w3-card-2:last-child").find('input').val())
-			
-			
-			
-		}else{
-			//$("#list").empty();
-			// startNo=0;	
-			
+		var startNo;
+		
+		if(type==='공학') {
+			startNo = $("#list .w3-card-4:last-child").find('input').val() || 0;
+		}
+		else if(type='전체') {
+			startNo = $("#list .w3-card-2:last-child").find('input').val() || 0;
 		}
 
-		var startNo = $("#list .w3-card-4:last-child").find('input').val() || 0;
-		
-		 console.log("-------->" + startNo);
+		 console.log("----"+type+"---->" + startNo);
 
 		$.ajax({
 			url : "/net/counseling/api/list?sno="+startNo+"&type="+type+"&order="+order,
@@ -55,7 +60,7 @@
 			success : function(response) {
 				// console.log(response);
 
-				console.log("rownum : "+response.data[0].rownum);
+				//console.log("rownum : "+response.data[0].rownum);
 
 				if (response.result === "fail") {
 					console.warn(response.message);
@@ -69,12 +74,9 @@
 				}
 				// rendering
 				$.each(response.data, function(index, vo) {
-					disrender(vo);
+					disrender(type,vo);
 				});
 
-				var html = dislistTemplate.render(response);
-				// $("#counseling-list").append(html);
-				// $("#counseling-list").hello();
 				disbFetching = false;
 			},
 			error : function(jqXHR, status, e) {
@@ -83,8 +85,7 @@
 			}
 		});
 
-	}	
-
+	}
 
 	
 
@@ -216,22 +217,6 @@
 		    } 
 		});
 		
-		/*
-		 * 정예린 자동 스크롤링 2017-09-13
-		 */
-		$(window).scroll(function() {
-			var $window = $(this);
-			var scrollTop = $window.scrollTop();
-			var windowHeight = $window.height();
-			var documentHeight = $(document).height();
-
-			if (scrollTop + windowHeight + 10 > documentHeight) {
-				if (!disbFetching) {
-					disbFetching = true;
-					disfetchList('공학','공감순');
-				}
-			}
-		});
 
 	})
 	
@@ -249,7 +234,7 @@
 
 		var conslBbsDstnct = $("#conslBbsDstnct").val();
 		
-		
+		//console.log(wrtbtTitle);
 		
 		if(writrInfoOpngYn != "N"){
 			
@@ -258,7 +243,7 @@
 		}
 		
 
-		console.log(writrInfoOpngYn);
+		
 
 		var counselinglist = {
 			wrtbtTitle : wrtbtTitle,
@@ -267,6 +252,8 @@
 			conslBbsDstnct : conslBbsDstnct,
 			bbsNo : bbsNo
 		};
+		
+		
 
 		//모달 종료 
 		$("#writeModal").css({
@@ -312,14 +299,27 @@
 	}
 	
 
-	var disrender = function(vo, mode) {
+	/*
+	 * 정예린 2017-09-13
+	 */
 
-		var html = dislistItemTemplate.render(vo);
+	var disrender = function(type,vo, mode) {
+		var html;
+
+		
+		if(type==='공학'){
+			html = dislistItemTemplate.render(vo);
+			
+		}
+		else if(type==='전체'){
+			html = counlistItemTemplate.render(vo);
+		}
 
 		if (mode === true) {
 			$("#list").prepend(html);
 		} else {
 			$("#list").append(html);
+			
 		}
 
 	}
