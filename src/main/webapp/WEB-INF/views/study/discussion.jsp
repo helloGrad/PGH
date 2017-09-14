@@ -13,12 +13,11 @@
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 
 
-
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/ejs/ejs.js"></script>
+
 
 	
 
@@ -115,7 +114,7 @@
         
          <!-- Modal -->
 
-		  <form class="counseling-form" id="counseling-form" name="counseling-form" onsubmit="counselinginsert();">
+		  <form class="counselingform" id="counselingform" name="counseling"  method="post" action="/net/counseling/api/write" enctype="multipart/form-data">
 		<div id="writeModal" class="modal" tabindex=-1 >
 			<div class="modal-dialog modal-lg modal-fullsize">
 			<div class="modal-content content-fullsize">
@@ -205,18 +204,25 @@
 	        
 	        </div>
 	        <div class="modal-footer">
+	        	
+	        
 	        	<!--  <button type="button" onclick="addFile()">파일 추가</button>-->
 					<table id="filetable" cellpadding="5" cellspacing="0">
 						<tr name="tr_attach_file">
 							<th>첨부파일</th>
-							<td><input id="file" type="file" name="attachFile" multiple /></td>
+							<td>
+						
+							<input id="file" type="file" name="file"  accept="image/*" multiple />
+							
+							</td>
 						</tr>
 
 						<!-- 추가 버튼을 누르면 위 숨겨진 테이블의 tr 을 가져다가 추가할 겁니닷 -->
 					</table>
 					<div id='apndngfiles'></div>
 					
-	         <button type="submit" class="form-control">입력</button>
+	       
+	          <input type="button" value="입력" class="form-control" onClick="counselinginsert();">
 	        </div>
 	       
 						  
@@ -227,12 +233,14 @@
 		</div>
 	</div>		
 		  </form>
+		
         
 
 
 
     </div>
 </div>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery/jquery.form.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/counseling.js"></script>
 </body>
   

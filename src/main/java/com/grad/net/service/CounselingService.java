@@ -192,4 +192,12 @@ public class CounselingService {
 
 	}
 	
+	
+	/*
+	 *  박가혜 2017-09-14
+	 */
+	public int lastInsertId() {
+		return counselingDao.lastInsertId();
+	}
+	
 }

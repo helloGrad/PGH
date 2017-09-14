@@ -240,5 +240,13 @@
 			]]>
 			
 	</update>
+	
+	
+	<!-- 박가혜 -->
+	<select id="lastInsertId" resultType="int">
+	<![CDATA[
+	select last_insert_id()
+	]]>
+	</select>
 
 </mapper>

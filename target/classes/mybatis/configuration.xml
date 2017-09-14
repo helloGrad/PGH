@@ -8,6 +8,7 @@
 		<typeAlias alias="resrchAcrsltVo" type="com.grad.net.vo.ResrchAcrsltVo"/>
 		<typeAlias alias="notiVo" type="com.grad.net.vo.NotiVo"/>
 		<typeAlias alias="counselingVo" type="com.grad.net.vo.CounselingVo"/>
+		<typeAlias alias="apndngFileVo" type="com.grad.net.vo.ApndngFileVo"/>
 	</typeAliases>
 
 	
@@ -18,5 +19,6 @@
 		<mapper resource="mybatis/mappers/organz.xml" />
 			<mapper resource="mybatis/mappers/noti.xml" />
 			<mapper resource="mybatis/mappers/counseling.xml" />
+			<mapper resource="mybatis/mappers/apndngfile.xml" />
 	</mappers>
 </configuration>

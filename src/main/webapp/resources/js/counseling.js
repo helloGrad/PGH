@@ -222,12 +222,28 @@
 	
 	
 	
+
 	
 
-	//박가혜 2017-08-23 글작성하기 
 	function counselinginsert() {
 
-		event.preventDefault();
+		
+		
+		 var formData = new FormData($("#counselingform")[0]);
+
+
+	
+		
+		var ajaxData = new FormData();
+		ajaxData.append( 'filedata','counseling');
+		$.each($("input[type=file]"), function(i, obj) {
+		        $.each(obj.files,function(j, file){
+		            ajaxData.append('file', file);
+		        })
+		});
+		ajaxData.append('wrtbtTitle', wrtbtTitle);
+		ajaxData.append('wrtbtText',  wrtbtText);
+		ajaxData.append('conslBbsDstnct', conslBbsDstnct);
 
 		var wrtbtTitle = $("#wrtbtTitle").val();
 		var wrtbtText = $("#wrtbtText").val();
@@ -253,28 +269,31 @@
 			bbsNo : bbsNo
 		};
 		
+		ajaxData.append('writrInfoOpngYn', writrInfoOpngYn);
 		
+		for (var value of ajaxData.values()) {
+			
+			   //console.log(value); 
+			}
 
 		//모달 종료 
 		$("#writeModal").css({
 			"display" : "none"
 		});
 
-		location.reload();
-
-		// ajax 통신 
-
-		jQuery.ajaxSettings.traditional = true;
-
-		//console.log(JSON.stringify(counselinglist));
-
+		
 		$.ajax({
 			url : "/net/counseling/api/write",
 			type : "post",
-			dataType : "json", // 받아야되는 데이터 타입 
-			data : JSON.stringify(counselinglist),
-			//{comlist : comlist},
-			contentType : 'application/json; charset=utf-8', //json 타입으로 데이터를 보낼때 사용함 
+		//	dataType : "json", // 받아야되는 데이터 타입 
+			data : formData,
+			processData : false,
+            contentType : false,
+
+			//JSON.stringify(counselinglist, ajaxData),
+			
+			//{counselinglist : counselinglist},
+			//contentType : 'application/json; charset=utf-8', //json 타입으로 데이터를 보낼때 사용함 
 
 			success : function(response) {
 
@@ -295,6 +314,9 @@
 				console.log(jqXHR);
 			}
 		});
+		
+		
+		
 
 	}
 	

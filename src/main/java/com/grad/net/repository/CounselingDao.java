@@ -141,4 +141,12 @@ public class CounselingDao {
 	public void updateUpDislike(Long wrtbtNo) {
 		sqlSession.update("counseling.updateUpDislike",wrtbtNo);
 	}
+	
+	
+	/*
+	 * 박가혜 2017-09-14
+	 */
+	public int lastInsertId() {
+		return sqlSession.selectOne("counseling.lastInsertId");
+	}
 }
