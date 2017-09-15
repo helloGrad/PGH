@@ -8,22 +8,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="google-signin-client_id"
-	content="31840955156-0oh8u23d3t24v4rguka78knp12vo9jm4.apps.googleusercontent.com">
+
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+
 
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
 <link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/fontello-embedded.css" rel="stylesheet">	
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
+    
 
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
 
 <!--//////////////////////// footer End ////////////////////////////-->
 

@@ -16,7 +16,8 @@ pageContext.setAttribute("newLine", "\n");
  
  	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>  
+	  
     <title>상담실</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
@@ -24,7 +25,7 @@ pageContext.setAttribute("newLine", "\n");
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+
      <style>
         body {
             padding-top: 80px;
@@ -60,6 +61,21 @@ pageContext.setAttribute("newLine", "\n");
 
 		.winter { border:7px solid #dddddd; 
 					background-color: yellow;}
+					
+		.hide{
+  		display:none;  
+		}		
+		
+		
+		select {
+  
+		    -webkit-appearance: none; /* 화살표 없애기 for chrome*/
+		   -moz-appearance: none;    /* 화살표 없애기 for firefox*/
+		   appearance: none;         /* 화살표 없애기 공통*/
+		}
+		select::-ms-expand {
+		   display: none;            /* 화살표 없애기 for IE10, 11*/
+		}	
 
     </style>
     
@@ -208,10 +224,26 @@ pageContext.setAttribute("newLine", "\n");
 				}
 
 			});
+			
+			$('#writrInfoOpngYn2 li > a').on('click', function() { //비공개여부 값 저장 하기
+
+				
+				 document.getElementById("writrInfoOpngYn").innerHTML = 
+					 
+					 "<option  class='hide' value='Y'></option>"+
+					  "<option value='N' selected='selected'>비공개로 작성하기</option>";
+			});
+			
+		
 
 		});
+		
+	
 
 	})
+	
+	
+
 
 	//보이기
 	function div_show() {
@@ -240,7 +272,7 @@ pageContext.setAttribute("newLine", "\n");
 		
 		var prntsWrtbtNo=$("#prntsWrtbtNo").val();
 		var wrtbtText = $("#wrtbtText").val();
-		var writrInfoOpngYn = $("input[type=radio][name=writrInfoOpngYn]:checked").val();
+		var writrInfoOpngYn = $("#writrInfoOpngYn").val();
 		
 		
 		var bbsNo = $("#bbsNo").val();
@@ -508,6 +540,11 @@ pageContext.setAttribute("newLine", "\n");
                     <p>
                     ${fn:replace(counselingPrnts.wrtbtText, newLine,"<br>") }
                     </p>
+                    
+                   	<c:forEach items="${fileList }" var="list" varStatus="status">
+					  <img src="${pageContext.request.contextPath }${list.storgPath }" style="max-width: 100%; height: auto;" >  
+					</c:forEach>
+                
                 </div>
 
                 <div class="w3-container interest">#유학 #외국 #컴퓨터
@@ -538,6 +575,14 @@ pageContext.setAttribute("newLine", "\n");
                             <li><a href="#">신고하기</a></li>
                         </ul>
                     </div>
+                    
+                    <br>
+                    <div class="row w3-margin">
+					<c:forEach items="${fileList }" var="list" varStatus="status">
+					<a id="down" href="${pageContext.servletContext.contextPath }/download?no=${list.apndngFileNo}">${list.apndngFileNm }</a>
+					</c:forEach>
+					</div>
+                    
                 </div>
                 <Br>
             </div>
@@ -554,7 +599,7 @@ pageContext.setAttribute("newLine", "\n");
 
             <!--/////// 답변 ///////-->
             
-            
+         
             <div class="w3-card-4 w3-margin w3-topbar w3-border-lightgray" id="reply-form">
               
 			
@@ -562,11 +607,28 @@ pageContext.setAttribute("newLine", "\n");
 				 
 					<input type="hidden" id="authUser" name="authUser" value="${authUser.mbNo }">
 					<input type="hidden" id="prntsWrtbtNo" name="prntsWrtbtNo" value="${counselingPrnts.wrtbtNo }">
-					답변 등록 <input type="hidden" id="bbsNo" name="bbsNo" value="1"> <br>
-					내용 : <textarea class="form-control" onkeydown="resize(this)" onkeyup="resize(this)" id="wrtbtText" name="wrtbtText"></textarea>
+					 <input type="hidden" id="bbsNo" name="bbsNo" value="${counselingPrnts.bbsNo}"> <br>
+					<div>답변</div> 
+					<textarea class="form-control" onkeydown="resize(this)" onkeyup="resize(this)" id="wrtbtText" name="wrtbtText"></textarea>
 					
-					작성자정보공개여부 : <input type="radio" id="writrInfoOpngYn" name="writrInfoOpngYn" value="Y" checked="checked" />Y 
-									<input type="radio" id="writrInfoOpngYn" name="writrInfoOpngYn" value="N" /> N <br>
+					 <div class="dropdown writedropdown">
+	               			<button  class="w3-button w3-padding w3-round-large dropdown-toggle" type="button" data-toggle="dropdown" style="float:right;">
+	                   		 <i class="glyphicon glyphicon-option-horizontal"></i>
+	               			 </button>
+	               			 <ul id="writrInfoOpngYn2" class="dropdown-menu dropdown-menu-right"> <!-- 디폴트는 Y -->
+	                  	     <li class="hide"><a href="#" value="Y">공개로 작성하기</a></li>
+	                  	     <li><a href="#" value="N">비공개로 작성하기</a></li>
+	                  	  
+	                		</ul>
+	               
+	                
+	             	</div>
+	           
+	           		<select id="writrInfoOpngYn" class="hide">
+	           		
+					  <option  class="hide" value="Y" selected="selected"></option>
+					  <option value="N">비공개로 작성하기</option>
+					</select>
 				
 
 					<button type="submit" class="form-control">입력</button>
@@ -784,6 +846,8 @@ pageContext.setAttribute("newLine", "\n");
         </div>
     </div>
 </footer>
+
+
 
 </body>
 </html>

@@ -135,6 +135,8 @@ textarea.wrtbtText:focus {
 			
 				 
 				}
+				
+				
 
             }
             @media screen and (min-width: 401px) and (max-width: 600px) {
@@ -196,7 +198,7 @@ input[type='radio'] {
 }
 
 .objectbutton {
-   width: 12%;
+   width: 48%;
    height: 20px;
    padding: 0 0 10px 0;
    display: inline-block;
@@ -216,3 +218,5 @@ input[type='radio'] {
 .ulhide{
   display:none;  
 }
+
+

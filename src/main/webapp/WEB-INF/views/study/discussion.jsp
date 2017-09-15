@@ -8,12 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="google-signin-client_id"
-	content="31840955156-0oh8u23d3t24v4rguka78knp12vo9jm4.apps.googleusercontent.com">
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/ejs/ejs.js"></script>
@@ -34,11 +33,25 @@
 <link href="${pageContext.request.contextPath}/resources/css/study.css" rel="stylesheet">
 
 
+<style>
+
+
+</style>
  
     <script>
     
 	$(function() {
-		disfetchList("공학", "공감순");
+		
+
+	
+		
+	
+		var order; //정렬유지
+		
+			
+		order="최신순";
+			
+		disfetchList("공학", order);
 		
 		/*
 		 * 정예린 자동 스크롤링 2017-09-13
@@ -51,7 +64,7 @@
 			if (scrollTop + windowHeight + 10 > documentHeight) {
 				if (!disbFetching) {
 					disbFetching = true;
-					disfetchList('공학','공감순');
+					disfetchList('공학',order);
 				}
 			}
 		});
@@ -80,7 +93,7 @@
             <!--상담실 내용-->
             <div class="col-lg-8">
                 <div class="w3-container">
-                    <div id="myBtn" class="btn btn-danger web-volunteer">글 작성하기</div>
+                    <div id="myBtn" class="btn btn-danger web-volunteer writeBtn">글 작성하기</div>
                     <div class="dropdown option">
                         <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
                             <i class="glyphicon glyphicon-option-horizontal"></i>
@@ -112,127 +125,8 @@
         
         
         
-         <!-- Modal -->
 
-		  <form class="counselingform" id="counselingform" name="counseling"  method="post" action="/net/counseling/api/write" enctype="multipart/form-data">
-		<div id="writeModal" class="modal" tabindex=-1 >
-			<div class="modal-dialog modal-lg modal-fullsize">
-			<div class="modal-content content-fullsize">
-				<div class="modal-header u-flex1">
-	        
-	        	
-	        	<img src="https://cdn-images-1.medium.com/fit/c/40/40/0*oapGePcc_FQR1KmN." class="avatar-image avatar-image--smaller writeimage">
-	   			<button type="button" class="close col-close"></button>
-	   			
-	   	
-	   			<div class="writeName">
-	        		<a class="">${authUser.nknm }</a>
-	      			
-	      			 <div class="dropdown writedropdown">
-	               			<button  class="w3-button w3-padding w3-round-large dropdown-toggle" type="button" data-toggle="dropdown" style="float:right;">
-	                   		 <i class="glyphicon glyphicon-option-horizontal"></i>
-	               			 </button>
-	               			 <ul id="writrInfoOpngYn" class="dropdown-menu dropdown-menu-right"> <!-- 디폴트는 Y -->
-	                  	     <li><a href="#" value="N">비공개로 작성하기</a></li>
-	                		</ul>
-	               
-	                
-	             	</div> 	
-	             		
-	      			<div class="">
-	      			
-	      			
-	      				      <c:choose>
- 
-							 <c:when test="${authUser.birdt == null and authUser.agrg == null}">
-						              없음
-						    </c:when>
-		 					
-						    <c:when test="${authUser.birdt == null}">
-						       ${authUser.agrg }대
-						    </c:when>
-						 
-						    <c:when test="${authUser.agrg == null }">
-						        ${authUser.birdt }대
-						    </c:when>
-						 
-						    <c:otherwise>
-						        아무것도 아닌 사람 입니다.
-						    </c:otherwise>
-		 
-							</c:choose>
-	      				
-	      			</div>
-	      			<div class="gender">
-                  	<label class="objectbutton on" id="5"> <input type="radio"
-                     name="bbsNo" value="5" id="bbsNo" checked
-                     onclick="changeColor(this);"> 상담하기
-                  	</label> <label class="objectbutton" id="6"> <input type="radio"
-                     name="bbsNo" value="6" id="bbsNo"
-                     onclick="changeColor(this);">잡담하기
-                  	</label>
-               		</div>
-	      			
-	      			
-	      	
-	        	</div>
-	       
-	          
-	             
-	
-	              
-	        </div>
-	      
-	        
-	        <div class="modal-body">
-	        
-	
-	        
-					 
-						<input type="hidden" id="authUser" name="authUser" value="${authUser.mbNo }">
-						
-						
-						 <div class="">
-	         
-	      
-	        			<textarea class="wrtbtTitle" onkeydown="titleResize(this)" onkeyup="titleResize(this)" id="wrtbtTitle" name="wrtbtTitle" placeholder="Title..." style=" width:100%; height:70px; border:none; border-color: white;" autofocus></textarea>
-			 			<br>
-			 			<textarea class="wrtbtText" onkeydown="resize(this)" onkeyup="resize(this)" id="wrtbtText" name="wrtbtText" placeholder="Tell your story..." style=" width:100%; height:200px; border:none; border-color: white;"></textarea>
-			      	
-	   					</div>
-						
-	        
-	        </div>
-	        <div class="modal-footer">
-	        	
-	        
-	        	<!--  <button type="button" onclick="addFile()">파일 추가</button>-->
-					<table id="filetable" cellpadding="5" cellspacing="0">
-						<tr name="tr_attach_file">
-							<th>첨부파일</th>
-							<td>
-						
-							<input id="file" type="file" name="file"  accept="image/*" multiple />
-							
-							</td>
-						</tr>
 
-						<!-- 추가 버튼을 누르면 위 숨겨진 테이블의 tr 을 가져다가 추가할 겁니닷 -->
-					</table>
-					<div id='apndngfiles'></div>
-					
-	       
-	          <input type="button" value="입력" class="form-control" onClick="counselinginsert();">
-	        </div>
-	       
-						  
-						  
-						  
-						  
-		</div>
-		</div>
-	</div>		
-		  </form>
 		
         
 
@@ -240,8 +134,9 @@
 
     </div>
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery/jquery.form.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/counseling.js"></script>
+
+
+
 </body>
   
 </html>

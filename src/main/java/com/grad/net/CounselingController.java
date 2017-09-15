@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grad.net.security.Auth;
 import com.grad.net.security.AuthUser;
+import com.grad.net.service.ApndngFileService;
 import com.grad.net.service.CounselingService;
+import com.grad.net.vo.ApndngFileVo;
 import com.grad.net.vo.CounselingVo;
 import com.grad.net.vo.MemberVo;
 
@@ -32,6 +34,9 @@ public class CounselingController {
 	
 	@Autowired
 	CounselingService counselingService;
+	
+	@Autowired
+	ApndngFileService apndngFileService;
 	
 	
 	/**
@@ -67,8 +72,7 @@ public class CounselingController {
 		CounselingVo counselingPrnts = counselingService.getCounselingPrnts(no); //원글
 		List<CounselingVo> counselingReplyList = counselingService.getCounselingReplyDetail(no); //답글
 		List<CounselingVo> existLike =counselingService.existLike(authUser.getMbNo(),no);
-		
-	
+
 		
 
 		
@@ -82,6 +86,14 @@ public class CounselingController {
 		model.addAttribute("counselingReplyList", counselingReplyList);
 		model.addAttribute("type", type); //제목클릭 , 답변하기 클릭을 구분하기 위해서 
 		model.addAttribute("existLike", existLike); //좋아요 싫어요
+		
+		/**
+		 * 박가혜 2017-09-15 이미지 보여주기
+		 */
+		model.addAttribute("fileList", apndngFileService.getFileList(no, "게시글"));
+		List<ApndngFileVo> fileList = apndngFileService.getFileList(no, "게시글");
+		
+		System.out.println(fileList);
 		
 		
 		JSONArray jsonArray = new JSONArray();

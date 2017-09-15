@@ -108,7 +108,7 @@ public class ApndngFileService {
 		return apndngFileDao.getFileInfo(id);
 	}
 
-	public List<ApndngFileVo> getFileList(int no, String type) {
+	public List<ApndngFileVo> getFileList(Long no, String type) {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("no", no);

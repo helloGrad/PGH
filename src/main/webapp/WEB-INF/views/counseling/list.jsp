@@ -12,10 +12,10 @@
  
     <title>상담실</title>
     
-    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>   
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>   
+	
 	
 	
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/ejs/ejs.js"></script>
@@ -116,7 +116,7 @@
 		
 		<div class="w3-container">
 		
-            <div id="myBtn" class="btn btn-danger web-volunteer">질문하기</div>
+            <div id="myBtn" class="btn btn-danger web-volunteer writeBtn">질문하기</div>
             
             <div class="dropdown option">
                 <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
@@ -131,98 +131,7 @@
             
             
            
-     
-		
-		  <!-- Modal -->
 
-
-		<div id="writeModal" class="modal" tabindex=-1 >
-			<div class="modal-dialog modal-lg modal-fullsize">
-			<div class="modal-content content-fullsize">
-				<div class="modal-header u-flex1">
-	        
-	        	
-	        	<img src="https://cdn-images-1.medium.com/fit/c/40/40/0*oapGePcc_FQR1KmN." class="avatar-image avatar-image--smaller writeimage">
-	   			<button type="button" class="close col-close"></button>
-	   			
-	   	
-	   			<div class="writeName">
-	        		<a class="">${authUser.nknm }</a>
-	      			
-	      			 <div class="dropdown writedropdown">
-	               			<button  class="w3-button w3-padding w3-round-large dropdown-toggle" type="button" data-toggle="dropdown" style="float:right;">
-	                   		 <i class="glyphicon glyphicon-option-horizontal"></i>
-	               			 </button>
-	               			 <ul id="writrInfoOpngYn" class="dropdown-menu dropdown-menu-right"> <!-- 디폴트는 Y -->
-	                  	     <li><a href="#" value="N">비공개로 작성하기</a></li>
-	                		</ul>
-	               
-	                
-	             	</div> 		
-	      			<div class="">
-	      			
-	      			
-	      				      <c:choose>
- 
-							 <c:when test="${authUser.birdt == null and authUser.agrg == null}">
-						              없음
-						    </c:when>
-		 					
-						    <c:when test="${authUser.birdt == null}">
-						       ${authUser.agrg }대
-						    </c:when>
-						 
-						    <c:when test="${authUser.agrg == null }">
-						        ${authUser.birdt }대
-						    </c:when>
-						 
-						    <c:otherwise>
-						        아무것도 아닌 사람 입니다.
-						    </c:otherwise>
-		 
-							</c:choose>
-	      				
-	      			</div>
-	      	
-	        	</div>
-	       
-	          
-	             
-	
-	              
-	        </div>
-	        <form class="counseling-form" id="counseling-form" name="counseling-form" onsubmit="counselinginsert();">
-	        
-	        <div class="modal-body">
-	        
-	
-	        
-					 
-						<input type="hidden" id="authUser" name="authUser" value="${authUser.mbNo }">
-						<input type="hidden" id="bbsNo" name="bbsNo" value="1"> <!-- 진로게시판을 의미 -->
-						
-						 <div class="">
-	        
-	      
-	        			<textarea class="wrtbtTitle" onkeydown="titleResize(this)" onkeyup="titleResize(this)" id="wrtbtTitle" name="wrtbtTitle" placeholder="Title..." style=" width:100%; height:70px; border:none; border-color: white;" autofocus></textarea>
-			 			<br>
-			 			<textarea class="wrtbtText" onkeydown="resize(this)" onkeyup="resize(this)" id="wrtbtText" name="wrtbtText" placeholder="Tell your story..." style=" width:100%; height:200px; border:none; border-color: white;"></textarea>
-			      	
-	   					</div>
-						
-	        
-	        </div>
-	        <div class="modal-footer">
-	         <button type="submit" class="form-control">입력</button>
-	        </div>
-	         </form>
-						  
-						  
-						  
-						  
-		</div>
-		</div>
-	</div>		
 		
 		
 		
@@ -306,7 +215,7 @@
 
 </footer>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/counseling.js"></script>
+
 
 </body>
 

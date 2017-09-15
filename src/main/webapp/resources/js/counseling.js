@@ -26,7 +26,7 @@
 		
 		$("#list").empty();
 	
-		
+		order=order;
 		
 		 isEnd=false;
 		 //startNo=0;	
@@ -142,7 +142,7 @@
 	
 		 bbsNo = $("#bbsNo").val();
 
-		$("#myBtn").click(function() {
+		$(".writeBtn").click(function() {
 
 			if (authUser === null || authUser === '') {
 
