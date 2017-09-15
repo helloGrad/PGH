@@ -39,6 +39,7 @@
 </style>
  
     <script>
+
     
 	$(function() {
 		
@@ -46,10 +47,10 @@
 	
 		
 	
-		var order; //정렬유지
 		
 			
 		order="최신순";
+		type="공학";
 			
 		disfetchList("공학", order);
 		
@@ -93,7 +94,7 @@
             <!--상담실 내용-->
             <div class="col-lg-8">
                 <div class="w3-container">
-                    <div id="myBtn" class="btn btn-danger web-volunteer writeBtn">글 작성하기</div>
+                    <div id="myBtn" class="btn btn-danger web-volunteer writeBtn" value="${type }">글 작성하기</div>
                     <div class="dropdown option">
                         <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
                             <i class="glyphicon glyphicon-option-horizontal"></i>

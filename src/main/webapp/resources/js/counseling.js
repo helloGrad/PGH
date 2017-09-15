@@ -2,6 +2,9 @@
 //박가혜 2017-08-23 질문하기 사이즈 조절
 	var writrInfoOpngYn;
 	var bbsNo;
+	
+	var order; //정렬유지
+	var type;
 
 	/*
 	 * 정예린 2017-09-13
@@ -155,6 +158,9 @@
 
 			} else {
 				
+				
+				 var value = $(".writeBtn").val();
+				  alert(value);
 				
 				$("#writeModal").css({
 					"display" : "block"

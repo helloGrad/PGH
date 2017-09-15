@@ -69,9 +69,19 @@ i:hover {
 .sidebar{
 
  background-color: #6bc59a;
- height: 470px;
+ height: 523px;
 
 }
+
+.bottom{
+position: absolute;
+right:    0;
+bottom:   0;
+
+}
+
+
+
 
 </style>
 
@@ -153,8 +163,9 @@ i:hover {
 									</c:choose>
 			      				
 			      			</div>
-			      		<!--  objectbutton css 12px
-			      			<div class="gender">
+			      		
+			      			<br>
+			      		  <div class="gender">
 		                  	<label class="objectbutton on" id="5"> <input type="radio"
 		                     name="bbsNo" value="5" id="bbsNo" checked
 		                     onclick="changeColor(this);"> 상담하기
@@ -162,9 +173,9 @@ i:hover {
 		                     name="bbsNo" value="6" id="bbsNo"
 		                     onclick="changeColor(this);">잡담하기
 		                  	</label>
-		               		</div>
+		            		 </div>
 			      			
-			      		 -->		
+			      			
 			      	
 			        	</div>
 			       
@@ -258,18 +269,10 @@ i:hover {
 					</select>
 			
 				    
-			        <div class="gender">
-		                  	<label class="objectbutton on" id="5"> <input type="radio"
-		                     name="bbsNo" value="5" id="bbsNo" checked
-		                     onclick="changeColor(this);"> 상담하기
-		                  	</label> <label class="objectbutton" id="6"> <input type="radio"
-		                     name="bbsNo" value="6" id="bbsNo"
-		                     onclick="changeColor(this);">잡담하기
-		                  	</label>
-		             </div>
+			      
 			        </div>
 			        <div class="modal-footer">
-			        	<input type="button" value="입력" class="form-control" onClick="counselinginsert();">
+			        	<input type="button" value="입력" class="form-control bottom" onClick="counselinginsert();">
 		
 			        </div>
 			       
