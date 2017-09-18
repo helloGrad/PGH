@@ -47,72 +47,95 @@ public class CounselingController {
 	@RequestMapping(value = "/write")
 	public JSONResult CounselingList(Model model, @AuthUser MemberVo authUser, MultipartHttpServletRequest multi) {
 		
-
-		  System.out.println("id : " + multi.getParameter("wrtbtTitle"));
-	        System.out.println("pw : " + multi.getParameter("wrtbtText"));
-	        System.out.println("pw : " + multi.getParameter("writrInfoOpngYn"));
-	        System.out.println("pw : " + multi.getParameter("conslBbsDstnct"));
+			int lastId = 0;
 		
-		
-			  
-	       CounselingVo counselingVo = new CounselingVo() ;
-			  
-	 	   
-	       System.out.println(authUser);
-
-			counselingVo.setMbNo(authUser.getMbNo());
+		   // System.out.println("title : " + multi.getParameter("wrtbtTitle"));
+	       // System.out.println("text : " + multi.getParameter("wrtbtText"));
+	        //System.out.println("writrInfoOpngYn : " + multi.getParameter("writrInfoOpngYn"));
+	        //System.out.println("writeoption : " + multi.getParameter("writeoption"));
+	        //System.out.println("boardoption : " + multi.getParameter("boardoption"));
+	        
+	        CounselingVo counselingVo = new CounselingVo() ;
+	        counselingVo.setMbNo(authUser.getMbNo());
 			counselingVo.setWrtbtTitle(multi.getParameter("wrtbtTitle"));
 			counselingVo.setWrtbtText(multi.getParameter("wrtbtText"));
-			counselingVo.setBbsNo(Long.parseLong(multi.getParameter("bbsNo")));
+			counselingVo.setWritrInfoOpngYn(multi.getParameter("writrInfoOpngYn"));
+			counselingVo.setWrtbtDstnct(multi.getParameter("writeoption"));
+		
 			
-			if(multi.getParameter("conslBbsDstnct") == "Y") {
+			if(multi.getParameter("writeoption").equals("상담게시판")) {
 				
-				counselingVo.setWritrInfoOpngYn("Y");
-					
-				
-			}else {
-				
-				counselingVo.setWritrInfoOpngYn("N");
-				
+				counselingVo.setConslBbsDstnct("일반상담");
 			}
 			
-			System.out.println(counselingVo);
+
+
+	        if(multi.getParameter("writeoption").equals("일반게시판") && multi.getParameter("boardoption").equals("공학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 6);
+	        }else if(multi.getParameter("writeoption").equals("상담게시판") && multi.getParameter("boardoption").equals("공학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 5);
+	       	        	
+	        	
+	        }else if(multi.getParameter("writeoption").equals("일반게시판") && multi.getParameter("boardoption").equals("전체")) {
+	        	
+	        	counselingVo.setBbsNo((long) 1);
+	        }else if(multi.getParameter("writeoption").equals("상담게시판") && multi.getParameter("boardoption").equals("전체")) {
+	        	
+	        	counselingVo.setBbsNo((long) 1);
+	        	
+	        }else if(multi.getParameter("writeoption").equals("일반게시판") && multi.getParameter("boardoption").equals("인문학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 7);
+	        }else if(multi.getParameter("writeoption").equals("상담게시판") && multi.getParameter("boardoption").equals("인문학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 8);
+	        	
+	        }
+			  
+			
+			//System.out.println(counselingVo);
 			counselingService.setWrite(counselingVo);
 			
-			
+		
 		
 		/**
 		 *파일업로드 2017-09-14
-		 */
-		// 
+		
+		// */
 		ApndngFileVo vo = null;
-		int lastId = 0;
+	
 
 		lastId = counselingService.lastInsertId();
 		
 		 List<MultipartFile> mf = multi.getFiles("file");
 
 		 System.out.println("size: " +mf.size());
-		
-		  for(int i=0; i<mf.size(); i++) {
-			  
-			//  System.out.println(mf.get(i).getOriginalFilename());
-			  
-			   apndngFileService.restore(mf.get(i));
-				vo = apndngFileService.getFileVo();
-				vo.setPrntsDstnct("게시글");
-				vo.setPrntsNo(lastId);
-				
-				System.out.println(vo);
-				apndngFileService.insert(vo);
+		 
 
+		 if(mf.get(0).getOriginalFilename().equals("")) {
+			 
+			 
+			 System.out.println("파일이 없습니다.");
+		 }else {
+			 
+			  for(int i=0; i<mf.size(); i++) {
+				  
+					//  System.out.println(mf.get(i).getOriginalFilename());
+					  
+					   apndngFileService.restore(mf.get(i));
+						vo = apndngFileService.getFileVo();
+						vo.setPrntsDstnct("게시글");
+						vo.setPrntsNo(lastId);
+						
+						//System.out.println(vo);
+						apndngFileService.insert(vo);
 
-
-			  
-			  
-		  }
-		  
-
+					  
+				  }
+			 
+		 }
 
 		return JSONResult.success(lastId);
 	}

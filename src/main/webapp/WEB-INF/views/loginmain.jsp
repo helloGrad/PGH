@@ -70,6 +70,8 @@
                 margin-right: 16px;
                 padding: 20px 0px;
             }
+            
+            
         }
 
         @media screen and (min-width: 768px) {
@@ -129,22 +131,9 @@
     </style>
 
     <script>
-        $(document).ready(function (e) {
-            $(".degree").click(function () {
-                $(this).toggleClass("check");
-            });
-        });
-
-        $(window).resize(function () {
-            var windowWidth = $(window).width();
-            console.log(windowWidth);
-            if (window.innerWidth <= 768) {
-                $(".quick-menu").removeClass("table-bordered").addClass("thumbnail");
-            } else {
-                $(".quick-menu").removeClass("thumbnail");
-
-            }
-        });
+  
+    
+    
     </script>
 </head>
 <body>

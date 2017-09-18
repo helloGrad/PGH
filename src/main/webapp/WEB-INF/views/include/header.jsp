@@ -16,6 +16,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/ejs/ejs.js"></script>
 
 
  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
@@ -25,6 +26,9 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+<script>
+var boardtype; 
+</script>
 
 
 <!--//////////////////////// footer End ////////////////////////////-->
@@ -32,6 +36,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap-social.css" rel="stylesheet"> 	
 
 <link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet">
+
 
 
 	
@@ -49,6 +54,29 @@
 
 	//2017-09-01 박가혜 
 	$(function() {
+		
+		
+
+		if (matchMedia("screen and (min-width: 600px)").matches) {
+			  
+			$("#writerleft").insertAfter("#writeright");
+		} else {
+			
+			console.log("ㅇㅇㅇㅇ");
+		  
+	
+			
+			
+			$("#writeright").insertAfter("#writeleft");
+	
+
+
+		
+			
+		}
+		
+	
+		//var boardtype;
 
 		$(document).ready(function() {
 
@@ -75,9 +103,10 @@
 			});
 			
 	
-				
 			
 			
+			
+	
 			
 
 		});
@@ -151,7 +180,7 @@
             <a class="navbar-brand" href="${pageContext.servletContext.contextPath }/loginmain">하이그래드넷</a>
             <ul class="nav navbar-nav">
                 <li>
-                    <a class=" navbar-brand  navbar-left nav-btn writeBtn" href="#" >
+                    <a id="headerBtn" class=" navbar-brand  navbar-left nav-btn writeBtn" href="#" >
                         <span class=""><i class="glyphicon glyphicon-pencil"></i>글쓰기</span></a>
                 </li>
                 <li>
@@ -380,10 +409,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/modalLogin.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/login.js"></script>
 
+
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/counseling.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/write.js"></script>
-
-
 
 		
 		

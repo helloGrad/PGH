@@ -116,14 +116,7 @@ pageContext.setAttribute("newLine", "\n");
 		
 		var existLikelist = []; 
 		
-		//<c:forEach items="${existLike}" var="item">
-		//existLikelist.push("${item}");
-		//</c:forEach>
-		
-		
-	
 
-	
 
 
 		if (replysize == 0) { //첫답변 구분

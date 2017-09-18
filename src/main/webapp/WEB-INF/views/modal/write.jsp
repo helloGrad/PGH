@@ -53,32 +53,22 @@ i:hover {
   		display:none;  
 }
 
-.col-xs-9 {
+.col-xs-91 {
     border-right: 1px solid #ccc;
   	padding-right: 0px; 
  	padding-left: 0px; 
+ 	 margin: 10px;
 }
 
-.col-xs-3{
+.col-xs-31{
 
  	padding-right: 0px; 
  	padding-left: 0px; 
-
+	 margin: 10px;
 }
 
-.sidebar{
 
- background-color: #6bc59a;
- height: 523px;
 
-}
-
-.bottom{
-position: absolute;
-right:    0;
-bottom:   0;
-
-}
 
 
 
@@ -113,7 +103,7 @@ bottom:   0;
 			
 			
 			  <div class="row">
-			    <div id="writeright" class="col-xs-9">
+			    <div id="writeright" class="col-xs-12 col-lg-9">
 			    
 					    <div class="modal-content content-fullsize">
 						<div class="modal-header u-flex1">
@@ -128,16 +118,27 @@ bottom:   0;
 			   			<div class="writeName">
 			        		<a class="">${authUser.nknm }</a>
 			      			
-			      			 <div class="dropdown writedropdown">
-			               			<button  class="w3-button w3-padding w3-round-large dropdown-toggle" type="button" data-toggle="dropdown" style="float:right;">
-			                   		 <i class="glyphicon glyphicon-option-horizontal"></i>
-			               			 </button>
-			               			 <ul id="writrInfoOpngYn" class="dropdown-menu dropdown-menu-right"> <!-- 디폴트는 Y -->
-			                  	     <li><a href="#" value="N">비공개로 작성하기</a></li>
-			                		</ul>
-			               
-			                
-			             	</div> 	
+ 	
+			             	<div class="dropdown writedropdown">
+	               			<button  class="w3-button w3-padding w3-round-large dropdown-toggle" type="button" data-toggle="dropdown" style="float:right;">
+	                   		 <i class="glyphicon glyphicon-option-horizontal"></i>
+	               			 </button>
+	               			 <ul id="writrInfoOpngYn2" class="dropdown-menu dropdown-menu-right"> <!-- 디폴트는 Y -->
+	                  	     <li class="hide"><a href="#" value="Y">공개로 작성하기</a></li>
+	                  	     <li><a href="#" value="N">비공개로 작성하기</a></li>
+	                  	  
+	                		</ul>
+	               
+	                		
+	                		<select id="writrInfoOpngYn" class="hide">
+			           		
+							  <option  class="hide" value="Y" selected="selected"></option>
+							  <option value="N">비공개로 작성하기</option>
+							</select> 
+	                		
+			             	</div>
+			           
+			           		
 			             		
 			      			<div class="">
 			      			
@@ -166,11 +167,11 @@ bottom:   0;
 			      		
 			      			<br>
 			      		  <div class="gender">
-		                  	<label class="objectbutton on" id="5"> <input type="radio"
-		                     name="bbsNo" value="5" id="bbsNo" checked
+		                  	<label class="objectbutton1 on" id="5"> <input type="radio"
+		                     name="writeoption" value="상담게시판" id="writeoption" checked
 		                     onclick="changeColor(this);"> 상담하기
-		                  	</label> <label class="objectbutton" id="6"> <input type="radio"
-		                     name="bbsNo" value="6" id="bbsNo"
+		                  	</label> <label class="objectbutton2" id="6"> <input type="radio"
+		                     name="writeoption" value="일반게시판" id="writeoption"
 		                     onclick="changeColor(this);">잡담하기
 		                  	</label>
 		            		 </div>
@@ -199,7 +200,7 @@ bottom:   0;
 			      
 			        			<textarea class="wrtbtTitle" onkeydown="titleResize(this)" onkeyup="titleResize(this)" id="wrtbtTitle" name="wrtbtTitle" placeholder="Title..." style=" width:100%; height:70px; border:none; border-color: white;" autofocus></textarea>
 					 			<br>
-					 			<textarea class="wrtbtText" onkeydown="resize(this)" onkeyup="resize(this)" id="wrtbtText" name="wrtbtText" placeholder="Tell your story..." style=" width:100%; height:200px; border:none; border-color: white;"></textarea>
+					 			<textarea class="autosize wrtbtText" onkeydown="resize(this)" onkeyup="resize(this)" id="wrtbtText" name="wrtbtText" placeholder="Tell your story..." style=" width:100%; height:200px; border:none; border-color: white;"></textarea>
 					      	
 			   					</div>
 								
@@ -215,7 +216,7 @@ bottom:   0;
 									<td>
 											
 										<div class="element">
-										  <i id="cfile" class="fa fa-picture-o"></i><span class="name">No file selected</span>
+										  <i id="cfile" class="fa fa-picture-o fa-lg"></i><span class="name"></span>
 										  <input class="hide" id="file" type="file" name="file"  accept="image/*" multiple />
 										</div>
 															
@@ -226,7 +227,7 @@ bottom:   0;
 								<!-- 추가 버튼을 누르면 위 숨겨진 테이블의 tr 을 가져다가 추가할 겁니닷 -->
 							</table>
 							<div id='apndngfiles'></div>
-							
+							<input type="button" value="입력" class="form-control" onClick="counselinginsert();">
 			
 			          
 			        </div>
@@ -239,7 +240,7 @@ bottom:   0;
 					    
 			    
 			    </div>
-			    <div id="writeleft" class="col-xs-3">
+			    <div id="writeleft" class="col-xs-12 col-lg-3">
 			    
 				  <div class="modal-content content-fullsize sidebar">
 						<div class="modal-header u-flex1">
@@ -256,23 +257,23 @@ bottom:   0;
 			      
 			        
 			        <div class="modal-body">
-			        <select class="w3-select" name="option">
-					  <option value="" disabled selected>게시판선택</option>
-					  <option value="2">인문학</option>
-					  <option value="3">사회과학</option>
-					  <option value="3">자연과학</option>
-					  <option value="1">공학</option>
-					   <option value="1">의약학</option>
-					    <option value="1">농수해양학</option>
-					     <option value="1">예술체육학</option>
-					      <option value="1">복합학</option>
+			        <select class="w3-select" name="boardoption" id="boardoption">
+					  <option value="전체">게시판선택</option>
+					  <option value="인문학">인문학</option>
+					  <option value="사회과학">사회과학</option>
+					  <option value="자연과학">자연과학</option>
+					  <option value="공학">공학</option>
+					   <option value="의약학">의약학</option>
+					    <option value="농수해양학">농수해양학</option>
+					     <option value="예술체육학">예술체육학</option>
+					      <option value="복합학">복합학</option>
 					</select>
 			
 				    
 			      
 			        </div>
 			        <div class="modal-footer">
-			        	<input type="button" value="입력" class="form-control bottom" onClick="counselinginsert();">
+			        	
 		
 			        </div>
 			       

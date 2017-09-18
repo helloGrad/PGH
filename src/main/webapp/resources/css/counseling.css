@@ -23,6 +23,7 @@
 
 
 textarea {width:300px; overflow:visible} 
+textarea.autosize { min-height:  210px; }
 
 .close:hover,
 .close:focus {
@@ -111,67 +112,14 @@ textarea.wrtbtText:focus {
    margin: 15px 3px 0 0;
         }
         
-        
-	@media screen and (max-width: 400px) {
-           
-			
-					
-				.modal-dialog.modal-fullsize {
-				  width: 100%;
-				  height: 100%;
-				  margin: 0;
-				  padding: 0;
-				  padding-right: 0;
-				}
-				.modal-content.modal-fullsize {
-				  height: auto%;
-				  min-height: 100%;
-				  border-radius: 0; 
-				   padding-right: 0;
-				}
-				.modal {
-				  height: auto;
-				  min-height: 100%;
-			
-				 
-				}
-				
-				
 
-            }
-            @media screen and (min-width: 401px) and (max-width: 600px) {
-               
-         
-					
-						
-				.modal-dialog.modal-fullsize {
-				  width: 100%;
-				  height: 100%;
-				  margin: 0;
-				  padding: 0;
-				  padding-right: 0;
-				}
-				.modal-content.modal-fullsize {
-				   height: auto;
-				  min-height: 100%;
-				  border-radius: 0; 
-				   padding-right: 0;
-				}
-				.modal {
-				  height: auto;
-				  min-height: 100%;
-				 
-				}
 
-            }
-            @media screen and (min-width: 801px) {
-                
-            }
+
 
  
 .modal {
 	display: none; 
-	position: fixed; 
+	position1: absolute;
 	padding-top: 130px;
 	z-index: 1; 
 	left: 0;
@@ -184,9 +132,11 @@ textarea.wrtbtText:focus {
 }
 
 
-.modal-body {
+.modal-body{
     max-height: calc(100vh - 210px);
     overflow-y: auto;
+    max-height: 100%;
+    overflow: auto;
 }
 
 
@@ -197,7 +147,7 @@ input[type='radio'] {
    display: none;
 }
 
-.objectbutton {
+.objectbutton1, .objectbutton2 {
    width: 12%;
    height: 20px;
    padding: 0 0 10px 0;
@@ -218,5 +168,115 @@ input[type='radio'] {
 .ulhide{
   display:none;  
 }
+
+#writeright, #writeleft{
+	
+	 padding: 0 0 0 0;
+	
+	
+}
+
+
+
+.sidebar{
+
+ background-color: #6bc59a;
+ height: 566px;
+
+}
+
+
+  
+        
+	@media screen and (max-width: 400px) {
+           
+			
+					
+				.modal-dialog.modal-fullsize {
+				  width: 100%;
+				  height1: 100%;
+				  margin: 0;
+				  padding: 0;
+				  padding-right: 0;
+				}
+				.modal-content.modal-fullsize {
+				  height: auto%;
+				  min-height: 100%;
+				  border-radius: 0; 
+				   padding-right: 0;
+				}
+				.modal{
+               	 padding-top: 0px;
+                }
+
+				 .objectbutton1, .objectbutton2 {
+				    
+				    width: 30%;
+				 }
+				 .sidebar{
+
+				background-color: #6bc59a;
+				 height: 130px;
+				
+				
+			
+		
+				
+   				
+				
+				
+				
+
+            }
+            @media screen and (min-width: 401px) and (max-width: 600px) {
+               
+         
+					
+						
+				.1modal-dialog.modal-fullsize {
+				  width: 100%;
+				  height1: 100%;
+				  margin: 0;
+				  padding: 0;
+				  padding-right: 0;
+				}
+				.1modal-content.modal-fullsize {
+				   height: auto;
+				  min-height: 100%;
+				  border-radius: 0; 
+				   padding-right: 0;
+				}
+			   .modal{
+               	 padding-top: 0px;
+                }
+
+				.objectbutton1, .objectbutton2 {
+				    
+				    width: 30%;
+				}
+				.sidebar{
+
+				background-color: #6bc59a;
+				 height: 130px;
+			
+				
+				}
+				
+  
+				
+								
+				
+				
+				
+				
+
+            }
+            @media screen and (min-width: 801px)  {
+            
+            
+            
+            
+                
+            }
 
 

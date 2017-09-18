@@ -1,10 +1,10 @@
 
 //박가혜 2017-08-23 질문하기 사이즈 조절
-	var writrInfoOpngYn;
+	//var writrInfoOpngYn;
 	var bbsNo;
 	
 	var order; //정렬유지
-	var type;
+	var boardtype;//게시판 유형 설정
 
 	/*
 	 * 정예린 2017-09-13
@@ -92,42 +92,29 @@
 
 	
 
-
-	
-	function titleResize(obj) {
-
-		obj.style.height = "1px";
-
-		obj.style.height = (20 + obj.scrollHeight) + "px";
-
-	}
-
-	function resize(obj) {
-
-		// console.log(obj.scrollHeight);
-
-		if (obj.scrollHeight <= 200) {
-
-		} else {
-
-			obj.style.height = (1 + obj.scrollHeight) + "px";
-
-		}
-
-	}
 	
 	/*
 	 * 정예린 170905 성별 선택 시 색깔 바꿔주기
 	 */
 	function changeColor(obj) {
 
+		//console.log(obj.value);
 		
-		
-	   $(".objectbutton").removeClass("on");
-	   $("#" + obj.value).addClass("on");
+	   $(".objectbutton1").removeClass("on");
+	   $(".objectbutton2").removeClass("on");
 	   
-	 
-	  bbsNo = obj.value;
+	   if(obj.value == "일반게시판"){
+		   
+		   $(".objectbutton2").addClass("on");
+		  
+		   
+	   }else{
+		   
+		   $(".objectbutton1").addClass("on");
+		  
+	   }
+	   
+
 
 	}
 	
@@ -138,40 +125,76 @@
 	//박가혜 2017-08-23
 
 	$(function() {
-
+		
+		
+		
+		
+		
 		var authUser = $("#authUser").val();
-		console.log("///"+authUser+"////");
+		//console.log("///"+authUser+"////");
 		
 	
-		 bbsNo = $("#bbsNo").val();
-
-		$(".writeBtn").click(function() {
-
-			if (authUser === null || authUser === '') {
-
+		//writeoption bbsNo = $("#bbsNo").val();
+		 
+		 
+			$("#headerBtn").click(function(event) {
 				
-				console.log("///사용자가없습니다.////");
+				boardtype="전체";	
 				
-				$("#login").css({
-					"display" : "block"
-				});
+			
+			});
+			
+			$("#myBtn").click(function(event) { // 글쓰기 게시판 유형 설정
+				
+				boardtype="공학";
+				
 
-			} else {
-				
-				
-				 var value = $(".writeBtn").val();
-				  alert(value);
-				
-				$("#writeModal").css({
-					"display" : "block"
-				});
-				
-				document.getElementById('wrtbtText').focus();
+			});
+			
+		 
 
-			}
+			$(".writeBtn").click(function() { //글쓰기
 
-		});
+				if (authUser === null || authUser === '') {
 
+					
+					console.log("///사용자가없습니다.////");
+					
+					$("#login").css({
+						"display" : "block"
+					});
+
+				} else {
+					
+					
+					 
+					//console.log("---------------"+boardtype);
+					
+					if(boardtype == '전체' ){
+						
+						$('#writeleft').removeClass('hide');
+						
+						
+						$("#writeright").addClass('col-lg-9');
+					
+						
+					}else{
+						$('#writeleft').addClass('hide');
+					
+						
+						$("#writeright").removeClass('col-lg-9');
+						
+					}
+					
+					$("#writeModal").css({
+						"display" : "block"
+					});
+					
+					//document.getElementById('wrtbtText').focus();
+
+				}
+
+			});
 		
 		
 		$(document).on('click', "a.detail", function() { //append한 것은 이걸로 click 이벤트 해야함....^^
@@ -205,15 +228,19 @@
 			}
 		});
 		
+		
+		$('#writrInfoOpngYn2 li > a').on('click', function() { //비공개여부 값 저장 하기
 
-		$('#writrInfoOpngYn li > a').on('click', function() { //비공개여부 값 저장 하기
-
-			writrInfoOpngYn = $(this).attr('value');
-
+			
+			 document.getElementById("writrInfoOpngYn").innerHTML = 
+				 
+				 "<option  class='hide' value='Y'></option>"+
+				  "<option value='N' selected='selected'>비공개로 작성하기</option>";
 		});
+
 		
 		
-		$(document).keydown(function(e) { 
+		$(document).keydown(function(e) { //모달창 끄기
 			
 
 			  var modal1 = document.getElementById('writeModal');
@@ -223,10 +250,44 @@
 		    } 
 		});
 		
+		
+
+		
+		function resize(obj) {
+			
+			// console.log("dd"+obj.scrollHeight);
+			
+			
+			 obj.style.height = "1px";
+			 obj.style.height = (12+obj.scrollHeight)+"px";
+			  $(".sidebar").style.height = (12+obj.scrollHeight)+"px";
+
+		}
+		
 
 	})
 	
+	function resize(obj) {
+			
+			// console.log("dd"+obj.scrollHeight);
+			
+			
+			 obj.style.height = "1px";
+			 obj.style.height = (12+obj.scrollHeight)+"px";
+			// console.log($(".sidebar").height()); //수정필요함 
 	
+			 // $(".sidebar").height(obj.style.height);
+
+	}
+	
+
+	function titleResize(obj) {
+
+		obj.style.height = "1px";
+
+		obj.style.height = (20 + obj.scrollHeight) + "px";
+
+	}
 	
 
 	
@@ -239,7 +300,7 @@
 
 
 	
-		
+		/*
 		var ajaxData = new FormData();
 		ajaxData.append( 'filedata','counseling');
 		$.each($("input[type=file]"), function(i, obj) {
@@ -253,20 +314,9 @@
 
 		var wrtbtTitle = $("#wrtbtTitle").val();
 		var wrtbtText = $("#wrtbtText").val();
-
-		var conslBbsDstnct = $("#conslBbsDstnct").val();
 		
-		//console.log(wrtbtTitle);
 		
-		if(writrInfoOpngYn != "N"){
-			
-			
-			writrInfoOpngYn ="Y";
-		}
 		
-
-		
-
 		var counselinglist = {
 			wrtbtTitle : wrtbtTitle,
 			wrtbtText : wrtbtText,
@@ -275,9 +325,25 @@
 			bbsNo : bbsNo
 		};
 		
-		ajaxData.append('writrInfoOpngYn', writrInfoOpngYn);
+		//ajaxData.append('writrInfoOpngYn', writrInfoOpngYn);
 		
-		for (var value of ajaxData.values()) {
+			//	if(writrInfoOpngYn != "N"){
+			
+			
+		//	writrInfoOpngYn ="Y";
+		//}
+		
+
+
+			*/
+		var writrInfoOpngYn = $("#writrInfoOpngYn").val();
+		
+		
+		formData.append('writrInfoOpngYn', writrInfoOpngYn);
+		
+
+		
+		for (var value of  formData.values()) {
 			
 			   //console.log(value); 
 			}
