@@ -3,8 +3,10 @@ package com.grad.net.api;
 import java.io.File;
 import java.text.Format;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -92,7 +94,50 @@ public class CounselingController {
 	        	
 	        	counselingVo.setBbsNo((long) 8);
 	        	
+	        }else if(multi.getParameter("writeoption").equals("일반게시판") && multi.getParameter("boardoption").equals("사회과학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 10);
+	        }else if(multi.getParameter("writeoption").equals("상담게시판") && multi.getParameter("boardoption").equals("사회과학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 9);
+	        	
+	        }else if(multi.getParameter("writeoption").equals("일반게시판") && multi.getParameter("boardoption").equals("자연과학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 12);
+	        }else if(multi.getParameter("writeoption").equals("상담게시판") && multi.getParameter("boardoption").equals("자연과학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 11);
+	        	
+	        }else if(multi.getParameter("writeoption").equals("일반게시판") && multi.getParameter("boardoption").equals("의약학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 14);
+	        }else if(multi.getParameter("writeoption").equals("상담게시판") && multi.getParameter("boardoption").equals("의약학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 13);
+	        	
+	        }else if(multi.getParameter("writeoption").equals("일반게시판") && multi.getParameter("boardoption").equals("농수해양학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 16);
+	        }else if(multi.getParameter("writeoption").equals("상담게시판") && multi.getParameter("boardoption").equals("농수해양학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 15);
+	        	
+	        }else if(multi.getParameter("writeoption").equals("일반게시판") && multi.getParameter("boardoption").equals("예술체육학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 18);
+	        }else if(multi.getParameter("writeoption").equals("상담게시판") && multi.getParameter("boardoption").equals("예술체육학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 17);
+	        	
+	        }else if(multi.getParameter("writeoption").equals("일반게시판") && multi.getParameter("boardoption").equals("복합학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 20);
+	        }else if(multi.getParameter("writeoption").equals("상담게시판") && multi.getParameter("boardoption").equals("복합학")) {
+	        	
+	        	counselingVo.setBbsNo((long) 19);
+	        	
 	        }
+			  
 			  
 			
 			//System.out.println(counselingVo);
@@ -102,8 +147,8 @@ public class CounselingController {
 		
 		/**
 		 *파일업로드 2017-09-14
-		
-		// */
+		*/
+		// 
 		ApndngFileVo vo = null;
 	
 
@@ -137,6 +182,9 @@ public class CounselingController {
 			 
 		 }
 
+
+	
+	        
 		return JSONResult.success(lastId);
 	}
 
@@ -197,11 +245,40 @@ public class CounselingController {
 	public JSONResult list(@RequestParam("type") String type,@RequestParam("order") String order, @RequestParam(value="sno", required=true, defaultValue="0") Long startNo) {
 
 	
-		//System.out.print(type+"  "+order+"  "+startNo);
+		System.out.println(type+"  "+order+"  "+startNo);
 		List<CounselingVo> counselingList= counselingService.getCounselingList(type,order,startNo); //답변과 원글 모두 넘김....
+		List<Object> fileList = new ArrayList<Object>(); 
+		
+		for(int i=0; i<counselingList.size(); i++) {
+			
+			List<ApndngFileVo> fileList2 = apndngFileService.getFileList(counselingList.get(i).getWrtbtNo(), "게시글");	
+			fileList.add(fileList2)	;
+			
+		}
+		
+		for(int i=0; i<counselingList.size(); i++) {
+		
+			System.out.println(counselingList.get(i).getWrtbtNo());
+			
+			//System.out.println(fileList.get(i));
+		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("counselingList", counselingList);
+		map.put("fileList", fileList);
+		
+		
+		//System.out.println(counselingList);
+		
+		//System.out.println(fileList);
+		
+		//System.out.println(map.get("fileList"));
+
 	
 	
-		return JSONResult.success(counselingList);
+		return JSONResult.success(map);
 	}
+	
+	
+
 
 }

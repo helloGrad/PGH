@@ -36,9 +36,46 @@ public class CodeService {
 		
 			
 		}
-		if(type.equals("의학")) {
+		else if(type.equals("의약학")) {
 			
 			type2="E%";
+			
+		
+			
+		}
+		else if(type.equals("인문학")) {
+			
+			type2="A%";
+			
+		
+			
+		}else if(type.equals("사회과학")) {
+			
+			type2="B%";
+			
+		
+			
+		}else if(type.equals("자연과학")) {
+			
+			type2="C%";
+			
+		
+			
+		}else if(type.equals("농수해양학")) {
+			
+			type2="F%";
+			
+		
+			
+		}else if(type.equals("예술체육학")) {
+			
+			type2="G%";
+			
+		
+			
+		}else if(type.equals("복합학")) {
+			
+			type2="H%";
 			
 		
 			

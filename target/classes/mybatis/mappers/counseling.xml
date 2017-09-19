@@ -51,6 +51,48 @@
  					
 				]]>
 			</when>
+			<when test="type =='인문학'">
+				<![CDATA[
+					and b.bbs_nm='인문학게시판'
+ 					
+				]]>
+			</when>
+				<when test="type =='사회과학'">
+				<![CDATA[
+					and b.bbs_nm='사회과학게시판'
+ 					
+				]]>
+			</when>
+				<when test="type =='자연과학'">
+				<![CDATA[
+					and b.bbs_nm='자연과학게시판'
+ 					
+				]]>
+			</when>
+				<when test="type =='의약학'">
+				<![CDATA[
+					and b.bbs_nm='의약학게시판'
+ 					
+				]]>
+			</when>
+				<when test="type =='농수해양학'">
+				<![CDATA[
+					and b.bbs_nm='농수해양학게시판'
+ 					
+				]]>
+			</when>
+				<when test="type =='예술체육학'">
+				<![CDATA[
+					and b.bbs_nm='예술체육학게시판'
+ 					
+				]]>
+			</when>
+				<when test="type =='복합학'">
+				<![CDATA[
+					and b.bbs_nm='복합학게시판'
+ 					
+				]]>
+			</when>
 			<when test="type =='전체'">
 				<![CDATA[
 					and w.WRTBT_DSTNCT='상담게시판'

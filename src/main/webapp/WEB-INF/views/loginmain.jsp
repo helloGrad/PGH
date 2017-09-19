@@ -130,11 +130,7 @@
 
     </style>
 
-    <script>
-  
-    
-    
-    </script>
+
 </head>
 <body>
 
@@ -202,7 +198,7 @@
                 contents title
             -->
             <h3>
-                <a href="major-content.html" name="Humanities">
+                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=인문학" name="Humanities" class="boardtype">
                 	    인문학
                     <button type="button" class="more">More ></button>
                 </a>
@@ -251,7 +247,7 @@
                 contents title
             -->
             <h3>
-                <a href="major-content.html"  name="SocialScience">
+                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=사회과학"  name="SocialScience" class="boardtype">
                       	  사회과학
                     <button type="button" class="more">More ></button>
                 </a>
@@ -300,7 +296,7 @@
                 contents title
             -->
             <h3>
-                <a href="${pageContext.servletContext.contextPath }/study/main"  name="NaturalScience">
+                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=자연과학"  name="NaturalScience" class="boardtype">
                     자연과학
                     <button type="button" class="more">More ></button>
                 </a>
@@ -349,7 +345,7 @@
                 contents title
             -->
             <h3>
-                <a href="${pageContext.servletContext.contextPath }/study/main" name="Engineering">
+                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=공학" name="Engineering" class="boardtype">
                  	   공학
                     <button type="button" class="more">More ></button>
                 </a>
@@ -398,7 +394,7 @@
                 contents title
             -->
             <h3>
-                <a href="major-content.html" name="MedicineandPharmacy">
+                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=의약학" name="MedicineandPharmacy" class="boardtype">
                     의약학
                     <button type="button" class="more">More ></button>
                 </a>
@@ -447,7 +443,7 @@
                 contents title
             -->
             <h3>
-                <a href="major-content.html" name="MarineAgriculture">
+                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=농수해양학" name="MarineAgricultureFishery" class="boardtype">
                      농수해양학
                     <button type="button" class="more">More ></button>
                 </a>
@@ -496,7 +492,7 @@
                 contents title
             -->
             <h3>
-                <a href="major-content.html" name="Kinesiology">
+                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=예술체육학" name="ArtsandKinesiology" class="boardtype">
                     예술체육학
                     <button type="button" class="more">More ></button>
                 </a>
@@ -545,8 +541,8 @@
                 contents title
             -->
             <h3>
-                <a href="major-content.html"  name="ScienceandTechnology">
-                    복학학
+                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=복합학" name="ScienceandTechnologyStudies" class="boardtype">
+                    복합학
                     <button type="button" class="more">More ></button>
                 </a>
             </h3>
@@ -589,6 +585,8 @@
 
 </div>
 
-
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/study.js"></script>
+	
+	
 </body>
 </html>

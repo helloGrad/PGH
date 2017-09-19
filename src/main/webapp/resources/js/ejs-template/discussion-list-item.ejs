@@ -5,11 +5,18 @@ if(count==0) {
 if(wrtbtDstnct =="일반게시판"){	
 %>
 
-
-	<div class='w3-card-4 w3-margin w3-topbar w3-border-blue'>
-	<input type="hidden" value=<%=rownum%> class="rownum">
+	
+	<div class='w3-card-4 w3-margin w3-topbar w3-border-blue backimg' id='listimg<%=rownum%>'>
+		<input type="hidden" value=<%=rownum%> class="rownum">
 		<div class='w3-container interest'>#화학, #생물학, #화학공학</div>
-			 <div class='w3-container'>
+			
+			<div class='w3-container listimg<%=rownum%>'>
+				
+			
+			
+			</div>
+			<div class='w3-container'>
+			 	
 				<h4><b>
 					<a class='detail' href='/net/counseling/detail?no=<%=wrtbtNo%>&type=prnts'><%=wrtbtTitle%></a>
 						</b></h4>
@@ -25,9 +32,15 @@ if(wrtbtDstnct =="일반게시판"){
 							</ul></div></div><br></div>
 
 	<%		}else if(wrtbtDstnct == "상담게시판"){	%>		
-	<div class='w3-card-4 w3-margin w3-topbar w3-border-red'>
-	<input type="hidden" value=<%=rownum%> class="rownum">
+	
+	<div class='w3-card-4 w3-margin w3-topbar w3-border-red backimg' id='listimg<%=rownum%>'>
+		<input type="hidden" value=<%=rownum%> class="rownum">
 		<div class='w3-container interest'>#화학, #생물학, #화학공학</div>
+		<div class='w3-container listimg<%=rownum%>'>
+				
+			
+			
+			</div>
 			 <div class='w3-container'>
 				<h4><b>
 					<a class='detail' href='/net/counseling/detail?no=<%=wrtbtNo%>&type=prnts'><%=wrtbtTitle%></a>
@@ -49,9 +62,14 @@ if(wrtbtDstnct =="일반게시판"){
 	else if(count!=0) {
 	if(wrtbtDstnct == "일반게시판"){
 %>
-
-	<div class='w3-card-4 w3-margin w3-topbar w3-border-blue'>
-		<input type="hidden" value=<%=rownum%> class="rownum">
+	
+	<div class='w3-card-4 w3-margin w3-topbar w3-border-blue backimg' id='listimg<%=rownum%>'>
+			<input type="hidden" value=<%=rownum%> class="rownum">	
+			<div class='w3-container listimg<%=rownum%>'>
+				
+			
+			
+			</div>
 			<div class='w3-container'>
 			<h4><b>
 			<a class='detail' href='/net/counseling/detail?no=<%=wrtbtNo%>&type=prnts'><%=wrtbtTitle%></a></b></h4></div>
@@ -73,9 +91,14 @@ if(wrtbtDstnct =="일반게시판"){
 				</ul></div></div><br></div>
 				
 	<%		}else if(wrtbtDstnct == "상담게시판"){	%>				
-
-	<div class='w3-card-4 w3-margin w3-topbar w3-border-red'>
+	
+	<div class='w3-card-4 w3-margin w3-topbar w3-border-red backimg' id='listimg<%=rownum%>'>
 	<input type="hidden" value=<%=rownum%> class="rownum">
+	<div class='w3-container listimg<%=rownum%>'>
+				
+			
+			
+			</div>
 		<div class='w3-container'>
 		<h4><b>
 		<a class='detail' href='/net/counseling/detail?no=<%=wrtbtNo%>&type=prnts'><%=wrtbtTitle%></a></b></h4></div>

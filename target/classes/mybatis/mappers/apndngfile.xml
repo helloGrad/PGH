@@ -22,7 +22,7 @@
 
 	<select id="getFileList" parameterType="map" resultType="apndngFileVo">
 		<![CDATA[
-		select APNDNG_FILE_NO apndngFileNo, APNDNG_FILE_NM apndngFileNm, APNDNG_FILE_SIZE apndngFileSize, STORG_PATH storgPath
+		select APNDNG_FILE_NO apndngFileNo, APNDNG_FILE_NM apndngFileNm, APNDNG_FILE_SIZE apndngFileSize, STORG_PATH storgPath,PRNTS_NO prntsNo
 		from apndng_file
 		WHERE PRNTS_NO = #{no}
 		and PRNTS_DSTNCT=#{type};

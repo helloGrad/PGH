@@ -54,8 +54,17 @@ public class HomeController {
 	 * 박가혜 2017-09-13 
 	 */
 	@RequestMapping(value = "/study/main", method = RequestMethod.GET)
-	public String studyHome( Model model, MemberVo memberVo) {	
-		model.addAttribute("MemberVo", memberVo);		
+	public String studyHome( Model model, MemberVo memberVo, @RequestParam("boardtype") String boardtype) {	
+		
+		
+		
+		
+		
+		
+		model.addAttribute("MemberVo", memberVo);
+		model.addAttribute("boardtype", boardtype);
+		
+		
 		return "study/home";
 	}
 	
@@ -71,16 +80,17 @@ public class HomeController {
 	
 
 	@RequestMapping(value = "/study/notice", method = RequestMethod.GET)
-	public String studyNotice( Model model, MemberVo memberVo) {	
-		model.addAttribute("MemberVo", memberVo);		
+	public String studyNotice( Model model, MemberVo memberVo, @RequestParam("boardtype") String boardtype) {	
+		model.addAttribute("MemberVo", memberVo);	
+		model.addAttribute("boardtype", boardtype);
 		return "study/notice";
 	}
 
 	
 	@RequestMapping(value = "/study/discussion", method = RequestMethod.GET)
-	public String studyDiscussion( Model model, @AuthUser MemberVo authUser) {	
+	public String studyDiscussion( Model model, @AuthUser MemberVo authUser, @RequestParam("boardtype") String boardtype) {	
 		
-		
+		model.addAttribute("boardtype", boardtype);
 		model.addAttribute("authUser", authUser);
 		
 				
@@ -89,15 +99,19 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/study/research", method = RequestMethod.GET)
-	public String studyResearch( Model model, MemberVo memberVo) {	
+	public String studyResearch( Model model, MemberVo memberVo, @RequestParam("boardtype") String boardtype) {	
+		
 		model.addAttribute("MemberVo", memberVo);		
+		model.addAttribute("boardtype", boardtype);
+		
 		return "study/research";
 	}
 	
 
 	@RequestMapping(value = "/study/lab", method = RequestMethod.GET)
-	public String studyLab( Model model, MemberVo memberVo) {	
-		model.addAttribute("MemberVo", memberVo);		
+	public String studyLab( Model model, MemberVo memberVo, @RequestParam("boardtype") String boardtype) {	
+		model.addAttribute("MemberVo", memberVo);	
+		model.addAttribute("boardtype", boardtype);
 		return "study/lab";
 	}
 	

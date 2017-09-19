@@ -57,25 +57,15 @@ var boardtype;
 		
 		
 
-		if (matchMedia("screen and (min-width: 600px)").matches) {
-			  
+	if (matchMedia("screen and (min-width: 600px)").matches) {
+
 			$("#writerleft").insertAfter("#writeright");
 		} else {
-			
-			console.log("ㅇㅇㅇㅇ");
-		  
-	
-			
-			
+
 			$("#writeright").insertAfter("#writeleft");
-	
 
-
-		
-			
 		}
-		
-	
+
 		//var boardtype;
 
 		$(document).ready(function() {
@@ -101,13 +91,6 @@ var boardtype;
 					});
 				}
 			});
-			
-	
-			
-			
-			
-	
-			
 
 		});
 

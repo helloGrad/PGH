@@ -19,14 +19,6 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 
-<!-- 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
- -->
 <!--//////////////////////// footer End ////////////////////////////-->
 
 
@@ -61,6 +53,9 @@
 </style>	
 
 <script>
+	
+
+boardtype = "${boardtype}";
 
 
 
@@ -68,9 +63,6 @@
 	
 </script>
 
-
-	
-	
 
 
 </head>
@@ -85,20 +77,20 @@
 				<div class="col-sm-8">
 					<!--<img src="images/higrad-img/Engineering.jpg"-->
 					<!--style="width: 100%; max-width: 760px; vertical-align: middle">-->
-					<h2 class="" style="margin-bottom: -0.5em;">Engineering</h2>
+					<h2 class="subtitle" style="margin-bottom: -0.5em;"></h2>
 
 				</div>
 				<div class="col-sm-2"></div>
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="${pageContext.servletContext.contextPath }/study/main">전체</a></li>
+					<li><a href="${pageContext.servletContext.contextPath }/study/main?boardtype=${boardtype}">전체</a></li>
 					<li><a
-						href="${pageContext.servletContext.contextPath }/study/notice">모집공고</a></li>
+						href="${pageContext.servletContext.contextPath }/study/notice?boardtype=${boardtype}">모집공고</a></li>
 					<li><a
-						href="${pageContext.servletContext.contextPath }/study/discussion">토론</a></li>
+						href="${pageContext.servletContext.contextPath }/study/discussion?boardtype=${boardtype}">토론</a></li>
 					<li><a
-						href="${pageContext.servletContext.contextPath }/study/research">연구과제</a></li>
+						href="${pageContext.servletContext.contextPath }/study/research?boardtype=${boardtype}">연구과제</a></li>
 					<li><a
-						href="${pageContext.servletContext.contextPath }/study/lab">연구실</a></li>
+						href="${pageContext.servletContext.contextPath }/study/lab?boardtype=${boardtype}">연구실</a></li>
 
 				</ul>
 			</div>
@@ -111,7 +103,7 @@
 
 <!--//////////////////////// footer End ////////////////////////////-->
 
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/study.js"></script>
 
 
 		

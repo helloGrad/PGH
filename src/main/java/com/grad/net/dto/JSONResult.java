@@ -17,6 +17,8 @@ public class JSONResult {
 		return new JSONResult("success",null,data);
 	}
 	
+	
+	
 	public static JSONResult error(String message){
 		return new JSONResult("fail",message,null);
 	}

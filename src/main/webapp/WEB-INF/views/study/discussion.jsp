@@ -41,17 +41,20 @@
  
     <script>
 
+    var order;
     
 	$(function() {
 		
 		
-		
-		order="최신순";
-
-	
-		
+		if(order == undefined){
 			
-		disfetchList("공학", order);
+			order="최신순";	
+		}
+		
+		console.log(order);
+			
+		disfetchList(boardtype, order);
+		
 		
 		/*
 		 * 정예린 자동 스크롤링 2017-09-13
@@ -64,7 +67,7 @@
 			if (scrollTop + windowHeight + 10 > documentHeight) {
 				if (!disbFetching) {
 					disbFetching = true;
-					disfetchList('공학',order);
+					disfetchList(boardtype,order);
 				}
 			}
 		});
@@ -101,9 +104,9 @@
                             <i class="glyphicon glyphicon-option-horizontal"></i>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);" onclick="reset('공학','조회순');">조회순</a></li>
-                            <li><a href="javascript:void(0);" onclick="reset('공학','공감순');">공감순</a></li>
-                            <li><a href="javascript:void(0);" onclick="reset('공학','최신순');">최신순</a></li>
+                            <li><a href="javascript:void(0);" onclick="reset('${boardtype }','조회순');">조회순</a></li>
+                            <li><a href="javascript:void(0);" onclick="reset('${boardtype }','공감순');">공감순</a></li>
+                            <li><a href="javascript:void(0);" onclick="reset('${boardtype }','최신순');">최신순</a></li>
                         </ul>
                     </div>
                 </div>
@@ -137,7 +140,7 @@
     </div>
 </div>
 
-
+		
 
 </body>
   

@@ -153,6 +153,7 @@ public class MemberController {
 
 	}
 	
+	
 	/**
 	 * 박가혜 2017-09-08 메인페이지 연구분야리스트 보여주기 
 	 */
@@ -161,11 +162,13 @@ public class MemberController {
 	@RequestMapping("/majorlist")
 	public JSONResult majorlist(@RequestParam("type") String type) {
 
-		System.out.println(type);
+		//System.out.println(type);
 		List<CodeVo> organzList = codeService.getMajorList(type);
-		System.out.println(organzList);
+		//System.out.println(organzList);
 
 		return JSONResult.success(organzList);
 	}
+	
+
 
 }

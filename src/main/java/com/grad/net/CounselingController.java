@@ -90,10 +90,12 @@ public class CounselingController {
 		/**
 		 * 박가혜 2017-09-15 이미지 보여주기
 		 */
-		model.addAttribute("fileList", apndngFileService.getFileList(no, "게시글"));
-		List<ApndngFileVo> fileList = apndngFileService.getFileList(no, "게시글");
 		
-		System.out.println(fileList);
+		List<ApndngFileVo> fileList = apndngFileService.getFileList(no, "게시글");
+		model.addAttribute("fileList", apndngFileService.getFileList(no, "게시글"));
+		
+		
+		//System.out.println(fileList);
 		
 		
 		JSONArray jsonArray = new JSONArray();

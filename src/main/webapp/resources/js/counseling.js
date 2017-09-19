@@ -2,9 +2,14 @@
 //박가혜 2017-08-23 질문하기 사이즈 조절
 	//var writrInfoOpngYn;
 	var bbsNo;
-	
+	var test;
 	var order; //정렬유지
 	var boardtype;//게시판 유형 설정
+	var count=0;
+
+	
+	
+
 
 	/*
 	 * 정예린 2017-09-13
@@ -25,14 +30,12 @@
 	 * 
 	 */	
 	
-	function reset(type,order){
+	function reset(type,order1){
 		
 		$("#list").empty();
 	
-		order=order;
-		
+		order=order1;
 		 isEnd=false;
-		 //startNo=0;	
 		 disfetchList(type,order);
 		console.log(type, order, isEnd);
 		 
@@ -40,17 +43,21 @@
 	
 	
 	var disfetchList = function(type,order) {
+		
+	
 		if (isEnd === true) {
 			return;
 		}
 		
 		var startNo;
+		var startNo2; //저장용
 		
-		if(type==='공학') {
-			startNo = $("#list .w3-card-4:last-child").find('input').val() || 0;
-		}
-		else if(type='전체') {
+	
+		if(type == '전체') {
 			startNo = $("#list .w3-card-2:last-child").find('input').val() || 0;
+		}else{
+			
+			startNo = $("#list .w3-card-4:last-child").find('input').val() || 0;
 		}
 
 		 console.log("----"+type+"---->" + startNo);
@@ -61,9 +68,9 @@
 			dataType : "json",
 			data : "",
 			success : function(response) {
-				// console.log(response);
-
-				//console.log("rownum : "+response.data[0].rownum);
+			test=response.data;
+			
+				
 
 				if (response.result === "fail") {
 					console.warn(response.message);
@@ -71,16 +78,53 @@
 				}
 				// detect end
 
-				if (response.data.length < 10) {
-					console.log(response.data.length);
+				if (response.data.counselingList.length < 10) {
+					console.log(response.data.counselingList.length);
 					isEnd = true;
 				}
 				// rendering
-				$.each(response.data, function(index, vo) {
+				$.each(response.data.counselingList, function(index, vo) {
 					disrender(type,vo);
 				});
 
 				disbFetching = false;
+				
+				console.log(response.data.fileList);
+				
+				//사진보여주기 박가혜 2017-09-19
+				
+
+				startNo2=startNo;
+				for(var i=0; i<response.data.counselingList.length; i++){
+					
+					console.log(response.data.counselingList[i].wrtbtNo);
+					
+					for(var j=0; j<response.data.fileList[i].length; j++){
+						
+						
+						count=1+parseInt(i)+parseInt(startNo2);
+						
+						console.log("st"+startNo2);
+						console.log("st"+i);
+						console.log("파일:"+response.data.fileList[i][j].prntsNo+" "+count);
+						$('#listimg'+count).css("background-image"," url('/net"+response.data.fileList[i][j].storgPath+"')"); 
+						$('#listimg'+count).css("background-position","center"); 
+						//$('#listimg'+count).css("background-repeat","no-repeat"); 
+						 
+					
+						//$('.listimg'+count).append("<img src='/net"+response.data.fileList[i][j].storgPath+"' style='width: 100%; height: 50px; margin: 5px'>");
+						//$('.listimg'+count).append("<img src='/net"+response.data.fileList[i][j].storgPath+"' style='max-width: 100%; height: auto '>");
+						
+						break;
+					}
+					
+					
+					
+				}
+				
+
+				
+				
 			},
 			error : function(jqXHR, status, e) {
 				console.error(status + " : " + e);
@@ -98,7 +142,6 @@
 	 */
 	function changeColor(obj) {
 
-		//console.log(obj.value);
 		
 	   $(".objectbutton1").removeClass("on");
 	   $(".objectbutton2").removeClass("on");
@@ -112,10 +155,7 @@
 		   
 		   $(".objectbutton1").addClass("on");
 		  
-	   }
-	   
-
-
+	   }	   
 	}
 	
 	
@@ -125,28 +165,23 @@
 	//박가혜 2017-08-23
 
 	$(function() {
-		
-		
-		
-		
-		
-		var authUser = $("#authUser").val();
-		//console.log("///"+authUser+"////");
+
+		type=boardtype;
 		
 	
-		//writeoption bbsNo = $("#bbsNo").val();
-		 
-		 
+		var authUser = $("#authUser").val();
+
+		 		 
 			$("#headerBtn").click(function(event) {
 				
-				boardtype="전체";	
+				type="전체";	
 				
 			
 			});
 			
 			$("#myBtn").click(function(event) { // 글쓰기 게시판 유형 설정
 				
-				boardtype="공학";
+				type=boardtype;
 				
 
 			});
@@ -167,13 +202,10 @@
 				} else {
 					
 					
-					 
-					//console.log("---------------"+boardtype);
-					
-					if(boardtype == '전체' ){
+					if( type == '전체' ){
 						
 						$('#writeleft').removeClass('hide');
-						
+						document.getElementById("boardoption").setAttribute("name", "boardoption");
 						
 						$("#writeright").addClass('col-lg-9');
 					
@@ -182,6 +214,7 @@
 						$('#writeleft').addClass('hide');
 					
 						
+						document.getElementById("boardoption").setAttribute("name", "");
 						$("#writeright").removeClass('col-lg-9');
 						
 					}
@@ -189,8 +222,7 @@
 					$("#writeModal").css({
 						"display" : "block"
 					});
-					
-					//document.getElementById('wrtbtText').focus();
+										
 
 				}
 
@@ -252,28 +284,19 @@
 		
 		
 
-		
-		function resize(obj) {
-			
-			// console.log("dd"+obj.scrollHeight);
-			
-			
-			 obj.style.height = "1px";
-			 obj.style.height = (12+obj.scrollHeight)+"px";
-			  $(".sidebar").style.height = (12+obj.scrollHeight)+"px";
-
-		}
-		
-
 	})
 	
 	function resize(obj) {
 			
-			// console.log("dd"+obj.scrollHeight);
+			
 			
 			
 			 obj.style.height = "1px";
 			 obj.style.height = (12+obj.scrollHeight)+"px";
+			
+			 $("#writeModal").scrollTop($("#writeModal")[0].scrollHeight);
+
+
 			// console.log($(".sidebar").height()); //수정필요함 
 	
 			 // $(".sidebar").height(obj.style.height);
@@ -290,7 +313,9 @@
 	}
 	
 
-	
+	/*
+	 * 박가혜
+	 */
 
 	function counselinginsert() {
 
@@ -336,6 +361,14 @@
 
 
 			*/
+		 
+		 if($("#writeleft").hasClass("hide") === true) {
+			
+			 formData.append('boardoption', boardtype);
+		 }
+
+
+		
 		var writrInfoOpngYn = $("#writrInfoOpngYn").val();
 		
 		
@@ -401,12 +434,13 @@
 		var html;
 
 		
-		if(type==='공학'){
+		if(type==='전체'){
+			html = counlistItemTemplate.render(vo);
+		}
+		else{
+			
 			html = dislistItemTemplate.render(vo);
 			
-		}
-		else if(type==='전체'){
-			html = counlistItemTemplate.render(vo);
 		}
 
 		if (mode === true) {

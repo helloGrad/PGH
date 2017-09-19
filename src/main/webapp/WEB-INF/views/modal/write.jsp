@@ -250,12 +250,7 @@ i:hover {
 			      	
 			        	</div>
 			       
-			          
-			             
-			
-			              
-			      
-			        
+
 			        <div class="modal-body">
 			        <select class="w3-select" name="boardoption" id="boardoption">
 					  <option value="전체">게시판선택</option>

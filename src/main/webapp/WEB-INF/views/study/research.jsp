@@ -49,7 +49,7 @@
 		
 		
 		
-		majorlist("의학");
+		majorlist(boardtype);
 		
 		
 		
@@ -157,14 +157,7 @@ function majorlist(name){
 				
 			}
 			
-		
-			
-		
-			
-			
-			
-			
-			
+
 			
 			//response.data.contextpath = "${pageContext.request.contextPath}/noti/api/lab";
 
@@ -244,16 +237,6 @@ function majorlist(name){
 
   
 
-
-
-
-
-
-
-
-
-
- 
  
 </div>   
  </div>   

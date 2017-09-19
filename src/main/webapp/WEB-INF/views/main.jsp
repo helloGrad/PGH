@@ -120,7 +120,7 @@
 					class="majors thumbnail col-xs-5 col-lg-4 medicine overlay-major black">
 					<h3 class="major-title">의약학</h3>
 				</div>
-			</a> <a href="${pageContext.servletContext.contextPath }/loginmain#MarineAgriculture">
+			</a> <a href="${pageContext.servletContext.contextPath }/loginmain#MarineAgricultureFishery">
 				<div
 					class="majors thumbnail col-xs-5 col-lg-4 ocean overlay-major black">
 					<h3 class="major-title">농수해양학</h3>
@@ -128,12 +128,12 @@
 			</a>
 
 			<!--// main major 3-->
-			<a href="${pageContext.servletContext.contextPath }/loginmain#Kinesiology">
+			<a href="${pageContext.servletContext.contextPath }/loginmain#ArtsandKinesiology">
 				<div
 					class="majors thumbnail col-xs-5 col-lg-4 art overlay-major black">
 					<h3 class="major-title">예술체육학</h3>
 				</div>
-			</a> <a href="${pageContext.servletContext.contextPath }/loginmain#ScienceandTechnology">
+			</a> <a href="${pageContext.servletContext.contextPath }/loginmain#ScienceandTechnologyStudies">
 				<div
 					class="majors thumbnail col-xs-5 col-lg-4 interdisciplinary overlay-major black">
 					<h3 class="major-title">복합학</h3>
