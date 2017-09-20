@@ -28,26 +28,7 @@ public class CounselingService {
 	 */
 	public void setWrite(CounselingVo counselingVo) {
 	
-		/*
-		if(counselingVo.getBbsNo() == 1) { //전체상담게시판
-		
-			counselingVo.setWrtbtDstnct("상담게시판");
-			counselingVo.setConslBbsDstnct("일반상담");
-			
-		}
-		else if(counselingVo.getBbsNo() == 5 ) { //공학/상담
-			
-			counselingVo.setWrtbtDstnct("상담게시판");
-			counselingVo.setConslBbsDstnct("일반상담");
-			
-		}
-		else if(counselingVo.getBbsNo() == 6 ) { //공학/일반
-			
-			counselingVo.setWrtbtDstnct("일반게시판");
-		
-			
-		}*/
-		
+	
 		
 		
 		counselingDao.insert(counselingVo);

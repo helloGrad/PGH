@@ -48,13 +48,18 @@
 -->
 	<div class="row">
 		<div class="container">
-			<div class="col-xs-12 col-sm-12 col-lg-12">
+		
+		
+		
+			<c:forEach items="${calList }" var="calList" varStatus="status">
+			
+				<div class="col-xs-12 col-sm-12 col-lg-12">
 				<!--날짜 ,요일 , 년월 -->
 				<h1>
-					<div style="float: left; margin-right: 0.3em;">8</div>
+					<div style="float: left; margin-right: 0.3em;">${calList.day }</div>
 					<small>
 						<div style="float: left; font-size: medium; line-height: 130%;">
-							금요일<br>2017년 9월
+							${calList.week }<br>${calList.year }년 ${calList.month }월
 						</div>
 					</small> <br>
 				</h1>
@@ -79,72 +84,11 @@
 					<div class="jumbotron"></div>
 				</div>
 			</div>
+			
 
-			<div class="col-lg-12">
-				<!--날짜 ,요일 , 년월 -->
-				<h1>
-					<div style="float: left; margin-right: 0.3em;">7</div>
-					<small>
-						<div style="float: left; font-size: medium; line-height: 130%;">
-							금요일<br>2017년 9월
-						</div>
-					</small> <br>
-				</h1>
-				<!--시작 라인-->
-				<hr>
-				<!--내용-->
-				<div class="col-xs-4 col-sm-4 col-lg-4">
-					<div class="jumbotron">
-						1234<br>12341234
-					</div>
-					<div class="jumbotron"></div>
-					<div class="jumbotron"></div>
-				</div>
-				<div class="col-xs-4 col-sm-4 col-lg-4">
-					<div class="jumbotron"></div>
-					<div class="jumbotron"></div>
-					<div class="jumbotron"></div>
-				</div>
-				<div class="col-xs-4 col-sm-4 col-lg-4">
-					<div class="jumbotron"></div>
-					<div class="jumbotron"></div>
-					<div class="jumbotron"></div>
-				</div>
-			</div>
-
-			<div class="col-lg-12">
-				<!--날짜 ,요일 , 년월 -->
-				<h1>
-					<div style="float: left; margin-right: 0.3em;">6</div>
-					<small>
-						<div style="float: left; font-size: medium; line-height: 130%;">
-							금요일<br>2017년 9월
-						</div>
-					</small> <br>
-				</h1>
-				<!--시작 라인-->
-				<hr>
-				<!--내용-->
-				<div class="col-xs-4 col-sm-4 col-lg-4">
-					<div class="jumbotron">
-						1234<br>12341234
-					</div>
-					<div class="jumbotron"></div>
-					<div class="jumbotron"></div>
-				</div>
-				<div class="col-xs-4 col-sm-4 col-lg-4">
-					<div class="jumbotron"></div>
-					<div class="jumbotron"></div>
-					<div class="jumbotron"></div>
-				</div>
-				<div class="col-xs-4 col-sm-4 col-lg-4">
-					<div class="jumbotron"></div>
-					<div class="jumbotron"></div>
-					<div class="jumbotron"></div>
-				</div>
-			</div>
-
-
+			
+			</c:forEach>
+			
 
 
 		</div>

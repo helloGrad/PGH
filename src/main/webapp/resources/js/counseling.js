@@ -107,8 +107,10 @@
 						console.log("st"+startNo2);
 						console.log("st"+i);
 						console.log("파일:"+response.data.fileList[i][j].prntsNo+" "+count);
-						$('#listimg'+count).css("background-image"," url('/net"+response.data.fileList[i][j].storgPath+"')"); 
-						$('#listimg'+count).css("background-position","center"); 
+						$('.listimg'+count).css("background-image"," url('/net"+response.data.fileList[i][j].storgPath+"')"); 
+						$('.listimg'+count).css("background-position","center"); 
+						$('.listimg'+count).css("height","200px"); 
+						$('.listimg'+count).css("margin","5px 0 5px 0"); 
 						//$('#listimg'+count).css("background-repeat","no-repeat"); 
 						 
 					

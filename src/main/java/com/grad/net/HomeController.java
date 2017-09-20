@@ -1,7 +1,12 @@
 package com.grad.net;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,72 +53,7 @@ public class HomeController {
 	}
 
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////
-
-	/*
-	 * 박가혜 2017-09-13 
-	 */
-	@RequestMapping(value = "/study/main", method = RequestMethod.GET)
-	public String studyHome( Model model, MemberVo memberVo, @RequestParam("boardtype") String boardtype) {	
-		
-		
-		
-		
-		
-		
-		model.addAttribute("MemberVo", memberVo);
-		model.addAttribute("boardtype", boardtype);
-		
-		
-		return "study/home";
-	}
 	
-	@RequestMapping(value = "/study/main", method = RequestMethod.POST)
-	public String home1(Locale locale, Model model, @RequestBody MemberVo memberVo) {
-		System.out.println(memberVo.getEmail());		
-		
-		
-		
-		
-		return "study/home";
-	}
-	
-
-	@RequestMapping(value = "/study/notice", method = RequestMethod.GET)
-	public String studyNotice( Model model, MemberVo memberVo, @RequestParam("boardtype") String boardtype) {	
-		model.addAttribute("MemberVo", memberVo);	
-		model.addAttribute("boardtype", boardtype);
-		return "study/notice";
-	}
-
-	
-	@RequestMapping(value = "/study/discussion", method = RequestMethod.GET)
-	public String studyDiscussion( Model model, @AuthUser MemberVo authUser, @RequestParam("boardtype") String boardtype) {	
-		
-		model.addAttribute("boardtype", boardtype);
-		model.addAttribute("authUser", authUser);
-		
-				
-		return "study/discussion";
-	}
-	
-	
-	@RequestMapping(value = "/study/research", method = RequestMethod.GET)
-	public String studyResearch( Model model, MemberVo memberVo, @RequestParam("boardtype") String boardtype) {	
-		
-		model.addAttribute("MemberVo", memberVo);		
-		model.addAttribute("boardtype", boardtype);
-		
-		return "study/research";
-	}
-	
-
-	@RequestMapping(value = "/study/lab", method = RequestMethod.GET)
-	public String studyLab( Model model, MemberVo memberVo, @RequestParam("boardtype") String boardtype) {	
-		model.addAttribute("MemberVo", memberVo);	
-		model.addAttribute("boardtype", boardtype);
-		return "study/lab";
-	}
 	
 	
 }

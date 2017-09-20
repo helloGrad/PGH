@@ -245,7 +245,7 @@ public class CounselingController {
 	public JSONResult list(@RequestParam("type") String type,@RequestParam("order") String order, @RequestParam(value="sno", required=true, defaultValue="0") Long startNo) {
 
 	
-		System.out.println(type+"  "+order+"  "+startNo);
+		//System.out.println(type+"  "+order+"  "+startNo);
 		List<CounselingVo> counselingList= counselingService.getCounselingList(type,order,startNo); //답변과 원글 모두 넘김....
 		List<Object> fileList = new ArrayList<Object>(); 
 		
@@ -258,7 +258,7 @@ public class CounselingController {
 		
 		for(int i=0; i<counselingList.size(); i++) {
 		
-			System.out.println(counselingList.get(i).getWrtbtNo());
+			//System.out.println(counselingList.get(i).getWrtbtNo());
 			
 			//System.out.println(fileList.get(i));
 		}
