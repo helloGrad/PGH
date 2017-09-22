@@ -65,16 +65,18 @@ public class CounselingController {
 	//@Auth(role = Auth.Role.USER)
 	
 	@RequestMapping("/detail")
-	public String counselingDetail( Model model, @RequestParam("no") Long no,@AuthUser MemberVo authUser, @RequestParam("type") String type) {
+	public String counselingDetail( Model model, @RequestParam("no") Long no, @AuthUser MemberVo authUser, @RequestParam("type") String type) {
 		
 		
 		//System.out.println(authUser.getMbNo()+" "+no);
+		
+		
 		CounselingVo counselingPrnts = counselingService.getCounselingPrnts(no); //원글
 		List<CounselingVo> counselingReplyList = counselingService.getCounselingReplyDetail(no); //답글
 		List<CounselingVo> existLike =counselingService.existLike(authUser.getMbNo(),no);
 
 		
-
+		System.out.println(type);
 		
 		//조횟수 
 		//counselingService.ChangefindCo(no);
@@ -89,7 +91,7 @@ public class CounselingController {
 		
 		/**
 		 * 박가혜 2017-09-15 이미지 보여주기
-		 */
+		*/
 		
 		List<ApndngFileVo> fileList = apndngFileService.getFileList(no, "게시글");
 		model.addAttribute("fileList", apndngFileService.getFileList(no, "게시글"));

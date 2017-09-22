@@ -34,9 +34,32 @@ public class StudyService {
 		
 		String type = null;
 		
-		if(boardtype == "공학") {
+		
+		if(boardtype.equals("공학")) {
 			
 			type="공학게시판";
+			
+		}else if(boardtype.equals("인문학")) {
+			
+			type="인문학게시판";
+		}else if(boardtype.equals("사회과학")) {
+			
+			type="사회과학게시판";
+		}else if(boardtype.equals("자연과학")) {
+			
+			type="자연과학게시판";
+		}else if(boardtype.equals("의약학")) {
+			
+			type="의약학게시판";
+		}else if(boardtype.equals("농수해양학")) {
+			
+			type="농수해양학게시판";
+		}else if(boardtype.equals("예술체육학")) {
+			
+			type="예술체육학게시판";
+		}else if(boardtype.equals("복합학")) {
+			
+			type="복합학게시판";
 		}
 		
 		

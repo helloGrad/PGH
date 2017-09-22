@@ -21,7 +21,9 @@ import com.grad.net.security.Auth;
 import com.grad.net.security.AuthUser;
 import com.grad.net.service.AdminService;
 import com.grad.net.service.ApndngFileService;
+import com.grad.net.service.CodeService;
 import com.grad.net.service.StudyService;
+import com.grad.net.vo.CodeVo;
 import com.grad.net.vo.MemberVo;
 import com.grad.net.vo.NotiVo;
 import com.grad.net.vo.OrganzVo;
@@ -39,14 +41,18 @@ public class StudyController {
 	
 	@Autowired
 	StudyService studyService;
+	
+	
+	@Autowired
+	CodeService codeService;
 
 	/*
 	 * 박가혜 2017-09-13
 	 */
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String studyHome(Model model, MemberVo memberVo, @RequestParam("boardtype") String boardtype) {
+	public String studyHome(Model model, MemberVo memberVo, @RequestParam("boardtype") String boardtype, @AuthUser MemberVo authUser) {
 
-		model.addAttribute("MemberVo", memberVo);
+		model.addAttribute("authUser", authUser);
 		model.addAttribute("boardtype", boardtype);
 
 		/*
@@ -62,7 +68,8 @@ public class StudyController {
 		int day;
 		int week1;
 		String week = null;
-
+		
+		
 		for (int i = 0; i < 7; i++) {
 
 			if (i != 0) {
@@ -73,7 +80,8 @@ public class StudyController {
 			month = (oCalendar.get(Calendar.MONTH) + 1);
 			day = oCalendar.get(Calendar.DAY_OF_MONTH);
 			week1 = oCalendar.get(Calendar.DAY_OF_WEEK);
-
+			
+			
 			if (week1 == 1) {
 
 				week = "일요일";
@@ -107,11 +115,19 @@ public class StudyController {
 			calList.add(i, map);
 
 		}
+		
+		//Map<String, Object> map1 = new HashMap<String, Object>(); 기타
+		//map1.put("year", 0);
+		
+		//calList.add(7, map1);
 
 		model.addAttribute("calList", calList);
 		
 		List<StudyVo> majorList = studyService.getMajorList(boardtype);
 		
+		/*
+		 * 박가혜 2017-09-21
+		 */
 		
 		List<Long> intMajorList = new ArrayList<Long>();
 		
@@ -125,25 +141,112 @@ public class StudyController {
 		
 		List<StudyVo> BoardList = studyService.getBoardList(intMajorList,boardtype);
 		
-		System.out.println(BoardList);
 		
+		
+		int orderNum =0;
+		
+		for(int i=0; i<BoardList.size(); i++) {
+			
+				if(i>0) {
+					
+					orderNum = orderNum +1;
+				}
+			
+			
+				if(i>0 && !BoardList.get(i).getDay().equals(BoardList.get(i-1).getDay())){
+				System.out.println( BoardList.get(i-1).getDay()+" "+ BoardList.get(i).getDay());
+				orderNum = 0;
+				}
+				
+				
+			
+			BoardList.get(i).setOrderNum(orderNum);
+			
+			System.out.println(BoardList.get(i).getSlctnNotiDstnct()+" "+BoardList.get(i).getSlctnTitle()+" "+BoardList.get(i).getOrderNum());
+			
+			
+		}
+		model.addAttribute("majorList", majorList);
+		model.addAttribute("BoardList", BoardList);
 		
 		
 
-		return "study/home";
+		return "study/home2";
 	}
 
 	@RequestMapping(value = "/main", method = RequestMethod.POST)
 	public String home1(Locale locale, Model model, @RequestBody MemberVo memberVo) {
 		System.out.println(memberVo.getEmail());
 
-		return "study/home";
+		return "study/home2";
 	}
 
+	/*
+	 * 박가혜 2017-09-21
+	 */
 	@RequestMapping(value = "/notice", method = RequestMethod.GET)
-	public String studyNotice(Model model, MemberVo memberVo, @RequestParam("boardtype") String boardtype) {
+	public String studyNotice(Model model, MemberVo memberVo, @RequestParam("boardtype") String boardtype, @AuthUser MemberVo authUser) {
+		
+		
+		List<CodeVo> codeList = codeService.getMajorList(boardtype);
+		
+		
+		
+		for(int i=0; i< codeList.size(); i++) {
+			
+			if(codeList.get(i).getCdDstnct().equals("학과")) {
+				
+				//System.out.println(codeList.get(i));
+			}
+			
+			
+		}
+		
+		List<StudyVo> majorList = studyService.getMajorList(boardtype);
+		
+		
+		List<Long> intMajorList = new ArrayList<Long>();
+		
+		for(int i=0; i<majorList.size(); i++) {
+			
+			intMajorList.add(majorList.get(i).getSlctnNotiNo());
+			
+		}
+		
+		System.out.println(intMajorList);
+		model.addAttribute("majorList2", majorList);
+		
+		
+		List<StudyVo> BoardList = studyService.getBoardList(intMajorList,boardtype);
+		
+		for(int i=0; i< majorList.size(); i++) {
+			
+			if(i < majorList.size()-1 && majorList.get(i).getSlctnNotiNo().equals(majorList.get(i+1).getSlctnNotiNo() ) && majorList.get(i).getSpCdNm().equals(majorList.get(i+1).getSpCdNm())) {
+				
+				
+				majorList.get(i+1).setSpCdNm(null);
+			}
+		
+			
+		}
+		
+		for(int i=0; i<majorList.size(); i++) {
+			
+			System.out.println(majorList.get(i).getSlctnNotiNo() + " " +  majorList.get(i).getSpCdNm());
+			
+		}
+		
+		
+		
+		model.addAttribute("codeList", codeList);
 		model.addAttribute("MemberVo", memberVo);
 		model.addAttribute("boardtype", boardtype);
+		model.addAttribute("majorList", majorList);
+		model.addAttribute("authUser", authUser);
+		model.addAttribute("BoardList", BoardList);
+		
+		
+		
 		return "study/notice";
 	}
 

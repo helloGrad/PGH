@@ -16,7 +16,9 @@ pageContext.setAttribute("newLine", "\n");
  
  	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>  
+	
 	  
     <title>상담실</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
@@ -24,7 +26,7 @@ pageContext.setAttribute("newLine", "\n");
     <link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 
      <style>
         body {
@@ -117,7 +119,7 @@ pageContext.setAttribute("newLine", "\n");
 		var existLikelist = []; 
 		
 
-
+		//alert(type);
 
 		if (replysize == 0) { //첫답변 구분
 
@@ -129,6 +131,7 @@ pageContext.setAttribute("newLine", "\n");
 		} else {
 
 			div_hide();
+		
 		}
 		
 		
@@ -158,8 +161,8 @@ pageContext.setAttribute("newLine", "\n");
 		}
 		
 		
-		console.log(existLike);
-		console.log(counselingReply);
+		//console.log(existLike);
+		//console.log(counselingReply);
 	
 			
 			for( var i=0; i<counselingReply.length; i++){
@@ -264,7 +267,13 @@ pageContext.setAttribute("newLine", "\n");
 		}
 		
 		var prntsWrtbtNo=$("#prntsWrtbtNo").val();
-		var wrtbtText = $("#wrtbtText").val();
+		var wrtbtText = $("#wrtbtText2").val();
+	
+		
+		console.log("-----"+wrtbtText);
+	
+		
+		
 		var writrInfoOpngYn = $("#writrInfoOpngYn").val();
 		
 		
@@ -277,6 +286,7 @@ pageContext.setAttribute("newLine", "\n");
 			bbsNo : bbsNo
 		};
 
+		console.log(replylist);	
 		//폼종료
 		div_hide();
 
@@ -602,7 +612,7 @@ pageContext.setAttribute("newLine", "\n");
 					<input type="hidden" id="prntsWrtbtNo" name="prntsWrtbtNo" value="${counselingPrnts.wrtbtNo }">
 					 <input type="hidden" id="bbsNo" name="bbsNo" value="${counselingPrnts.bbsNo}"> <br>
 					<div>답변</div> 
-					<textarea class="form-control" onkeydown="resize(this)" onkeyup="resize(this)" id="wrtbtText" name="wrtbtText"></textarea>
+					<textarea class="form-control" onkeydown="resize(this)" onkeyup="resize(this)" id="wrtbtText2" name="wrtbtText"></textarea>
 					
 					 <div class="dropdown writedropdown">
 	               			<button  class="w3-button w3-padding w3-round-large dropdown-toggle" type="button" data-toggle="dropdown" style="float:right;">

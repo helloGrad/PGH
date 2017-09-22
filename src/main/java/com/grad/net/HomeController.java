@@ -47,8 +47,10 @@ public class HomeController {
 	
 	//@Auth(role = Auth.Role.USER)
 	@RequestMapping(value = "/loginmain", method = RequestMethod.GET)
-	public String home2( Model model, MemberVo memberVo) {	
-		model.addAttribute("MemberVo", memberVo);		
+	public String home2( Model model, MemberVo memberVo,@AuthUser MemberVo authUser) {	
+		
+		
+		
 		return "loginmain";
 	}
 

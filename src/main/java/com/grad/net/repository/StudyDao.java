@@ -31,8 +31,7 @@ public class StudyDao {
 	
 	public List<StudyVo> selectBoardList(Map<String, Object> map){
 		
-		
-		
+
 		
 		return sqlSession.selectList("study.selectBoardList", map);		
 		
