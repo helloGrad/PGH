@@ -54,6 +54,11 @@ a.btn.disabled.numbtn {
 	color: #FF0000;
 }
 
+.distinct-line {
+			padding-top: 2.5em;
+}
+		
+
 </style>
  
     <script>
@@ -177,7 +182,7 @@ a.btn.disabled.numbtn {
             <div class="col-lg-2"></div>
 
             <!--상담실 내용-->
-            <div class="col-lg-8">
+            <div class="col-lg-8 distinct-line">
                 <div class="w3-container">
                 	
                     <div id="myBtn" class="btn btn-danger web-volunteer writeBtn">글 작성하기</div>

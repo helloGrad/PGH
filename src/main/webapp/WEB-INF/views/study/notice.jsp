@@ -288,6 +288,10 @@
 		color: #FF0000;
 		}
 		
+		.distinct-line {
+			padding-top: 2.5em;
+		}
+		
 		
     </style>
  <script type="text/javascript">
@@ -345,7 +349,7 @@
 
 
 
-			<div class="col-xs-12 col-sm-12 col-lg-12">
+			<div class="col-xs-12 col-sm-12 col-lg-12 distinct-line">
 				<h3>
 					<div style="float: left; margin-right: 0.3em;">대학원 모집공고</div>
 					<br>
@@ -449,7 +453,7 @@
 
 				</div>
 
-				<div class="row">
+				<div class="row distinct-line">
 
 					<c:forEach items="${BoardList }" var="BoardList" varStatus="status">
 
@@ -537,7 +541,8 @@
 			<c:forEach items="${codeList2 }" var="codeList2" varStatus="status"> 
           
           	<c:if test="${codeList2.cdDstnct == '학과' }"	>
-          	<div class="col-xs-12 col-sm-12 col-lg-12">
+          	
+          	<div class="col-xs-12 col-sm-12 col-lg-12 distinct-line">
           		 <h3>
                 <div style="float: left; margin-right: 0.3em;">${codeList2.cdNm }</div>
                 <br>
