@@ -73,29 +73,37 @@ var authUser = '${authUser.mbNo }';
 	
 		
 		
-		disfetchList("전체", "최신순");
+		disfetchList("전체", "최신순", function() {
+			
+
+			/*
+			*  박가혜 상담실 스크랩 
+			 */	
+	
+			if(authUser == null || authUser == "" ){
+				
+			
+			}else{
+				
+				console.log("sssss");
+				var scrapList=JSON.parse('${scrapList}');
+				for(var i=0;i<scrapList.length;i++){
+
+					if(scrapList[i].prntsDstnct==='게시글'){ //게시글
+						
+						
+						$('.do-scrapcoun' + scrapList[i].prntsNo).addClass('scrap-on');
+					}
+				};	
+				
+			}
+		});
 		
-		/*
-		*  박가혜 상담실 스크랩 
-		 */	
+	
 
-		if(authUser == null || authUser == "" ){
 			
-			
-		}else{
-			
-			
-			var scrapList=JSON.parse('${scrapList}');
-			for(var i=0;i<scrapList.length;i++){
+		
 
-				if(scrapList[i].prntsDstnct==='게시글'){ //게시글
-					
-					console.log("sssss");
-					$('.do-scrapcoun' + scrapList[i].prntsNo).addClass('scrap-on');
-				}
-			};	
-			
-		}
 		
 		/*
 		 * 정예린 자동 스크롤링 2017-09-13
@@ -108,34 +116,45 @@ var authUser = '${authUser.mbNo }';
 			if (scrollTop + windowHeight + 10 > documentHeight) {
 				if (!disbFetching) {
 					disbFetching = true;
-					disfetchList('전체', '최신순');
+					disfetchList("전체", "최신순", function() {
+						
+
+						/*
+						*  박가혜 상담실 스크랩 
+						 */	
+				
+						if(authUser == null || authUser == "" ){
+							
+						
+						}else{
+							
+							console.log("sssss");
+							var scrapList=JSON.parse('${scrapList}');
+							for(var i=0;i<scrapList.length;i++){
+
+								if(scrapList[i].prntsDstnct==='게시글'){ //게시글
+									
+									
+									$('.do-scrapcoun' + scrapList[i].prntsNo).addClass('scrap-on');
+								}
+							};	
+							
+						}
+					});
 				}
 			}
 			
 
-			/*
-			*  박가혜 상담실 스크랩 
-			 */	
-
-			if(authUser == null || authUser == "" ){
-				
-				
-			}else{
-				
-				
-				var scrapList=JSON.parse('${scrapList}');
-				for(var i=0;i<scrapList.length;i++){
-
-					if(scrapList[i].prntsDstnct==='게시글'){ //게시글
-						
-					
-						$('.do-scrapcoun' + scrapList[i].prntsNo).addClass('scrap-on');
-					}
-				};	
-				
-			}
+		
+		
 		
 		});
+		
+		
+
+		
+	
+		
 	});
 </script>
 

@@ -58,17 +58,19 @@
 	}
 	
 	
-	var disfetchList = function(type,order) {
+	var disfetchList = function(type,order, callback) {
 		
-	
+//		if (typeof(callback) == "function") callback();
+		
 		if (isEnd === true) {
 			return;
 		}
 		
 		var startNo;
 		var startNo2; // 저장용
+		var user = 	$("#authUser").val();
 		
-	
+			
 		if(type == '전체') {
 			startNo = $("#list .w3-card-2:last-child").find('input').val() || 0;
 		}else{
@@ -100,7 +102,7 @@
 				// rendering
 				$.each(response.data.counselingList, function(index, vo) {
 					
-					
+					vo.user = user;
 					disrender(type, vo);
 					totalListNum++;
 					//console.log("totalListNum : " + totalListNum);
@@ -151,7 +153,7 @@
 					
 				}
 				
-
+				if (typeof(callback) == "function") callback();
 				
 				
 			},
@@ -171,7 +173,7 @@
 	var disrender = function(type,vo, mode) {
 		var html;
 
-		
+		//console.log("렌더링 확인 : "+vo.user);
 		if(type==='전체'){
 			html = counlistItemTemplate.render(vo);
 		}
@@ -200,7 +202,7 @@
 		//check 스크롤링상태에서 버튼으로 바뀔때는 버튼을 불러오는 ejs만 렌더링하며, 글list는 렌더링하지 않는다.
 		//console.log("----" + type + "---->" + "페이징 비동기통신 "+type+" "+order);
 
-		var user = '${authUser.mbNo }';
+		var user = 	$("#authUser").val();
 		
 		$.ajax({
 			url : "/net/counseling/api/pagelist?page=" + page + "&type=" + type
@@ -241,6 +243,7 @@
 	var pageListrender = function(type, vo, mode) {
 		var html;
 		var listhtml;
+		//console.log("pagelist 렌더링 확인 : "+vo.user);
 
 		html = pagelistTemplate.render(vo);
 

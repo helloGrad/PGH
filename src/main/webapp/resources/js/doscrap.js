@@ -30,7 +30,7 @@ var doScrap = function(type, id, user) {
 	} else if (type === '게시글') {
 		classType = 'coun';
 	}
-	console.log(type + " " + id + " "+ user + "" + classType);
+	//console.log(type + " " + id + " "+ user + "" + classType);
 	
 	
 	if ($('.do-scrap' + classType + id).hasClass("scrap-on")) {

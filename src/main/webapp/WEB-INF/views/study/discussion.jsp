@@ -77,30 +77,35 @@ a.btn.disabled.numbtn {
 		}
 		
 		console.log(order);
-			
-		disfetchList(boardtype, order);
 		
 		
-		/*
-		 *  박가혜 상담실 스크랩 
-		 */	
-		if(authUser == null || authUser == "" ){
-	
+		disfetchList(boardtype, order, function() {
 			
-		}else{
-			
-			
-			var scrapList=JSON.parse('${scrapList}');
-			for(var i=0;i<scrapList.length;i++){
 
-				if(scrapList[i].prntsDstnct==='게시글'){
-					
-					
-					$('.do-scrapcoun' + scrapList[i].prntsNo).addClass('scrap-on');
-				}
-			};	
+			/*
+			*  박가혜 상담실 스크랩 
+			 */	
+	
+			if(authUser == null || authUser == "" ){
+				
 			
-		}
+			}else{
+				
+				console.log("sssss");
+				var scrapList=JSON.parse('${scrapList}');
+				for(var i=0;i<scrapList.length;i++){
+
+					if(scrapList[i].prntsDstnct==='게시글'){ //게시글
+						
+						
+						$('.do-scrapcoun' + scrapList[i].prntsNo).addClass('scrap-on');
+					}
+				};	
+				
+			}
+		});
+			
+		
 		
 		
 		/*
@@ -114,30 +119,38 @@ a.btn.disabled.numbtn {
 			if (scrollTop + windowHeight + 10 > documentHeight) {
 				if (!disbFetching) {
 					disbFetching = true;
-					disfetchList(boardtype,order);
+				
+					disfetchList(boardtype, order, function() {
+						
+
+						/*
+						*  박가혜 상담실 스크랩 
+						 */	
+				
+						if(authUser == null || authUser == "" ){
+							
+						
+						}else{
+							
+							console.log("사용자id : " +authUser);
+							var scrapList=JSON.parse('${scrapList}');
+							for(var i=0;i<scrapList.length;i++){
+
+								if(scrapList[i].prntsDstnct==='게시글'){ //게시글
+									
+									
+									$('.do-scrapcoun' + scrapList[i].prntsNo).addClass('scrap-on');
+								}
+							};	
+							
+						}
+					});
+						
 				}
 			}
 			
-			/*
-			 *  박가혜 상담실 스크랩 
-			 */	
-			if(authUser == null || authUser == "" ){
 		
-				
-			}else{
-				
-				
-				var scrapList=JSON.parse('${scrapList}');
-				for(var i=0;i<scrapList.length;i++){
-
-					if(scrapList[i].prntsDstnct==='게시글'){
-						
-						
-						$('.do-scrapcoun' + scrapList[i].prntsNo).addClass('scrap-on');
-					}
-				};	
-				
-			}
+		
 			
 			
 		});
