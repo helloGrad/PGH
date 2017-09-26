@@ -21,15 +21,13 @@
 
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/higrad-signup.css"
-	rel="stylesheet">
+
+
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
-
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 
 
@@ -132,13 +130,6 @@
 	cursor: pointer;
 }
 
-.noti-title {
-	display: block;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
 .noti-hh {
 	cursor: pointer;
 }
@@ -171,7 +162,7 @@
 
 
 </head>
-<body >
+<body>
 
 	<c:import url="/WEB-INF/views/include/header.jsp" />
 
@@ -193,7 +184,7 @@
 						</div>
 						<div class="w3-quarter w3-text-grey">
 							<span class="w3-padding" style="font-size: 2.8vmin;">대학원/연구실</span>
-							<br>0건
+							<br>${notiCount }건
 						</div>
 						<div class="w3-quarter w3-text-grey">
 							<span class="w3-padding" style="font-size: 2.8vmin;">교육/모임</span>
@@ -688,7 +679,6 @@
 
 
 			<!-- 메인 출력 2017-09-21 정예린 -->
-			<c:set value="1" var="i" />
 			<c:forEach items="${codeList }" var="codeVo" varStatus="status">
 				<div class="row distinct-line" id="section${i }">
 					<div class="col-xs-12 col-sm-12 col-lg-12">
@@ -790,21 +780,24 @@
 												<div class="noti-card"
 													onclick="location.href='${pageContext.servletContext.contextPath }/noti/detail?no=${labVo.slctnNotiNo}&tabnm=${labVo.slctnNotiDstnct}'">
 													<c:choose>
-														<c:when test="${labVo.slctnYycl=='9999' }">
-															<div class="w3-padding w3-text-grey w3-small"
-																style="margin-bottom: -1.5em;">상시모집</div>
+														<c:when test="${labVo.bk21EorgnzSuprtYn == 'Y' }">
+															<span class="w3-red"
+																style="padding-right: 2px; padding-left: 10px; margin-right: -5px">BK</span>
+															<span class="w3-blue"
+																style="padding-right: 5px; padding-left: 0px;">21+</span>
 														</c:when>
 														<c:otherwise>
-															<div class="w3-padding w3-text-grey w3-small"
-																style="margin-bottom: -1.5em;">${labVo.slctnYycl }
-																${labVo.slctnSemstr }</div>
+
 														</c:otherwise>
 													</c:choose>
 													<img src="/net${labVo.storgPath }" alt="고려대학교"
 														style="width: 100%; padding: 1em 1em 0 1em;">
 													<div class="w3-container w3-center noti-title">
 														<h4 style="font-size: 1.8vmin;" class="noti-title">
-															<strong>${labVo.major } ${labVo.lab }</strong>
+															<strong>${labVo.major }</strong>
+														</h4>
+														<h4 style="font-size: 1.8vmin;" class="noti-title">
+															<strong>${labVo.lab }</strong>
 														</h4>
 														<p style="font-size: 1.8vmin;" class="noti-title">
 															${labVo.slctnTitle }</p>
@@ -849,41 +842,14 @@
 						</div>
 					</div>
 				</div>
-				<c:set var="i" value="${i + 1}" />
 			</c:forEach>
 
 		</div>
 	</div>
 
-	<nav class="navbar navbar-inverse navbar-fixed-bottom" id="studies">
-		<div class="container-fluid">
-			<div class="container">
 
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#studies-list" style="background-color: orange;">
-						<i class="glyphicon glyphicon-plus" style="color: #ffffff;"></i>
-					</button>
-					<a class="navbar-brand" href="#section0">마이페이지</a>
-				</div>
-				<div>
-					<div class="collapse navbar-collapse" id="studies-list">
 
-						<ul class="nav navbar-nav">
-							<li><a href="#section1">공학</a></li>
-							<li><a href="#section2">농수해양학</a></li>
-							<li><a href="#section3">자연과학</a></li>
-							<li><a href="#section4">사회과학</a></li>
-							<li><a href="#section5">인문학</a></li>
-							<li><a href="#section6">의약학</a></li>
-							<li><a href="#section7">예술체육학</a></li>
-							<li><a href="#section8">복합학</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</nav>
+
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/doscrap.js"></script>
 	<script type="text/javascript"

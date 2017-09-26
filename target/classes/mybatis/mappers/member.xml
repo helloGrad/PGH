@@ -150,5 +150,16 @@
 		where mb_no=#{mbNo };
 		]]>
 	</select>
+	
+	
+		<!-- 정예린 -->
+	<select id="getBySnsToken" parameterType="String" resultType="memberVo"> 
+		<![CDATA[
+		select MB_NO mbNo, MB_DSTNCT mbDstnct, MB_NM mbNm, NKNM nknm, IDEN iden, PW pw, SEX sex, TRUNCATE(date_format(now(),"%Y-%m-%d %H:%i::%s")-date_format(BIRDT,"%Y-%m-%d %H:%i::%s"), -1) birdt, MYSELF_AUTHZ_YN myselfAuthzYn, 
+		INSRD_DD insrdDd, WTHDR_DD wthdrDd, GENAL_MB_DSTNCT genalMbDstnct, SNS_TKN_VALUE snsTknValue, SNS_DSTNCT snsDstnct,INFO_YN infoYn
+		from mb 
+		where SNS_TKN_VALUE=#{token } 
+		]]>
+	</select>
 
 </mapper>

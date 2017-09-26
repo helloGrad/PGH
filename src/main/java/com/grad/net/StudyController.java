@@ -181,15 +181,32 @@ public class StudyController {
 		model.addAttribute("BoardList", BoardList);
 		
 		
+		
+		JSONArray jsonArray = new JSONArray();
+		model.addAttribute("codeList", codeService.getStudyList());
+		model.addAttribute("gradList", notiService.getGradNotiList());
+		model.addAttribute("labList", notiService.getLabNotiList());
+		model.addAttribute("labCodeList", notiService.getLabCodeList());
+		
+		if (authUser != null) {
+			model.addAttribute("scrapList", memberService.getScrapList(authUser.getMbNo()));
+			model.addAttribute("scrapList", jsonArray.fromObject(memberService.getScrapList(authUser.getMbNo())));
+		}
+		
+		model.addAttribute("gradList", jsonArray.fromObject(notiService.getGradNotiList()));
+		model.addAttribute("labList", jsonArray.fromObject(notiService.getLabNotiList()));
+		
+		
+		
 
-		return "study/home2";
+		return "study/home";
 	}
 
 	@RequestMapping(value = "/main", method = RequestMethod.POST)
 	public String home1(Locale locale, Model model, @RequestBody MemberVo memberVo) {
 		System.out.println(memberVo.getEmail());
 
-		return "study/home2";
+		return "study/home";
 	}
 
 	/*
@@ -241,20 +258,37 @@ public class StudyController {
 			
 		}
 		
-		for(int i=0; i<majorList.size(); i++) {
+		for(int i=0; i<BoardList.size(); i++) {
 			
-			System.out.println(majorList.get(i).getSlctnNotiNo() + " " +  majorList.get(i).getSpCdNm());
+			//System.out.println(BoardList.get(i).getSlctnNotiNo() + " " +  BoardList.get(i).getPercent());
 			
 		}
 		
 		
 		
-		model.addAttribute("codeList", codeList);
+		model.addAttribute("codeList2", codeList);
 		model.addAttribute("MemberVo", memberVo);
 		model.addAttribute("boardtype", boardtype);
 		model.addAttribute("majorList", majorList);
 		model.addAttribute("authUser", authUser);
 		model.addAttribute("BoardList", BoardList);
+		
+		
+		
+		JSONArray jsonArray = new JSONArray();
+		model.addAttribute("codeList", codeService.getStudyList());
+		model.addAttribute("gradList", notiService.getGradNotiList());
+		model.addAttribute("labList", notiService.getLabNotiList());
+		model.addAttribute("labCodeList", notiService.getLabCodeList());
+		
+		if (authUser != null) {
+			model.addAttribute("scrapList", memberService.getScrapList(authUser.getMbNo()));
+			model.addAttribute("scrapList", jsonArray.fromObject(memberService.getScrapList(authUser.getMbNo())));
+		}
+		
+		model.addAttribute("gradList", jsonArray.fromObject(notiService.getGradNotiList()));
+		model.addAttribute("labList", jsonArray.fromObject(notiService.getLabNotiList()));
+		
 		
 		
 		

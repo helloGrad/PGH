@@ -206,7 +206,7 @@
 		
 		$.ajax({
 			url : "/net/counseling/api/pagelist?page=" + page + "&type=" + type
-					+ "&order=" + order,
+					+ "&order=" + order + "&user=" + user,
 			type : "get",
 			dataType : "json",
 			data : "",
@@ -257,6 +257,13 @@
 
 		$("#list").html(listhtml);
 		$("#pagelist").html(html);
+		
+
+		for(var i=0;i<vo.scrapList.length;i++){
+			if(vo.scrapList[i].prntsDstnct==='게시글'){ //게시글
+				$('.do-scrapcoun' + vo.scrapList[i].prntsNo).addClass('scrap-on');
+			}
+		};
 
 	}
 

@@ -74,7 +74,7 @@ boardtype = "${boardtype}";
 </head>
 
 
-	<div class="row major-nav-box">
+	<div class="row major-nav-box" style="height: auto;" >
 		<div class="container">
 			<div class=" text-center" style="background-color: white;">
 				<div class="col-sm-2"></div>
@@ -87,18 +87,19 @@ boardtype = "${boardtype}";
 
 				</div>
 				<div class="col-sm-2"></div>
-				<ul class="nav navbar-nav navbar-left">
-					<li><a href="${pageContext.servletContext.contextPath }/study/main?boardtype=${boardtype}">전체</a></li>
-					<li><a
-						href="${pageContext.servletContext.contextPath }/study/notice?boardtype=${boardtype}">모집공고</a></li>
-					<li><a
-						href="${pageContext.servletContext.contextPath }/study/discussion?boardtype=${boardtype}">토론</a></li>
-					<li><a
-						href="${pageContext.servletContext.contextPath }/study/research?boardtype=${boardtype}">연구과제</a></li>
-					<li><a
-						href="${pageContext.servletContext.contextPath }/study/lab?boardtype=${boardtype}">연구실</a></li>
-
-				</ul>
+					<ul class="nav navbar-nav navbar-left">
+						<li><a href="${pageContext.servletContext.contextPath }/study/main?boardtype=${boardtype}">전체</a></li>
+						<li><a
+							href="${pageContext.servletContext.contextPath }/study/notice?boardtype=${boardtype}">모집공고</a></li>
+						<li><a
+							href="${pageContext.servletContext.contextPath }/study/discussion?boardtype=${boardtype}">토론</a></li>
+						<li><a
+							href="${pageContext.servletContext.contextPath }/study/research?boardtype=${boardtype}">연구과제</a></li>
+						<li><a
+							href="${pageContext.servletContext.contextPath }/study/lab?boardtype=${boardtype}">연구실</a></li>
+	
+					</ul>
+				
 			</div>
 		</div>
 

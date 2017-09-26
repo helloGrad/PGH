@@ -249,7 +249,7 @@ var authUser = '${authUser.mbNo }';
 			<input type="hidden" id="authUser" name="authUser" value="${authUser.mbNo }">
         	<div id="list"></div>
         
-         	<div id="pagelist"></div>
+         	<div id="pagelist" class="pagelist"></div>
         
 
 

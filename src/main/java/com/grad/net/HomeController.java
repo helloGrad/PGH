@@ -81,6 +81,9 @@ public class HomeController {
 		model.addAttribute("gradList", notiService.getGradNotiList());
 		model.addAttribute("labList", notiService.getLabNotiList());
 		model.addAttribute("labCodeList", notiService.getLabCodeList());
+		//model.addAttribute("totalcount", notiService.getNotiCount()+교육/모임갯수);
+		model.addAttribute("notiCount", notiService.getNotiCount());
+		//교육/모임 갯수 추후에 추가
 		
 		if (authUser != null) {
 			model.addAttribute("scrapList", memberService.getScrapList(authUser.getMbNo()));

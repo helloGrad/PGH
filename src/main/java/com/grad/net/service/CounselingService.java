@@ -191,6 +191,7 @@ public class CounselingService {
 		return counselingDao.countCounList(type);
 	}
 
+	
 	/*
 	 * 정예린 2017-09-25
 	 */
@@ -202,5 +203,12 @@ public class CounselingService {
 		map.put("pageVo", pageVo);
 		
 		return counselingDao.countCounList(map);
+	}
+	
+	/*
+	 * 정예린 2017-09-25
+	 */
+	public List<MemberVo> getScrapList(Long user) {
+		return counselingDao.getScrapList(user);
 	}
 }

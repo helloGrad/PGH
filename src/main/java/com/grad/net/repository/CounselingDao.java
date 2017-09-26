@@ -164,4 +164,11 @@ public class CounselingDao {
 	public List<CounselingVo> countCounList(Map<String, Object> map) {
 		return sqlSession.selectList("counseling.getCounList",map);
 	}
+	
+	/*
+	 * 정예린 2017-09-25
+	 */
+	public List<MemberVo> getScrapList(Long user) {
+		return sqlSession.selectList("counseling.getScrapList",user);
+	}
 }

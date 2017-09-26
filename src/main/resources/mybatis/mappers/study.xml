@@ -27,17 +27,17 @@
 	<select id="selectBoardList" resultType="studyVo" parameterType="map">
 		<![CDATA[
 		select university, graduate, pno3, major, pno2, lab,pno1,SLCTN_NOTI_NO 'slctnNotiNo',SYMBOL_COLOR_NM 'symbolColorNm',SLCTN_NOTI_DSTNCT 'slctnNotiDstnct',
-		NOTI_REGST_DT 'notiRegstDt',SLCTN_BEGIN_DT 'slctnBeginDt',SLCTN_END_DT 'slctnEndDt',dday,percent,SLCTN_TITLE 'slctnTitle',SLCTN_YYCL 'slctnYycl',SLCTN_SEMSTR 'slctnSemstr',PCHRG_YN 'pchrgYn',STORG_PATH 'storgPath',WRTBT_NO 'wrtbtNo',
-		BBS_NM 'bbsNm',WRTBT_TEXT 'wrtbtText',WRTBT_TITLE 'wrtbtTitle',AVLBL_BEGIN_DT 'avlblBeginDt',CO_STORG_PATH 'coSrorgPath', year(NOTI_REGST_DT) 'year', month(NOTI_REGST_DT) 'month', DAYOFMONTH(NOTI_REGST_DT) 'day',count, subwrtbtText
+		NOTI_REGST_DT 'notiRegstDt',SLCTN_BEGIN_DT 'slctnBeginDt',SLCTN_END_DT 'slctnEndDt',dday,percent,SLCTN_TITLE 'slctnTitle',SLCTN_YYCL 'slctnYycl',SLCTN_SEMSTR 'slctnSemstr',PCHRG_YN 'pchrgYn',BK21_EORGNZ_SUPRT_YN 'bk21EorgnzSuprtYn', STORG_PATH 'storgPath',WRTBT_NO 'wrtbtNo',
+		BBS_NM 'bbsNm',WRTBT_TEXT 'wrtbtText',WRTBT_TITLE 'wrtbtTitle',AVLBL_BEGIN_DT 'avlblBeginDt',WRTBT_DSTNCT 'wrtbtDstnct', CO_STORG_PATH 'coSrorgPath', year(NOTI_REGST_DT) 'year', month(NOTI_REGST_DT) 'month', DAYOFMONTH(NOTI_REGST_DT) 'day',count, subwrtbtText
 		 
 		
 		from
 		(select  af.STORG_PATH 'university',af.STORG_PATH 'graduate',w.WRTBT_NO 'pno3',af.STORG_PATH 'major',w.WRTBT_NO 'pno2',af.STORG_PATH 'lab',w.WRTBT_NO 'pno1',w.WRTBT_NO 'SLCTN_NOTI_NO',af.STORG_PATH 'SYMBOL_COLOR_NM',w.BBS_NM 'SLCTN_NOTI_DSTNCT',
-		w.AVLBL_BEGIN_DT 'NOTI_REGST_DT',w.AVLBL_BEGIN_DT 'SLCTN_BEGIN_DT',w.AVLBL_BEGIN_DT 'SLCTN_END_DT',w.WRTBT_NO 'dday',w.WRTBT_NO 'percent',af.STORG_PATH 'SLCTN_TITLE',af.STORG_PATH 'SLCTN_YYCL',af.STORG_PATH 'SLCTN_SEMSTR',af.STORG_PATH 'PCHRG_YN',af.STORG_PATH 'STORG_PATH',
-		w.WRTBT_NO, w.BBS_NM, w.WRTBT_TEXT, w.WRTBT_TITLE,w.AVLBL_BEGIN_DT, af.STORG_PATH 'CO_STORG_PATH', (select count(*) from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO) count, 
+		w.AVLBL_BEGIN_DT 'NOTI_REGST_DT',w.AVLBL_BEGIN_DT 'SLCTN_BEGIN_DT',w.AVLBL_BEGIN_DT 'SLCTN_END_DT',w.WRTBT_NO 'dday',w.WRTBT_NO 'percent',af.STORG_PATH 'SLCTN_TITLE',af.STORG_PATH 'SLCTN_YYCL',af.STORG_PATH 'SLCTN_SEMSTR',af.STORG_PATH 'PCHRG_YN',af.STORG_PATH 'BK21_EORGNZ_SUPRT_YN',af.STORG_PATH 'STORG_PATH',
+		w.WRTBT_NO, w.BBS_NM, w.WRTBT_TEXT, w.WRTBT_TITLE,w.AVLBL_BEGIN_DT, w.WRTBT_DSTNCT, af.STORG_PATH 'CO_STORG_PATH', (select count(*) from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO) count, 
 (select WRTBT_TEXT  from wetbt e where w. WRTBT_NO= e.PRNTS_WRTBT_NO    group by RCMD_CO desc limit 1) subwrtbtText
 		from
-		(select w.WRTBT_NO, b.BBS_NM, w.WRTBT_TEXT, w.WRTBT_TITLE,w.AVLBL_BEGIN_DT
+		(select w.WRTBT_NO, b.BBS_NM, w.WRTBT_TEXT, w.WRTBT_TITLE,w.AVLBL_BEGIN_DT, w.WRTBT_DSTNCT
 		from bbs b, WETBT w
 		where b.BBS_NO = w.BBS_NO and w.WRTBT_TYPE_DSTNCT='원글')w LEFT JOIN
 		(select *
@@ -45,14 +45,14 @@
 		group by PRNTS_NO)af
 		on w.WRTBT_NO = af.PRNTS_NO
 		union all
-		select sn.*, af.STORG_PATH, sn.pno3 'WRTBT_NO',af.STORG_PATH 'BBS_NM',af.STORG_PATH 'WRTBT_TEXT',af.STORG_PATH 'WRTBT_TITLE', sn.NOTI_REGST_DT 'AVLBL_BEGIN_DT',af.STORG_PATH 'CO_STORG_PATH',sn.pno3 'count', af.STORG_PATH 'subwrtbtText'
+		select sn.*, af.STORG_PATH, sn.pno3 'WRTBT_NO',af.STORG_PATH 'BBS_NM',af.STORG_PATH 'WRTBT_TEXT',af.STORG_PATH 'WRTBT_TITLE', sn.NOTI_REGST_DT 'AVLBL_BEGIN_DT', af.STORG_PATH 'WRTBT_DSTNCT',af.STORG_PATH 'CO_STORG_PATH',sn.pno3 'count', af.STORG_PATH 'subwrtbtText'
 		from
 		(select p3.orgnz_nm 'university', c3.*
 		from (select  p2.orgnz_nm 'graduate', p2.PRNTS_ORGNZ_NO pno3, c2.*
 		from (select p.orgnz_nm 'major', p.PRNTS_ORGNZ_NO pno2, c.*
 		from (select o.ORGNZ_NM 'lab', o.PRNTS_ORGNZ_NO pno1, sn.SLCTN_NOTI_NO, o.SYMBOL_COLOR_NM, sn.SLCTN_NOTI_DSTNCT,sn.NOTI_REGST_DT, 
-		sn.SLCTN_BEGIN_DT, sn.SLCTN_END_DT ,TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(now()) "dday", TO_DAYS(now()) - TO_DAYS(sn.SLCTN_BEGIN_DT)/TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(sn.SLCTN_BEGIN_DT) "percent",
-		sn.SLCTN_TITLE,sn.SLCTN_YYCL,sn.SLCTN_SEMSTR, sn.PCHRG_YN
+		sn.SLCTN_BEGIN_DT, sn.SLCTN_END_DT ,TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(now()) "dday", (TO_DAYS(now()) - TO_DAYS(sn.SLCTN_BEGIN_DT))/(TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(sn.SLCTN_BEGIN_DT)) "percent",
+		sn.SLCTN_TITLE,sn.SLCTN_YYCL,sn.SLCTN_SEMSTR, sn.PCHRG_YN,sn.BK21_EORGNZ_SUPRT_YN
 		from organz o, slctn_Noti sn
 		where o.ORGNZ_NO = sn.ORGNZ_NO
 		and sn.SLCTN_END_DT >= now()) c left outer join organz p 

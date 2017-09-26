@@ -3,10 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<html>
+
 <head>
 <base target="_self" /> 
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
@@ -18,13 +17,6 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/ejs/ejs.js"></script>
 
-<!--
- --> 
- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
- <link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet"> 
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 
 
 <script>
@@ -178,6 +170,7 @@ var boardtype;
 						class="icon-bar"></span>
 				</button>
 			  <a class="navbar-brand" href="${pageContext.servletContext.contextPath }/loginmain">하이그래드넷</a>
+			  
 				<ul class="nav navbar-nav">
 					<li><a id="headerBtn" class=" navbar-qna nav-btn writeBtn" href="#"> <span
 							class=" w3-btn w3-border w3-round-large"><i
@@ -186,6 +179,8 @@ var boardtype;
 							class="w3-btn w3-border w3-round-large"><i
 								class="glyphicon glyphicon-check"></i>답변하기</span></a></li>
 				</ul>
+				
+				
 			</div>
 		
 

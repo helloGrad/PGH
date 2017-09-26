@@ -88,5 +88,13 @@ public class MemberDao {
 	public List<MemberVo> getScrapList(Long mbNo) {
 		return sqlSession.selectList("member.getScrapList", mbNo);
 	}
+	
+	/*
+	 * 정예린 2017-09-13 페이스북 로그인 합치기
+	 */
+	public MemberVo getUserByToken(String token) {
+		return sqlSession.selectOne("member.getBySnsToken", token);
+	}
+
 
 }

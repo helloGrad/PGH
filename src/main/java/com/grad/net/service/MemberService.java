@@ -151,4 +151,12 @@ public class MemberService {
 	public List<MemberVo> getScrapList(Long mbNo) {
 		return memberDao.getScrapList(mbNo);
 	}
+	
+	
+	/*
+	 * 정예린 페이스북 로그인 2017-09-13
+	 */
+	public MemberVo getUserByToken(String token) {
+		return memberDao.getUserByToken(token);
+	}
 }

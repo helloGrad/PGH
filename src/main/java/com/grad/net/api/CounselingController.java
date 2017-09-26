@@ -290,10 +290,15 @@ public class CounselingController {
 	public JSONResult counPageList(@ModelAttribute PageVo pageVo,
 			@RequestParam(value="page", required=true ,defaultValue="1") int page, 
 			@RequestParam(value="type") String type,
-			@RequestParam(value="order") String order) {
+			@RequestParam(value="order") String order,
+			@RequestParam(value="user", required=true, defaultValue="-1") Long user) {
 		
 		Map<String, Object> map =  new HashMap<String, Object>();
 
+		
+		//System.out.println(user);
+		
+		map.put("scrapList", counselingService.getScrapList(user));
 		map.put("page", page);
 		pageVo.calcPage(counselingService.countCounList(type));
 		map.put("pageVo", pageVo);

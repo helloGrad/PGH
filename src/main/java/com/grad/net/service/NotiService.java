@@ -91,5 +91,11 @@ public class NotiService {
 		return notiDao.getLabCodeList(no);
 	}
 
+	/*
+	 * 2017-09-26 정예린
+	 */
+	public int getNotiCount() {
+		return notiDao.getNotiCount();
+	}
 
 }

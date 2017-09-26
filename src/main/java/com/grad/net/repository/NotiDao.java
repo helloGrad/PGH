@@ -79,5 +79,14 @@ public class NotiDao {
 	}
 	
 	
+/*
+ * 2017-09-26 정예린 
+ */
+	public int getNotiCount() {
+		return sqlSession.selectOne("noti.getNotiCount");
+	}
+	
+	
+	
 
 }

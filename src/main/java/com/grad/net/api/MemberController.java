@@ -48,8 +48,10 @@ public class MemberController {
 		return JSONResult.success(exist);
 	}
 	
+
 	/**
 	 * 박가혜 2017-08-31 맞춤정보 제안 페이지
+	 * 정예린 2017-09-26 페이스북 로그인 수정
 	 */
 
 	@ResponseBody
@@ -64,7 +66,6 @@ public class MemberController {
 			@RequestParam(value = "sns", required = true, defaultValue = "") String snsnm, HttpServletRequest request,
 			HttpServletResponse response) {
 
-	
 		MemberVo memberVo = new MemberVo();
 
 		memberVo.setMbNm(mbNm);
@@ -72,37 +73,49 @@ public class MemberController {
 		memberVo.setSex(sex);
 		memberVo.setBirdt(birdt);
 		memberVo.setSnsTknValue(snsTknValue);
-		;
+
 		if (snsnm.equals("fb") || snsnm.equals("google")) {
 			memberVo.setNknm(mbNm);
-			;
+
 		} else if (snsnm.equals("naver")) {
 			memberVo.setNknm(nknm);
-			;
 		}
 		memberVo.setAgrg(agrg);
-		;
 
-		//System.out.println("+++" + memberVo);
+		// System.out.println("+++" + memberVo);
 
-		boolean exist = memberService.existEamil(memberVo.getIden());
+		boolean exist = false;
+
+		if (snsnm.equals("fb")) {
+			System.out.println("페이스북 로그인 확인");
+			exist = memberService.checkMember(memberVo);
+		} else if (snsnm.equals("naver")) {
+			exist = memberService.existEamil(memberVo.getIden());
+		}
 
 		System.out.println("존재하는 회원입니까? " + exist);
 
 		if (exist != true) {
-			System.out.println(snsnm);
-			memberService.snslogin(memberVo, snsnm); //회원가입 
+			memberService.snslogin(memberVo, snsnm); // 회원가입
 		}
 
 		HttpSession session = request.getSession(true);
-		
-		MemberVo getmember=  memberService.getUser(iden);
-		session.setAttribute("authUser", getmember);
-	
 
+		MemberVo getmember = new MemberVo();
+
+		if (snsnm.equals("fb")) {
+			getmember = memberService.getUserByToken(snsTknValue);
+		} else if (snsnm.equals("naver")) {
+			getmember = memberService.getUser(iden);
+		}
 		
+		//System.out.println(getmember);
+
+		session.setAttribute("authUser", getmember);
+
 		return JSONResult.success(getmember);
 	}
+
 	
 	
 	
