@@ -12,13 +12,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Title</title>
+
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
+
+
+
 <style>
 /* nav-bar css Start */
 .navbar {
@@ -61,43 +62,16 @@ body {
 </style>
 </head>
 <body class="grad-background-color">
-	<!--nav-bar -->
-	<nav class="navbar navbar-default navbar-fixed-top al">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="main.html">하이그래드넷</a>
-				<ul class="nav navbar-nav">
-					<li><a class=" navbar-qna nav-btn" href="#"> <span
-							class=" w3-btn w3-border w3-round-large"><i
-								class="glyphicon glyphicon-pencil"></i>글쓰기</span></a></li>
-					<li><a class=" navbar-qna" href="#"> <span
-							class="w3-btn w3-border w3-round-large"><i
-								class="glyphicon glyphicon-check"></i>답변하기</span></a></li>
-				</ul>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href=""> <i
-							class="glyphicon glyphicon glyphicon-search"
-							style="font-size: 1.5em;"></i></a></li>
-					<li><a href=""> <i class="glyphicon glyphicon-user"
-							style="font-size: 1.5em;"></i></a></li>
-				</ul>
-			</div>
 
-		</div>
-	</nav>
+
+		<c:import url="/WEB-INF/views/include/header.jsp" />
+	
 
 	<div class="container">
 		<div class="row">
 			<div class="w3-round-large w3-white grad-title">
 
-				<div class="grad-color w3-text-white w3-round-large">
+				<div class="w3-text-white w3-round-large" style="background-color : ${vo.symbolColorNm};">
 
 					<h2 class="w3-center w3-padding-16" style="letter-spacing: 0.2em;">${vo.orgnzFullNm }</h2>
 				</div>

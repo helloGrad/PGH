@@ -47,6 +47,8 @@ public class NotiService {
 		map.put("no", no);
 		map.put("userid", userid);
 		
+		System.out.println(userid);
+		
 		return notiDao.getByNo(map);
 
 	}

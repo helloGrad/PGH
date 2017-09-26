@@ -66,7 +66,9 @@ public class NotiController {
 			model.addAttribute("vo", notiService.getNoti(tabnm,no,authUser.getMbNo()));
 		}
 		
-		
+		 NotiVo vo = notiService.getNoti(tabnm,no,-1L);
+		 
+		 System.out.println(vo);
 		
 		if(tabnm.equals("대학원")){
 			tabnm="grad";

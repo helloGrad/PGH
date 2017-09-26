@@ -4,19 +4,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-pageContext.setAttribute("newLine", "\n");
+	pageContext.setAttribute("newLine", "\n");
 %>
 <!DOCTYPE html>
-<html>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>연구실 모집공고</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
- <style>
+
+
+
+<style>
 /* nav-bar css Start */
 .navbar {
 	background-color: rgba(255, 255, 255, 0.95);
@@ -40,7 +43,7 @@ pageContext.setAttribute("newLine", "\n");
 	width: 100%;
 }
 body {
-	padding-top: 6em;
+	padding-top: 70px;
 }
 .grad-title {
 	box-shadow: 5px 10px 30px rgba(51, 102, 255, 0.2), -1px -1px 30px
@@ -57,8 +60,9 @@ body {
 }
 </style>
 </head>
+
+
 <body class="grad-background-color">
-	<!--nav-bar -->
 
 		<c:import url="/WEB-INF/views/include/header.jsp" />
 
@@ -66,7 +70,7 @@ body {
 		<div class="row">
 			<div class="w3-round-large w3-white grad-title">
 
-				<div class="grad-color w3-text-white w3-round-large">
+				<div class="w3-text-white w3-round-large" style="background-color:${vo.symbolColorNm};">
 					<h2 class="w3-center w3-padding" style="letter-spacing: 0.2em;">
 						<small class="w3-text-white">${vo.university } ${vo.major }</Small>
 						<br> ${vo.lab } <br> <small class="w3-text-white">모집기간
@@ -377,4 +381,5 @@ body {
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/doscrap.js"></script>
 </body>
+
 </html>

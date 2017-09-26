@@ -26,21 +26,28 @@
 	<select id="getGradByNo" resultType="notiVo" parameterType="int">
 		<![CDATA[
 			select s.SLCTN_NOTI_NO slctnNotiNo, s.ADMIN_NO adminNo, s.ORGNZ_NO orgnzNo, o.addr addr, s.SLCTN_NOTI_DSTNCT slctnNotiDstnct, s.NOTI_REGST_DT notiRegstDt, 
-			date_format(s.SLCTN_BEGIN_DT ,'%Y/%m/%d') slctnBeginDt, date_format(s.SLCTN_END_DT,'%Y/%m/%d') slctnEndDt, 
+			date_format(s.SLCTN_BEGIN_DT ,'%Y/%m/%d') slctnBeginDt, date_format(s.SLCTN_END_DT,'%Y/%m/%d') slctnEndDt, o.orgnz_full_nm orgnzFullNm,S.SLCTN_YYCL slctnYycl, S.SLCTN_SEMSTR slctnSemstr,
 			s.SLCTN_TITLE slctnTitle, s.SLCTN_TEXT slctnText,s.SUPRT_QUALF suprtQualf, s.SLCTN_NOPS slctnNops, s.SLSN_MTH slsnMth,
 			s.SBMT_DOC_TEXT sbmtDocText, s.CHRGR_DSTNCT chrgrDstnct,s.CHRGR_NM chrgrNm,s.CHRGR_TEL_NO chrgrTelNo,s.CHRGR_EMAIL chrgrEmail, s.SLCTN_NOTI_URL slctnNotiUrl, s.RCP_MTH rcpMth, date_format(s.SLSN_BEGIN_DD,'%Y/%m/%d') slsnBeginDd, date_format(s.SLSN_END_DD,'%Y/%m/%d') slsnEndDd,
-			s.SLSN_PLAC slsnPlac,date_format(s.SCCN_ANCM_DD,'%Y/%m/%d') sccnAncmDd,s.SCCN_ANCM_MTH sccnAncmMth,date_format(s.REGST_BEGIN_DD,'%Y/%m/%d') regstBeginDd,date_format(s.REGST_END_DD,'%Y/%m/%d') regstEndDd,s.REGST_MTH regstMth
+			s.SLSN_PLAC slsnPlac,date_format(s.SCCN_ANCM_DD,'%Y/%m/%d') sccnAncmDd,s.SCCN_ANCM_MTH sccnAncmMth,date_format(s.REGST_BEGIN_DD,'%Y/%m/%d') regstBeginDd,date_format(s.REGST_END_DD,'%Y/%m/%d') regstEndDd,s.REGST_MTH regstMth,
+			(select count(*) from mb_scrap_info where prnts_dstnct='모집공고' and prnts_no=s.SLCTN_NOTI_NO) scrapNum,
+			CASE 
+			WHEN (select count(*) from mb_scrap_info where prnts_dstnct='모집공고' and prnts_no=s.SLCTN_NOTI_NO and mb_no=#{userid })=0  THEN 'N'   
+			WHEN (select count(*) from mb_scrap_info where prnts_dstnct='모집공고' and prnts_no=s.SLCTN_NOTI_NO and mb_no=#{userid })=1 THEN 'Y' 
+			ELSE '-1'
+			END scrapYn, o.symbol_color_nm symbolColorNm
 			from slctn_noti s, organz o
 			where s.ORGNZ_NO=o.ORGNZ_NO
 			and s.SLCTN_NOTI_NO=#{no }
 		]]>
+		
 	</select>
 
 	<!-- 박가혜 -->
 	<select id="getLabByNo" resultType="notiVo" parameterType="int">
-		<![CDATA[
+			<![CDATA[
 			select s.SLCTN_NOTI_NO slctnNotiNo, s.ADMIN_NO adminNo, s.ORGNZ_NO orgnzNo, o.addr addr, s.SLCTN_NOTI_DSTNCT slctnNotiDstnct, s.NOTI_REGST_DT notiRegstDt, 
-			date_format(s.SLCTN_BEGIN_DT ,'%Y/%m/%d') slctnBeginDt, date_format(s.SLCTN_END_DT,'%Y/%m/%d') slctnEndDt, 
+			date_format(s.SLCTN_BEGIN_DT ,'%Y/%m/%d') slctnBeginDt, date_format(s.SLCTN_END_DT,'%Y/%m/%d') slctnEndDt, o.orgnz_full_nm orgnzFullNm,S.SLCTN_YYCL slctnYycl, S.SLCTN_SEMSTR slctnSemstr,
 			s.SLCTN_TITLE slctnTitle, s.SLCTN_TEXT slctnText,s.SUPRT_QUALF suprtQualf, s.SLCTN_NOPS slctnNops, s.SLSN_MTH slsnMth,
 			s.SBMT_DOC_TEXT sbmtDocText, s.CHRGR_DSTNCT chrgrDstnct,
 			s.TUITION_SUPRT_YN tuitionSuprtYn, s.LVNC_SUPRT_YN lvncSuprtYn, s.BK21_EORGNZ_SUPRT_YN bk21EorgnzSuprtYn, s.INCET_SUPRT_YN incetSuprtYn, s.LRSTY_JOINGFEE_SUPRT_YN lrstyJoingfeeSuprtYn,
