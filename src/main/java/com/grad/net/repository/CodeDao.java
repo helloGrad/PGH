@@ -34,6 +34,13 @@ public class CodeDao {
 		return codeVo;		
 
 	}	
+	
+	/*
+	 * 정예린 2017-09-18
+	 */
+	public List<CodeVo> selectStudyList() {
+		return sqlSession.selectList("code.selectStudyList");
+	}
 
 
 }

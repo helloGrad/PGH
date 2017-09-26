@@ -27,6 +27,11 @@ public class MemberVo {
 	private String infoYn;
 	
 	
+	/*
+	 * 정예린 2017-09-19 스크랩
+	 */
+	private Long prntsNo;
+	private String prntsDstnct;	
 	
 
 	public String getInfoYn() {
@@ -189,21 +194,32 @@ public class MemberVo {
 		this.cdId = cdId;
 	}
 
+	
+	public Long getPrntsNo() {
+		return prntsNo;
+	}
+
+	public void setPrntsNo(Long prntsNo) {
+		this.prntsNo = prntsNo;
+	}
+
+	public String getPrntsDstnct() {
+		return prntsDstnct;
+	}
+
+	public void setPrntsDstnct(String prntsDstnct) {
+		this.prntsDstnct = prntsDstnct;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVo [mbNo=" + mbNo + ", mbDstnct=" + mbDstnct + ", mbNm=" + mbNm + ", nknm=" + nknm + ", iden="
 				+ iden + ", pw=" + pw + ", sex=" + sex + ", birdt=" + birdt + ", myselfAuthzYn=" + myselfAuthzYn
 				+ ", insrdDd=" + insrdDd + ", wthdrDd=" + wthdrDd + ", genalMbDstnct=" + genalMbDstnct
 				+ ", snsTknValue=" + snsTknValue + ", snsDstnct=" + snsDstnct + ", agrg=" + agrg + ", telNo=" + telNo
-				+ ", hndphNo=" + hndphNo + ", email=" + email + ", cdId=" + cdId + ", infoYn=" + infoYn + "]";
+				+ ", hndphNo=" + hndphNo + ", email=" + email + ", cdId=" + cdId + ", infoYn=" + infoYn + ", prntsNo="
+				+ prntsNo + ", prntsDstnct=" + prntsDstnct + "]";
 	}
 
-
-	
-	
-	
-	
-	
-
-	
+		
 }

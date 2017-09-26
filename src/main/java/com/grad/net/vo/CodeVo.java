@@ -11,6 +11,21 @@ public class CodeVo {
 	
 	private String prntsCdId;
 	private String prntsCdNm;
+	
+	
+	/*
+	 * 정예린 2017-09-19 메인 모집중, 마감중 추가
+	 */
+
+	private int gradIngCount;
+	private int gradEndCount;
+
+	/*
+	 * 정예린 2017-09-21 메인 모집중, 마감중 추가
+	 */
+
+	private int labIngCount;
+	private int labEndCount;
 	public String getCdId() {
 		return cdId;
 	}
@@ -47,25 +62,37 @@ public class CodeVo {
 	public void setPrntsCdNm(String prntsCdNm) {
 		this.prntsCdNm = prntsCdNm;
 	}
+	public int getGradIngCount() {
+		return gradIngCount;
+	}
+	public void setGradIngCount(int gradIngCount) {
+		this.gradIngCount = gradIngCount;
+	}
+	public int getGradEndCount() {
+		return gradEndCount;
+	}
+	public void setGradEndCount(int gradEndCount) {
+		this.gradEndCount = gradEndCount;
+	}
+	public int getLabIngCount() {
+		return labIngCount;
+	}
+	public void setLabIngCount(int labIngCount) {
+		this.labIngCount = labIngCount;
+	}
+	public int getLabEndCount() {
+		return labEndCount;
+	}
+	public void setLabEndCount(int labEndCount) {
+		this.labEndCount = labEndCount;
+	}
 	@Override
 	public String toString() {
 		return "CodeVo [cdId=" + cdId + ", cdNm=" + cdNm + ", engCodeNm=" + engCodeNm + ", cdDstnct=" + cdDstnct
-				+ ", prntsCdId=" + prntsCdId + ", prntsCdNm=" + prntsCdNm + "]";
+				+ ", prntsCdId=" + prntsCdId + ", prntsCdNm=" + prntsCdNm + ", gradIngCount=" + gradIngCount
+				+ ", gradEndCount=" + gradEndCount + ", labIngCount=" + labIngCount + ", labEndCount=" + labEndCount
+				+ "]";
 	}
 	
-
-
 	
-	
-
-
-	
-	
-	
-	
-
-	
-	
-	
-
 }

@@ -125,4 +125,30 @@ public class MemberService {
 		 memberDao.updateInfoYn(mbNo);
 
 	}
+	
+	
+	/*
+	 * 정예린 스크랩 2017-09-19
+	 */
+	public boolean insertScrap(String type, String id, String user) {
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("type", type);
+		map.put("id", id);
+		map.put("user", user);
+		return memberDao.insertScrap(map);
+	}
+
+	public boolean deleteScrap(String type, String id, String user) {
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("type", type);
+		map.put("id", id);
+		map.put("user", user);
+		return memberDao.deleteScrap(map);
+	}
+
+	public List<MemberVo> getScrapList(Long mbNo) {
+		return memberDao.getScrapList(mbNo);
+	}
 }

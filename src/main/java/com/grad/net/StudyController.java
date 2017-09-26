@@ -22,6 +22,8 @@ import com.grad.net.security.AuthUser;
 import com.grad.net.service.AdminService;
 import com.grad.net.service.ApndngFileService;
 import com.grad.net.service.CodeService;
+import com.grad.net.service.MemberService;
+import com.grad.net.service.NotiService;
 import com.grad.net.service.StudyService;
 import com.grad.net.vo.CodeVo;
 import com.grad.net.vo.MemberVo;
@@ -29,6 +31,8 @@ import com.grad.net.vo.NotiVo;
 import com.grad.net.vo.OrganzVo;
 import com.grad.net.vo.ResrchAcrsltVo;
 import com.grad.net.vo.StudyVo;
+
+import net.sf.json.JSONArray;
 
 
 
@@ -45,6 +49,13 @@ public class StudyController {
 	
 	@Autowired
 	CodeService codeService;
+	
+	
+	@Autowired
+	NotiService notiService;
+	
+	@Autowired
+	MemberService memberService;
 
 	/*
 	 * 박가혜 2017-09-13
@@ -253,6 +264,23 @@ public class StudyController {
 	@RequestMapping(value = "/discussion", method = RequestMethod.GET)
 	public String studyDiscussion(Model model, @AuthUser MemberVo authUser,
 			@RequestParam("boardtype") String boardtype) {
+		
+		
+		JSONArray jsonArray = new JSONArray();
+		model.addAttribute("codeList", codeService.getStudyList());
+		model.addAttribute("gradList", notiService.getGradNotiList());
+		model.addAttribute("labList", notiService.getLabNotiList());
+		model.addAttribute("labCodeList", notiService.getLabCodeList());
+		
+		if (authUser != null) {
+			model.addAttribute("scrapList", memberService.getScrapList(authUser.getMbNo()));
+			model.addAttribute("scrapList", jsonArray.fromObject(memberService.getScrapList(authUser.getMbNo())));
+		}
+		
+		model.addAttribute("gradList", jsonArray.fromObject(notiService.getGradNotiList()));
+		model.addAttribute("labList", jsonArray.fromObject(notiService.getLabNotiList()));
+		
+		
 
 		model.addAttribute("boardtype", boardtype);
 		model.addAttribute("authUser", authUser);
@@ -269,13 +297,28 @@ public class StudyController {
 		return "study/research";
 	}
 
+
+	/*
+	 * 정예린
+	 */
+
 	@RequestMapping(value = "/lab", method = RequestMethod.GET)
 	public String studyLab(Model model, MemberVo memberVo, @RequestParam("boardtype") String boardtype) {
+		
+		System.out.println("+++"+boardtype);
 		model.addAttribute("MemberVo", memberVo);
 		model.addAttribute("boardtype", boardtype);
+		model.addAttribute("labList", studyService.getLabList(boardtype));
+		model.addAttribute("labCodeList", studyService.getLabCodeList());
+		
+//		System.out.println(boardtype);
+//		
+//		for(OrganzVo organzVo : studyService.getLabList(boardtype)) {
+//			System.out.println(organzVo);
+//		}
+		
 		return "study/lab";
 	}
-	
 
 	
 }

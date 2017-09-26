@@ -26,21 +26,77 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
     <link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fontello-embedded.css">
     <link href="${pageContext.request.contextPath}/resources/css/counseling.css" rel="stylesheet">
     
 
 <style>
 
- 
+
+body {
+   padding-top: 7em;
+ }	
+
+
+ .pagelist {
+   margin : 5%;
+   text-align: center;
+}
+
+.selectbtn {
+   background-color: #ff0000;
+}
+
+a.btn.disabled.numbtn {
+   background-color: #D9534F;
+   color : #ffffff;
+}
+
+.scrap-on {
+	color: #FF0000;
+}
 
 </style>
 
 
 <script>
+
+var authUser = '${authUser.mbNo }';
+
+
 	$(function() {
-		disfetchList("전체", "공감순");
+		
+
+	
+		
+		
+		disfetchList("전체", "최신순");
+		
+		/*
+		*  박가혜 상담실 스크랩 
+		 */	
+
+		if(authUser == null || authUser == "" ){
+			
+			
+		}else{
+			
+			
+			var scrapList=JSON.parse('${scrapList}');
+			for(var i=0;i<scrapList.length;i++){
+
+				if(scrapList[i].prntsDstnct==='게시글'){ //게시글
+					
+					console.log("sssss");
+					$('.do-scrapcoun' + scrapList[i].prntsNo).addClass('scrap-on');
+				}
+			};	
+			
+		}
+		
 		/*
 		 * 정예린 자동 스크롤링 2017-09-13
 		 */
@@ -52,9 +108,33 @@
 			if (scrollTop + windowHeight + 10 > documentHeight) {
 				if (!disbFetching) {
 					disbFetching = true;
-					disfetchList('전제', '공감순');
+					disfetchList('전체', '최신순');
 				}
 			}
+			
+
+			/*
+			*  박가혜 상담실 스크랩 
+			 */	
+
+			if(authUser == null || authUser == "" ){
+				
+				
+			}else{
+				
+				
+				var scrapList=JSON.parse('${scrapList}');
+				for(var i=0;i<scrapList.length;i++){
+
+					if(scrapList[i].prntsDstnct==='게시글'){ //게시글
+						
+					
+						$('.do-scrapcoun' + scrapList[i].prntsNo).addClass('scrap-on');
+					}
+				};	
+				
+			}
+		
 		});
 	});
 </script>
@@ -71,6 +151,7 @@
 
 
 <c:import url="/WEB-INF/views/include/header.jsp" />
+
 	
 	
 <div class="container">
@@ -146,10 +227,10 @@
     
 
         <!--////// 질문과 답변 시작 ///////////-->
-
+			<input type="hidden" id="authUser" name="authUser" value="${authUser.mbNo }">
         	<div id="list"></div>
         
-         
+         	<div id="pagelist"></div>
         
 
 
@@ -215,9 +296,10 @@
 
 </footer>
 
-
-
+<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/js/doscrap.js"></script>	
+	
 </body>
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">	
 
 </html>

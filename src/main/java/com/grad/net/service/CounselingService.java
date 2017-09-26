@@ -11,6 +11,7 @@ import com.grad.net.repository.CounselingDao;
 import com.grad.net.vo.CounselingVo;
 import com.grad.net.vo.MemberVo;
 import com.grad.net.vo.NotiVo;
+import com.grad.net.vo.PageVo;
 
 
 
@@ -181,4 +182,25 @@ public class CounselingService {
 		return counselingDao.lastInsertId();
 	}
 	
+	
+	/*
+	 * 정예린 2017-09-25
+	 */
+	public int countCounList(String type) {
+		
+		return counselingDao.countCounList(type);
+	}
+
+	/*
+	 * 정예린 2017-09-25
+	 */
+	public List<CounselingVo> getCounList(String type, String order, PageVo pageVo) {
+		Map<String, Object> map =  new HashMap<String, Object>();
+		
+		map.put("type", type);
+		map.put("order", order);
+		map.put("pageVo", pageVo);
+		
+		return counselingDao.countCounList(map);
+	}
 }

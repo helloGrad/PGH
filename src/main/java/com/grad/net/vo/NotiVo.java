@@ -56,6 +56,32 @@ public class NotiVo {
 	
 	private String addr;
 	
+	
+
+	/*
+	 * 공고 보여 줄 때 2017-09-18 정예린
+	 */
+	private String orgnzFullNm;
+	private int ddays;
+	private int totaldays;
+	private String symbolColorNm;
+	private String cdNm; // 코드 이름 별로 나눠서 view에서 보여줌
+	private String pchrgYn;
+	private String slctnYycl;
+	private String slctnSemstr;
+	
+	/*
+	 * 공고 보여 줄 때 2017-09-25 정예린
+	 */
+	private int scrapNum;
+	private String scrapYn;
+	private String university;
+	private String graduate;
+	private String major;
+	private String lab;
+	private String mapProfNm;
+	
+	
 	public Long getSlctnNotiNo() {
 		return slctnNotiNo;
 	}
@@ -241,14 +267,13 @@ public class NotiVo {
 	}
 	public void setSlctnNotiUrl(String slctnNotiUrl) {
 		this.slctnNotiUrl = slctnNotiUrl;
-	}	
+	}
 	public String getRcpMth() {
 		return rcpMth;
 	}
 	public void setRcpMth(String rcpMth) {
 		this.rcpMth = rcpMth;
 	}
-	
 	public String getSlsnBeginDd() {
 		return slsnBeginDd;
 	}
@@ -297,24 +322,113 @@ public class NotiVo {
 	public void setRegstMth(String regstMth) {
 		this.regstMth = regstMth;
 	}
-	public String getAddr() {
-		return addr;
+	public String getPrmryResrchField() {
+		return prmryResrchField;
 	}
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setPrmryResrchField(String prmryResrchField) {
+		this.prmryResrchField = prmryResrchField;
 	}
-	
 	public String getOnlineSuprtYn() {
 		return onlineSuprtYn;
 	}
 	public void setOnlineSuprtYn(String onlineSuprtYn) {
 		this.onlineSuprtYn = onlineSuprtYn;
 	}
-	public String getPrmryResrchField() {
-		return prmryResrchField;
+	public String getAddr() {
+		return addr;
 	}
-	public void setPrmryResrchField(String prmryResrchField) {
-		this.prmryResrchField = prmryResrchField;
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	public String getOrgnzFullNm() {
+		return orgnzFullNm;
+	}
+	public void setOrgnzFullNm(String orgnzFullNm) {
+		this.orgnzFullNm = orgnzFullNm;
+	}
+	public int getDdays() {
+		return ddays;
+	}
+	public void setDdays(int ddays) {
+		this.ddays = ddays;
+	}
+	public int getTotaldays() {
+		return totaldays;
+	}
+	public void setTotaldays(int totaldays) {
+		this.totaldays = totaldays;
+	}
+	public String getSymbolColorNm() {
+		return symbolColorNm;
+	}
+	public void setSymbolColorNm(String symbolColorNm) {
+		this.symbolColorNm = symbolColorNm;
+	}
+	public String getCdNm() {
+		return cdNm;
+	}
+	public void setCdNm(String cdNm) {
+		this.cdNm = cdNm;
+	}
+	public String getPchrgYn() {
+		return pchrgYn;
+	}
+	public void setPchrgYn(String pchrgYn) {
+		this.pchrgYn = pchrgYn;
+	}
+	public String getSlctnYycl() {
+		return slctnYycl;
+	}
+	public void setSlctnYycl(String slctnYycl) {
+		this.slctnYycl = slctnYycl;
+	}
+	public String getSlctnSemstr() {
+		return slctnSemstr;
+	}
+	public void setSlctnSemstr(String slctnSemstr) {
+		this.slctnSemstr = slctnSemstr;
+	}
+	public int getScrapNum() {
+		return scrapNum;
+	}
+	public void setScrapNum(int scrapNum) {
+		this.scrapNum = scrapNum;
+	}
+	public String getScrapYn() {
+		return scrapYn;
+	}
+	public void setScrapYn(String scrapYn) {
+		this.scrapYn = scrapYn;
+	}
+	public String getUniversity() {
+		return university;
+	}
+	public void setUniversity(String university) {
+		this.university = university;
+	}
+	public String getGraduate() {
+		return graduate;
+	}
+	public void setGraduate(String graduate) {
+		this.graduate = graduate;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	public String getLab() {
+		return lab;
+	}
+	public void setLab(String lab) {
+		this.lab = lab;
+	}
+	public String getMapProfNm() {
+		return mapProfNm;
+	}
+	public void setMapProfNm(String mapProfNm) {
+		this.mapProfNm = mapProfNm;
 	}
 	@Override
 	public String toString() {
@@ -332,29 +446,15 @@ public class NotiVo {
 				+ ", rcpMth=" + rcpMth + ", slsnBeginDd=" + slsnBeginDd + ", slsnEndDd=" + slsnEndDd + ", slsnPlac="
 				+ slsnPlac + ", sccnAncmDd=" + sccnAncmDd + ", sccnAncmMth=" + sccnAncmMth + ", regstBeginDd="
 				+ regstBeginDd + ", regstEndDd=" + regstEndDd + ", regstMth=" + regstMth + ", prmryResrchField="
-				+ prmryResrchField + ", onlineSuprtYn=" + onlineSuprtYn + ", addr=" + addr + ", getSlctnNotiNo()="
-				+ getSlctnNotiNo() + ", getAdminNo()=" + getAdminNo() + ", getOrgnzNo()=" + getOrgnzNo()
-				+ ", getSlctnNotiDstnct()=" + getSlctnNotiDstnct() + ", getNotiRegstDt()=" + getNotiRegstDt()
-				+ ", getSlctnBeginDt()=" + getSlctnBeginDt() + ", getSlctnEndDt()=" + getSlctnEndDt()
-				+ ", getSlctnTitle()=" + getSlctnTitle() + ", getSlctnText()=" + getSlctnText() + ", getSlctnNops()="
-				+ getSlctnNops() + ", getSlsnMth()=" + getSlsnMth() + ", getSbmtDocText()=" + getSbmtDocText()
-				+ ", getSuprtQualf()=" + getSuprtQualf() + ", getChrgrDstnct()=" + getChrgrDstnct()
-				+ ", getTuitionSuprtYn()=" + getTuitionSuprtYn() + ", getLvncSuprtYn()=" + getLvncSuprtYn()
-				+ ", getBk21EorgnzSuprtYn()=" + getBk21EorgnzSuprtYn() + ", getIncetSuprtYn()=" + getIncetSuprtYn()
-				+ ", getLrstyJoingfeeSuprtYn()=" + getLrstyJoingfeeSuprtYn() + ", getDormSuprtYn()=" + getDormSuprtYn()
-				+ ", getInternYn()=" + getInternYn() + ", getLrstyJoingYn()=" + getLrstyJoingYn()
-				+ ", getResrchTaskJoingYn()=" + getResrchTaskJoingYn() + ", getStdtrOpptySuprtYn()="
-				+ getStdtrOpptySuprtYn() + ", getEduPgmJoingSuprtYn()=" + getEduPgmJoingSuprtYn()
-				+ ", getSuprtFvrText()=" + getSuprtFvrText() + ", getChrgrNm()=" + getChrgrNm() + ", getChrgrTelNo()="
-				+ getChrgrTelNo() + ", getChrgrEmail()=" + getChrgrEmail() + ", getMbNo()=" + getMbNo()
-				+ ", getSlctnNotiUrl()=" + getSlctnNotiUrl() + ", getRcpMth()=" + getRcpMth() + ", getSlsnBeginDd()="
-				+ getSlsnBeginDd() + ", getSlsnEndDd()=" + getSlsnEndDd() + ", getSlsnPlac()=" + getSlsnPlac()
-				+ ", getSccnAncmDd()=" + getSccnAncmDd() + ", getSccnAncmMth()=" + getSccnAncmMth()
-				+ ", getRegstBeginDd()=" + getRegstBeginDd() + ", getRegstEndDd()=" + getRegstEndDd()
-				+ ", getRegstMth()=" + getRegstMth() + ", getAddr()=" + getAddr() + ", getOnlineSuprtYn()="
-				+ getOnlineSuprtYn() + ", getPrmryResrchField()=" + getPrmryResrchField() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+				+ prmryResrchField + ", onlineSuprtYn=" + onlineSuprtYn + ", addr=" + addr + ", orgnzFullNm="
+				+ orgnzFullNm + ", ddays=" + ddays + ", totaldays=" + totaldays + ", symbolColorNm=" + symbolColorNm
+				+ ", cdNm=" + cdNm + ", pchrgYn=" + pchrgYn + ", slctnYycl=" + slctnYycl + ", slctnSemstr="
+				+ slctnSemstr + ", scrapNum=" + scrapNum + ", scrapYn=" + scrapYn + ", university=" + university
+				+ ", graduate=" + graduate + ", major=" + major + ", lab=" + lab + ", mapProfNm=" + mapProfNm + "]";
 	}
+	
+	
+	
 	
 
 	

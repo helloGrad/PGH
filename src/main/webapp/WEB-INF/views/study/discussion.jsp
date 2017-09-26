@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">	
 
+
 <!--//////////////////////// footer End ////////////////////////////-->
 
 <link href="${pageContext.request.contextPath}/resources/css/study.css" rel="stylesheet">
@@ -35,15 +36,39 @@
 
 <style>
 
+.pagelist {
+   margin : 5%;
+   text-align: center;
+}
 
+.selectbtn {
+   background-color: #ff0000;
+}
+
+a.btn.disabled.numbtn {
+   background-color: #D9534F;
+   color : #ffffff;
+}
+
+.scrap-on {
+	color: #FF0000;
+}
 
 </style>
  
     <script>
 
     var order;
+    var authUser = '${authUser.mbNo }';
+    
+    
     
 	$(function() {
+		
+	
+	
+		
+	
 		
 		
 		if(order == undefined){
@@ -54,6 +79,28 @@
 		console.log(order);
 			
 		disfetchList(boardtype, order);
+		
+		
+		/*
+		 *  박가혜 상담실 스크랩 
+		 */	
+		if(authUser == null || authUser == "" ){
+	
+			
+		}else{
+			
+			
+			var scrapList=JSON.parse('${scrapList}');
+			for(var i=0;i<scrapList.length;i++){
+
+				if(scrapList[i].prntsDstnct==='게시글'){
+					
+					
+					$('.do-scrapcoun' + scrapList[i].prntsNo).addClass('scrap-on');
+				}
+			};	
+			
+		}
 		
 		
 		/*
@@ -70,6 +117,29 @@
 					disfetchList(boardtype,order);
 				}
 			}
+			
+			/*
+			 *  박가혜 상담실 스크랩 
+			 */	
+			if(authUser == null || authUser == "" ){
+		
+				
+			}else{
+				
+				
+				var scrapList=JSON.parse('${scrapList}');
+				for(var i=0;i<scrapList.length;i++){
+
+					if(scrapList[i].prntsDstnct==='게시글'){
+						
+						
+						$('.do-scrapcoun' + scrapList[i].prntsNo).addClass('scrap-on');
+					}
+				};	
+				
+			}
+			
+			
 		});
 	});
     </script>
@@ -118,6 +188,7 @@
                 <div id="list">
                     
                 </div>
+                <div id="pagelist" class="pagelist"></div>
 
               
 
@@ -140,8 +211,11 @@
     </div>
 </div>
 
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/js/doscrap.js"></script>	
 		
-
+		
+		
 </body>
   
 </html>

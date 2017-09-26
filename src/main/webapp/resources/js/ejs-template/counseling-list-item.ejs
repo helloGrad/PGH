@@ -20,6 +20,7 @@ if(count==0) {
 								<div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
 									<a href="${pageContext.servletContext.contextPath }/counseling/detail?no=<%=wrtbtNo%>"}&type=reply">답변하기</a>
 								</div>
+								<a class="" href='#' onclick="doScrap('게시글',<%=wrtbtNo%>,<%=mbNo%>);"><i class='glyphicon glyphicon-paperclip do-scrapcoun<%=wrtbtNo%>'></i></a>
 								<div class="dropup option">
 									<button class="w3-button w3-padding w3-padding w3-round-large"
 										type="button" data-toggle="dropdown">
@@ -40,9 +41,8 @@ if(count==0) {
 
 <div class="w3-card-2 w3-margin w3-topbar w3-border-red">
 			<input type="hidden" value=<%=rownum%> class="rownum">
-							<
 							<div class="w3-container interest">#화학, #생물학, #화학공학</div>
-							div class='w3-container listimg<%=rownum%>'>
+							<div class='w3-container listimg<%=rownum%>'>
 								
 							
 							
@@ -50,13 +50,14 @@ if(count==0) {
 							<div class="w3-container">
 								<h4>
 									<b><a
-										href="${pageContext.servletContext.contextPath }/counseling/detail?no=<%=wrtbtNo%>&type=prnts"><%=wrtbtTitle%></a></b>
+										href="/net/counseling/detail?no=<%=wrtbtNo%>&type=prnts"><%=wrtbtTitle%></a></b>
 								</h4>
 							</div>
 							<div class="w3-container">
 								<div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-									<a href="${pageContext.servletContext.contextPath }/counseling/detail?no=<%=wrtbtNo%>"}&type=reply">답변하기</a>
+									<a href="/net/counseling/detail?no=<%=wrtbtNo%>&type=reply">답변하기</a>
 								</div>
+								<a class="" href='#' onclick="doScrap('게시글',<%=wrtbtNo%>,<%=mbNo%>);"><i class='glyphicon glyphicon-paperclip do-scrapcoun<%=wrtbtNo%>'></i></a>
 								<div class="dropup option">
 									<button class="w3-button w3-padding w3-padding w3-round-large"
 										type="button" data-toggle="dropdown">
@@ -114,6 +115,7 @@ if(count==0) {
 									class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
 									Down <span class="badge"><%=ncmdCo%></span>
 								</div>
+								<a class="" href='#' onclick="doScrap('게시글',<%=wrtbtNo%>,<%=mbNo%>);"><i class='glyphicon glyphicon-paperclip do-scrapcoun<%=wrtbtNo%>'></i></a>
 								<div class="dropup option">
 									<button class="w3-button w3-padding w3-padding w3-round-large"
 										type="button" data-toggle="dropdown">
@@ -142,7 +144,7 @@ if(count==0) {
 			
 							</div>
 							<div class="w3-container">
-								<h4><b><a href="${pageContext.servletContext.contextPath }/counseling/detail?no=<%=wrtbtNo%>&type=prnts"><%=wrtbtTitle%></a></b>
+								<h4><b><a href="/net/counseling/detail?no=<%=wrtbtNo%>&type=prnts"><%=wrtbtTitle%></a></b>
 								</h4></div>
 							<div class="w3-container">
 								<h6><%=reNknm%>
@@ -151,7 +153,7 @@ if(count==0) {
 								</h6>
 								<p>
 									<a
-										href="${pageContext.servletContext.contextPath }/counseling/detail?no=<%=wrtbtNo%>&type=prnts"><%=reWrtbtText%></a>
+										href="/net/counseling/detail?no=<%=wrtbtNo%>&type=prnts"><%=reWrtbtText%></a>
 								</p>
 </div>
 							<div class="w3-container">
@@ -167,6 +169,7 @@ if(count==0) {
 									class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
 									Down <span class="badge"><%=ncmdCo%></span>
 								</div>
+								<a class="" href='#' onclick="doScrap('게시글',<%=wrtbtNo%>,<%=mbNo%>);"><i class='glyphicon glyphicon-paperclip do-scrapcoun<%=wrtbtNo%>'></i></a>
 								<div class="dropup option">
 									<button class="w3-button w3-padding w3-padding w3-round-large"
 										type="button" data-toggle="dropdown">

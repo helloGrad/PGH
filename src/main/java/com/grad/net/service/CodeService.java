@@ -84,4 +84,12 @@ public class CodeService {
 		
 		return CodeDao.selectMajorList(type2);	
 	}
+	
+	/*
+	 * 정예린 2017-09-18
+	 */
+	
+	public List<CodeVo> getStudyList(){
+		return CodeDao.selectStudyList();	
+	}
 }

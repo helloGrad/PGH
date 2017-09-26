@@ -12,581 +12,882 @@
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 
 
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-<link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/higrad-signup.css"
+	rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
-    
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
 
-    
+
+
 
 <!--//////////////////////// footer End ////////////////////////////-->
 
-<link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/login.css"
+	rel="stylesheet">
 
 
 
 
 
-    <style>
-        body {
-            padding-top: 6em;
-        }
+<style>
 
-        /*more 버튼*/
-        .more {
-            float: right;
-            width: 5em;
-            font-size: 0.5em;
-            margin-top: 1.5em;
-        }
+/* sub-nav css  */
+.major-nav-box {
+	box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.1), -1px -1px 20px
+		rgba(0, 0, 0, 0.15);
+}
 
-        @media screen and (max-width: 768px) {
-            .dropdown-menu-large {
-                margin-left: 0;
-                margin-right: 0;
-            }
+.nav-menu {
+	letter-spacing: 5px;
+	font-size: 1vw;
+}
 
-            .dropdown-menu-large > li {
-                margin-bottom: 30px;
-            }
+.nav-menu>li {
+	margin-right: 0.5em;
+	margin-left: 0.5em;
+}
 
-            .dropdown-menu-large > li:last-child {
-                margin-bottom: 0;
-            }
+.nav-menu>li>a:hover {
+	text-decoration: none;
+}
+/* sub-nav End */
+/*main css start*/
+.distinct-line {
+	padding-top: 2.5em;
+}
 
-            .dropdown-menu-large {
-                padding: 3px 15px !important;
-            }
+.main-contents {
+	padding-top: 5em;
+}
 
-            .dropdown-menu-large {
-                margin-left: 1em;
-                margin-right: 16px;
-                padding: 20px 0px;
-            }
-            
-            
-        }
+.grad-banner {
+	box-shadow: 5px 10px 30px rgba(102, 102, 255, 0.2), -1px -1px 30px
+		rgba(255, 102, 0, 0.15);
+	margin-bottom: 1.5em;
+	background-color: white;
+}
 
-        @media screen and (min-width: 768px) {
-            .glyphicon-education {
-                font-size: 6em;
-            }
+.grad-banner:hover {
+	box-shadow: 5px 10px 30px rgba(102, 102, 255, 0.5), -1px -1px 30px
+		rgba(255, 102, 0, 0.5);
+	margin-bottom: 1.5em;
+}
 
-            .glyphicon-education {
-                font-size: 6em;
-            }
+.lab-banner {
+	box-shadow: 5px 10px 30px rgba(51, 102, 255, 0.2), -1px -1px 30px
+		rgba(102, 255, 51, 0.1);
+	margin-bottom: 1.5em;
+	background-color: white;
+}
 
-            .dropdown-menu-large {
-                margin-left: 25em;
-                margin-right: 16px;
-                padding: 20px 0px;
-            }
-        }
+.lab-banner:hover {
+	box-shadow: 5px 10px 30px rgba(51, 102, 255, 0.5), -1px -1px 30px
+		rgba(102, 255, 51, 0.5);
+	margin-bottom: 1.5em;
+}
 
-        .dropdown-large {
-            position: static !important;
-        }
+.conference-banner {
+	box-shadow: 5px 10px 30px rgba(51, 102, 255, 0.2), -1px -1px 30px
+		rgba(153, 0, 153, 0.2);
+	margin-bottom: 1.5em;
+	background-color: white;
+}
 
-        .dropdown-menu-large > li > ul {
-            padding: 0;
-            margin: 0;
-        }
+.conference-banner:hover {
+	box-shadow: 5px 10px 30px rgba(51, 102, 255, 0.5), -1px -1px 30px
+		rgba(153, 0, 153, 0.5);
+	margin-bottom: 1.5em;
+	background-color: white;
+}
 
-        .dropdown-menu-large > li > ul > li {
-            list-style: none;
-        }
+.grad-target {
+	font-weight: 600;
+}
 
-        .dropdown-menu-large > li > ul > li > a {
-            display: block;
-            padding: 3px 20px;
-            clear: both;
-            font-weight: normal;
-            line-height: 1.428571429;
-            color: #333333;
-            white-space: normal;
-        }
+.research-field {
+	height: 4em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: normal;
+}
 
-        .dropdown-menu-large > li ul > li > a:hover,
-        .dropdown-menu-large > li ul > li > a:focus {
-            text-decoration: none;
-            color: #5bc0de;
-            /*background-color: #f5f5f5;*/
-        }
+.scrap-on {
+	color: #FF0000;
+}
 
-        .dropdown-menu-large .dropdown-header {
-            color: #428bca;
-            font-size: 18px;
-        }
-        .symposium {
-            height : 15em;
-        }
+.noti-card {
+	cursor: pointer;
+}
 
-    </style>
+.noti-title {
+	display: block;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.noti-hh {
+	cursor: pointer;
+}
+/*main css End*/
+</style>
+
+
+<script type="text/javascript">
+	$(function() {
+		
+		var scrapList=JSON.parse('${scrapList}');
+		
+		
+			for(var i=0;i<scrapList.length;i++){
+				
+				if(scrapList[i].prntsDstnct==='모집공고'){
+					console.log(scrapList[i].prntsNo);
+					$('.do-scrapnoti' + scrapList[i].prntsNo).addClass("scrap-on");
+				}
+				
+				
+				
+			}	
+		
+	});
+	
+	</script>
+
+
 
 
 </head>
-<body>
+<body >
 
-<c:import url="/WEB-INF/views/include/header.jsp" />
+	<c:import url="/WEB-INF/views/include/header.jsp" />
 
 
-<!--
+	<!--
     main contents
     page
 -->
-<div class="container">
+	<!--main content-->
+	<div class="container main-contents">
+		<div class="col-xs-12 col-sm-12 col-lg-12">
+			<div class="row">
+				<p class="w3-center w3-large "></p>
+				<div class="w3-row-padding w3-center " style="margin-top: 1px">
+					<div
+						class="w3-container w3-row w3-center w3-padding-32 w3-white major-nav-box w3-round-large">
+						<div class="w3-quarter w3-text-grey">
+							<span class="w3-padding" style="font-size: 2.8vmin;">전체</span> <br>0건
+						</div>
+						<div class="w3-quarter w3-text-grey">
+							<span class="w3-padding" style="font-size: 2.8vmin;">대학원/연구실</span>
+							<br>0건
+						</div>
+						<div class="w3-quarter w3-text-grey">
+							<span class="w3-padding" style="font-size: 2.8vmin;">교육/모임</span>
+							<br>0건
+						</div>
+						<div class="w3-quarter w3-text-grey">
+							<span class="w3-padding" style="font-size: 2.8vmin;">맞춤정보</span>
+							<br>설정하기
+						</div>
+					</div>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <!--
+				</div>
+			</div>
+
+			<div class="row distinct-line">
+				<!--
                 contents title
             -->
-            <h3>
-                <a href="major-content.html">
-                    You might interest
-                    <button type="button" class="more">More ></button>
-                </a>
-            </h3>
+				<h3>
+					<a class="major-titles" href="user-content2.html"> You might
+						interest </a>
+				</h3>
 
-            <hr>
+				<hr>
 
-            <div class="col-xs-12 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="grad-banner w3-card w3-round-large">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -1.5em;">2018년 전기</div>
+						<img src="/net/resources/images/noti-logo/20178204535283.gif"
+							alt="고려대학교" style="width: 100%; padding: 1em 1em 0 1em;">
+						<div class="w3-container w3-center">
+							<h4>
+								<strong>일반대학원</strong>
+							</h4>
+							<p style="font-size: 1.8vmin;">
+								<span class="grad-target">석/박사</span> 신입생 모집
+							</p>
+						</div>
+						<div class="noti-period">
+							<div class="w3-light-grey w3-tiny">
+								<div class="w3-container w3-black"
+									style="width: 50%; height: 2px;"></div>
+							</div>
+						</div>
+						<div class="w3-padding">
+							<span class="noti-hh"><i
+								class="glyphicon glyphicon-paperclip"></i></span> <span
+								class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+								style="float: right;">D-10</span>
+						</div>
+					</div>
+				</div>
 
-        </div>
 
-    <!--// 심포지엄, 학회 모임-->
 
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <div class="col-xs-12 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-        </div>
-    </div>
 
-    <!--인문학-->
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="grad-banner w3-card w3-round-large">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -1.5em;">2018년 전기</div>
+						<img src="/net/resources/images/noti-logo/20178204535283.gif"
+							alt="고려대학교" style="width: 100%; padding: 1em 1em 0 1em;">
+						<div class="w3-container w3-center">
+							<h4>
+								<strong>일반대학원</strong>
+							</h4>
+							<p style="font-size: 1.8vmin;">
+								<span class="grad-target">석/박사</span> 신입생 모집
+							</p>
+						</div>
+						<div class="noti-period">
+							<div class="w3-light-grey w3-tiny">
+								<div class="w3-container w3-black"
+									style="width: 50%; height: 2px;"></div>
+							</div>
+						</div>
+						<div class="w3-padding">
+							<span class="noti-hh"><i
+								class="glyphicon glyphicon-paperclip"></i></span> <span
+								class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+								style="float: right;">D-10</span>
+						</div>
+					</div>
+				</div>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <!--
-                contents title
-            -->
-            <h3>
-                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=인문학" name="Humanities" class="boardtype">
-                	    인문학
-                    <button type="button" class="more">More ></button>
-                </a>
-            </h3>
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="grad-banner w3-card w3-round-large">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -1.5em;">2018년 전기</div>
+						<img src="/net/resources/images/noti-logo/20178204535283.gif"
+							alt="고려대학교" style="width: 100%; padding: 1em 1em 0 1em;">
+						<div class="w3-container w3-center">
+							<h4>
+								<strong>일반대학원</strong>
+							</h4>
+							<p style="font-size: 1.8vmin;">
+								<span class="grad-target">석/박사</span> 신입생 모집
+							</p>
+						</div>
+						<div class="noti-period">
+							<div class="w3-light-grey w3-tiny">
+								<div class="w3-container w3-black"
+									style="width: 50%; height: 2px;"></div>
+							</div>
+						</div>
+						<div class="w3-padding">
+							<span class="noti-hh"><i
+								class="glyphicon glyphicon-paperclip"></i></span> <span
+								class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+								style="float: right;">D-10</span>
+						</div>
+					</div>
+				</div>
 
-            <hr>
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="grad-banner w3-card w3-round-large">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -1.5em;">2018년 전기</div>
+						<img src="/net/resources/images/noti-logo/20178204535283.gif"
+							alt="고려대학교" style="width: 100%; padding: 1em 1em 0 1em;">
+						<div class="w3-container w3-center">
+							<h4>
+								<strong>일반대학원</strong>
+							</h4>
+							<p style="font-size: 1.8vmin;">
+								<span class="grad-target">석/박사</span> 신입생 모집
+							</p>
+						</div>
+						<div class="noti-period">
+							<div class="w3-light-grey w3-tiny">
+								<div class="w3-container w3-black"
+									style="width: 50%; height: 2px;"></div>
+							</div>
+						</div>
+						<div class="w3-padding">
+							<span class="noti-hh"><i
+								class="glyphicon glyphicon-paperclip"></i></span> <span
+								class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+								style="float: right;">D-10</span>
+						</div>
+					</div>
+				</div>
 
-            <div class="col-xs-12 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="grad-banner w3-card w3-round-large">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -1.5em;">2018년 전기</div>
+						<img src="/net/resources/images/noti-logo/20178204535283.gif"
+							alt="고려대학교" style="width: 100%; padding: 1em 1em 0 1em;">
+						<div class="w3-container w3-center">
+							<h4>
+								<strong>일반대학원</strong>
+							</h4>
+							<p style="font-size: 1.8vmin;">
+								<span class="grad-target">석/박사</span> 신입생 모집
+							</p>
+						</div>
+						<div class="noti-period">
+							<div class="w3-light-grey w3-tiny">
+								<div class="w3-container w3-black"
+									style="width: 50%; height: 2px;"></div>
+							</div>
+						</div>
+						<div class="w3-padding">
+							<span class="noti-hh"><i
+								class="glyphicon glyphicon-paperclip"></i></span> <span
+								class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+								style="float: right;">D-10</span>
+						</div>
+					</div>
+				</div>
 
-        </div>
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="grad-banner w3-card w3-round-large">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -1.5em;">2018년 전기</div>
+						<img src="/net/resources/images/noti-logo/20178204535283.gif"
+							alt="고려대학교" style="width: 100%; padding: 1em 1em 0 1em;">
+						<div class="w3-container w3-center">
+							<h4>
+								<strong>일반대학원</strong>
+							</h4>
+							<p style="font-size: 1.8vmin;">
+								<span class="grad-target">석/박사</span> 신입생 모집
+							</p>
+						</div>
+						<div class="noti-period">
+							<div class="w3-light-grey w3-tiny">
+								<div class="w3-container w3-black"
+									style="width: 50%; height: 2px;"></div>
+							</div>
+						</div>
+						<div class="w3-padding">
+							<span class="noti-hh"><i
+								class="glyphicon glyphicon-paperclip"></i></span> <span
+								class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+								style="float: right;">D-10</span>
+						</div>
+					</div>
+				</div>
 
-        <!--// 심포지엄, 학회 모임-->
 
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <div class="col-xs-12 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-        </div>
-    </div>
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="grad-banner w3-card w3-round-large">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -1.5em;">2018년 전기</div>
+						<img src="/net/resources/images/noti-logo/20178204535283.gif"
+							alt="고려대학교" style="width: 100%; padding: 1em 1em 0 1em;">
+						<div class="w3-container w3-center">
+							<h4 style="font-size: 1.5em;">
+								<strong>일반대학원</strong>
+							</h4>
+							<p style="font-size: 1.8vmin;">
+								<span class="grad-target">석/박사</span> 신입생 모집
+							</p>
+						</div>
+						<div class="noti-period">
+							<div class="w3-light-grey w3-tiny">
+								<div class="w3-container w3-black"
+									style="width: 50%; height: 2px;"></div>
+							</div>
+						</div>
+						<div class="w3-padding">
+							<span class="noti-hh"><i
+								class="glyphicon glyphicon-paperclip"></i></span> <span
+								class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+								style="float: right;">D-10</span>
+						</div>
+					</div>
+				</div>
+			</div>
 
-    <!--사회과학-->
+			<div class="row distinct-line">
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <!--
-                contents title
-            -->
-            <h3>
-                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=사회과학"  name="SocialScience" class="boardtype">
-                      	  사회과학
-                    <button type="button" class="more">More ></button>
-                </a>
-            </h3>
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="lab-banner w3-card w3-round-large">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -1.5em;">2018년 전기</div>
+						<img src="/net/resources/images/noti-logo/20178204535283.gif"
+							alt="고려대학교" style="width: 100%; padding: 1em 1em 0 1em;">
+						<div class="w3-container w3-center">
+							<h4 style="font-size: 1.8vmin;">
+								<strong>생명공학원 유전체학 연구실</strong>
+							</h4>
+							<p style="font-size: 1.8vmin;">
+								<span class="grad-target">석/박사</span> 신입생 모집
+							</p>
+						</div>
+						<div class="research-field w3-padding text-center">
+							<span class="w3-tag w3-black w3-tiny ">Fashion</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">New York</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">London</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Hats</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Norway</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Sweaters</span>
+						</div>
+						<div class="w3-padding">
+							<span class="noti-hh"><i
+								class="glyphicon glyphicon-paperclip"></i></span> <span
+								class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+								style="float: right;">D-10</span>
+						</div>
+					</div>
+				</div>
 
-            <hr>
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="lab-banner w3-card w3-round-large">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -1.5em;">2018년 전기</div>
+						<img src="/net/resources/images/noti-logo/20178204535283.gif"
+							alt="고려대학교" style="width: 100%; padding: 1em 1em 0 1em;">
+						<div class="w3-container w3-center">
+							<h4 style="font-size: 1.8vmin;">
+								<strong>생명공학원 유전체학 연구실</strong>
+							</h4>
+							<p style="font-size: 1.8vmin;">
+								<span class="grad-target">석/박사</span> 신입생 모집
+							</p>
+						</div>
+						<div class="research-field w3-padding text-center">
+							<span class="w3-tag w3-black w3-tiny ">Fashion</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">New York</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">London</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Hats</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Norway</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Sweaters</span>
+						</div>
+						<div class="w3-padding">
+							<span class="noti-hh"><i
+								class="glyphicon glyphicon-paperclip"></i></span> <span
+								class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+								style="float: right;">D-10</span>
+						</div>
+					</div>
+				</div>
 
-            <div class="col-xs-12 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
 
-        </div>
 
-        <!--// 심포지엄, 학회 모임-->
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="lab-banner w3-card w3-round-large">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -1.5em;">2018년 전기</div>
+						<img src="/net/resources/images/noti-logo/20178204535283.gif"
+							alt="고려대학교" style="width: 100%; padding: 1em 1em 0 1em;">
+						<div class="w3-container w3-center">
+							<h4 style="font-size: 1.8vmin;">
+								<strong>생명공학원 유전체학 연구실</strong>
+							</h4>
+							<p style="font-size: 1.8vmin;">
+								<span class="grad-target">석/박사</span> 신입생 모집
+							</p>
+						</div>
+						<div class="research-field w3-padding text-center">
+							<span class="w3-tag w3-black w3-tiny ">Fashion</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">New York</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">London</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Hats</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Norway</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Sweaters</span>
+						</div>
+						<div class="w3-padding ">
+							<span class="noti-hh"><i
+								class="glyphicon glyphicon-paperclip"></i></span> <span
+								class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+								style="float: right;">D-10</span>
+						</div>
+					</div>
+				</div>
 
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <div class="col-xs-12 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-        </div>
-    </div>
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="lab-banner w3-card w3-round-large">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -1.5em;">2018년 전기</div>
+						<img src="/net/resources/images/noti-logo/20178204535283.gif"
+							alt="고려대학교" style="width: 100%; padding: 1em 1em 0 1em;">
+						<div class="w3-container w3-center">
+							<h4 style="font-size: 1.8vmin;">
+								<strong>생명공학원 유전체학 연구실</strong>
+							</h4>
+							<p style="font-size: 1.8vmin;">
+								<span class="grad-target">석/박사</span> 신입생 모집
+							</p>
+						</div>
+						<div class="research-field w3-padding text-center">
+							<span class="w3-tag w3-black w3-tiny ">Fashion</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">New York</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">London</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Hats</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Norway</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Sweaters</span>
+						</div>
+						<div class="w3-padding">
+							<span class="noti-hh"><i
+								class="glyphicon glyphicon-paperclip"></i></span> <span
+								class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+								style="float: right;">D-10</span>
+						</div>
+					</div>
+				</div>
 
-    <!--인문학-->
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="lab-banner w3-card w3-round-large">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -1.5em;">2018년 전기</div>
+						<img src="/net/resources/images/noti-logo/20178204535283.gif"
+							alt="고려대학교" style="width: 100%; padding: 1em 1em 0 1em;">
+						<div class="w3-container w3-center">
+							<h4 style="font-size: 1.8vmin;">
+								<strong>생명공학원 유전체학 연구실</strong>
+							</h4>
+							<p style="font-size: 1.8vmin;">
+								<span class="grad-target">석/박사</span> 신입생 모집
+							</p>
+						</div>
+						<div class="research-field w3-padding">
+							<span class="w3-tag w3-black w3-tiny ">Fashion</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">New York</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">London</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Hats</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Norway</span> <span
+								class="w3-tag w3-light-grey w3-tiny ">Sweaters</span>
+						</div>
+						<div class="w3-padding">
+							<span class="noti-hh"><i
+								class="glyphicon glyphicon-paperclip"></i></span> <span
+								class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+								style="float: right;">D-10</span>
+						</div>
+					</div>
+				</div>
+			</div>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <!--
-                contents title
-            -->
-            <h3>
-                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=자연과학"  name="NaturalScience" class="boardtype">
-                    자연과학
-                    <button type="button" class="more">More ></button>
-                </a>
-            </h3>
+			<div class="row distinct-line">
 
-            <hr>
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="conference-banner w3-card w3-round-large ">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -0.5em;">2018년 전기</div>
+						<img src="/net/resources/images/higrad-img/eclipse.png"
+							style="width: 99%;">
+						<div class="w3-container w3-center w3-padding">
+							<p style="font-size: 1.8vmin;">
+								<strong>세무회계 핵심 교육</strong>
+							</p>
+							<p>Sat. 28 November 2017</p>
+							<button class="btn">참여하기</button>
+						</div>
+					</div>
+				</div>
 
-            <div class="col-xs-12 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="conference-banner w3-card w3-round-large ">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -0.5em;">2018년 전기</div>
+						<img src="/net/resources/images/higrad-img/drone.png"
+							style="width: 99%;">
+						<div class="w3-container w3-center w3-padding">
+							<p style="font-size: 1.8vmin;">
+								<strong>세무회계 핵심 교육</strong>
+							</p>
+							<p>Sat. 28 November 2017</p>
+							<button class="btn">참여하기</button>
+						</div>
+					</div>
+				</div>
 
-        </div>
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="conference-banner w3-card w3-round-large ">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -0.5em;">2018년 전기</div>
+						<img src="/net/resources/images/higrad-img/eclipse.png"
+							style="width: 99%;">
+						<div class="w3-container w3-center w3-padding">
+							<p style="font-size: 1.8vmin;">
+								<strong>세무회계 핵심 교육</strong>
+							</p>
+							<p>Sat. 28 November 2017</p>
+							<button class="btn">참여하기</button>
+						</div>
+					</div>
+				</div>
 
-        <!--// 심포지엄, 학회 모임-->
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="conference-banner w3-card w3-round-large ">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -0.5em;">2018년 전기</div>
+						<img src="/net/resources/images/higrad-img/financial.png"
+							style="width: 100%;">
+						<div class="w3-container w3-center w3-padding">
+							<p style="font-size: 1.8vmin;">
+								<strong>세무회계 핵심 교육</strong>
+							</p>
+							<p>Sat. 28 November 2017</p>
+							<button class="btn">참여하기</button>
+						</div>
+					</div>
+				</div>
 
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <div class="col-xs-12 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-        </div>
-    </div>
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="conference-banner w3-card w3-round-large ">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -0.5em;">2018년 전기</div>
+						<img src="/net/resources/images/higrad-img/financial.png"
+							style="width: 99%;">
+						<div class="w3-container w3-center w3-padding">
+							<p style="font-size: 1.8vmin;">
+								<strong>세무회계 핵심 교육</strong>
+							</p>
+							<p>Sat. 28 November 2017</p>
+							<button class="btn">참여하기</button>
+						</div>
+					</div>
+				</div>
 
-    <!--인문학-->
+				<div class="col-xs-6 col-sm-6 col-lg-3">
+					<div class="conference-banner w3-card w3-round-large ">
+						<div class="w3-padding w3-text-grey w3-small"
+							style="margin-bottom: -0.5em;">2018년 전기</div>
+						<img src="/net/resources/images/higrad-img/financial.png"
+							style="width: 99%;">
+						<div class="w3-container w3-center w3-padding">
+							<p style="font-size: 1.8vmin;">
+								<strong>세무회계 핵심 교육</strong>
+							</p>
+							<p>Sat. 28 November 2017</p>
+							<button class="btn">참여하기</button>
+						</div>
+					</div>
+				</div>
+			</div>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <!--
-                contents title
-            -->
-            <h3>
-                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=공학" name="Engineering" class="boardtype">
-                 	   공학
-                    <button type="button" class="more">More ></button>
-                </a>
-            </h3>
 
-            <hr>
+			<!-- 메인 출력 2017-09-21 정예린 -->
+			<c:set value="1" var="i" />
+			<c:forEach items="${codeList }" var="codeVo" varStatus="status">
+				<div class="row distinct-line" id="section${i }">
+					<div class="col-xs-12 col-sm-12 col-lg-12">
+						<!--
+                    contents title
+                -->
+						<h3>
+							<a
+								href="${pageContext.servletContext.contextPath }/study/main?boardtype=${codeVo.cdNm }">${codeVo.cdNm }
+								<small class="w3-text-grery">대학원 ${codeVo.gradIngCount }건
+									연구실 ${codeVo.labIngCount }건</small>
+							</a>
+						</h3>
 
-            <div class="col-xs-12 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
+						<hr>
 
-        </div>
+						<div class="row distinct-line">
+							<c:forEach items="${gradList }" var="gradVo" varStatus="status">
+								<c:choose>
+									<c:when test="${gradVo.pNm == codeVo.cdNm}">
+										<div class="col-xs-6 col-sm-6 col-lg-3">
+											<div class="grad-banner w3-card w3-round-large">
+												<div class="noti-card"
+													onclick="location.href='${pageContext.servletContext.contextPath }/noti/detail?no=${gradVo.slctnNotiNo}&tabnm=${gradVo.slctnNotiDstnct}'">
+													<div class="w3-padding w3-text-grey w3-small"
+														style="margin-bottom: -1.5em;">${gradVo.slctnYycl }
+														${gradVo.slctnSemstr }</div>
+													<img src="/net${gradVo.storgPath }" alt="${gradVo.major }"
+														style="width: 100%; padding: 1em 1em 0 1em;">
+													<div class="w3-container w3-center">
+														<h4 class="noti-title">
+															<strong>${gradVo.lab }</strong>
+														</h4>
+														<p style="font-size: 1.8vmin;" class="noti-title">
+															<span class="grad-target"></span>${gradVo.slctnTitle }
+														</p>
+													</div>
+													<div class="noti-period">
+														<c:choose>
+															<c:when test="${gradVo.percent > 100}">
+																<div class="w3-light-grey w3-tiny">
+																	<div class="w3-container"
+																		style="width: 100%; background-color:${gradVo.symbolColorNm}; height : 1.5px; "></div>
+																</div>
+															</c:when>
+															<c:when test="${gradVo.percent < 0}">
+																<div class="w3-light-grey w3-tiny">
+																	<div class="w3-container"
+																		style="width: 0; height: 1.5px;"></div>
+																</div>
+															</c:when>
+															<c:otherwise>
+																<div class="w3-light-grey w3-tiny">
+																	<div class="w3-container"
+																		style="width: ${gradVo.percent}%; background-color:${gradVo.symbolColorNm}; height : 1.5px;"></div>
+																</div>
+															</c:otherwise>
+														</c:choose>
+													</div>
+												</div>
+												<div class="w3-padding">
+													<span class="noti-hh"><i
+														class="glyphicon glyphicon-paperclip do-scrapnoti${gradVo.slctnNotiNo }"
+														onclick="doScrap('모집공고',${gradVo.slctnNotiNo },${authUser.mbNo });"></i></span>
+													<span
+														class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+														style="float: right;"><c:choose>
+															<c:when
+																test="${gradVo.dday > 0 && gradVo.dday > gradVo.totaldays}">
+																<div class="noti-endtext">모집예정</div>
+															</c:when>
+															<c:when
+																test="${gradVo.dday > 0 && gradVo.dday < gradVo.totaldays}">
+																<div class="noti-endtext">D-${notiVo.dday}</div>
+															</c:when>
+															<c:when test="${gradVo.dday == 0 }">
+																<div class="noti-endtext">오늘마감</div>
+															</c:when>
+															<c:when test="${gradVo.dday < 0 }">
+																<div class="noti-endtext">모집마감</div>
+															</c:when>
+														</c:choose></span>
+												</div>
+											</div>
+										</div>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+						</div>
 
-        <!--// 심포지엄, 학회 모임-->
 
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <div class="col-xs-12 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-        </div>
-    </div>
+						<div class="row distinct-line">
+							<!-- 연구실  -->
+							<c:forEach items="${labList }" var="labVo" varStatus="status">
+								<c:choose>
+									<c:when test="${labVo.pNm == codeVo.cdNm}">
+										<div class="col-xs-6 col-sm-6 col-lg-3">
+											<div class="lab-banner w3-card w3-round-large">
+												<div class="noti-card"
+													onclick="location.href='${pageContext.servletContext.contextPath }/noti/detail?no=${labVo.slctnNotiNo}&tabnm=${labVo.slctnNotiDstnct}'">
+													<c:choose>
+														<c:when test="${labVo.slctnYycl=='9999' }">
+															<div class="w3-padding w3-text-grey w3-small"
+																style="margin-bottom: -1.5em;">상시모집</div>
+														</c:when>
+														<c:otherwise>
+															<div class="w3-padding w3-text-grey w3-small"
+																style="margin-bottom: -1.5em;">${labVo.slctnYycl }
+																${labVo.slctnSemstr }</div>
+														</c:otherwise>
+													</c:choose>
+													<img src="/net${labVo.storgPath }" alt="고려대학교"
+														style="width: 100%; padding: 1em 1em 0 1em;">
+													<div class="w3-container w3-center noti-title">
+														<h4 style="font-size: 1.8vmin;" class="noti-title">
+															<strong>${labVo.major } ${labVo.lab }</strong>
+														</h4>
+														<p style="font-size: 1.8vmin;" class="noti-title">
+															${labVo.slctnTitle }</p>
+													</div>
+													<div class="research-field w3-padding text-center">
+														<c:forEach items="${labCodeList }" var="labCodeVo"
+															varStatus="status">
+															<c:if test="${labCodeVo.slctnNotiNo==labVo.slctnNotiNo }">
+																<span class="w3-tag w3-light-grey w3-tiny ">${labCodeVo.cdNm }</span>
+															</c:if>
+														</c:forEach>
+													</div>
+												</div>
+												<div class="w3-padding">
+													<span class="noti-hh"><i
+														class="glyphicon glyphicon-paperclip do-scrapnoti${labVo.slctnNotiNo }"
+														onclick="doScrap('모집공고',${labVo.slctnNotiNo },${authUser.mbNo });"></i></span>
+													<span
+														class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
+														style="float: right;"> <c:choose>
+															<c:when
+																test="${labVo.dday > 0 && labVo.dday > labVo.totaldays}">
+																<div class="noti-endtext">모집예정</div>
+															</c:when>
+															<c:when
+																test="${labVo.dday > 0 && labVo.dday <= labVo.totaldays}">
+																<div class="noti-endtext">D-${labVo.dday}</div>
+															</c:when>
+															<c:when test="${labVo.dday == 0 }">
+																<div class="noti-endtext">오늘마감</div>
+															</c:when>
+															<c:when test="${labVo.dday < 0 }">
+																<div class="noti-endtext">모집마감</div>
+															</c:when>
+														</c:choose></span>
+												</div>
+											</div>
+										</div>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+						</div>
+					</div>
+				</div>
+				<c:set var="i" value="${i + 1}" />
+			</c:forEach>
 
-    <!--인문학-->
+		</div>
+	</div>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <!--
-                contents title
-            -->
-            <h3>
-                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=의약학" name="MedicineandPharmacy" class="boardtype">
-                    의약학
-                    <button type="button" class="more">More ></button>
-                </a>
-            </h3>
+	<nav class="navbar navbar-inverse navbar-fixed-bottom" id="studies">
+		<div class="container-fluid">
+			<div class="container">
 
-            <hr>
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#studies-list" style="background-color: orange;">
+						<i class="glyphicon glyphicon-plus" style="color: #ffffff;"></i>
+					</button>
+					<a class="navbar-brand" href="#section0">마이페이지</a>
+				</div>
+				<div>
+					<div class="collapse navbar-collapse" id="studies-list">
 
-            <div class="col-xs-12 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-
-        </div>
-
-        <!--// 심포지엄, 학회 모임-->
-
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <div class="col-xs-12 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-        </div>
-    </div>
-
-    <!--인문학-->
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <!--
-                contents title
-            -->
-            <h3>
-                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=농수해양학" name="MarineAgricultureFishery" class="boardtype">
-                     농수해양학
-                    <button type="button" class="more">More ></button>
-                </a>
-            </h3>
-
-            <hr>
-
-            <div class="col-xs-12 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-
-        </div>
-
-        <!--// 심포지엄, 학회 모임-->
-
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <div class="col-xs-12 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-        </div>
-    </div>
-
-    <!--인문학-->
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <!--
-                contents title
-            -->
-            <h3>
-                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=예술체육학" name="ArtsandKinesiology" class="boardtype">
-                    예술체육학
-                    <button type="button" class="more">More ></button>
-                </a>
-            </h3>
-
-            <hr>
-
-            <div class="col-xs-12 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-
-        </div>
-
-        <!--// 심포지엄, 학회 모임-->
-
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <div class="col-xs-12 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-        </div>
-    </div>
-
-    <!--인문학-->
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <!--
-                contents title
-            -->
-            <h3>
-                <a href="${pageContext.servletContext.contextPath }/study/main?boardtype=복합학" name="ScienceandTechnologyStudies" class="boardtype">
-                    복합학
-                    <button type="button" class="more">More ></button>
-                </a>
-            </h3>
-
-            <hr>
-
-            <div class="col-xs-12 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <div class="jumbotron"><br></div>
-                <div class="jumbotron"><br></div>
-            </div>
-
-        </div>
-
-        <!--// 심포지엄, 학회 모임-->
-
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <div class="col-xs-12 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-lg-3">
-                <div class="jumbotron symposium"><br></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-</div>
-
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/study.js"></script>
-	
-	
+						<ul class="nav navbar-nav">
+							<li><a href="#section1">공학</a></li>
+							<li><a href="#section2">농수해양학</a></li>
+							<li><a href="#section3">자연과학</a></li>
+							<li><a href="#section4">사회과학</a></li>
+							<li><a href="#section5">인문학</a></li>
+							<li><a href="#section6">의약학</a></li>
+							<li><a href="#section7">예술체육학</a></li>
+							<li><a href="#section8">복합학</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/js/doscrap.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/js/study.js"></script>
 </body>
+
 </html>

@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.grad.net.vo.OrganzVo;
 import com.grad.net.vo.StudyVo;
 
 
@@ -36,6 +37,17 @@ public class StudyDao {
 		return sqlSession.selectList("study.selectBoardList", map);		
 		
 		
+	}
+	
+
+	public List<OrganzVo> getLabList(String boardtype) {
+		
+		return sqlSession.selectList("organz.getLabList", boardtype);
+	}
+
+
+	public List<OrganzVo> getLabCodeList() {
+		return sqlSession.selectList("organz.getLabCodeList");
 	}
 
 }

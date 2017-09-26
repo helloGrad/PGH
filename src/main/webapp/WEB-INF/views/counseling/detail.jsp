@@ -509,6 +509,8 @@ pageContext.setAttribute("newLine", "\n");
                 <h6>
                 <c:if test="${counselingPrnts.writrInfoOpngYn =='Y' }"	>
                 
+             
+  
                 
                 <c:choose>
  
@@ -517,11 +519,11 @@ pageContext.setAttribute("newLine", "\n");
 				    </c:when>
  					
 				    <c:when test="${counselingPrnts.birdt == null}">
-				       ${counselingPrnts.agrg }대,컴퓨터공학과
+				       ${counselingPrnts.nknm}, ${counselingPrnts.agrg }대
 				    </c:when>
 				 
 				    <c:when test="${counselingPrnts.agrg == null }">
-				        ${counselingPrnts.birdt }대,컴퓨터공학과
+				        ${counselingPrnts.nknm}, ${counselingPrnts.birdt }대
 				    </c:when>
 				 
 				    <c:otherwise>
@@ -654,7 +656,7 @@ pageContext.setAttribute("newLine", "\n");
                     
                     <c:if test="${counselingReplyList.writrInfoOpngYn =='Y' }"	>
                 	<p><span class="w3-large w3-margin-right">${counselingReplyList.nknm}</span>
-                 	 <span class="w3-medium w3-opacity">컴퓨터공학과</span>
+                 	 <span class="w3-medium w3-opacity"></span>
                  	  </p>
                 	</c:if>
                 
@@ -714,7 +716,7 @@ pageContext.setAttribute("newLine", "\n");
                     
                     <c:if test="${counselingReplyList.writrInfoOpngYn =='Y' }"	>
                 	<p><span class="w3-large w3-margin-right">${counselingReplyList.nknm}</span>
-                 	 <span class="w3-medium w3-opacity">컴퓨터공학과</span>
+                 	 <span class="w3-medium w3-opacity"></span>
                  	  </p>
                 	</c:if>
                 

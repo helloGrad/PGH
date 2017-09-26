@@ -11,6 +11,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +31,7 @@ import com.grad.net.vo.CounselingVo;
 import com.grad.net.vo.FileVo;
 import com.grad.net.vo.MemberVo;
 import com.grad.net.vo.NotiVo;
+import com.grad.net.vo.PageVo;
 
 @Controller("counselingAPIController")
 @RequestMapping("/counseling/api")
@@ -277,6 +279,29 @@ public class CounselingController {
 	
 		return JSONResult.success(map);
 	}
+	
+	
+	/*
+	 * 정예린 페이징 2017-09-14
+	 */
+	
+	@ResponseBody
+	@RequestMapping(value = "/pagelist", method = RequestMethod.GET)
+	public JSONResult counPageList(@ModelAttribute PageVo pageVo,
+			@RequestParam(value="page", required=true ,defaultValue="1") int page, 
+			@RequestParam(value="type") String type,
+			@RequestParam(value="order") String order) {
+		
+		Map<String, Object> map =  new HashMap<String, Object>();
+
+		map.put("page", page);
+		pageVo.calcPage(counselingService.countCounList(type));
+		map.put("pageVo", pageVo);
+		map.put("counList", counselingService.getCounList(type, order, pageVo));
+		
+		return  JSONResult.success(map);
+	}
+	
 	
 	
 

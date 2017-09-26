@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.grad.net.repository.StudyDao;
+import com.grad.net.vo.OrganzVo;
 import com.grad.net.vo.StudyVo;
 
 
@@ -70,6 +71,15 @@ public class StudyService {
 		
 		
 		return studyDao.selectBoardList(map);		
+	}
+	
+	
+	public List<OrganzVo> getLabList(String boardtype) {
+		return studyDao.getLabList(boardtype);
+	}
+
+	public List<OrganzVo> getLabCodeList() {
+		return studyDao.getLabCodeList();
 	}
 
 }

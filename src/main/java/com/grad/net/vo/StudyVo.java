@@ -50,6 +50,11 @@ public class StudyVo {
 	   
 	   
 	   
+
+		private int totaldays;
+	   
+	   
+	   
 	public Long getOrgnzNo() {
 		return orgnzNo;
 	}
@@ -272,6 +277,14 @@ public class StudyVo {
 	public void setSpCdNm(String spCdNm) {
 		this.spCdNm = spCdNm;
 	}
+	
+	
+	public int getTotaldays() {
+		return totaldays;
+	}
+	public void setTotaldays(int totaldays) {
+		this.totaldays = totaldays;
+	}
 	@Override
 	public String toString() {
 		return "StudyVo [orgnzNo=" + orgnzNo + ", pCdNm=" + pCdNm + ", university=" + university + ", graduate="
@@ -283,29 +296,9 @@ public class StudyVo {
 				+ ", wrtbtNo=" + wrtbtNo + ", bbsNm=" + bbsNm + ", wrtbtText=" + wrtbtText + ", wrtbtTitle="
 				+ wrtbtTitle + ", avlblBeginDt=" + avlblBeginDt + ", coSrorgPath=" + coSrorgPath + ", cdNm=" + cdNm
 				+ ", pNm=" + pNm + ", year=" + year + ", day=" + day + ", month=" + month + ", count=" + count
-				+ ", subwrtbtText=" + subwrtbtText + ", orderNum=" + orderNum + ", spCdNm=" + spCdNm + "]";
+				+ ", subwrtbtText=" + subwrtbtText + ", orderNum=" + orderNum + ", spCdNm=" + spCdNm + ", totaldays="
+				+ totaldays + "]";
 	}
-	   
-	   
-	   
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	   
-	   
-	 
-	   
-	
-	
-	
-	
-	
 	
 	
 }

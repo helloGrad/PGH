@@ -82,5 +82,43 @@
 		]]>
 	</select>
 	
+	
+	<!-- 정예린 -->
+	<select id="getLabList" parameterType="string" resultType="organzVo">
+		<![CDATA[
+		select p3.orgnz_nm university, c3.대학원 graduate, c3.학과 major, c3.orgnzNo orgnzNo, c3.orgnzNm orgnzNm, c3.addr addr, c3.pNm pNm, c3.ar ar,c3.detailAddr detailAddr, c3.telNo telNo,
+		c3.hmpageUrl hmpageUrl
+		from (select  p2.orgnz_nm '대학원', p2.PRNTS_ORGNZ_NO pno3, c2.*
+			from (select p.orgnz_nm '학과', p.PRNTS_ORGNZ_NO pno2, c.*
+				from (select i.ORGNZ_NO orgnzNo, o.orgnz_nm orgnzNm, o.addr, o.orgnz_full_nm,(select cd_nm from cd where cd_id = concat(substr(c.cd_id,1,1),'000000')) pNm,
+			(select c2.cd_nm 
+			from organz_info i2, cd c2, organz o2 
+			where i2.CD_ID=c2.cd_id
+			and i2.orgnz_no=o2.orgnz_no
+			and o.orgnz_no=o2.orgnz_no
+			and o2.orgnz_dstnct='연구실'
+			and c2.cd_dstnct='지역') ar, o.PRNTS_ORGNZ_NO pno1,o.detail_addr detailAddr, o.tel_no telNo, o.hmpage_Url hmpageUrl
+			from organz_info i, cd c, organz o
+			where i.CD_ID=c.cd_id
+			and i.orgnz_no=o.orgnz_no
+			and c.cd_dstnct='연구분야'
+			group by orgnzNo, pNm) c left outer join organz p 
+			on c.pno1 = p.ORGNZ_NO) c2 left outer join organz p2 
+			on c2.pno2 = p2.ORGNZ_NO) c3 left outer join organz p3
+			on c3.pno3 = p3.ORGNZ_NO
+			where c3.pNm=#{boardtype };
+		]]>
+	</select>
+	
+	<select id="getLabCodeList" resultType="organzVo">
+		<![CDATA[
+			select i.ORGNZ_NO orgnzNo, c.cd_nm cdNm
+			from organz_info i, cd c, organz o
+			where i.CD_ID=c.cd_id
+			and i.orgnz_no=o.orgnz_no
+			and c.cd_dstnct='연구분야'
+		]]>
+	</select>
+	
 
 </mapper>

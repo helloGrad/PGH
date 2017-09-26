@@ -73,5 +73,20 @@ public class MemberDao {
 		sqlSession.update("member.updateInfoYn", mbNo);
 	}
 
+	/*
+	 * 정예린 스크랩 2017-09-19
+	 */
+	public boolean insertScrap(Map<String, Object> map) {
+		return sqlSession.insert("member.insertScrap",map)==1; 
+	}
+
+
+	public boolean deleteScrap(Map<String, Object> map) {
+		return sqlSession.delete("member.deleteScrap",map)==1; 
+	}
+
+	public List<MemberVo> getScrapList(Long mbNo) {
+		return sqlSession.selectList("member.getScrapList", mbNo);
+	}
 
 }

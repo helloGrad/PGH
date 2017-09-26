@@ -28,7 +28,7 @@
 
 
 <!--//////////////////////// footer End ////////////////////////////-->
-<link href="${pageContext.request.contextPath}/resources/css/study.css" rel="stylesheet">
+
 
 <style>
         body {
@@ -292,31 +292,72 @@
 <script type="text/javascript">
 $(function() {
 	
+	/*
+	 * 박가혜 2017-09-25 로그인 
+	 * 
+	 * 
+	 */	
+	
 	var authUser = $("#authUser").val();
 	
+
 	
-	
-	
-	$(document).on('click', ".counseling", function() { //div 클릭하면 로그인..창......
+	$(document).on('click', ".counseling", function(event) { 
 		
 		
-		
+		var click_id = $(this).attr('value');
+
+
+		//console.log(click_id);
+
 	
 		if (authUser === null || authUser === '') {
 			
 			$("#login").css({
 				"display" : "block"
 			});
+
+		}else{
 			
+			
+			location.href="/net/counseling/detail?no="+click_id+"&type=prnts";
+			
+		}      
 	
-		$('.counseling').attr('onclick', '');
+	
+	
+	});
+	
+	
+	
+	$(document).on('click', ".counselingreply", function() { 
+		var click_id = $(this).attr('value');
+
 		
+
+		//console.log(click_id);
+	
+		
+		
+		if (authUser === null || authUser === '') {
+			
+			$("#login").css({
+				"display" : "block"
+			});
+
+		}else{
+			
+			
+			location.href="/net/counseling/detail?no="+click_id+"&type=reply";
+			 event.stoplmmediatePropagation();
+		}      
+	
+	
+	
+	});
 	
 	
 
-	}        
-	});
-	
 
 	
 	
@@ -593,7 +634,8 @@ $(function() {
 							    
 							   
 							
-							         <div class="thumbnail text-center counseling"  onclick="location.href=' ${pageContext.servletContext.contextPath }/counseling/detail?no=${BoardList.slctnNotiNo}&type=prnts'">					                 
+							         <div class="thumbnail text-center counseling" value="${BoardList.slctnNotiNo}" >					                 
+						                       
 						                         <c:if test="${BoardList.coSrorgPath  == null }"	>
 						                    		 
 						                    	</c:if>
@@ -608,7 +650,7 @@ $(function() {
 						                    		<p style="font-size: 1.6vmin; height : auto;"><strong>${BoardList.subwrtbtText}</strong></p> 
 						                    	</c:if>
 						                    	<c:if test="${BoardList.count == 0 }"	>
-						                    		   <button class="btn"  onclick="${pageContext.servletContext.contextPath }/counseling/detail?no=${BoardList.slctnNotiNo}&type=reply">답변하러가기</button>
+						                    		   <button class="btn counselingreply" value="${BoardList.slctnNotiNo}">답변하러가기</button>
 
 						                    	</c:if>
 						                    	
@@ -867,7 +909,8 @@ $(function() {
 							    
 							   
 							
-							      	         <div class="thumbnail text-center counseling"  onclick="location.href=' ${pageContext.servletContext.contextPath }/counseling/detail?no=${BoardList.slctnNotiNo}&type=prnts'">					                 
+							      	            <div class="thumbnail text-center counseling" value="${BoardList.slctnNotiNo}" >					                 
+						                       
 						                         <c:if test="${BoardList.coSrorgPath  == null }"	>
 						                    		 
 						                    	</c:if>
@@ -878,15 +921,16 @@ $(function() {
 						                        <p style="font-size: 1.8vmin; height : 1.5em;"><strong>${BoardList.wrtbtTitle }</strong></p>
 						                        <p style="font-size: 1.6vmin; height : auto;"><strong>${BoardList.wrtbtText }</strong></p>
 						                        <c:if test="${BoardList.count > 0 }"	>
+						                        	
 						                    		<p style="font-size: 1.6vmin; height : auto;"><strong>${BoardList.subwrtbtText}</strong></p> 
 						                    	</c:if>
 						                    	<c:if test="${BoardList.count == 0 }"	>
-						                    		   <button class="btn"  onclick=" ${pageContext.servletContext.contextPath }/counseling/detail?no=${BoardList.slctnNotiNo}&type=reply">답변하러가기</button>
+						                    		   <button class="btn counselingreply" value="${BoardList.slctnNotiNo}">답변하러가기</button>
 
 						                    	</c:if>
 						                    	
 						                       
-						                      
+						                       
 				
 						                    </div>
 							    
@@ -1145,7 +1189,8 @@ $(function() {
 							    
 							   
 							
-							         <div class="thumbnail text-center counseling"  onclick="location.href=' ${pageContext.servletContext.contextPath }/counseling/detail?no=${BoardList.slctnNotiNo}&type=prnts'">					                 
+							            <div class="thumbnail text-center counseling" value="${BoardList.slctnNotiNo}" >					                 
+						                       
 						                         <c:if test="${BoardList.coSrorgPath  == null }"	>
 						                    		 
 						                    	</c:if>
@@ -1156,10 +1201,11 @@ $(function() {
 						                        <p style="font-size: 1.8vmin; height : 1.5em;"><strong>${BoardList.wrtbtTitle }</strong></p>
 						                        <p style="font-size: 1.6vmin; height : auto;"><strong>${BoardList.wrtbtText }</strong></p>
 						                        <c:if test="${BoardList.count > 0 }"	>
+						                        	
 						                    		<p style="font-size: 1.6vmin; height : auto;"><strong>${BoardList.subwrtbtText}</strong></p> 
 						                    	</c:if>
 						                    	<c:if test="${BoardList.count == 0 }"	>
-						                    		   <button class="btn"  onclick=" ${pageContext.servletContext.contextPath }/counseling/detail?no=${BoardList.slctnNotiNo}&type=reply">답변하러가기</button>
+						                    		   <button class="btn counselingreply" value="${BoardList.slctnNotiNo}">답변하러가기</button>
 
 						                    	</c:if>
 						                    	

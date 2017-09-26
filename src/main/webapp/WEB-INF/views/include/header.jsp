@@ -18,13 +18,14 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/ejs/ejs.js"></script>
 
-
+<!--
+ --> 
  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
  <link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet"> 
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 
 <script>
 var boardtype; 
@@ -39,13 +40,29 @@ var boardtype;
 
 
 
-	
 <style>
+/* nav-bar css Start */
+.navbar {
+	background-color: rgba(255, 255, 255, 0.95);
+}
+.navbar-qna {
+	font-weight: 400;
+	margin-top: -5px;
+	margin-bottom: -5px;
+	margin-left: -1em;
+	font-size: 1.5vmin;
+	letter-spacing: 4px;
+	float: left;
+}
+.navbar-nav li a:hover {
+	color: #1abc9c !important;
+	background-color: white;
+}
+/* nav-bar End */
 
-	
+</style>
 
 
-</style>	
 
 <script>
 
@@ -154,27 +171,24 @@ var boardtype;
 <nav class="navbar navbar-default navbar-fixed-top al">
     <div class="container">
     
-   	 <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="${pageContext.servletContext.contextPath }/loginmain">하이그래드넷</a>
-            <ul class="nav navbar-nav">
-                <li>
-                    <a id="headerBtn" class=" navbar-brand  navbar-left nav-btn writeBtn" href="#" >
-                        <span class=""><i class="glyphicon glyphicon-pencil"></i>글쓰기</span></a>
-                </li>
-                <li>
-                    <a class=" navbar-brand  navbar-left" href="${pageContext.servletContext.contextPath }/counseling/list">
-                        <span class=""><i class="glyphicon glyphicon-check"></i>답변하기</span></a>
-                </li>
-            </ul>
-        </div>
-        
+    <div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+			  <a class="navbar-brand" href="${pageContext.servletContext.contextPath }/loginmain">하이그래드넷</a>
+				<ul class="nav navbar-nav">
+					<li><a id="headerBtn" class=" navbar-qna nav-btn writeBtn" href="#"> <span
+							class=" w3-btn w3-border w3-round-large"><i
+								class="glyphicon glyphicon-pencil"></i>글쓰기</span></a></li>
+					<li><a class=" navbar-qna" href="${pageContext.servletContext.contextPath }/counseling/list"> <span
+							class="w3-btn w3-border w3-round-large"><i
+								class="glyphicon glyphicon-check"></i>답변하기</span></a></li>
+				</ul>
+			</div>
+		
 
-        
             <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href=""> <i class="glyphicon glyphicon glyphicon-search" style="font-size: 1.5em;"></i></a></li>
@@ -377,6 +391,7 @@ var boardtype;
 			</div>
 		</div>
 	</div>
+	
 	
 		<c:import url="/WEB-INF/views/modal/write.jsp" />
 	 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.grad.net.vo.NotiVo;
 import com.grad.net.vo.OrganzVo;
+import com.grad.net.vo.StudyVo;
 
 
 
@@ -36,24 +37,45 @@ public class NotiDao {
 	}
 
 	
-	public NotiVo getByNo(String tabnm, int no) {
+	public NotiVo getByNo(Map<String, Object> map) {
 		NotiVo vo = new NotiVo();
 		
 		/*
 		 * 정예린 
 		 */	
-		if(tabnm.equals("대학원")) {
-			vo = sqlSession.selectOne("noti.getGradByNo", no);
+		if(map.get("tabnm").equals("대학원")) {
+			vo = sqlSession.selectOne("noti.getGradByNo", map);
 			//System.out.println("vo");
 		}
 		/*
-		 * 박가혜 
+		 * 박가혜 정예린
 		 */
-		else if(tabnm.equals("연구실")) {
-			vo = sqlSession.selectOne("noti.getLabByNo", no);
+		else if(map.get("tabnm").equals("연구실")) {
+			vo = sqlSession.selectOne("noti.getLabByNo2", map);
 		}
 		
 		return vo;
+	}
+
+	
+	
+	/**
+	 * 정예린 대학원 모집공고 가져오기 2017-09-18
+	 */
+	public List<StudyVo> getGradNotiList() {
+		return sqlSession.selectList("noti.getGradNotiList");
+	}
+	
+	public List<StudyVo> getLabNotiList() {
+		return sqlSession.selectList("noti.getLabNotiList");
+	}
+
+	public List<StudyVo> getLabCodeList() {
+		return sqlSession.selectList("noti.getLabCodeList");
+	}
+
+	public List<StudyVo> getLabCodeList(int no) {
+		return sqlSession.selectList("noti.getLabCodeListByNo", no);
 	}
 	
 	

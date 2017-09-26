@@ -1,16 +1,25 @@
 <%
-for( var i = 0; i < data.length; i++ ) {
+for( var i = 0; i < counList.length; i++ ) {
 	
-	var vo = data[ i ];
+	var vo = counList[ i ];
 	
-	if(vo.count==0) {			
+if(vo.count==0) {		
+	if(vo.wrtbtDstnct =="일반게시판"){	
 %>
-<div class="w3-card-2 w3-margin">
-	<input type="hidden" value=<%=vo.rownum%> class="rownum">
-<div class="w3-container interest">#화학, #생물학, #화학공학</div><div class="w3-container"><h4><b><a href="${pageContext.servletContext.contextPath }/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts"><%=vo.wrtbtTitle%></a></b></h4></div>
-	<div class="w3-container">
-		<div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
-			<a href="${pageContext.servletContext.contextPath }/counseling/detail?no=<%=vo.wrtbtNo%>}&type=reply">답변하기</a></div>
+<div class="w3-card-2 w3-margin w3-topbar w3-border-blue">
+			<input type="hidden" value=<%=vo.rownum%> class="rownum">
+							<div class="w3-container interest">#화학, #생물학, #화학공학</div>
+							<div class="w3-container">
+								<h4>
+									<b><a
+										href="/net/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts"><%=vo.wrtbtTitle%></a></b>
+								</h4>
+							</div>
+							<div class="w3-container">
+								<div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
+									<a href="/net/counseling/detail?no=<%=vo.wrtbtNo%>"}&type=reply">답변하기</a>
+								</div>
+								<a class="" href='#' onclick="doScrap('게시글',<%=vo.wrtbtNo%>,<%=user%>);"><i class='glyphicon glyphicon-paperclip do-scrapcoun<%=vo.wrtbtNo%>'></i></a>
 								<div class="dropup option">
 									<button class="w3-button w3-padding w3-padding w3-round-large"
 										type="button" data-toggle="dropdown">
@@ -25,29 +34,62 @@ for( var i = 0; i < data.length; i++ ) {
 							</div>
 							<br>
 						</div>
-<%
-	}
-	else if(vo.count!=0) {
-%>
-	<div class="w3-card-2 w3-margin">
+						
+						
+<%		}else if(vo.wrtbtDstnct =="상담게시판"){	%>
+<div class="w3-card-2 w3-margin w3-topbar w3-border-red">
 			<input type="hidden" value=<%=vo.rownum%> class="rownum">
-							<div class="w3-container interest">#유학 #외국 #컴퓨터</div>
+							<div class="w3-container interest">#화학, #생물학, #화학공학</div>
 							<div class="w3-container">
 								<h4>
 									<b><a
-										href="${pageContext.servletContext.contextPath }/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts"><%=vo.wrtbtTitle%></a></b>
+										href="/net/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts"><%=vo.wrtbtTitle%></a></b>
 								</h4>
 							</div>
 							<div class="w3-container">
-								<h6><%=vo.renknm%>
-									<span class="w3-opacity"><%=vo.reavlblBeginDt%>에
+								<div class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
+									<a href="/net/counseling/detail?no=<%=vo.wrtbtNo%>"}&type=reply">답변하기</a>
+								</div>
+								<a class="" href='#' onclick="doScrap('게시글',<%=vo.wrtbtNo%>,<%=user%>);"><i class='glyphicon glyphicon-paperclip do-scrapcoun<%=vo.wrtbtNo%>'></i></a>
+								<div class="dropup option">
+									<button class="w3-button w3-padding w3-padding w3-round-large"
+										type="button" data-toggle="dropdown">
+										<i class="glyphicon glyphicon-option-horizontal"></i>
+									</button>
+									<ul class="dropdown-menu">
+										<li><a href="#">익명으로 답변하기</a></li>
+										<li><a href="#">스크랩하기</a></li>
+										<li><a href="#">신고하기</a></li>
+									</ul>
+								</div>
+							</div>
+							<br>
+						</div>
+		
+						
+<%
+		}}
+		else if(vo.count!=0) {
+			
+			if(vo.wrtbtDstnct =="일반게시판"){
+%>
+						
+	<div class="w3-card-2 w3-margin w3-topbar w3-border-blue">
+			<input type="hidden" value=<%=vo.rownum%> class="rownum">
+							<div class="w3-container interest">#유학 #외국 #컴퓨터</div>
+							<div class="w3-container">
+								<h4><b><a href="/net/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts"><%=vo.wrtbtTitle%></a></b>
+								</h4></div>
+							<div class="w3-container">
+								<h6><%=vo.reNknm%>
+									<span class="w3-opacity"><%=vo.reAvlblBeginDt%>에
 										답변</span>
 								</h6>
 								<p>
 									<a
-										href="${pageContext.servletContext.contextPath }/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts"><%=vo.rewrtbtText%></a>
+										href="/net/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts"><%=vo.reWrtbtText%></a>
 								</p>
-							</div>
+</div>
 							<div class="w3-container">
 								<div
 									class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
@@ -61,6 +103,7 @@ for( var i = 0; i < data.length; i++ ) {
 									class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
 									Down <span class="badge"><%=vo.ncmdCo%></span>
 								</div>
+								<a class="" href='#' onclick="doScrap('게시글',<%=vo.wrtbtNo%>,<%=user%>);"><i class='glyphicon glyphicon-paperclip do-scrapcoun<%=vo.wrtbtNo%>'></i></a>
 								<div class="dropup option">
 									<button class="w3-button w3-padding w3-padding w3-round-large"
 										type="button" data-toggle="dropdown">
@@ -76,6 +119,56 @@ for( var i = 0; i < data.length; i++ ) {
 							<Br>
 						</div>
 <%
-	}
-}
+	}else if(vo.wrtbtDstnct =="상담게시판"){
+	
 %>
+	<div class="w3-card-2 w3-margin w3-topbar w3-border-red">
+			<input type="hidden" value=<%=vo.rownum%> class="rownum">
+							<div class="w3-container interest">#유학 #외국 #컴퓨터</div>
+							<div class="w3-container">
+								<h4><b><a href="/net/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts"><%=vo.wrtbtTitle%></a></b>
+								</h4></div>
+							<div class="w3-container">
+								<h6><%=vo.reNknm%>
+									<span class="w3-opacity"><%=vo.reAvlblBeginDt%>에
+										답변</span>
+								</h6>
+								<p>
+									<a
+										href="/net/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts"><%=vo.reWrtbtText%></a>
+								</p>
+</div>
+							<div class="w3-container">
+								<div
+									class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
+									answers<span class="w3-badge w3-white"><%=vo.count%></span>
+								</div>
+								<div
+									class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
+									Up <span class="w3-badge w3-white"><%=vo.rcmdCo%></span>
+								</div>
+								<div
+									class="w3-button w3-padding-small w3-white w3-border w3-border-white w3-round-large">
+									Down <span class="badge"><%=vo.ncmdCo%></span>
+								</div>
+								<a class="" href='#' onclick="doScrap('게시글',<%=vo.wrtbtNo%>,<%=user%>);"><i class='glyphicon glyphicon-paperclip do-scrapcoun<%=vo.wrtbtNo%>'></i></a>
+								<div class="dropup option">
+									<button class="w3-button w3-padding w3-padding w3-round-large"
+										type="button" data-toggle="dropdown">
+										<i class="glyphicon glyphicon-option-horizontal"></i>
+									</button>
+									<ul class="dropdown-menu">
+										<li><a href="#">익명으로 답변하기</a></li>
+										<li><a href="#">스크랩하기</a></li>
+										<li><a href="#">신고하기</a></li>
+									</ul>
+								</div>
+							</div>
+							<Br>
+						</div>
+						
+		
+	<%
+		}}
+	}
+	%>

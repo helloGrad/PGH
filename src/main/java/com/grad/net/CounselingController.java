@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.grad.net.security.Auth;
 import com.grad.net.security.AuthUser;
 import com.grad.net.service.ApndngFileService;
+import com.grad.net.service.CodeService;
 import com.grad.net.service.CounselingService;
+import com.grad.net.service.MemberService;
+import com.grad.net.service.NotiService;
 import com.grad.net.vo.ApndngFileVo;
 import com.grad.net.vo.CounselingVo;
 import com.grad.net.vo.MemberVo;
@@ -38,6 +41,15 @@ public class CounselingController {
 	@Autowired
 	ApndngFileService apndngFileService;
 	
+	@Autowired
+	CodeService codeService;
+	
+	@Autowired
+	MemberService memberService;
+	
+	@Autowired
+	NotiService notiService;
+	
 	
 	/**
 	 * 박가혜 2017-08-23
@@ -48,6 +60,20 @@ public class CounselingController {
 
 		//List<CounselingVo> counselingList= counselingService.getCounselingList("전체","공감순");
 		List<CounselingVo> ReplyList= counselingService.getReplyList();
+		
+		JSONArray jsonArray = new JSONArray();
+		model.addAttribute("codeList", codeService.getStudyList());
+		model.addAttribute("gradList", notiService.getGradNotiList());
+		model.addAttribute("labList", notiService.getLabNotiList());
+		model.addAttribute("labCodeList", notiService.getLabCodeList());
+		
+		if (authUser != null) {
+			model.addAttribute("scrapList", memberService.getScrapList(authUser.getMbNo()));
+			model.addAttribute("scrapList", jsonArray.fromObject(memberService.getScrapList(authUser.getMbNo())));
+		}
+		
+		model.addAttribute("gradList", jsonArray.fromObject(notiService.getGradNotiList()));
+		model.addAttribute("labList", jsonArray.fromObject(notiService.getLabNotiList()));
 	
 		model.addAttribute("authUser", authUser);
 		//model.addAttribute("counselingList", counselingList);

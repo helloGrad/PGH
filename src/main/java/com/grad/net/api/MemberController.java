@@ -169,6 +169,33 @@ public class MemberController {
 		return JSONResult.success(organzList);
 	}
 	
+	/*
+	 * 정예린 2017-09-19 스크랩
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/addscrap", method = RequestMethod.GET)
+	public JSONResult scrapInsert(@RequestParam("type") String type,
+			@RequestParam("id") String id,
+			@RequestParam("user") String user) {
+
+		System.out.println(type+" "+id+" "+user);
+		boolean success = memberService.insertScrap(type,id,user);
+
+		return JSONResult.success(success);
+	}
+	
+	/*
+	 * 정예린 2017-09-19 스크랩
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/deletescrap", method = RequestMethod.GET)
+	public JSONResult scrapDelete(@RequestParam("type") String type,
+			@RequestParam("id") String id,
+			@RequestParam("user") String user) {
+
+		boolean success = memberService.deleteScrap(type,id,user);
+		return JSONResult.success(success);
+	}
 
 
 }

@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import com.grad.net.security.AuthUser;
 import com.grad.net.service.NotiService;
+import com.grad.net.vo.MemberVo;
 import com.grad.net.vo.NotiVo;
 
 
@@ -54,15 +55,27 @@ public class NotiController {
 	 */		
 	@RequestMapping("/detail")
 	public String notiDetail(@RequestParam("no") int no,
-			@RequestParam("tabnm") String tabnm, Model model) {
+			@RequestParam("tabnm") String tabnm, Model model,@AuthUser MemberVo authUser) {
 		
-		System.out.println(tabnm+" "+no);
-		model.addAttribute("vo", notiService.getNoti(tabnm,no));
+		if(authUser == null) {
+			//System.out.println("+++"+authUser);
+			model.addAttribute("vo", notiService.getNoti(tabnm,no,-1L));
+			
+		}
+		else {
+			model.addAttribute("vo", notiService.getNoti(tabnm,no,authUser.getMbNo()));
+		}
+		
+		
+		
 		if(tabnm.equals("대학원")){
 			tabnm="grad";
 		}
 		else if(tabnm.equals("연구실")) {
 			tabnm="lab";
+			model.addAttribute("labCodeList", notiService.getLabCodeList(no));
+
+			
 		}
 		return "/noti/detail"+tabnm;
 	}

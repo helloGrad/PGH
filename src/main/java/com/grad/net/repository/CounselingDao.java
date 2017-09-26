@@ -149,4 +149,19 @@ public class CounselingDao {
 	public int lastInsertId() {
 		return sqlSession.selectOne("counseling.lastInsertId");
 	}
+	
+	/*
+	 * 정예린 2017-09-25
+	 */
+	
+	public int countCounList(String type) {
+		return sqlSession.selectOne("counseling.countCounList",type);
+	}
+
+	/*
+	 * 정예린 2017-09-25
+	 */
+	public List<CounselingVo> countCounList(Map<String, Object> map) {
+		return sqlSession.selectList("counseling.getCounList",map);
+	}
 }

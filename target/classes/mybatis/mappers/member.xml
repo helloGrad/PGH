@@ -125,5 +125,30 @@
 			
 	</update>
 	
+		<!-- 정예린 2017-09-19 스크랩 -->
+	<insert id="insertScrap" parameterType="map"> 
+		<![CDATA[
+		 	insert into mb_scrap_info (mb_no,prnts_no,prnts_dstnct)
+			values (#{user},#{id},#{type});
+		]]>
+	</insert>
+
+	<!-- 정예린 2017-09-19 스크랩 -->
+	<delete id="deleteScrap" parameterType="map">
+	<![CDATA[	
+		delete from mb_scrap_info 
+		where MB_NO=#{user }
+		and prnts_no=#{id }
+		and prnts_dstnct=#{type };
+	]]>
+	</delete>
+
+	<select id="getScrapList" parameterType="Long" resultType="memberVo">
+		<![CDATA[	
+		select mb_no mbNo, prnts_no prntsNo, prnts_dstnct prntsDstnct
+		from mb_scrap_info
+		where mb_no=#{mbNo };
+		]]>
+	</select>
 
 </mapper>

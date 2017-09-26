@@ -19,6 +19,8 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">	
+
 <!--//////////////////////// footer End ////////////////////////////-->
 
 
@@ -47,7 +49,11 @@
 	color: #1abc9c !important;
 	background-color: white;
 }
-	
+
+
+body {
+            padding-top: 7em;
+ }	
 
 
 </style>	

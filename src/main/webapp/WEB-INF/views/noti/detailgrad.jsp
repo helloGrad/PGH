@@ -6,173 +6,264 @@
 <%
 	pageContext.setAttribute("newLine", "\n");
 %>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Title</title>
 <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link href="css/higrad-signup.css" rel="stylesheet">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/detail.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-
+<style>
+/* nav-bar css Start */
+.navbar {
+	background-color: rgba(255, 255, 255, 0.95);
+}
+.navbar-qna {
+	font-weight: 400;
+	margin-top: -5px;
+	margin-bottom: -5px;
+	margin-left: -1em;
+	font-size: 1.5vmin;
+	letter-spacing: 4px;
+	float: left;
+}
+.navbar-nav li a:hover {
+	color: #1abc9c !important;
+	background-color: white;
+}
+/* nav-bar End */
+#map {
+	height: 400px;
+	width: 100%;
+}
+body {
+	padding-top: 70px;
+}
+.grad-title {
+	box-shadow: 5px 10px 30px rgba(51, 102, 255, 0.2), -1px -1px 30px
+		rgba(102, 255, 51, 0.1);
+}
+.grad-background-color {
+	background-color: rgb(247, 245, 242);
+}
+.grad-color {
+	background-color: #92B558;
+}
+.scrap-on {
+	color: #FF0000;
+}
+</style>
 </head>
-<body>
+<body class="grad-background-color">
+	<!--nav-bar -->
+	<nav class="navbar navbar-default navbar-fixed-top al">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="main.html">하이그래드넷</a>
+				<ul class="nav navbar-nav">
+					<li><a class=" navbar-qna nav-btn" href="#"> <span
+							class=" w3-btn w3-border w3-round-large"><i
+								class="glyphicon glyphicon-pencil"></i>글쓰기</span></a></li>
+					<li><a class=" navbar-qna" href="#"> <span
+							class="w3-btn w3-border w3-round-large"><i
+								class="glyphicon glyphicon-check"></i>답변하기</span></a></li>
+				</ul>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href=""> <i
+							class="glyphicon glyphicon glyphicon-search"
+							style="font-size: 1.5em;"></i></a></li>
+					<li><a href=""> <i class="glyphicon glyphicon-user"
+							style="font-size: 1.5em;"></i></a></li>
+				</ul>
+			</div>
 
-	<c:import url="/WEB-INF/views/include/header.jsp" />
+		</div>
+	</nav>
 
-
-	<!-- //////////////////////////////////// lab recruit content //////////////////////////////// -->
 	<div class="container">
 		<div class="row">
+			<div class="w3-round-large w3-white grad-title">
 
-			<p class="lead">
-				<span class="grad-recruit"> ${vo.slctnTitle }</span> <br>
-				<span class="application-period"> 접수일 ${vo.slctnBeginDt } ~ ${vo.slctnEndDt }</span>
-			</p>
+				<div class="grad-color w3-text-white w3-round-large">
 
-			<hr>
-			<!--/////////////////////////// main content ///////////////////////////////////// -->
-			<div class=col-lg-8>
-				<p class="lead">
-					<span class="location"> ▣ 지원자격 </span>
-				</p>
-				<div>
-					<p class="contents">
-						${fn:replace(vo.suprtQualf, newLine,"<br>") }
-					</p>
+					<h2 class="w3-center w3-padding-16" style="letter-spacing: 0.2em;">${vo.orgnzFullNm }</h2>
 				</div>
+				<h3 class="w3-center">${vo.slctnTitle }</h3>
+				<p class="w3-center w3-large">접수기간 ${vo.slctnBeginDt } ~
+					${vo.slctnEndDt }</p>
 
-				<hr>
-
-				<p class="lead">
-					<!--////// 전형 일정 //////-->
-					<span class="location"> ▣ 전형방법 </span>
-				</p>
-				<div>
-					<p class="contents">${vo.slsnMth }</p>
-
-				</div>
-
-				<hr>
-
-				<p class="lead">
-					<!--////// 전형 일정 //////-->
-					<span class="location"> ▣ 전형일정 </span>
-				</p>
-				<div>
-					<table class="table table-striped">
-						<tbody>
-							<tr>
-								<td>원서접수</td>
-								<td>${vo.slctnBeginDt } ~ ${vo.slctnEndDt }</td>
-								<td>${vo.rcpMth }</td>
-							</tr>
-							<tr>
-								<td>전형기간</td>
-								<td>${vo.slsnBeginDd } ~ ${vo.slsnEndDd }</td>
-								<td>${vo.slsnPlac }</td>
-							</tr>
-							<tr>
-								<td>합격자 발표</td>
-								<td>${vo.sccnAncmDd }</td>
-								<td>${vo.sccnAncmMth }</td>
-							</tr>
-							<tr>
-								<td>등록기간</td>
-								<td>${vo.regstBeginDd } ~ ${vo.regstEndDd }</td>
-								<td>${vo.regstMth }</td>
-							</tr>
-						</tbody>
-					</table>
-
-				</div>
-
-				<hr>
-
-
-			</div>
-			<!--/////////////////////////// side floating menu//////////////////////////////// -->
-			<div class="col-lg-4">
-
-				<div class=well>
-					<p class="lead">
-						<span class="location"> 모집인원 </span>
-					</p>
-					<p>모집인원 : ${vo.slctnNops }</p>
-				</div>
-
-				<div class="well">
-					<p class="lead">CONTACT</p>
-					<p>담당자 : ${vo.chrgrNm }</p>
-					<P>전화번호 : ${vo.chrgrTelNo }</P>
-					<P>email : ${vo.chrgrEmail }</P>
-				</div>
-				<div class=well>
-					<a href="${vo.slctnNotiUrl }"><div class="btn btn-primary web-volunteer" >입학안내 바로가기</div></a>
+				<div class="w3-row-padding w3-center" style="margin-top: 1px">
+					<div class="w3-container">
+						<h5>모집 학과</h5>
+						<div class="w3-tag w3-round w3-light-green" style="padding: 2px">
+							<span
+								class="w3-tag w3-default w3-border w3-border-white w3-white"
+								style="padding: 3px;">문화학과</span>
+						</div>
+					</div>
+					<div class="w3-container w3-row w3-center w3-padding-32">
+						<div class="w3-quarter w3-text-grey w3-margin-bottom">
+							<span class="w3-xlarge"> 
+							<c:choose>
+									<c:when test="${vo.scrapYn=='Y' }">
+										<i class="glyphicon glyphicon-heart-empty do-scrapnoti${vo.slctnNotiNo } scrap-on "
+											onclick="doScrap('모집공고',${vo.slctnNotiNo },${authUser.mbNo });"></i>
+									</c:when>
+									<c:when test="${vo.scrapYn=='N' }">
+										<i class="glyphicon glyphicon-heart-empty do-scrapnoti${vo.slctnNotiNo } "
+											onclick="doScrap('모집공고',${vo.slctnNotiNo },${authUser.mbNo });"></i>
+									</c:when>
+							</c:choose>
+							</span> <br>${vo.scrapNum }명이 관심을 가지고 있습니다.
+						</div>
+						<div class="w3-quarter w3-margin-bottom">
+							<span class="w3-xlarge" style="letter-spacing: 0.3em;">모집인원</span>
+							<br> <span class="w3-text-grey">${vo.slctnNops }</span>
+						</div>
+						<div class="w3-quarter w3-margin-bottom">
+							<span class="w3-xlarge" style="letter-spacing: 0.3em;">전형방법</span>
+							<br> <span class="w3-text-grey">${vo.slsnMth }</span>
+						</div>
+						<a href="#contact">
+							<div class="w3-quarter w3-margin-bottom">
+								<span class="w3-xlarge" style="letter-spacing: 0.3em;">CONTACT</span>
+								<br> <span class="w3-text-grey">담당자 및 연락처</span>
+							</div>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
 
+		<br> <Br>
 		<div class="row">
-			<!--///////////////////////// 지도 /////////////////////////-->
-			<p class="lead">
-				<i class="glyphicon glyphicon-map-marker"></i> 찾아오시는 길
-				<!--///////////////////////// 대학원 주소 /////////////////////////-->
-				<span class="location"> • ${vo.addr }</span> <input id="address"
-					type="hidden" value="${vo.addr }">
-			</p>
-			<div id="map"></div>
-			<script>
-				function initMap() {
+			<div class="w3-content " style="max-width: 700px">
+				<div class="w3-round-large w3-padding-16 w3-white">
+					<h5 class="w3-center w3-padding-16">
+						<span class="w3-tag w3-wide w3-xlarge">지원 자격</span>
+					</h5>
+					<div class="w3-panel">
+						<div class="w3-content">
+							<div class="w3-container menu w3-padding">
+								<p class="w3-large w3-text-grey">
+									<i>${fn:replace(vo.suprtQualf, newLine,"<br>") }</i>
+								</p>
+							</div>
+						</div>
+					</div>
+					<h5 class="w3-center w3-padding-16">
+						<span class="w3-tag w3-wide w3-xlarge">전형 일정</span>
+					</h5>
+					<div class="w3-panel">
+						<div class="w3-content">
+							<div class="w3-container w3-padding">
+								<h4>
+									원서접수 <span class="w3-text-grey">${vo.slctnBeginDt } ~
+										${vo.slctnEndDt }</span>
+								</h4>
+								<p class="w3-text-grey">${vo.rcpMth }</p>
+								<hr>
+								<h4>
+									전형일 <span class="w3-text-grey">${vo.slsnBeginDd } ~
+										${vo.slsnEndDd }</span>
+								</h4>
+								<p class="w3-text-grey">${vo.slsnPlac }</p>
+								<hr>
+								<h4>
+									합격자 발표 <span class="w3-text-grey">${vo.sccnAncmDd }</span>
+								</h4>
+								<p class="w3-text-grey">${vo.sccnAncmMth }</p>
+								<hr>
+								<h4>
+									등록기간 <span class="w3-text-grey">${vo.regstBeginDd } ~
+										${vo.regstEndDd }</span>
+								</h4>
+								<p class="w3-text-grey">${vo.regstMth }</p>
+							</div>
+						</div>
+					</div>
 
-					var geocoder = new google.maps.Geocoder();
-					var address = document.getElementById('address').value;
-					setCenter(geocoder, address);
-				}
+					<div class="w3-padding">
+						<h5 class="w3-center w3-padding-16">
+							<span class="w3-tag w3-wide w3-xlarge" id="contact">Contact</span>
+						</h5>
+						<h5>
+							<i class="glyphicon glyphicon-user w3-text-teal w3-large"></i> ${vo.chrgrNm }
+						</h5>
+						<h5>
+							<i class="glyphicon glyphicon-earphone w3-text-teal w3-large"></i> ${vo.chrgrTelNo }
+						</h5>
+						<h5>
+							<i class="glyphicon glyphicon-envelope w3-text-teal w3-large"></i> 
+							${vo.chrgrEmail }
+						</h5>
+						<h5>
+							<i class="glyphicon glyphicon-map-marker w3-text-teal w3-large"></i> ${vo.addr }
+						</h5>
+						<input id="address" type="hidden" value="${vo.addr }">
+						<div id="map"></div>
+						<script>
+                        function initMap() {
+                            var geocoder = new google.maps.Geocoder();
+                            var address = document.getElementById('address').value;
+                            setCenter(geocoder, address);
+                        }
+                        function setCenter(geocoder, address) {
+                            geocoder.geocode({
+                                'address': address
+                            }, function (results, status) {
+                                if (status === google.maps.GeocoderStatus.OK) {
+                                    var map = new google.maps.Map(document.getElementById('map'), {
+                                        zoom: 14,
+                                        center: results[0].geometry.location
+                                    });
+                                    var marker = new google.maps.Marker({
+                                        position: results[0].geometry.location,
+                                        map: map
+                                    });
+                                } else {
+                                    alert('Geocode was not successful for the following reason: ' + status);
+                                    // return null;
+                                }
+                            });
+                        }
+                    </script>
+						<script async defer
+							src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEl_BNACj7LCF2Hzs2Ft-9-XBf5Z4AZLQ&callback=initMap">
+                    </script>
 
-				function setCenter(geocoder, address) {
-					geocoder
-							.geocode(
-									{
-										'address' : address
-									},
-									function(results, status) {
-										if (status === google.maps.GeocoderStatus.OK) {
-											var map = new google.maps.Map(
-													document
-															.getElementById('map'),
-													{
-														zoom : 16,
-														scrollwheel : false,
-														center : results[0].geometry.location
-													});
-											var marker = new google.maps.Marker(
-													{
-														position : results[0].geometry.location,
-														map : map
-													});
-										} else {
-											alert('Geocode was not successful for the following reason: '
-													+ status);
-											// return null;
-										}
-									});
-				}
-			</script>
+						<div class="w3-padding-16">
+							<a href="#" onclick="window.open('${vo.slctnNotiUrl }')">
+								<button class="w3-btn w3-indigo w3-round-large text-center"
+									style="width: 100%">
+									<h3>
+										홈페이지 바로가기 <i class="glyphicon glyphicon-share-alt"></i>
+									</h3>
+								</button>
+							</a>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
 		</div>
+
 	</div>
-
-
-	<c:import url="/WEB-INF/views/include/footer.jsp" />
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEl_BNACj7LCF2Hzs2Ft-9-XBf5Z4AZLQ&callback=initMap"></script>
-
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/js/doscrap.js"></script>
 </body>
 </html>
