@@ -81,5 +81,10 @@ public class StudyService {
 	public List<OrganzVo> getLabCodeList() {
 		return studyDao.getLabCodeList();
 	}
+	
+	
+	public List<StudyVo> getSearchList(String text) {
+		return studyDao.getSearchList(text);
+	}
 
 }

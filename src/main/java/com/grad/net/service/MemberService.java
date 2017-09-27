@@ -1,5 +1,6 @@
 package com.grad.net.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.grad.net.repository.MemberDao;
 import com.grad.net.vo.CodeVo;
 import com.grad.net.vo.MemberVo;
+import com.grad.net.vo.StudyVo;
 
 
 
@@ -159,4 +161,148 @@ public class MemberService {
 	public MemberVo getUserByToken(String token) {
 		return memberDao.getUserByToken(token);
 	}
+	
+	
+	
+	public void registerStudy(String iden, String studys) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("iden", iden);
+		map.put("studys", studys);
+		memberDao.insertStudys(map);
+
+
+	}
+	
+	
+	public void registerStudyFacebook(String iden, String studys) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("iden", iden);
+		map.put("studys", studys);
+		memberDao.insertStudysFacebook(map);
+
+	}
+
+	public void modifyMbinfo(String mbNo, String type, List<String> cdNames) {
+
+		String dstnct = null;
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		if(type.equals("study")) {
+			dstnct = "학문";
+		}else if(type.equals("purpose")) {
+			dstnct = "방문목적";
+		}else if(type.equals("ar")){
+			dstnct = "지역";
+		}else {
+			dstnct = "연구분야";
+		}
+
+		map.put("dstnct", dstnct);
+		map.put("mbNo", mbNo);
+		memberDao.deleteInfoByType(map);
+
+		for(int i=0;i<cdNames.size();i++) {
+			map.put("cdNames", cdNames.get(i));
+			memberDao.insertinfo(map);
+		}
+
+
+
+
+	}
+
+	public List<CodeVo> getResearchCode(List<String> researchNames) {
+		return memberDao.getResearchCode(researchNames);
+	}
+
+	public MemberVo getprivateInfo(MemberVo authUser) {
+		return memberDao.getprivateInfo(authUser.getMbNo());
+	}
+
+	public boolean updateNknm(String mbNo, String nknm) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("mbNo", mbNo);
+		map.put("nknm", nknm);
+		return memberDao.updateNknm(map);
+		
+	}
+
+	public boolean updateMbDstnct(String mbNo, String email) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("mbNo", mbNo);
+		map.put("email", email);
+		
+		return memberDao.updateMbDstnct(map);
+		
+	}
+
+	public List<CodeVo> getinfoList(MemberVo authUser) {
+		return memberDao.getinfoList(authUser);
+	}
+
+	public List<StudyVo> getArticleByInfo(List<CodeVo> codeList, Long long1) {
+		
+		List<String> studyList = new ArrayList<String>();
+		List<String> purposeList = new ArrayList<String>();
+		List<String> researchList = new ArrayList<String>();
+		List<String> arList = new ArrayList<String>();
+		List<String> boardList = new ArrayList<String>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if(long1 == -1) {
+			for(int i=0;i<codeList.size();i++){
+				String type = codeList.get(i).getCdDstnct();
+				String data = codeList.get(i).getCdNm();
+				
+				if(type.equals("학문")) {
+					studyList.add(data);
+					boardList.add(data+"게시판");
+				}else if(type.equals("방문목적")) {
+					purposeList.add(data);
+				}else if(type.equals("연구분야")) {
+					researchList.add(data);
+				}else if(type.equals("지역")) {
+					arList.add(data);
+				}
+			}
+		}
+		
+		map.put("mbNo", long1);
+		map.put("studyList", studyList);
+		map.put("purposeList", purposeList);
+		map.put("researchList", researchList);
+		map.put("arList", arList);
+		map.put("studyListSize", studyList.size());
+		map.put("purposeListSize", purposeList.size());
+		map.put("researchListSize", researchList.size());
+		map.put("arListSize", arList.size());
+		map.put("boardList", boardList);
+		
+		
+		
+		
+		return memberDao.getArticleByInfo(map);
+	}
+
+	public List<CodeVo> getReasearchList(Long slctnNotiNo) {
+		return memberDao.getReasearchList(slctnNotiNo);
+	}
+
+	public List<StudyVo> getMyBoardList(MemberVo authUser) {
+		return memberDao.getMyBoardList(authUser.getMbNo());
+	}
+
+	public List<CodeVo> getBoardScrapList(MemberVo authUser) {
+		return memberDao.getBoardScrapList(authUser.getMbNo());
+	}
+	
+	
+	public boolean existNknm(String nknm) {
+		MemberVo vo = memberDao.existNknm(nknm);
+		if(vo==null){
+			return false;
+		}
+		return true;
+	}
+	
 }

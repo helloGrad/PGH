@@ -25,8 +25,8 @@
 		<!-- 정예린  -->
 	<select id="selectStudyList" resultType="codeVo">
 		<![CDATA[
-			select lab.cdId,lab.cdDstnct,lab.cdNm, lab.labIngCount, lab.labEndCount, grad.gradIngCount, grad.gradEndCount
-			from (select c.cd_id cdId, c.cd_nm cdNm, ifnull(c1.cing,0) labIngCount, ifnull(c2.cend,0) labEndCount, c.cd_dstnct cdDstnct
+			select lab.cdId,lab.cdDstnct,lab.cdNm, lab.engCodeNm engCodeNm, lab.labIngCount, lab.labEndCount, grad.gradIngCount, grad.gradEndCount
+			from (select c.cd_id cdId, c.cd_nm cdNm, replace(replace(c.ENG_CODE_NM,' ',''),',','') engCodeNm,  ifnull(c1.cing,0) labIngCount, ifnull(c2.cend,0) labEndCount, c.cd_dstnct cdDstnct
 					from  (select c.cdNm cdNm, count(*) cing
 							from (select noti.noti_no notiNo, noti.orgnz_no orgnzNo, noti.noti_dstnct notiDstnct, (select cd_nm from cd where cd_id = concat(substr(c.cd_id,1,1),'000000')) cdNm
 							from (select SLCTN_NOTI_NO noti_no, ORGNZ_NO orgnz_no, SLCTN_NOTI_DSTNCT noti_dstnct, PCHRG_YN pchrgYn,slctn_end_dt slctnEndDt ,slctn_begin_dt slctnBeginDt

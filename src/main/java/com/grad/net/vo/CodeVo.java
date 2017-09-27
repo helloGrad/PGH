@@ -26,6 +26,10 @@ public class CodeVo {
 
 	private int labIngCount;
 	private int labEndCount;
+	
+	
+	private Long prntsNo;
+	
 	public String getCdId() {
 		return cdId;
 	}
@@ -86,12 +90,19 @@ public class CodeVo {
 	public void setLabEndCount(int labEndCount) {
 		this.labEndCount = labEndCount;
 	}
+	
+	public Long getPrntsNo() {
+		return prntsNo;
+	}
+	public void setPrntsNo(Long prntsNo) {
+		this.prntsNo = prntsNo;
+	}
 	@Override
 	public String toString() {
 		return "CodeVo [cdId=" + cdId + ", cdNm=" + cdNm + ", engCodeNm=" + engCodeNm + ", cdDstnct=" + cdDstnct
 				+ ", prntsCdId=" + prntsCdId + ", prntsCdNm=" + prntsCdNm + ", gradIngCount=" + gradIngCount
 				+ ", gradEndCount=" + gradEndCount + ", labIngCount=" + labIngCount + ", labEndCount=" + labEndCount
-				+ "]";
+				+ ", prntsNo=" + prntsNo + "]";
 	}
 	
 	

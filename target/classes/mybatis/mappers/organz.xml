@@ -120,5 +120,19 @@
 		]]>
 	</select>
 	
+	
+	
+		<!-- 정예린 -->
+	<select id="getOrganzByNo" resultType="organzVo">
+		<![CDATA[
+		select orgnz_no orgnzNo, orgnz_nm orgnzNm, ENG_ORGNZ_NM engOrgnzNm, ORGNZ_DSTNCT orgnzDstnct, HMPAGE_URL hmpageUrl, TEL_NO telNo, FAX_NO faxNo, addr, DETAIL_ADDR detailAddr, 
+		PRNTS_ORGNZ_NO prntsOrgnzNo, MAP_PROF_NM mapProfNm, LAB_INTRO labIntro, RSRCHR_INFO_TEXT rsrchrInfoText,HMNBRD_DSTNCT hmnbrdDstnct, 
+		ORGNZ_FULL_NM orgnzFullNm, GRSCH_DSTNCT grschDstnct, ABOLT_YN aboltYn, SYMBOL_COLOR_NM
+		from organz
+		where orgnz_no = #{no};
+		]]>
+	</select>
+	
+	
 
 </mapper>

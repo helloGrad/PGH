@@ -12,7 +12,72 @@ var emailRegExp = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,
 $(function(){
 	
 	
+	if (matchMedia("screen and (min-width: 600px)").matches) {
+
+		$("#writerleft").insertAfter("#writeright");
+	} else {
+
+		$("#writeright").insertAfter("#writeleft");
+
+	}
+
+	//var boardtype;
+
+	$(document).ready(function() {
+
+		$("#myBtnlogin").click(function() {
+
+			$("#login").css({
+				"display" : "block"
+			});
+
+		});
+
+		$(".close").click(function() {
+			$("#login").css({
+				"display" : "none"
+			});
+			
+			$("#signup").css({
+				"display" : "none"
+			});
+			
+			$("#signup2").css({
+				"display" : "none"
+			});
+		});
+
+		$("html").click(function(event) {
+			if (event.target.id === "login") {
+				$("#login").css({
+					"display" : "none"
+				});
+			}
+		});
+
+	});
+
+	$(document).keydown(function(e) {
+
+		var modal1 = document.getElementById('login');
+		var modal2 = document.getElementById('signup2');
+		var modal3 = document.getElementById('writeModal');
+		
+		console.log(modal1+" "+modal2+" "+modal3);
+		if (e.keyCode == 27) {
+
+			modal2.style.display = "none";
+			modal1.style.display = "none";
+			modal3.style.display = "none";
+		}
+	});
+
+	$('#naverLoginBtn2').click(function() {
+
+		$("#naverLoginBtn").click();
+	});
 	
+		
 	$("#email").on('keypress',function(){
 		$("#emailMsg").empty();
 	})
@@ -35,6 +100,39 @@ $(function(){
 	});
 	
 })
+
+
+var modalOpen = function() {
+
+		console.log("모달오픈11");
+		var modal1 = document.getElementById('signup2');
+		var modal2 = document.getElementById('login');
+
+		modal2.style.display = "block";
+		modal1.style.display = "none";
+
+		window.onclick = function(event) {
+			if (event.target == modal2) {
+				modal2.style.display = "none";
+			}
+		}
+	}
+
+	var modalOpen2 = function() {
+
+		console.log("모달오픈22");
+		var modal1 = document.getElementById('login');
+		var modal2 = document.getElementById('signup2');
+
+		modal2.style.display = "block";
+		modal1.style.display = "none";
+
+		window.onclick = function(event) {
+			if (event.target == modal2) {
+				modal2.style.display = "none";
+			}
+		}
+	}
 
 
 

@@ -49,5 +49,10 @@ public class StudyDao {
 	public List<OrganzVo> getLabCodeList() {
 		return sqlSession.selectList("organz.getLabCodeList");
 	}
+	
+	
+	public List<StudyVo> getSearchList(String text) {
+		return sqlSession.selectList("study.getSearchList",text);
+	}
 
 }

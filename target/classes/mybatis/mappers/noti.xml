@@ -171,7 +171,7 @@
 			from (select p.orgnz_nm '학과', p.PRNTS_ORGNZ_NO pno2, c.*
 			from (select o.ORGNZ_NM '연구실', o.PRNTS_ORGNZ_NO pno1, sn.SLCTN_NOTI_NO, o.SYMBOL_COLOR_NM, sn.SLCTN_NOTI_DSTNCT,sn.NOTI_REGST_DT, 
 			sn.SLCTN_BEGIN_DT, sn.SLCTN_END_DT ,TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(now()) "dday",TO_DAYS(now()) - TO_DAYS(sn.SLCTN_BEGIN_DT) "현재날짜-시작일", 
-			TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(sn.SLCTN_BEGIN_DT) "totaldays", TO_DAYS(now()) - TO_DAYS(sn.SLCTN_BEGIN_DT)/TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(sn.SLCTN_BEGIN_DT) "percent",
+			TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(sn.SLCTN_BEGIN_DT) "totaldays",  round(((TO_DAYS(now()) - TO_DAYS(sn.SLCTN_BEGIN_DT))/(TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(sn.SLCTN_BEGIN_DT))*100),3) "percent",
 			sn.SLCTN_TITLE slctnTitle,sn.SLCTN_YYCL slctnYycl,sn.SLCTN_SEMSTR slctnSemstr, sn.PCHRG_YN pchrgYn
 			from organz o, slctn_Noti sn
 			where o.ORGNZ_NO = sn.ORGNZ_NO) c left outer join organz p 
@@ -205,7 +205,7 @@
 			from (select p.orgnz_nm '학과', p.PRNTS_ORGNZ_NO pno2, c.*
 			from (select o.ORGNZ_NM '연구실', o.PRNTS_ORGNZ_NO pno1, sn.SLCTN_NOTI_NO, o.SYMBOL_COLOR_NM, sn.SLCTN_NOTI_DSTNCT,sn.NOTI_REGST_DT, 
 			sn.SLCTN_BEGIN_DT, sn.SLCTN_END_DT ,TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(now()) "dday",TO_DAYS(now()) - TO_DAYS(sn.SLCTN_BEGIN_DT) "현재날짜-시작일", 
-			TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(sn.SLCTN_BEGIN_DT) "totaldays", TO_DAYS(now()) - TO_DAYS(sn.SLCTN_BEGIN_DT)/TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(sn.SLCTN_BEGIN_DT) "percent",
+			TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(sn.SLCTN_BEGIN_DT) "totaldays", round(((TO_DAYS(now()) - TO_DAYS(sn.SLCTN_BEGIN_DT))/(TO_DAYS(sn.SLCTN_END_DT) - TO_DAYS(sn.SLCTN_BEGIN_DT))*100),3) "percent",
 			sn.SLCTN_TITLE slctnTitle,sn.SLCTN_YYCL slctnYycl,sn.SLCTN_SEMSTR slctnSemstr, sn.PCHRG_YN pchrgYn, sn.BK21_EORGNZ_SUPRT_YN bk21EorgnzSuprtYn
 			from organz o, slctn_Noti sn
 			where o.ORGNZ_NO = sn.ORGNZ_NO) c left outer join organz p 
@@ -258,7 +258,7 @@
 		where s.slctn_noti_no = i.SLCTN_NOTI_NO
 		and pchrg_yn='y'
 		and to_days(s.slctn_End_Dt)-to_days(sysdate()) > 0 
-		and (to_days(s.slctn_End_Dt)-to_days(s.slctn_Begin_Dt))-(to_days(s.slctn_End_Dt)-to_days(sysdate())) >0
+		and (to_days(s.slctn_End_Dt)-to_days(s.slctn_Begin_Dt)) >= (to_days(s.slctn_End_Dt)-to_days(sysdate())) 
 		group by s.SLCTN_NOTI_NO, substr(cd_id,1,1)) c
 	</select>
 

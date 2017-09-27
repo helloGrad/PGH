@@ -3,153 +3,225 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<html>
 <head>
 <base target="_self" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-signin-client_id"
+	content="31840955156-0oh8u23d3t24v4rguka78knp12vo9jm4.apps.googleusercontent.com">
 
 
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
-
- <!--  
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- -->
 
-<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/ejs/ejs.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 
 
-<script>
-var boardtype; 
-</script>
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href="${pageContext.request.contextPath}/resources/css/higrad-signup.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<!--  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
 
 <!--//////////////////////// footer End ////////////////////////////-->
 
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap-social.css" rel="stylesheet"> 	
-
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap-social.css" rel="stylesheet">	
 <link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet">
 
 
-
+	
 <style>
-/* nav-bar css Start */
-.navbar {
-	background-color: rgba(255, 255, 255, 0.95);
-}
-.navbar-qna {
-	font-weight: 400;
-	margin-top: -5px;
-	margin-bottom: -5px;
-	margin-left: -1em;
-	font-size: 1.5vmin;
-	letter-spacing: 4px;
-	float: left;
-}
-.navbar-nav li a:hover {
-	color: #1abc9c !important;
-	background-color: white;
-}
+
+	
 
 
-/* nav-bar End */
-
-.hide{
-
-display:none;
-
-}
-
-.search{
-
-position: relative;
-display: block;
-margin: 15px 5px 15px 5px;
-width: -webkit-fill-available;
-height: auto;
-
-}
-
-
-
-.search:focus {
-  outline: none;
-}
-
-
-</style>
-
-
+</style>	
 
 <script>
 
-	//2017-09-01 박가혜 
 
+
+//2017-09-01 박가혜 
 	$(function() {
 
-		$(".searchBtn").click(function(event) {
+		$(document).ready(function() {
 
-			if ($(".search").hasClass("hide") === true) {
+			$("#myBtnlogin").click(function() {
 
-				$(".search").removeClass("hide");
-			} else {
-				$(".search").addClass("hide");
+				$("#login").css({
+					"display" : "block"
+				});
 
-			}
+			});
+
+			$(".close").click(function() {
+				$("#login").css({
+					"display" : "none"
+				});
+
+			$("html").click(function(event) {
+				if (event.target.id === "login") {
+					$("#login").css({
+						"display" : "none"
+					});
+				}
+			});
+			
+		
+			
 
 		});
+		
 
+
+	$(document).keydown(function(e) { 
+			
+
+			 var modal1 = document.getElementById('login');
+			  var modal2 = document.getElementById('signup2');
+			  var modal1 = document.getElementById('writeModal');
+			  var modal1 = document.getElementById('snsdiscon');
+		    if (e.keyCode == 27) { 
+		    	
+		    	 modal2.style.display = "none";
+				   modal1.style.display = "none";
+		    } 
+		});
+	
+	
+
+	
+	$('#naverLoginBtn2').click(function(){
+		  
+		
+		$("#naverLoginBtn").click();
+	});
+	
+
+	   
+	
+	
+	
 	})
+	
+	
+	
+	var modalOpen = function() {
+
+		 var modal1 = document.getElementById('signup2');	
+		   var modal2 = document.getElementById('login');
+		   
+		   modal2.style.display = "block";
+		   modal1.style.display = "none";
+		   
+		   window.onclick = function(event) {
+		       if (event.target == modal2) {
+		           modal2.style.display = "none";
+		       }
+		   }
+		}
+
+
+		var modalOpen2 = function() {
+
+		   var modal1 = document.getElementById('login');
+		   var modal2 = document.getElementById('signup2');
+
+
+		   modal2.style.display = "block";
+		   modal1.style.display = "none";
+		   
+		   window.onclick = function(event) {
+		       if (event.target == modal2) {
+		           modal2.style.display = "none";
+		       }
+		   }
+		}
+		
+		
+	});
+	
+	
 </script>
 
 
 	
-<title>하이그래드넷</title>
+	
 
+<title>하이그래드넷</title>
 </head>
 
 <nav class="navbar navbar-default navbar-fixed-top al">
     <div class="container">
-    
-    <div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-			  <a class="navbar-brand" href="${pageContext.servletContext.contextPath }/loginmain">하이그래드넷</a>
-			  
-				<ul class="nav navbar-nav">
-					<li><a id="headerBtn" class=" navbar-qna nav-btn writeBtn" href="#"> <span
-							class=" w3-btn w3-border w3-round-large"><i
-								class="glyphicon glyphicon-pencil"></i>글쓰기</span></a></li>
-					<li><a class=" navbar-qna" href="${pageContext.servletContext.contextPath }/counseling/list"> <span
-							class="w3-btn w3-border w3-round-large"><i
-								class="glyphicon glyphicon-check"></i>답변하기</span></a></li>
-				</ul>
-				
-				
-			</div>
-		
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="${pageContext.servletContext.contextPath }/">하이그래드넷</a>
+            <ul class="nav navbar-nav">
+                <li class="dropdown dropdown-large">
+                    <a class=" navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">커뮤니티 <span
+                            class="caret"></span></a>
 
+                    <ul class="dropdown-menu dropdown-menu-large row">
+                        <div class="">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#">모든 커뮤니티</a></li>
+                                <li><a href="#">즐겨찾기</a></li>
+                            </ul>
+                        </div>
+
+                        <br>
+
+                        <li class="col-xs-3 col-lg-3 table-bordered">
+                            <ul>
+                                <br>
+                                <li class="quick-menu"><a href="#"><i class="glyphicon glyphicon-search"></i>
+                                    <div class="lead" onclick="location.href='${pageContext.servletContext.contextPath }/organz/list'"><b>대학원</b></div>
+                                </a></li>
+                                <!--<li class=" "><a href="#"><img src="images/higrad-img/traffic.jpg"><div class="">대학원</div></a></li>-->
+                            </ul>
+                        </li>
+                        <li class="col-xs-3 col-lg-3 table-bordered">
+                            <ul>
+                                <br>
+                                <li class="quick-menu"><a href="${pageContext.servletContext.contextPath }/counseling/list"><img src="images/higrad-img/safari.jpg"></a>
+                                    <div class="" onclick="location.href='${pageContext.servletContext.contextPath }/counseling/list'"><b>질문하기</b></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col-xs-3 col-lg-3 table-bordered">
+                            <ul>
+                                <br>
+                                <li class="quick-menu"><a href="#"><img src="images/higrad-img/chemistry.jpg"></a>
+                                    <div class=""  onclick="location.href='${pageContext.servletContext.contextPath }/noti/list'"><b>연구실</b></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col-xs-3 col-lg-3 table-bordered">
+                            <ul>
+                                <br>
+                                <li class="quick-menu"><a href="#"><i class="glyphicon glyphicon-cog"></i>
+                                    <div class="lead"><b>설정</b></div>
+                                </a></li>
+                                <!--<li class=""><a href="#"><img src="images/higrad-img/settings.jpg"></a><div class="">설정</div></li>-->
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
             <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-            
-                <li>
-                	<form name="searchform" action="${pageContext.servletContext.contextPath }/search" onKeydown="javascript:if(event.keyCode == 13) form.submit();">
-					  <input type="text" class="w3-border w3-round-large search hide" name="text" placeholder="Search..">
-					</form>
-                </li>
-                
-                
-                <li>
-
-               		
-				<a href="#" class="searchBtn"> <i class="glyphicon glyphicon glyphicon-search" style="font-size: 1.5em;"></i></a>
-
-                </li>
+                <li><a href=""> <i class="glyphicon glyphicon glyphicon-search" style="font-size: 1.5em;"></i></a></li>
               <!--  <!—
             	    알림 설정
                 <li><a href=""> <i class="glyphicon glyphicon-bell" style="font-size: 1.5em;"></i></a></li>
@@ -160,14 +232,14 @@ height: auto;
 					<c:when test="${empty authUser }">
 						
 						<li>
-						<li><a href="#" onclick="modalOpen2();">회원가입</a></li>
+						<li><a href="#">회원가입</a></li>
 						  <hr class="setting-hr">
-		  			    <li><a id="myBtnlogin" href="javascript:void(0);" onclick="modalOpen();">로그인</a></li>
+		  			    <li><a id="myBtnlogin" href="javascript:void(0);">로그인</a></li>
 			
 						<li>
 					</c:when>
 					<c:otherwise>
-						<li><a>${authUser.nknm }님</a></li>
+						<li>${authUser.nknm }님</li>
 						<li><a href="${pageContext.servletContext.contextPath }/user/setting">계정 설정</a></li>
 						<li><a
 							href="${pageContext.servletContext.contextPath }/user/mypage">마이페이지</a>
@@ -350,12 +422,20 @@ height: auto;
 		</div>
 	</div>
 	
-	
-		<c:import url="/WEB-INF/views/modal/write.jsp" />
-	 
-	
-				
+	<div id="selectModal" class="login-modal">
+		<div class="login-modal-content">
+		 <div class="modal-header">
+        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+        	<h4 class="modal-title">학문을 선택해주세요 !!</h4>
+      	</div>
+			
+		</div>				
     </div>
+	
+	
+	<!----------------------------------------------------------------------------- ------------------------------------------------------------------------------------------- -->
+	
+	
 </nav>
 
 
@@ -366,9 +446,6 @@ height: auto;
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/login.js"></script>
 
 
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/counseling.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/write.js"></script>
 
 		
 		

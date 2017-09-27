@@ -44,4 +44,13 @@ public class OrganzDao {
 	
 	
 	
+	/*
+	 * 2017-09-27 정예린 검색 결과 번호로 기관 가져오기
+	 */
+	public OrganzVo getOrganzByNo(int no) {
+		return sqlSession.selectOne("organz.getOrganzByNo", no);
+	}
+	
+	
+	
 }

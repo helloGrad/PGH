@@ -97,13 +97,19 @@ public class CounselingController {
 		//System.out.println(authUser.getMbNo()+" "+no);
 		
 		
+		/*
+		 * 정예린 검색 결과 사용자가 없이 상담글에 접근하려고 할 때 널 처리 2017-09-27
+		 */
+		List<CounselingVo> existLike = new ArrayList<>();
+		
 		CounselingVo counselingPrnts = counselingService.getCounselingPrnts(no); //원글
 		List<CounselingVo> counselingReplyList = counselingService.getCounselingReplyDetail(no); //답글
-		List<CounselingVo> existLike =counselingService.existLike(authUser.getMbNo(),no);
-
 		
+		if(authUser!=null) {
+			existLike=counselingService.existLike(authUser.getMbNo(),no);
+		}
 		System.out.println(type);
-		
+	
 		//조횟수 
 		//counselingService.ChangefindCo(no);
 		

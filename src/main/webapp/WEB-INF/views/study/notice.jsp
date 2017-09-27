@@ -12,7 +12,6 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
 	
 
 
@@ -30,259 +29,67 @@
 <link href="${pageContext.request.contextPath}/resources/css/study.css" rel="stylesheet">
 
 <style>
+
+
+          /* nav-bar End */
         body {
-            padding-top: 6em;
+            padding-top: 5em;
         }
-
-        .more {
-            float: right;
-            width: 5em;
-            font-size: 0.5em;
-            margin-top: 1.5em;
-        }
-
-        @media screen and (max-width: 768px) {
-
-        }
-
-        @media screen and (min-width: 768px) {
-
-        }
-        .symposium {
-            height: 15em;
-        }
-
-        /*전공 네비게이션 박스*/
-        .major-nav-box {
-            height: 6em;
-            /*border-bottom: 1px solid grey;*/
-        }
-
-        .navbar-left {
-            font-weight: 400;
-            padding-top: 15px;
-            padding-bottom: 15px;
-            border: 0;
-            border-radius: 0;
-            margin-bottom: 0;
-            font-size: 14px;
-            letter-spacing: 5px;
-        }
-
-        .navbar-nav li a:hover {
-            color: #1abc9c !important;
+        .grad-banner {
+            box-shadow: 5px 10px 10px rgba(102, 102, 255, 0.3), -1px -1px 10px rgba(136, 176, 75, 0.3);
+            margin-bottom: 1.5em;
             background-color: white;
         }
 
-        .grad-banner {
-            margin-bottom: 3em;
+        .grad-banner:hover {
+            box-shadow: 5px 10px 30px rgba(102, 102, 255, 0.5), -1px -1px 30px rgba(136, 176, 75, 0.5);
+            margin-bottom: 1.5em;
+
         }
 
         .lab-banner {
-            margin-bottom: 3em;
-        }
-
-        /*공고 포스트 */
-        .noti-default {
-            width: 100%;
-            border: solid 1px #ccc;
-            border-radius: 3px;
-            margin-bottom: 5%;
-            background-color: #ffffff;
-        }
-
-        .noti-default:hover {
-            width: 100%;
-            border: solid 1px red;
-            border-radius: 3px;
-            margin-bottom: 5%;
-            background-color: #ffffff;
-        }
-
-        .noti-default2 {
-            width: 100%;
-            border: solid 1px #ccc;
-            border-radius: 3px;
-            margin-bottom: 5%;
-            background-color: #ffffff;
-        }
-
-        .noti-name {
-            color: darkblue;
-            border-left: 0.5em solid darkblue;
-            margin-bottom: 2%;
-            font-weight: 500;
-            font-size: 1.1em;
-            padding-left: 3%;
-            padding-right: 3%;
-            padding-top: 1%;
-            letter-spacing: 2px;
-
-
-        }
-
-        .noti-name2 {
-            color: darkblue;
-            margin-bottom: 2%;
-            font-weight: 500;
-            font-size: 1.1em;
-            padding-right: 3%;
-            padding-top: 1%;
-            letter-spacing: 2px;
-
-        }
-
-        .noti-title, .noti-subtitle {
-            font-size: 0.8em;
-            padding-left: 6%;
-            padding-right: 3%;
-            letter-spacing: 1px;
-        }
-
-        .noti-subtitle {
-            font-weight: bold;
-        }
-
-        .noti-endtext, .noti-hh {
-            width: 48%;
-            font-size: 0.8em;
-            color: #929292;
-            display: inline-block;
-            padding-left: 3%;
-            padding-right: 3%;
-            padding-bottom: 3%;
-        }
-
-        .noti-hh {
-            text-align: left;
-        }
-
-        .noti-endtext {
-            text-align: right;
-        }
-
-        .noti-period {
-            padding-top: 2%;
-            padding-bottom: 2%;
-        }
-
-        /*세미나 컨퍼런스*/
-        .thumbnail {
-            padding: 0 0 15px 0;
-            border-radius: 0;
-            box-shadow: 0 5px 40px 0 rgba(0, 0, 0, 0.1), 0 15px 25px 0 rgba(0, 0, 0, 0.1);
-            border : 1px solid white;
-        }
-
-        .thumbnail p {
-            margin-top: 15px;
-            color: #555;
-        }
-
-        /* Black buttons with extra padding and without rounded borders */
-        .btn {
-            padding: 10px 20px;
-            background-color: #333;
-            color: #f1f1f1;
-            border-radius: 0;
-            transition: .2s;
-        }
-
-        /* On hover, the color of .btn will transition to white with black text */
-        .btn:hover, .btn:focus {
-            border: 1px solid #333;
-            background-color: #fff;
-            color: #000;
-        }
-        .semester {
+            box-shadow: 5px 10px 10px rgba(51, 102, 255, 0.3), -1px -1px 10px rgba(75, 0, 130, 0.3);
+            margin-bottom: 1.5em;
             background-color: white;
-            color : grey;
-            letter-spacing: 1px;
-            margin-left: 1.2em;
-            font-size: 0.8em;
-            border-left: 3px solid #2aabd2;
-         
         }
+
+        .lab-banner:hover {
+            box-shadow: 5px 10px 30px rgba(51, 102, 255, 0.5), -1px -1px 30px rgba(75, 0, 130, 0.5);
+            margin-bottom: 1.5em;
+        }
+
         .conference-banner {
-            max-height : 183px;
+            box-shadow: 5px 10px 10px rgba(51, 102, 255, 0.3), -1px -1px 10px rgba(153, 0, 153, 0.3);
+            margin-bottom: 1.5em;
+            background-color: white;
+        }
+        .conference-banner:hover {
+            box-shadow: 5px 10px 30px rgba(51, 102, 255, 0.5), -1px -1px 30px rgba(153, 0, 153, 0.5);
+            margin-bottom: 1.5em;
+            background-color: white;
         }
 
-        .thumbnail{
-            border-radius: 7px;
+        .qna-banner {
+            box-shadow: 5px 10px 10px rgba(0, 0, 51, 0.3), -1px -1px 10px rgba(0, 0, 51, 0.3);
+            margin-bottom: 1.5em;
+            background-color: white;
+        }
+        .qna-banner:hover {
+            box-shadow: 5px 10px 30px rgba(0, 0, 51, 0.5), -1px -1px 30px rgba(0, 0, 51, 0.5);
+            margin-bottom: 1.5em;
         }
 
-        img {
-            border-radius: 7px;
-        }
-        .research-field {
-            height: 3em;
+        .content-answers {
+            height: 3.5em;
             text-overflow:ellipsis;
             overflow: hidden;
             white-space: normal;
         }
-
-
-
-/*공고 포스트 */
-        .noti-default {
-            width : 100%;
-            border : solid 1px #ccc;
-            margin-bottom: 5%;
-            background-color: #fffcf3;
+        .grad-banner-our {
+            box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.15), -1px -1px 10px rgba(0, 0, 0, 0.15);
+            margin-bottom: 1.5em;
+            background-color: white;
         }
-
-        .noti-name {
-            background-color: #fefbed;
-            color: darkblue;
-            border-left : 0.5em solid darkblue;
-            margin-bottom: 2%;
-            font-weight: 500;
-            font-size: 1.1em;
-            padding-left : 3%;
-            padding-right: 3%;
-            padding-top : 1%;
-            letter-spacing: 2px;
-
-        }
-
-        .noti-title, .noti-subtitle {
-            font-size: 0.8em;
-            padding-left : 6%;
-            padding-right: 3%;
-            letter-spacing: 1px;
-        }
-
-        .noti-subtitle {
-            font-weight: bold;
-        }
-
-        .noti-endtext,.noti-hh  {
-            width : 48%;
-            font-size: 0.8em;
-            color : #929292;
-            display: inline-block;
-            padding-left : 3%;
-            padding-right: 3%;
-            padding-bottom: 3%;
-        }
-
-        .noti-hh {
-            text-align: left;
-        }
-        .noti-endtext {
-            text-align: right;
-        }
-
-        .noti-period {
-            padding-top : 2%;
-            padding-bottom: 2%;
-        }
-        
-          .w3-display-topleft2 {
-		    position: absolute;
-		    left: 0;
-		   
-		}
 		
 		.scrap-on {
 		color: #FF0000;
@@ -298,12 +105,13 @@
  
 	$(function() {
 		
+		var authUser = $("#authUser").val();
 		if(authUser == null || authUser == "" ){
-			
+			//console.log("nouser");
 			
 		}else{
 			
-		//	console.log("sssss");
+			//console.log("sssss");
 			var scrapList=JSON.parse('${scrapList}');
 			for(var i=0;i<scrapList.length;i++){
 
@@ -399,7 +207,7 @@
 							                    				<div class="w3-container "
 							                                 style="width: 0; height: 1px;"></div>
 							                    			</c:if>
-							                    			<c:if test="${BoardList.slctnSemstr != '상시' && BoardList.percent > 0 }"	>
+							                    			<c:if test="${BoardList.slctnSemstr != '상시' && BoardList.percent >= 0 }"	>
 							                  				  	<div class="w3-container w3-black"
 							                                 style="width: ${BoardList.percent}%; height: 1px;"></div>
 							                    			</c:if>
@@ -417,7 +225,7 @@
 								                              style="float :right;">상시 모집</span>
 									                    		
 									                    	</c:if>
-									                    	<c:if test="${BoardList.slctnSemstr != '상시' && BoardList.percent > 0 }"	>
+									                    	<c:if test="${BoardList.slctnSemstr != '상시' && BoardList.percent >= 0 }"	>
 									                    	 <span class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
 								                              style="float :right;">D-${BoardList.dday}</span>
 									                  			
@@ -497,7 +305,7 @@
 					                              style="float :right;">상시 모집</span>
 							                    		
 							                    	</c:if>
-							                    	<c:if test="${BoardList.slctnSemstr != '상시' && BoardList.percent > 0 }"	>
+							                    	<c:if test="${BoardList.slctnSemstr != '상시' && BoardList.percent >= 0 }"	>
 							                    	      	
 					                        <span class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
 					                              style="float :right;">D-${BoardList.dday}</span>
@@ -617,7 +425,7 @@
 							                              style="float :right;">상시 모집</span>
 							                    		
 							                    	</c:if>
-							                    	<c:if test="${BoardList.slctnSemstr != '상시' && BoardList.percent > 0 }"	>
+							                    	<c:if test="${BoardList.slctnSemstr != '상시' && BoardList.percent >= 0 }"	>
 							                    	<span class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
 							                              style="float :right;">D-${BoardList.dday}</span>
 							                  			  	
@@ -710,7 +518,7 @@
 								                              style="float :right;">상시 모집</span>
 							                    		
 								                    	</c:if>
-								                    	<c:if test="${BoardList.slctnSemstr != '상시' && BoardList.percent > 0 }"	>
+								                    	<c:if test="${BoardList.slctnSemstr != '상시' && BoardList.percent >= 0 }"	>
 								                    	<span class="noti-endtext w3-tag w3-round-large w3-light-grey w3-text-blue"
 								                              style="float :right;">D-${BoardList.dday}</span>
 								                  				  	

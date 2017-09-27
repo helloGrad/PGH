@@ -84,6 +84,25 @@
 	</select>
 
 
+		<!-- 정예린 2017-09-27 검색 -->
+	
+	<select id="getSearchList" resultType="studyVo" parameterType="string">
+		<![CDATA[
+			select *
+			from (select orgnz_full_nm slctnTitle, orgnz_no as slctnNotiNo, '기관' as slctnNotiDstnct 
+				from organz 
+				union
+				select concat(ifnull(wrtbt_title,''),' ',ifnull(wrtbt_text,'')) text, wrtbt_no as no, '게시글' as 구분
+				from wetbt
+				union
+				select concat(o.orgnz_full_nm,' ',s.slctn_title) text, s.slctn_noti_no as no, s.SLCTN_NOTI_DSTNCT as 구분
+				from slctn_noti s, organz o
+				where s.orgnz_no=o.orgnz_no) search
+			where search.slctnTitle like '%${_parameter}%'		
+		]]>	
+	</select>
+	
+
   
 
 

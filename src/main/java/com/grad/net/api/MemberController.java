@@ -210,5 +210,103 @@ public class MemberController {
 		return JSONResult.success(success);
 	}
 
+	
+	
+	/*
+	 * 허주한 2017-09-06
+	 */
+	@ResponseBody
+	@RequestMapping("/checknknm")
+	public JSONResult checkNknm(@RequestParam(value = "nknm", required = true, defaultValue = "") String nknm) {
+
+		boolean exist = memberService.existNknm(nknm);
+		
+		return JSONResult.success(exist);
+	}
+	
+
+	
+	
+	/*
+	 * 허주한 2017/09/14*
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/registerStudy", method = RequestMethod.POST)
+	public JSONResult registerStudy(@RequestParam String iden, @RequestParam(value="studys") List<String> studys, @RequestParam String type) {
+		
+		for(int i=0;i<studys.size();i++) {
+			if(type.equals("common")||type.equals("naver")) {
+				memberService.registerStudy(iden, studys.get(i));
+			}
+			else if(type.equals("facebook")) {
+				memberService.registerStudyFacebook(iden, studys.get(i));
+			}
+			
+		}
+		
+		
+		return JSONResult.success(true);
+			
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/modifyInfo", method = RequestMethod.POST)
+	public JSONResult modifyInfo(@RequestParam String mbNo, @RequestParam(value="cdNames") List<String> cdNames, @RequestParam String type) {
+		
+		
+		memberService.modifyMbinfo(mbNo, type,cdNames);
+		
+		
+		return JSONResult.success(true);
+			
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getResearchCode")
+	public JSONResult getResearchCode(@RequestParam(value="researchNames") List<String> researchNames) {
+		
+		//빈 공간이 넘어온경우
+		if(researchNames.size()==0) {
+			researchNames.add(0, "-1");
+		}
+		
+		List<CodeVo> list = memberService.getResearchCode(researchNames);
+		
+		
+		return JSONResult.success(list);
+			
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/updatenknm", method = RequestMethod.POST)
+	public JSONResult updateNknm(HttpServletRequest request, @RequestParam String mbNo,  @RequestParam String nknm) {
+		
+		
+		memberService.updateNknm(mbNo, nknm);
+		
+		//닉네임 변경(회원정보) 후 세션 값도 변경
+		HttpSession session = request.getSession(true);
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		authUser.setNknm(nknm);
+		session.removeAttribute("authUser");
+		session.setAttribute("authUser", authUser);
+		
+		
+		return JSONResult.success(true);
+			
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/updateMbDstnct", method = RequestMethod.POST)
+	public JSONResult updateMbDstnct(@RequestParam String mbNo,  @RequestParam String email) {
+		
+		memberService.updateMbDstnct(mbNo, email);
+		
+		return JSONResult.success(true);
+			
+	}
+	
 
 }
