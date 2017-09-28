@@ -8,7 +8,7 @@ if(vo.wrtbtDstnct =="일반게시판"){
 %>
 	<div class='w3-card-4 w3-margin w3-topbar w3-border-blue'>
 	<input type="hidden" value=<%=vo.rownum%> class="rownum">
-		<div class='w3-container interest'>#화학, #생물학, #화학공학</div>
+		<div class='w3-container interest'></div>
 			 <div class='w3-container'>
 				<h4><b>
 					<a class='detail' href='/net/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts'><%=vo.wrtbtTitle%></a>
@@ -21,13 +21,13 @@ if(vo.wrtbtDstnct =="일반게시판"){
 				<div class='dropup option'>
 					<button class='w3-button w3-padding w3-padding w3-round-large' type='button' data-toggle='dropdown'>
 						<i class='glyphicon glyphicon-option-horizontal'></i> </button>
-							<ul class='dropdown-menu'>
+							<ul class='dropdown-menu dropdown-menu-right'>
 							 <li><a href='#'>익명으로 답변하기</a></li> <li><a href='#'>스크랩하기</a></li><li><a href='#'>신고하기</a></li>
 							</ul></div></div><br></div>
 	<%		}else if(vo.wrtbtDstnct == "상담게시판"){	%>		
 	<div class='w3-card-4 w3-margin w3-topbar w3-border-red'>
 	<input type="hidden" value=<%=vo.rownum%> class="rownum">
-		<div class='w3-container interest'>#화학, #생물학, #화학공학</div>
+		<div class='w3-container interest'></div>
 			 <div class='w3-container'>
 				<h4><b>
 					<a class='detail' href='/net/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts'><%=vo.wrtbtTitle%></a>
@@ -40,7 +40,7 @@ if(vo.wrtbtDstnct =="일반게시판"){
 				<div class='dropup option'>
 					<button class='w3-button w3-padding w3-padding w3-round-large' type='button' data-toggle='dropdown'>
 						<i class='glyphicon glyphicon-option-horizontal'></i> </button>
-							<ul class='dropdown-menu'>
+							<ul class='dropdown-menu dropdown-menu-right'>
 							 <li><a href='#'>익명으로 답변하기</a></li> <li><a href='#'>스크랩하기</a></li><li><a href='#'>신고하기</a></li>
 							</ul></div></div><br></div>
 	
@@ -54,7 +54,7 @@ if(vo.wrtbtDstnct =="일반게시판"){
 			<div class='w3-container'>
 			<h4><b>
 			<a class='detail' href='/net/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts'><%=vo.wrtbtTitle%></a></b></h4></div>
-				<div class='w3-container interest'>#화학, #생물학, #화학공학</div>
+				<div class='w3-container interest'></div>
 					<div class='w3-container'><h6><%=vo.reNknm%><span class='w3-opacity'>•<%=vo.reAvlblBeginDt%>에 답변</span></h6>
 						<a class='detail' href='/net/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts'><p><%=vo.reWrtbtText%></p></a></div>
 			<div class='w3-container'>
@@ -68,7 +68,7 @@ if(vo.wrtbtDstnct =="일반게시판"){
 			<div class='dropup option'>
 				<button class='w3-button w3-padding w3-padding w3-round-large' type='button' data-toggle='dropdown'>
 				<i class='glyphicon glyphicon-option-horizontal'></i> </button>
-				<ul class='dropdown-menu'>
+				<ul class='dropdown-menu dropdown-menu-right'>
 				<li><a href='#'>익명으로 답변하기</a></li> <li><a href='#'>스크랩하기</a></li><li><a href='#'>신고하기</a></li>
 				</ul></div></div><br></div>
 				
@@ -78,7 +78,7 @@ if(vo.wrtbtDstnct =="일반게시판"){
 		<div class='w3-container'>
 		<h4><b>
 		<a class='detail' href='/net/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts'><%=vo.wrtbtTitle%></a></b></h4></div>
-			<div class='w3-container interest'>#화학, #생물학, #화학공학</div>
+			<div class='w3-container interest'></div>
 				<div class='w3-container'><h6><%=vo.reNknm%><span class='w3-opacity'>•<%=vo.reAvlblBeginDt%>에 답변</span></h6>
 					<a class='detail' href='/net/counseling/detail?no=<%=vo.wrtbtNo%>&type=prnts'><p><%=vo.reWrtbtText%></p></a></div>
 		<div class='w3-container'>
@@ -92,7 +92,7 @@ if(vo.wrtbtDstnct =="일반게시판"){
 		<div class='dropup option'>
 			<button class='w3-button w3-padding w3-padding w3-round-large' type='button' data-toggle='dropdown'>
 			<i class='glyphicon glyphicon-option-horizontal'></i> </button>
-			<ul class='dropdown-menu'>
+			<ul class='dropdown-menu dropdown-menu-right'>
 			<li><a href='#'>익명으로 답변하기</a></li> <li><a href='#'>스크랩하기</a></li><li><a href='#'>신고하기</a></li>
 			</ul></div></div><br></div>
 <%

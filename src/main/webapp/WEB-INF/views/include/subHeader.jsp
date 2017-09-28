@@ -51,9 +51,35 @@
 }
 
 
+		
+@media screen and (max-width: 400px) {
+                
 body {
+    padding-top: 11em;
+}  
+
+             
+}
+@media screen and (min-width: 401px) and (max-width: 600px) {
+               
+   
+body {
+    padding-top: 11em;
+}  
+
+		
+   
+             
+}
+@media screen and (min-width: 801px) {
+   
+ body {
             padding-top: 7em;
  }	
+ 
+                
+}
+    
 
 
 </style>	

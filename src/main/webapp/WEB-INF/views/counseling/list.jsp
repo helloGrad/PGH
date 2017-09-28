@@ -222,7 +222,7 @@ var authUser = '${authUser.mbNo }';
                 <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
                     <i class="glyphicon glyphicon-option-horizontal"></i>
                 </button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu dropdown-menu-right">
                      <li><a href="javascript:void(0);" onclick="reset('전체','조회순');">조회순</a></li>
                      <li><a href="javascript:void(0);" onclick="reset('전체','공감순');">공감순</a></li>
                      <li><a href="javascript:void(0);" onclick="reset('전체','최신순');">최신순</a></li>

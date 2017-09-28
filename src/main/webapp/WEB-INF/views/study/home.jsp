@@ -100,9 +100,10 @@
         .scrap-on {
 		color: #FF0000;
 		}
-        
+		
+     
        
-}
+
 </style>
 
 <script type="text/javascript">

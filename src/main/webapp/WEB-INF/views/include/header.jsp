@@ -79,6 +79,90 @@ height: auto;
 }
 
 
+ @media screen and (max-width: 400px) {
+                
+body {
+    padding-top: 8em;
+}  
+.sidebar {
+    background-color: #6bc59a;
+    /* height: 566px; */
+}   
+
+
+.modal-dialog.modal-fullsize {
+				  width: 100%;
+				  height1: 100%;
+				  margin: 0;
+				  padding: 0;
+				  padding-right: 0;
+}
+.modal-content.modal-fullsize {
+				  height: auto%;
+				  min-height: 100%;
+				  border-radius: 0; 
+				   padding-right: 0;
+}
+				.modal{
+               	 padding-top: 0px;
+                }
+
+				 .objectbutton1, .objectbutton2 {
+				    
+				    width: 30%;
+				 }
+             
+}
+@media screen and (min-width: 401px) and (max-width: 600px) {
+               
+   
+body {
+    padding-top: 8em;
+}  
+.sidebar {
+    background-color: #6bc59a;
+    /* height: 566px; */
+}   
+
+
+.modal-dialog.modal-fullsize {
+				  width: 100%;
+				  height1: 100%;
+				  margin: 0;
+				  padding: 0;
+				  padding-right: 0;
+}
+.modal-content.modal-fullsize {
+				  height: auto%;
+				  min-height: 100%;
+				  border-radius: 0; 
+				   padding-right: 0;
+}
+				.modal{
+               	 padding-top: 0px;
+                }
+
+				 .objectbutton1, .objectbutton2 {
+				    
+				    width: 30%;
+				 }
+		
+   
+             
+}
+@media screen and (min-width: 801px) {
+   
+.sidebar{
+
+ background-color: #6bc59a;
+ height: 566px;
+
+}   
+                
+}
+
+
+
 </style>
 
 
@@ -122,11 +206,11 @@ height: auto;
 			  <a class="navbar-brand" href="${pageContext.servletContext.contextPath }/loginmain">하이그래드넷</a>
 			  
 				<ul class="nav navbar-nav">
-					<li><a id="headerBtn" class=" navbar-qna nav-btn writeBtn" href="#"> <span
-							class=" w3-btn w3-border w3-round-large"><i
+					<li><a id="headerBtn" class=" navbar-qna nav-btn w3-mobile writeBtn" href="#"> <span
+							class=" w3-btn w3-border w3-round-large w3-mobile" style="margin:0 0 0 1em;"><i
 								class="glyphicon glyphicon-pencil"></i>글쓰기</span></a></li>
-					<li><a class=" navbar-qna" href="${pageContext.servletContext.contextPath }/counseling/list"> <span
-							class="w3-btn w3-border w3-round-large"><i
+					<li><a class=" navbar-qna w3-mobile" href="${pageContext.servletContext.contextPath }/counseling/list"> <span
+							class="w3-btn w3-border w3-round-large w3-mobile" style="margin:0 0 0 1em;"><i
 								class="glyphicon glyphicon-check"></i>답변하기</span></a></li>
 				</ul>
 				

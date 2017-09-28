@@ -61,8 +61,9 @@ pageContext.setAttribute("newLine", "\n");
    		cursor: default;
 		}
 
-		.winter { border:7px solid #dddddd; 
-					background-color: yellow;}
+		.winter { border:7px solid #FF8080; 
+					background-color: #FF8080;
+					border-radius: 8px;}
 					
 		.hide{
   		display:none;  
@@ -552,7 +553,7 @@ pageContext.setAttribute("newLine", "\n");
                 
                 </div>
 
-                <div class="w3-container interest">#유학 #외국 #컴퓨터
+                <div class="w3-container interest">
                 </div>
 
                 <div class="w3-container">
@@ -574,7 +575,7 @@ pageContext.setAttribute("newLine", "\n");
                         <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
                             <i class="glyphicon glyphicon-option-horizontal"></i>
                         </button>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu dropdown-menu-right">
                             <li><a href="#">익명으로 답변하기</a></li>
                             <li><a href="#">스크랩하기</a></li>
                             <li><a href="#">신고하기</a></li>
@@ -597,7 +598,7 @@ pageContext.setAttribute("newLine", "\n");
                     <h4><b>답변</b> <span class="w3-badge w3-white">${fn:length(counselingReplyList)}</span></h4>
                     <input type="hidden" id="replysize" name="replysize" value="${fn:length(counselingReplyList)}">
                     
-                    <div id="myBtn" class="btn btn-danger web-volunteer" >답변하기</div>
+                    <div id="myBtn" class="btn btn-danger" >답변하기</div>
                    
                 <hr>
             </div>
@@ -695,7 +696,7 @@ pageContext.setAttribute("newLine", "\n");
                         <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
                             <i class="glyphicon glyphicon-option-horizontal"></i>
                         </button>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu dropdown-menu-right">
                             <li><a href="#">신고하기</a></li>
                         </ul>
                     </div>
@@ -751,7 +752,7 @@ pageContext.setAttribute("newLine", "\n");
                         <button class="w3-button w3-padding w3-padding w3-round-large" type="button" data-toggle="dropdown">
                             <i class="glyphicon glyphicon-option-horizontal"></i>
                         </button>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu dropdown-menu-right">
                             <li><a href="#">신고하기</a></li>
                         </ul>
                     </div>
